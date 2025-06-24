@@ -96,4 +96,13 @@ body {
     @apply text-sm text-amber-600 mt-1;
     font-family: 'Inter', Arial, Helvetica, sans-serif;
   }
+  .btn-primary-cta {
+    @apply px-8 py-3 text-lg bg-primary-700 hover:bg-primary-800 shadow-lg font-bold;
+    transform: none;
+    transition: transform 0.15s cubic-bezier(0.4,0,0.2,1), box-shadow 0.15s cubic-bezier(0.4,0,0.2,1);
+  }
+  .btn-primary-cta:hover {
+    transform: scale(1.04);
+    box-shadow: 0 6px 24px 0 rgba(37,99,235,0.18), 0 1.5px 4px 0 rgba(16,30,54,0.06);
+  }
 }
