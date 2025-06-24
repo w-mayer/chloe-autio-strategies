@@ -9,13 +9,15 @@ const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.d
 
 export function Hero() {
   return (
-    <section className="w-full py-20 md:py-32 bg-gradient-to-b from-primary-50 to-white dark:from-neutral-900 dark:to-neutral-950">
-      <div className="container mx-auto flex flex-col items-center text-center px-4">
+    <section className="w-full py-16 md:py-20 bg-paynesGray relative">
+      {/* Brand green accent bar at the top */}
+      <div className="absolute top-0 left-0 w-full h-2 bg-primary" />
+      <div className="container mx-auto flex flex-col items-center text-center px-4 relative z-10">
         <MotionH1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="text-4xl md:text-6xl font-bold text-primary-700 mb-6 text-balance"
+          className="text-4xl md:text-6xl font-bold heading mb-6 text-balance text-eggshell"
         >
           Strategic Solutions for a Complex World
         </MotionH1>
@@ -23,7 +25,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, ease: 'easeOut' }}
-          className="text-lg md:text-2xl text-neutral-700 dark:text-neutral-200 mb-10 max-w-2xl"
+          className="body-text text-lg md:text-2xl text-eggshell mb-10 max-w-2xl"
         >
           Empowering organizations to navigate change, drive growth, and achieve lasting impact through data-driven insights and expert guidance.
         </MotionP>
@@ -32,7 +34,11 @@ export function Hero() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.1, ease: 'easeOut' }}
         >
-          <Button variant="primary" aria-label="Request a Consultation">
+          <Button
+            variant="primary"
+            aria-label="Request a Consultation"
+            className="bg-primary text-white font-bold heading px-8 py-3 rounded-md shadow-lg border-none"
+          >
             Request a Consultation
           </Button>
         </MotionDiv>

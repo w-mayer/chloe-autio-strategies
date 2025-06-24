@@ -51,9 +51,9 @@ export default function ExperiencePage() {
       {/* Professional Biography */}
       <section className="flex flex-col md:flex-row items-center gap-10 mb-12">
         <div className="flex-shrink-0">
-          <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary-700 shadow-lg bg-gray-100 flex items-center justify-center">
+          <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary-700 shadow-lg bg-eggshell flex items-center justify-center">
             <Image
-              src="/profile-placeholder.jpg"
+              src="/images/headshot/ChloeAutioHeadshot.jpeg"
               alt="Chloe Autio, AI policy consultant and technology governance expert"
               width={224}
               height={224}
@@ -63,80 +63,68 @@ export default function ExperiencePage() {
           </div>
         </div>
         <div>
-          <h1 className="text-4xl md:text-5xl font-bold text-primary-700 mb-4" itemProp="name">Chloe Autio</h1>
-          <p className="text-lg text-neutral-700 dark:text-neutral-200 mb-4" itemProp="description">
-            Chloe Autio is a nationally recognized expert in artificial intelligence policy, governance, and technology strategy. With over a decade of experience advising government agencies, Fortune 500 companies, and global organizations, Chloe is known for her rigorous, ethical, and forward-thinking approach to responsible AI and emerging technology.
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4 heading" itemProp="name">Chloe Autio</h1>
+          <p className="text-lg text-gray dark:text-paynesGray mb-4 body-text" itemProp="description">
+            Chloe Autio is a technology policy expert with nearly a decade of experience advising organizations on AI policy and governance. Through her practice, Autio Strategies, she provides strategic guidance to clients including government bodies, Fortune 50 companies, large AI labs and startups, and leading trade associations. Her advice helps organizations develop clear policy positions, enhance engagement and internal strategies, and anticipate regulatory implications.
           </p>
-          <p className="text-base text-neutral-600 dark:text-neutral-300 mb-2">
-            As the founder of Chloe Autio Strategies, she partners with leaders across sectors to develop robust policy frameworks, drive regulatory compliance, and foster innovation in the public interest.
+          <p className="text-base text-gray dark:text-paynesGray mb-2 body-text">
+            Chloe's consultancy is built on a solid foundation of experience, including her pivotal role in shaping Intel Corp.'s emerging technology policy portfolio and developing their Responsible AI program from its beginning. Her approach integrates a deep understanding of product development, compliance, communications and social responsibility. She couples her substantive expertise in this niche field with a broad network of contacts in D.C. and beyond to best serve her clients' interests.
           </p>
         </div>
       </section>
 
-      {/* Credentials and Expertise */}
+      {/* Credentials & Expertise */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-primary-800 mb-4">Credentials & Expertise</h2>
-        <ul className="list-disc list-inside text-neutral-700 dark:text-neutral-200 space-y-2">
-          <li>Advisor to U.S. federal agencies on AI risk, ethics, and governance</li>
-          <li>Consultant to Fortune 500 technology and financial services firms</li>
-          <li>Contributor to international standards (OECD, NIST, ISO/IEC)</li>
-          <li>Expertise in AI policy, data governance, risk management, and compliance</li>
-          <li>Frequent speaker at global conferences and policy forums</li>
+        <h2 className="text-2xl font-semibold text-primary mb-4 heading">Credentials & Expertise</h2>
+        <ul className="list-disc list-inside text-gray dark:text-paynesGray space-y-2">
+          <li className="body-text">Advisor to government bodies, Fortune 50 companies, large AI labs, startups, and trade associations</li>
+          <li className="body-text">Strategic guidance on AI policy, governance, compliance, and regulatory engagement</li>
+          <li className="body-text">Pivotal in shaping Intel Corp.'s emerging technology policy and Responsible AI program</li>
+          <li className="body-text">Deep expertise in product development, compliance, communications, and social responsibility</li>
+          <li className="body-text">Broad network of contacts in Washington, D.C. and beyond</li>
         </ul>
       </section>
 
-      {/* Education and Certifications */}
+      {/* Additional Roles & Affiliations */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-primary-800 mb-4">Education & Certifications</h2>
-        <ul className="list-disc list-inside text-neutral-700 dark:text-neutral-200 space-y-2">
-          <li>Juris Doctor (JD), Georgetown University Law Center</li>
-          <li>Bachelor of Arts in Political Science, University of California, Berkeley</li>
-          <li>Certified Information Privacy Professional (CIPP/US, IAPP)</li>
-          <li>Certified in AI Ethics and Governance (World Economic Forum)</li>
+        <h2 className="text-2xl font-semibold text-primary mb-4 heading">Additional Roles & Affiliations</h2>
+        <ul className="list-disc list-inside text-gray dark:text-paynesGray space-y-2">
+          <li className="body-text">Adjunct AI Policy Advisor, Institute for Security and Technology</li>
+          <li className="body-text">Faculty Lecturer, Future of Privacy Forum</li>
+          <li className="body-text">Board Member, Humane Intelligence</li>
         </ul>
       </section>
 
-      {/* Achievements and Recognition */}
+      {/* Media & Recognition */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-primary-800 mb-4">Professional Achievements & Recognition</h2>
-        <ul className="list-disc list-inside text-neutral-700 dark:text-neutral-200 space-y-2">
-          <li>Named to Forbes 30 Under 30 in Law & Policy</li>
-          <li>Recipient, Women in AI Leadership Award</li>
-          <li>Lead author of national AI risk management guidelines</li>
-          <li>Recognized by the U.S. Department of Commerce for contributions to AI policy</li>
+        <h2 className="text-2xl font-semibold text-primary mb-4 heading">Media & Recognition</h2>
+        <ul className="list-disc list-inside text-gray dark:text-paynesGray space-y-2">
+          <li className="body-text">Frequently sought after by government and civil society organizations</li>
+          <li className="body-text">Expertise highlighted in The Wall Street Journal, Axios, POLITICO, Bloomberg, and more</li>
         </ul>
       </section>
 
-      {/* Client Testimonials */}
+      {/* Education */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-primary-800 mb-4">Client Testimonials</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <blockquote className="rounded-lg bg-primary-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-6 shadow-soft">
-            <p className="text-lg text-neutral-800 dark:text-neutral-100 mb-2 font-medium">"Chloe's expertise in AI governance is unmatched. Her guidance was instrumental in shaping our organization's responsible AI strategy."</p>
-            <footer className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">Chief Data Officer, Fortune 500 Company</footer>
-          </blockquote>
-          <blockquote className="rounded-lg bg-primary-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-6 shadow-soft">
-            <p className="text-lg text-neutral-800 dark:text-neutral-100 mb-2 font-medium">"A trusted advisor who brings clarity and rigor to complex policy challenges. Chloe is a true leader in the field."</p>
-            <footer className="mt-2 text-sm text-neutral-600 dark:text-neutral-400">Director, Federal Agency</footer>
-          </blockquote>
-        </div>
+        <h2 className="text-2xl font-semibold text-primary mb-4 heading">Education</h2>
+        <ul className="list-disc list-inside text-gray dark:text-paynesGray space-y-2">
+          <li className="body-text">B.A. in Economics, University of California, Berkeley</li>
+          <li className="body-text">Studied technology policy, data ethics, and the social implications of computing</li>
+        </ul>
       </section>
 
-      {/* Media & Speaking Engagements */}
+      {/* Personal */}
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-primary-800 mb-4">Media & Speaking Engagements</h2>
-        <ul className="list-disc list-inside text-neutral-700 dark:text-neutral-200 space-y-2">
-          <li>Featured expert, The Wall Street Journal, The Washington Post, and NPR</li>
-          <li>Keynote speaker, Global AI Policy Summit</li>
-          <li>Panelist, OECD AI Conference, NIST AI Risk Management Workshop</li>
-          <li>Guest lecturer, Georgetown University, UC Berkeley, and MIT</li>
-        </ul>
+        <h2 className="text-2xl font-semibold text-primary mb-4 heading">Personal</h2>
+        <p className="text-base text-gray dark:text-paynesGray body-text">
+          Chloe resides in the Washington, D.C. area with her husband and stepdaughter.
+        </p>
       </section>
 
       {/* Call to Action */}
       <section className="text-center mt-16">
-        <h2 className="text-2xl font-bold text-primary-700 mb-4">Partner with Chloe Autio Strategies</h2>
-        <p className="text-lg text-neutral-700 dark:text-neutral-200 mb-6 max-w-xl mx-auto">
+        <h2 className="text-2xl font-bold text-primary mb-4 heading">Partner with Chloe Autio Strategies</h2>
+        <p className="text-lg text-gray dark:text-paynesGray mb-6 max-w-xl mx-auto body-text">
           Connect with Chloe to discuss how her expertise can help your organization navigate the evolving landscape of AI policy and governance.
         </p>
         <a
@@ -154,31 +142,21 @@ export default function ExperiencePage() {
           '@context': 'https://schema.org',
           '@type': 'Person',
           name: 'Chloe Autio',
-          jobTitle: 'Founder, Chloe Autio Strategies',
-          description: 'Expert in AI policy consulting, technology governance, regulatory compliance, and enterprise/government advisory.',
+          jobTitle: 'Founder, Autio Strategies',
+          description: 'Technology policy expert specializing in AI policy, governance, and regulatory strategy.',
           alumniOf: [
-            'Georgetown University Law Center',
             'University of California, Berkeley',
           ],
-          award: [
-            'Forbes 30 Under 30 in Law & Policy',
-            'Women in AI Leadership Award',
-          ],
           hasCredential: [
-            'Juris Doctor (JD)',
-            'Certified Information Privacy Professional (CIPP/US, IAPP)',
-            'Certified in AI Ethics and Governance (World Economic Forum)',
+            'B.A. in Economics',
           ],
           knowsAbout: [
-            'AI Policy Consulting',
+            'AI Policy',
             'Technology Governance',
             'Regulatory Compliance',
-            'Government Consulting',
-            'Enterprise Policy Advisory',
-            'AI Governance',
-            'Tech Policy',
-            'Compliance Consulting',
-            'Public Sector Advisory'
+            'Product Development',
+            'Data Ethics',
+            'Social Implications of Computing',
           ],
           url: 'https://chloeautio.com/about',
           sameAs: [

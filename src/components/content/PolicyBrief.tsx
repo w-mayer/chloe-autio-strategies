@@ -32,10 +32,10 @@ function useInViewAnimation() {
 
 export function CardSkeleton() {
   return (
-    <div className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-soft animate-pulse">
-      <div className="h-6 w-2/3 bg-neutral-200 dark:bg-neutral-800 rounded mb-2" />
-      <div className="h-4 w-full bg-neutral-200 dark:bg-neutral-800 rounded mb-4" />
-      <div className="h-4 w-24 bg-neutral-200 dark:bg-neutral-800 rounded mt-4" />
+    <div className="rounded-lg border border-ashGray bg-eggshell p-6 shadow-soft animate-pulse">
+      <div className="h-6 w-2/3 bg-eggshell dark:bg-paynesGray rounded mb-2" />
+      <div className="h-4 w-full bg-eggshell dark:bg-paynesGray rounded mb-4" />
+      <div className="h-4 w-24 bg-eggshell dark:bg-paynesGray rounded mt-4" />
     </div>
   );
 }
@@ -53,14 +53,14 @@ function PolicyBriefInner({ brief }: { brief: PolicyBriefType }) {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-6 shadow-soft flex flex-col h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+      className="rounded-lg border border-ashGray bg-eggshell p-6 shadow-soft flex flex-col h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
     >
       <div className="mb-2 text-xs text-primary-700">{new Date(brief.date).toLocaleDateString()}</div>
-      <h3 className="text-lg font-semibold text-primary-800 mb-2">{brief.title}</h3>
-      <p className="text-neutral-700 dark:text-neutral-200 mb-4 flex-1">{brief.summary}</p>
+      <h3 className="text-lg font-semibold text-primary mb-2 heading">{brief.title}</h3>
+      <p className="text-gray mb-4 flex-1 body-text">{brief.summary}</p>
       <div className="flex items-center gap-2 mb-2">
         <Image src={brief.author.avatarUrl} alt={brief.author.name} width={32} height={32} className="w-8 h-8 rounded-full object-cover" />
-        <span className="text-sm text-neutral-700 dark:text-neutral-300">{brief.author.name}</span>
+        <span className="text-sm text-gray dark:text-paynesGray">{brief.author.name}</span>
       </div>
       <div className="flex flex-wrap gap-2 mt-auto">
         {brief.tags.map(tag => (

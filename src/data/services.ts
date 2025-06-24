@@ -10,26 +10,26 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    slug: 'policy-intelligence',
-    title: 'Policy Intelligence',
-    overview: 'Leverage advanced analytics and AI-driven insights to inform policy decisions, anticipate regulatory trends, and proactively address emerging challenges.',
+    slug: 'insight-analysis',
+    title: 'Insight & Analysis',
+    overview: 'Receive tailored insights and analysis to inform your organization\'s strategy, anticipate trends, and proactively address emerging challenges in AI and technology policy.',
     benefits: [
-      'Data-driven policy recommendations',
-      'Early identification of regulatory risks',
-      'Enhanced situational awareness for decision-makers',
+      'Data-driven insights for decision-making',
+      'Early identification of policy and regulatory trends',
+      'Actionable recommendations for your organization',
     ],
-    methodology: 'Our approach integrates proprietary data sources, machine learning models, and expert analysis to deliver actionable intelligence tailored to your organization\'s needs. We provide ongoing monitoring and scenario planning to ensure you stay ahead of the policy curve.',
+    methodology: 'We combine proprietary data, expert analysis, and ongoing monitoring to deliver actionable intelligence tailored to your needs.',
     caseStudies: [
       {
         title: 'AI Risk Monitoring for Federal Agency',
         description: 'Developed a real-time dashboard for a federal agency to monitor global AI policy developments and assess potential impacts on national programs.'
       }
     ],
-    related: ['research-analysis', 'policy-development'],
+    related: ['research', 'policy-development'],
   },
   {
-    slug: 'research-analysis',
-    title: 'Research & Analysis',
+    slug: 'research',
+    title: 'Research',
     overview: 'Comprehensive research and rigorous analysis to support evidence-based policy making and strategic planning.',
     benefits: [
       'In-depth policy landscape reviews',
@@ -43,7 +43,7 @@ export const services: Service[] = [
         description: 'Conducted a cross-jurisdictional analysis of AI governance frameworks for an international standards body.'
       }
     ],
-    related: ['policy-intelligence', 'policy-development'],
+    related: ['insight-analysis', 'policy-development'],
   },
   {
     slug: 'policy-development',
@@ -61,12 +61,12 @@ export const services: Service[] = [
         description: 'Partnered with a leading technology firm to develop and roll out an AI ethics policy adopted across multiple business units.'
       }
     ],
-    related: ['stakeholder-engagement', 'training-education'],
+    related: ['insight-analysis', 'research'],
   },
   {
-    slug: 'stakeholder-engagement',
-    title: 'Stakeholder Engagement',
-    overview: 'Strategic facilitation of stakeholder input and consensus-building to ensure policy initiatives are informed, inclusive, and actionable.',
+    slug: 'events-facilitation',
+    title: 'Events and Facilitation',
+    overview: 'Strategic facilitation of events, workshops, and stakeholder engagement to ensure policy initiatives are informed, inclusive, and actionable.',
     benefits: [
       'Improved stakeholder alignment',
       'Transparent, participatory processes',
@@ -79,12 +79,12 @@ export const services: Service[] = [
         description: 'Led a multi-stakeholder engagement process for a national AI strategy, resulting in broad consensus and actionable recommendations.'
       }
     ],
-    related: ['policy-development', 'strategic-partnerships'],
+    related: ['policy-development', 'briefings-talks'],
   },
   {
-    slug: 'training-education',
-    title: 'Training & Education',
-    overview: 'Custom training programs and educational resources to build internal capacity and foster a culture of responsible innovation.',
+    slug: 'briefings-talks',
+    title: 'Briefings & Talks',
+    overview: 'Custom briefings, talks, and educational resources to build internal capacity and foster a culture of responsible innovation.',
     benefits: [
       'Tailored curriculum for diverse audiences',
       'Expert-led workshops and seminars',
@@ -97,12 +97,12 @@ export const services: Service[] = [
         description: 'Delivered a series of workshops for public sector leaders on AI policy fundamentals and emerging trends.'
       }
     ],
-    related: ['policy-development', 'strategic-partnerships'],
+    related: ['events-facilitation', 'third-party-management'],
   },
   {
-    slug: 'strategic-partnerships',
-    title: 'Strategic Partnerships',
-    overview: 'Facilitate alliances and collaborations that advance shared policy objectives and drive innovation across sectors.',
+    slug: 'third-party-management',
+    title: 'Third Party Management',
+    overview: 'Facilitate alliances, collaborations, and third-party relationships that advance shared policy objectives and drive innovation across sectors.',
     benefits: [
       'Access to new networks and expertise',
       'Joint initiatives for greater impact',
@@ -115,6 +115,6 @@ export const services: Service[] = [
         description: 'Coordinated a multi-organization partnership to launch a public-private consortium focused on responsible AI deployment.'
       }
     ],
-    related: ['stakeholder-engagement', 'training-education'],
+    related: ['briefings-talks', 'insight-analysis'],
   },
 ]; 

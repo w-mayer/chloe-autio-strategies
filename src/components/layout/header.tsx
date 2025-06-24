@@ -11,9 +11,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-200">
       <div className="container flex h-16 items-center justify-between">
-        <a className="flex items-center space-x-2" href="/" aria-label="Home">
-          {/* Logo could go here */}
-          <span className="font-bold text-lg">Chloe Autio Strategies</span>
+        <a className="flex items-center" href="/" aria-label="Home">
+          <img
+            src="/images/logo/AutioStrategies_Logo_FullColor_Horz (1).png"
+            alt="Autio Strategies Logo"
+            style={{ minWidth: 138, width: 138, height: 'auto', padding: '8px 0', objectFit: 'contain' }}
+            className="block"
+            height={40}
+            width={138}
+          />
         </a>
         <nav className="hidden md:flex flex-1 items-center justify-center">
           <Navigation />

@@ -19,24 +19,23 @@ export function ContactFormSkeleton() {
   return (
     <form className="space-y-4 max-w-lg animate-pulse" aria-label="Contact form loading">
       <div>
-        <div className="h-4 w-1/3 bg-neutral-200 dark:bg-neutral-800 rounded mb-2" />
-        <div className="h-10 w-full bg-neutral-200 dark:bg-neutral-800 rounded" />
+        <div className="h-4 w-1/3 bg-eggshell dark:bg-paynesGray rounded mb-2" />
+        <div className="h-10 w-full bg-eggshell dark:bg-paynesGray rounded" />
       </div>
       <div>
-        <div className="h-4 w-1/3 bg-neutral-200 dark:bg-neutral-800 rounded mb-2" />
-        <div className="h-10 w-full bg-neutral-200 dark:bg-neutral-800 rounded" />
+        <div className="h-4 w-1/3 bg-eggshell dark:bg-paynesGray rounded mb-2" />
+        <div className="h-10 w-full bg-eggshell dark:bg-paynesGray rounded" />
       </div>
       <div>
-        <div className="h-4 w-1/3 bg-neutral-200 dark:bg-neutral-800 rounded mb-2" />
-        <div className="h-20 w-full bg-neutral-200 dark:bg-neutral-800 rounded" />
+        <div className="h-4 w-1/3 bg-eggshell dark:bg-paynesGray rounded mb-2" />
+        <div className="h-20 w-full bg-eggshell dark:bg-paynesGray rounded" />
       </div>
-      <div className="h-10 w-full bg-neutral-200 dark:bg-neutral-800 rounded" />
+      <div className="h-10 w-full bg-eggshell dark:bg-paynesGray rounded" />
     </form>
   );
 }
 
 export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
-  if (isLoading) return <ContactFormSkeleton />;
   const {
     register,
     handleSubmit,
@@ -45,6 +44,7 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
   } = useForm<ContactFormValues>({
     resolver: zodResolver(ContactSchema),
   });
+  if (isLoading) return <ContactFormSkeleton />;
 
   async function onSubmit(data: ContactFormValues) {
     console.log('Contact form submitted:', data);

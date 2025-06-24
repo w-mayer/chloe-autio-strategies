@@ -22,14 +22,19 @@ export default function InsightsPageClient({ articles, policyBriefs, caseStudies
 
   return (
     <main className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl md:text-5xl font-bold text-primary-700 mb-8 text-center">Insights & Thought Leadership</h1>
-      <p className="text-lg text-neutral-700 dark:text-neutral-200 mb-12 text-center max-w-2xl mx-auto">
-        Explore the latest articles, policy briefs, case studies, and resources on AI policy, governance, and regulatory strategy for government and enterprise leaders.
-      </p>
+      <h1 className="text-4xl md:text-5xl font-bold text-primary mb-8 text-center">Insights & Thought Leadership</h1>
+      <div className="body-text text-lg text-neutral-700 dark:text-neutral-200 mb-12 text-center max-w-2xl mx-auto">
+        <ul className="list-disc list-inside text-left mx-auto inline-block">
+          <li><strong>Overview of Policy Landscape:</strong> Receive tailored reviews of relevant international, domestic, and local policy frameworks that align with your organization's interests and priorities.</li>
+          <li><strong>Real-Time Policy Updates and Ecosystem Insights:</strong> Stay informed with timely updates on policy initiatives and gain comprehensive analysis of the regulatory landscape to navigate changes effectively.</li>
+          <li><strong>Legislative and Policy Analysis:</strong> Benefit from expert evaluation of specific policy proposals, initiatives, and emerging trends, helping you anticipate impacts and adjust your strategies proactively.</li>
+          <li><strong>Targeted Insights:</strong> Receive briefings on relevant sectoral agencies, and/or identify key AI policy players, incentives, and possible engagement channels to pursue in short to long-term timeframes.</li>
+        </ul>
+      </div>
 
       {/* Featured Articles */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold text-primary-800 mb-6">Featured Articles</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-6">Featured Articles</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {loading
             ? Array.from({ length: 3 }).map((_, i) => <ArticleCardSkeleton key={i} />)
@@ -41,7 +46,7 @@ export default function InsightsPageClient({ articles, policyBriefs, caseStudies
 
       {/* Policy Briefs */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold text-primary-800 mb-6">Policy Briefs</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-6">Policy Briefs</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {loading
             ? Array.from({ length: 2 }).map((_, i) => <PolicyBriefSkeleton key={i} />)
@@ -53,7 +58,7 @@ export default function InsightsPageClient({ articles, policyBriefs, caseStudies
 
       {/* Case Studies */}
       <section className="mb-16">
-        <h2 className="text-2xl font-semibold text-primary-800 mb-6">Case Studies</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-6">Case Studies</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {loading
             ? Array.from({ length: 2 }).map((_, i) => <CaseStudyCardSkeleton key={i} />)
@@ -65,7 +70,7 @@ export default function InsightsPageClient({ articles, policyBriefs, caseStudies
 
       {/* Resource Library */}
       <section>
-        <h2 className="text-2xl font-semibold text-primary-800 mb-6">Resource Library</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-6">Resource Library</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {loading
             ? Array.from({ length: 3 }).map((_, i) => <ResourceCardSkeleton key={i} />)

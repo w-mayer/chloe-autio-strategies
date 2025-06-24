@@ -26,7 +26,6 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? "modal-title" : undefined}
-        tabIndex={-1}
         onClick={onClose}
       >
         <div
@@ -36,6 +35,8 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
             className
           )}
           onClick={e => e.stopPropagation()}
+          onKeyDown={e => { if (e.key === 'Escape') onClose(); }}
+          tabIndex={-1}
           {...props}
         >
           {title && (

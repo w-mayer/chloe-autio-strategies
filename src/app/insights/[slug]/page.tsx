@@ -17,7 +17,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
   return (
     <main className="container mx-auto px-4 py-16 max-w-3xl">
       <article>
-        <h1 className="text-3xl md:text-4xl font-bold text-primary-700 mb-4">{article.title}</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-primary mb-4">{article.title}</h1>
         <div className="flex items-center gap-3 mb-6">
           <Image src={article.author.avatarUrl} alt={article.author.name} width={40} height={40} className="w-10 h-10 rounded-full object-cover" />
           <div>
@@ -42,7 +42,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         {/* Related Articles */}
         {related.length > 0 && (
           <section className="mb-12">
-            <h2 className="text-xl font-semibold text-primary-800 mb-4">Related Articles</h2>
+            <h2 className="text-xl font-semibold text-primary mb-4">Related Articles</h2>
             <ul className="list-disc list-inside space-y-2">
               {related.map(a => (
                 <li key={a.slug}>

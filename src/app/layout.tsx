@@ -1,12 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { siteMeta } from "@/lib/constants";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Chloe Autio Strategies | AI Policy Consulting & Technology Governance",
@@ -90,11 +87,13 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={inter.className}>
+      <body>
         <div className="relative flex min-h-screen flex-col">
           <Header />
           <PageTransition>
-            {children}
+            <main id="main-content" role="main" tabIndex={-1} className="flex-1 focus:outline-none">
+              {children}
+            </main>
           </PageTransition>
           <Footer />
         </div>

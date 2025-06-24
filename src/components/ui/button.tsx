@@ -1,6 +1,7 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import dynamic from 'next/dynamic';
+import { MotionProps } from 'framer-motion';
 
 const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motion.button), { ssr: false });
 
@@ -13,8 +14,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 const variantClasses: Record<ButtonVariant, string> = {
   primary: "btn-primary btn-primary-cta",
   secondary: "btn-secondary",
-  outline: "border border-primary-600 text-primary-600 bg-transparent hover:bg-primary-50",
-  ghost: "bg-transparent text-primary-700 hover:bg-primary-50",
+  outline: "border border-primary-500 text-primary-700 bg-transparent hover:bg-primary-100",
+  ghost: "bg-transparent text-primary-700 hover:bg-primary-100",
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -37,6 +38,25 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         </button>
       );
     }
+    // Omit all known conflicting event props for MotionButton (only those that exist on React.ButtonHTMLAttributes)
+    const {
+      onAnimationStart,
+      onDragStart,
+      onDragEnd,
+      onDrag,
+      onDragOver,
+      onDragEnter,
+      onDragLeave,
+      onPointerDown,
+      onPointerMove,
+      onPointerUp,
+      onPointerCancel,
+      onPointerEnter,
+      onPointerLeave,
+      onPointerOver,
+      onPointerOut,
+      ...motionProps
+    } = props;
     return (
       <MotionButton
         ref={ref}
@@ -49,7 +69,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           className
         )}
         aria-label={props["aria-label"] || (typeof children === "string" ? children : undefined)}
-        {...props}
+        {...motionProps}
       >
         {children}
       </MotionButton>

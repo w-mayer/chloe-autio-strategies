@@ -17,14 +17,14 @@ function useActivePath(href: string) {
 
 export function Navigation() {
   return (
-    <ul className="flex items-center gap-6 text-sm font-medium">
+    <ul className="flex items-center gap-8 text-base font-normal">
       {navItems.map((item) => (
         <li key={item.name}>
           <a
             href={item.href}
             className={cn(
-              'transition-colors hover:text-primary-700',
-              useActivePath(item.href) && 'text-primary-700 font-semibold'
+              'transition-colors text-gray hover:text-primary nav-text px-3 py-1 rounded',
+              useActivePath(item.href) && 'font-semibold underline underline-offset-4'
             )}
           >
             {item.name}

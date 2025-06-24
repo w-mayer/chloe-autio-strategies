@@ -3,12 +3,24 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const logos = [
-  { name: 'Client A', svg: <svg width="80" height="32" viewBox="0 0 80 32" fill="none"><rect width="80" height="32" rx="8" fill="#2563eb"/><text x="40" y="21" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="bold">A</text></svg> },
-  { name: 'Client B', svg: <svg width="80" height="32" viewBox="0 0 80 32" fill="none"><rect width="80" height="32" rx="8" fill="#1e40af"/><text x="40" y="21" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="bold">B</text></svg> },
-  { name: 'Client C', svg: <svg width="80" height="32" viewBox="0 0 80 32" fill="none"><rect width="80" height="32" rx="8" fill="#3b82f6"/><text x="40" y="21" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="bold">C</text></svg> },
-  { name: 'Client D', svg: <svg width="80" height="32" viewBox="0 0 80 32" fill="none"><rect width="80" height="32" rx="8" fill="#60a5fa"/><text x="40" y="21" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="bold">D</text></svg> },
-  { name: 'Client E', svg: <svg width="80" height="32" viewBox="0 0 80 32" fill="none"><rect width="80" height="32" rx="8" fill="#dbeafe"/><text x="40" y="21" textAnchor="middle" fill="#2563eb" fontSize="16" fontWeight="bold">E</text></svg> },
-  { name: 'Client F', svg: <svg width="80" height="32" viewBox="0 0 80 32" fill="none"><rect width="80" height="32" rx="8" fill="#f3f4f6"/><text x="40" y="21" textAnchor="middle" fill="#1e40af" fontSize="16" fontWeight="bold">F</text></svg> },
+  { name: 'Client A', svg: (
+    <svg width="80" height="32" viewBox="0 0 80 32" fill="none" role="img" aria-label="Client A"><title>Client A</title><rect width="80" height="32" rx="8" fill="#6F9C3B"/><text x="40" y="21" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="bold">A</text></svg>
+  ) },
+  { name: 'Client B', svg: (
+    <svg width="80" height="32" viewBox="0 0 80 32" fill="none" role="img" aria-label="Client B"><title>Client B</title><rect width="80" height="32" rx="8" fill="#434344"/><text x="40" y="21" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="bold">B</text></svg>
+  ) },
+  { name: 'Client C', svg: (
+    <svg width="80" height="32" viewBox="0 0 80 32" fill="none" role="img" aria-label="Client C"><title>Client C</title><rect width="80" height="32" rx="8" fill="#455D6A"/><text x="40" y="21" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="bold">C</text></svg>
+  ) },
+  { name: 'Client D', svg: (
+    <svg width="80" height="32" viewBox="0 0 80 32" fill="none" role="img" aria-label="Client D"><title>Client D</title><rect width="80" height="32" rx="8" fill="#E8E9D7"/><text x="40" y="21" textAnchor="middle" fill="#434344" fontSize="16" fontWeight="bold">D</text></svg>
+  ) },
+  { name: 'Client E', svg: (
+    <svg width="80" height="32" viewBox="0 0 80 32" fill="none" role="img" aria-label="Client E"><title>Client E</title><rect width="80" height="32" rx="8" fill="#E1DBA7"/><text x="40" y="21" textAnchor="middle" fill="#434344" fontSize="16" fontWeight="bold">E</text></svg>
+  ) },
+  { name: 'Client F', svg: (
+    <svg width="80" height="32" viewBox="0 0 80 32" fill="none" role="img" aria-label="Client F"><title>Client F</title><rect width="80" height="32" rx="8" fill="#AAC1BF"/><text x="40" y="21" textAnchor="middle" fill="#434344" fontSize="16" fontWeight="bold">F</text></svg>
+  ) },
 ];
 
 function useInViewAnimation() {
@@ -60,9 +72,9 @@ function LogoCard({ logo, delay }: LogoCardProps) {
 
 export function ClientLogos() {
   return (
-    <section className="w-full py-12 md:py-20 bg-white dark:bg-neutral-950">
+    <section className="w-full py-12 md:py-20 bg-eggshell">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-primary-700 mb-8 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-primary mb-8 text-center">
           Trusted by Leading Organizations
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-center">

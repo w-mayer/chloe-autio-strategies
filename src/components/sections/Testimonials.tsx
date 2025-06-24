@@ -21,7 +21,7 @@ const testimonials = [
 ];
 
 function useInViewAnimation() {
-  const ref = React.useRef<HTMLElement | null>(null);
+  const ref = React.useRef<HTMLQuoteElement | null>(null);
   const [inView, setInView] = React.useState(false);
 
   React.useEffect(() => {
@@ -59,9 +59,9 @@ function TestimonialCard({ testimonial, delay }: TestimonialCardProps) {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay, duration: 0.6, ease: 'easeOut' }}
-      className="rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 p-8 shadow-soft flex flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+      className="rounded-lg bg-eggshell border border-ashGray p-8 shadow-soft flex flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
     >
-      <p className="text-lg text-neutral-800 dark:text-neutral-100 mb-4 font-medium">“{testimonial.quote}”</p>
+      <p className="text-lg text-neutral-800 dark:text-neutral-100 mb-4 font-medium body-text">“{testimonial.quote}”</p>
       <footer className="mt-4">
         <span className="block font-semibold text-primary-700 dark:text-primary-400">{testimonial.name}</span>
         <span className="block text-sm text-neutral-500 dark:text-neutral-400">{testimonial.role}</span>
@@ -72,9 +72,9 @@ function TestimonialCard({ testimonial, delay }: TestimonialCardProps) {
 
 export function Testimonials() {
   return (
-    <section className="w-full py-16 md:py-24 bg-primary-50 dark:bg-neutral-900">
+    <section className="w-full py-16 md:py-24 bg-primary-50 dark:bg-neutral-900 border-t border-ashGray dark:border-paynesGray">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-bold text-primary-700 mb-10 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold text-primary mb-10 text-center">
           What Our Clients Say
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

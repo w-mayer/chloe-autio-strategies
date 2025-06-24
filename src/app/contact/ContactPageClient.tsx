@@ -13,23 +13,23 @@ export default function ContactPageClient() {
 
   return (
     <main className="container mx-auto px-4 py-16 max-w-2xl">
-      <h1 className="text-4xl md:text-5xl font-bold text-primary-700 mb-8 text-center">Contact Us</h1>
-      <p className="text-lg text-neutral-700 dark:text-neutral-200 mb-12 text-center max-w-xl mx-auto">
+      <h1 className="text-4xl md:text-5xl font-bold text-primary mb-8 text-center">Contact Us</h1>
+      <p className="body-text text-lg text-neutral-700 dark:text-neutral-200 mb-12 text-center max-w-xl mx-auto">
         Please use the forms below to get in touch, request a consultation, or subscribe to our newsletter. (Preview layout)
       </p>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-primary-800 mb-4">General Contact</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-4">General Contact</h2>
         {loading ? <ContactFormSkeleton /> : <ContactForm />}
       </section>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-primary-800 mb-4">Request a Consultation</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-4">Request a Consultation</h2>
         {loading ? <ConsultationFormSkeleton /> : <ConsultationForm />}
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold text-primary-800 mb-4">Subscribe to Our Newsletter</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-4">Subscribe to Our Newsletter</h2>
         {loading ? <NewsletterFormSkeleton /> : <NewsletterForm />}
       </section>
     </main>

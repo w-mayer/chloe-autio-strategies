@@ -23,78 +23,45 @@ const config: Config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          50: '#eff6ff',
-          100: '#dbeafe',
-          200: '#bfdbfe',
-          300: '#93c5fd',
-          400: '#60a5fa',
-          500: '#3b82f6',
-          600: '#2563eb',
-          700: '#1d4ed8',
-          800: '#1e40af',
-          900: '#1e3a8a',
-          DEFAULT: '#2563eb',
+          DEFAULT: '#6F9C3B', // Green
+          400: '#434344',    // Gray
+          500: '#455D6A',    // Payne's Gray
         },
-        neutral: {
-          50: '#f9fafb',
-          100: '#f3f4f6',
-          200: '#e5e7eb',
-          300: '#d1d5db',
-          400: '#9ca3af',
-          500: '#6b7280',
-          600: '#4b5563',
-          700: '#374151',
-          800: '#1f2937',
-          900: '#111827',
-          DEFAULT: '#6b7280',
+        gray: {
+          DEFAULT: '#434344',
+          paynes: '#455D6A',
         },
+        green: {
+          DEFAULT: '#6F9C3B',
+        },
+        eggshell: '#E8E9D7',
+        vanilla: '#E1DBA7',
+        ashGray: '#AAC1BF',
+        paleDogwood: '#E5C5BB',
+        paynesGray: '#455D6A',
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: '#E1DBA7', // Vanilla
+          foreground: '#434344', // Gray
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: '#E5C5BB', // Pale Dogwood
+          foreground: '#434344', // Gray
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: '#E8E9D7', // Eggshell
+          foreground: '#434344', // Gray
         },
         accent: {
-          success: '#10b981', // emerald-500
-          warning: '#f59e42', // amber-500
-        },
-        emerald: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          200: '#a7f3d0',
-          300: '#6ee7b7',
-          400: '#34d399',
-          500: '#10b981',
-          600: '#059669',
-          700: '#047857',
-          800: '#065f46',
-          900: '#064e3b',
-        },
-        amber: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          300: '#fcd34d',
-          400: '#fbbf24',
-          500: '#f59e42',
-          600: '#d97706',
-          700: '#b45309',
-          800: '#92400e',
-          900: '#78350f',
+          success: '#6F9C3B', // Green
+          warning: '#E1DBA7', // Vanilla
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: '#E8E9D7', // Eggshell
+          foreground: '#434344', // Gray
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: '#E8E9D7', // Eggshell
+          foreground: '#434344', // Gray
         },
       },
       borderRadius: {
@@ -181,15 +148,89 @@ const config: Config = {
           from: { opacity: '0', transform: 'translateY(20px)' },
           to: { opacity: '1', transform: 'translateY(0)' },
         },
+        "service-card-entrance": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(40px) scale(0.92)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0) scale(1)",
+          },
+        },
+        "service-card-float": {
+          "0%, 100%": {
+            transform: "translateY(0px) rotate(0deg)",
+          },
+          "25%": {
+            transform: "translateY(-2px) rotate(-0.2deg)",
+          },
+          "50%": {
+            transform: "translateY(-3px) rotate(0deg)",
+          },
+          "75%": {
+            transform: "translateY(-1px) rotate(0.3deg)",
+          },
+        },
+        "service-card-wake": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(20px) scaleX(0)",
+          },
+          "50%": {
+            opacity: "1",
+            transform: "translateY(10px) scaleX(1)",
+          },
+          "100%": {
+            opacity: "0",
+            transform: "translateY(0) scaleX(0)",
+          },
+        },
+        "service-card-accent-flow": {
+          "0%": {
+            backgroundPosition: "-100% 0",
+          },
+          "100%": {
+            backgroundPosition: "200% 0",
+          },
+        },
+        "service-card-pulse": {
+          "0%, 100%": {
+            transform: "scale(1)",
+          },
+          "50%": {
+            transform: "scale(1.05)",
+          },
+        },
+        "service-card-ripple": {
+          "0%": {
+            transform: "scale(0)",
+            opacity: "1",
+          },
+          "100%": {
+            transform: "scale(4)",
+            opacity: "0",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         fadein: 'fadein 0.5s ease-in',
         'slide-up': 'slide-up 0.5s cubic-bezier(0.4,0,0.2,1)',
+        "service-card-entrance": "service-card-entrance 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
+        "service-card-float": "service-card-float 4s ease-in-out infinite",
+        "service-card-wake": "service-card-wake 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards",
+        "service-card-accent-flow": "service-card-accent-flow 2s linear infinite",
+        "service-card-pulse": "service-card-pulse 1s ease-in-out infinite",
+        "service-card-ripple": "service-card-ripple 0.6s linear",
       },
       boxShadow: {
         soft: '0 2px 8px 0 rgba(16, 30, 54, 0.08), 0 1.5px 4px 0 rgba(16, 30, 54, 0.03)',
+        "service-card": '0 20px 40px rgba(0, 0, 0, 0.15)',
+      },
+      transitionTimingFunction: {
+        "confident-bounce": "cubic-bezier(0.34, 1.56, 0.64, 1)",
       },
     },
   },

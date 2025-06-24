@@ -1,52 +1,63 @@
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
-
-function useInViewAnimation() {
-  const ref = React.useRef<HTMLDivElement | null>(null);
-  const [inView, setInView] = React.useState(false);
-
-  React.useEffect(() => {
-    if (!ref.current) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setInView(true);
-      return;
-    }
-    const observer = new window.IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return [ref, inView] as const;
-}
+import React, { useRef, useState, useEffect } from 'react';
 
 interface CardProps {
   title: string;
   desc: string;
-  delay: number;
+  index: number;
 }
 
-function Card({ title, desc, delay }: CardProps) {
-  const [ref, inView] = useInViewAnimation();
+function Card({ title, desc, index }: CardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (!cardRef.current) return;
+    
+    // For debugging, let's make cards visible after a short delay
+    const timer = setTimeout(() => {
+      setInView(true);
+    }, 100 + (index * 150));
+    
+    return () => clearTimeout(timer);
+  }, [index]);
+
+  // Ripple effect on click
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const ripple = document.createElement('div');
+    ripple.className = 'service-card-ripple';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    ripple.style.width = '20px';
+    ripple.style.height = '20px';
+    
+    cardRef.current.appendChild(ripple);
+    
+    setTimeout(() => {
+      if (ripple.parentNode) {
+        ripple.parentNode.removeChild(ripple);
+      }
+    }, 600);
+  };
+
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ delay, duration: 0.6, ease: 'easeOut' }}
-      className="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-primary-50 dark:bg-neutral-900 p-8 shadow-soft"
+    <div
+      ref={cardRef}
+      className={`service-card ${inView ? 'service-card-entrance service-card-idle' : 'service-card-initial'}`}
+      style={inView ? { animationDelay: `${index * 150}ms` } : {}}
+      onClick={handleClick}
     >
-      <h3 className="text-xl font-semibold text-primary-800 mb-2">{title}</h3>
-      <p className="text-neutral-700 dark:text-neutral-200 text-base">{desc}</p>
-    </motion.div>
+      <div className="relative h-full flex flex-col justify-between">
+        <h3 className="text-xl font-semibold text-primary mb-2 service-card-icon">{title}</h3>
+        <p className="text-neutral-700 dark:text-neutral-200 text-base body-text service-card-number">{desc}</p>
+      </div>
+    </div>
   );
 }
 
@@ -68,12 +79,12 @@ export function ValueProposition() {
   return (
     <section className="w-full py-16 md:py-24 bg-white dark:bg-neutral-950">
       <div className="container mx-auto px-4 flex flex-col items-center text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-primary-700 mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-primary mb-8">
           Why Choose Chloe Autio Strategies?
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
           {cards.map((card, i) => (
-            <Card key={card.title} title={card.title} desc={card.desc} delay={i * 0.08} />
+            <Card key={card.title} title={card.title} desc={card.desc} index={i} />
           ))}
         </div>
       </div>

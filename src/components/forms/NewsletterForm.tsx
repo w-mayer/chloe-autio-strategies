@@ -15,14 +15,13 @@ type NewsletterFormValues = z.infer<typeof NewsletterSchema>;
 export function NewsletterFormSkeleton() {
   return (
     <form className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full max-w-md animate-pulse" aria-label="Newsletter signup loading">
-      <div className="h-10 w-full sm:w-2/3 bg-neutral-200 dark:bg-neutral-800 rounded" />
-      <div className="h-10 w-32 bg-neutral-200 dark:bg-neutral-800 rounded" />
+      <div className="h-10 w-full sm:w-2/3 bg-eggshell dark:bg-paynesGray rounded" />
+      <div className="h-10 w-32 bg-eggshell dark:bg-paynesGray rounded" />
     </form>
   );
 }
 
 export function NewsletterForm({ isLoading = false }: { isLoading?: boolean }) {
-  if (isLoading) return <NewsletterFormSkeleton />;
   const {
     register,
     handleSubmit,
@@ -31,6 +30,7 @@ export function NewsletterForm({ isLoading = false }: { isLoading?: boolean }) {
   } = useForm<NewsletterFormValues>({
     resolver: zodResolver(NewsletterSchema),
   });
+  if (isLoading) return <NewsletterFormSkeleton />;
 
   async function onSubmit(data: NewsletterFormValues) {
     console.log('Newsletter signup:', data);
@@ -39,7 +39,9 @@ export function NewsletterForm({ isLoading = false }: { isLoading?: boolean }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full max-w-md" aria-label="Newsletter signup form">
+      <label htmlFor="newsletter-email" className="sr-only">Email address</label>
       <Input
+        id="newsletter-email"
         type="email"
         placeholder="Your email address"
         {...register('email')}
