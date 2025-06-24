@@ -1,9 +1,6 @@
 'use client';
 import React from 'react';
-import dynamic from 'next/dynamic';
-
-const MotionH2 = dynamic(() => import('framer-motion').then(mod => mod.motion.h2), { ssr: false });
-const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
+import { motion } from 'framer-motion';
 
 const logos = [
   { name: 'Client A', svg: <svg width="80" height="32" viewBox="0 0 80 32" fill="none"><rect width="80" height="32" rx="8" fill="#2563eb"/><text x="40" y="21" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="bold">A</text></svg> },
@@ -40,36 +37,38 @@ function useInViewAnimation() {
   return [ref, inView] as const;
 }
 
+interface LogoCardProps {
+  logo: typeof logos[number];
+  delay: number;
+}
+
+function LogoCard({ logo, delay }: LogoCardProps) {
+  const [ref, inView] = useInViewAnimation();
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 10 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay, duration: 0.5, ease: 'easeOut' }}
+      className="flex items-center justify-center h-16"
+      aria-label={logo.name}
+    >
+      {logo.svg}
+    </motion.div>
+  );
+}
+
 export function ClientLogos() {
   return (
     <section className="w-full py-12 md:py-20 bg-white dark:bg-neutral-950">
       <div className="container mx-auto px-4">
-        <MotionH2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="text-2xl md:text-3xl font-bold text-primary-700 mb-8 text-center"
-        >
+        <h2 className="text-2xl md:text-3xl font-bold text-primary-700 mb-8 text-center">
           Trusted by Leading Organizations
-        </MotionH2>
+        </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-center">
-          {logos.map((logo, i) => {
-            const [ref, inView] = useInViewAnimation();
-            return (
-              <MotionDiv
-                key={logo.name}
-                ref={ref}
-                initial={{ opacity: 0, y: 10 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: i * 0.08, duration: 0.5, ease: 'easeOut' }}
-                className="flex items-center justify-center h-16"
-                aria-label={logo.name}
-              >
-                {logo.svg}
-              </MotionDiv>
-            );
-          })}
+          {logos.map((logo, i) => (
+            <LogoCard key={logo.name} logo={logo} delay={i * 0.08} />
+          ))}
         </div>
       </div>
     </section>
