@@ -23,6 +23,32 @@ const testimonials = [
   },
 ];
 
+function useInViewAnimation<T extends HTMLElement = HTMLDivElement>() {
+  const ref = React.useRef<T | null>(null);
+  const [inView, setInView] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!ref.current) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInView(true);
+      return;
+    }
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, inView] as const;
+}
+
 export function Testimonials() {
   return (
     <section className="w-full py-16 md:py-24 bg-primary-50 dark:bg-neutral-900">
@@ -37,22 +63,25 @@ export function Testimonials() {
           What Our Clients Say
         </MotionH2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((t, i) => (
-            <MotionBlockquote
-              key={t.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15, duration: 0.6, ease: 'easeOut' }}
-              className="rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 p-8 shadow-soft flex flex-col items-center text-center"
-            >
-              <p className="text-lg text-neutral-800 dark:text-neutral-100 mb-4 font-medium">“{t.quote}”</p>
-              <footer className="mt-4">
-                <span className="block font-semibold text-primary-700 dark:text-primary-400">{t.name}</span>
-                <span className="block text-sm text-neutral-500 dark:text-neutral-400">{t.role}</span>
-              </footer>
-            </MotionBlockquote>
-          ))}
+          {testimonials.map((t, i) => {
+            const [ref, inView] = useInViewAnimation<HTMLQuoteElement>();
+            return (
+              <MotionBlockquote
+                key={t.name}
+                ref={ref}
+                initial={{ opacity: 0, y: 30 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.15, duration: 0.6, ease: 'easeOut' }}
+                className="rounded-lg bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 p-8 shadow-soft flex flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+              >
+                <p className="text-lg text-neutral-800 dark:text-neutral-100 mb-4 font-medium">“{t.quote}”</p>
+                <footer className="mt-4">
+                  <span className="block font-semibold text-primary-700 dark:text-primary-400">{t.name}</span>
+                  <span className="block text-sm text-neutral-500 dark:text-neutral-400">{t.role}</span>
+                </footer>
+              </MotionBlockquote>
+            );
+          })}
         </div>
       </div>
     </section>

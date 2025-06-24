@@ -1,5 +1,8 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
+import dynamic from 'next/dynamic';
+
+const MotionButton = dynamic(() => import('framer-motion').then(mod => mod.motion.button), { ssr: false });
 
 type ButtonVariant = "primary" | "secondary" | "outline" | "ghost";
 
@@ -15,19 +18,42 @@ const variantClasses: Record<ButtonVariant, string> = {
 };
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "primary", children, ...props }, ref) => (
-    <button
-      ref={ref}
-      className={cn(
-        "inline-flex items-center justify-center font-semibold transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
-        variantClasses[variant],
-        className
-      )}
-      aria-label={props["aria-label"] || (typeof children === "string" ? children : undefined)}
-      {...props}
-    >
-      {children}
-    </button>
-  )
+  ({ className, variant = "primary", children, ...props }, ref) => {
+    // Respect prefers-reduced-motion
+    const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      return (
+        <button
+          ref={ref}
+          className={cn(
+            "inline-flex items-center justify-center font-semibold transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+            variantClasses[variant],
+            className
+          )}
+          aria-label={props["aria-label"] || (typeof children === "string" ? children : undefined)}
+          {...props}
+        >
+          {children}
+        </button>
+      );
+    }
+    return (
+      <MotionButton
+        ref={ref}
+        whileHover={{ scale: 1.04, boxShadow: '0 6px 24px 0 rgba(37,99,235,0.12)' }}
+        whileTap={{ scale: 0.97 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        className={cn(
+          "inline-flex items-center justify-center font-semibold transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+          variantClasses[variant],
+          className
+        )}
+        aria-label={props["aria-label"] || (typeof children === "string" ? children : undefined)}
+        {...props}
+      >
+        {children}
+      </MotionButton>
+    );
+  }
 );
 Button.displayName = "Button"; 

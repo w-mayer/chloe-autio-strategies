@@ -14,6 +14,32 @@ const logos = [
   { name: 'Client F', svg: <svg width="80" height="32" viewBox="0 0 80 32" fill="none"><rect width="80" height="32" rx="8" fill="#f3f4f6"/><text x="40" y="21" textAnchor="middle" fill="#1e40af" fontSize="16" fontWeight="bold">F</text></svg> },
 ];
 
+function useInViewAnimation() {
+  const ref = React.useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!ref.current) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInView(true);
+      return;
+    }
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, inView] as const;
+}
+
 export function ClientLogos() {
   return (
     <section className="w-full py-12 md:py-20 bg-white dark:bg-neutral-950">
@@ -28,19 +54,22 @@ export function ClientLogos() {
           Trusted by Leading Organizations
         </MotionH2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-center">
-          {logos.map((logo, i) => (
-            <MotionDiv
-              key={logo.name}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08, duration: 0.5, ease: 'easeOut' }}
-              className="flex items-center justify-center h-16"
-              aria-label={logo.name}
-            >
-              {logo.svg}
-            </MotionDiv>
-          ))}
+          {logos.map((logo, i) => {
+            const [ref, inView] = useInViewAnimation();
+            return (
+              <MotionDiv
+                key={logo.name}
+                ref={ref}
+                initial={{ opacity: 0, y: 10 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: i * 0.08, duration: 0.5, ease: 'easeOut' }}
+                className="flex items-center justify-center h-16"
+                aria-label={logo.name}
+              >
+                {logo.svg}
+              </MotionDiv>
+            );
+          })}
         </div>
       </div>
     </section>
