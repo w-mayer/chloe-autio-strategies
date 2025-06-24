@@ -1,5 +1,6 @@
 'use client';
 import React, { useRef, useState, useEffect } from 'react';
+import AuthorityHeading from '@/components/ui/AuthorityHeading';
 
 interface CardProps {
   title: string;
@@ -12,9 +13,7 @@ function Card({ title, desc, index }: CardProps) {
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
-    if (!cardRef.current) return;
-    
-    // For debugging, let's make cards visible after a short delay
+    // Simple timeout-based animation trigger
     const timer = setTimeout(() => {
       setInView(true);
     }, 100 + (index * 150));
@@ -79,9 +78,17 @@ export function ValueProposition() {
   return (
     <section className="w-full py-16 md:py-24 bg-white dark:bg-neutral-950">
       <div className="container mx-auto px-4 flex flex-col items-center text-center">
-        <h2 className="text-2xl md:text-3xl font-bold text-primary mb-8">
-          Why Choose Chloe Autio Strategies?
-        </h2>
+        <div className="mb-12">
+          <AuthorityHeading
+            size="h2"
+            className="text-2xl md:text-3xl font-bold text-primary"
+            enableParallax={true}
+            enableProgress={false}
+            enableHighlight={true}
+          >
+            Why Choose Chloe Autio Strategies?
+          </AuthorityHeading>
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
           {cards.map((card, i) => (
             <Card key={card.title} title={card.title} desc={card.desc} index={i} />

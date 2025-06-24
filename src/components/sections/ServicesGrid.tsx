@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { services } from '@/data/services';
+import AuthorityHeading from '@/components/ui/AuthorityHeading';
 
 interface ServiceCardProps {
   service: (typeof services)[number];
@@ -10,14 +11,12 @@ interface ServiceCardProps {
 
 function ServiceCard({ service, index }: ServiceCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (!cardRef.current) return;
-    
-    // For debugging, let's make cards visible after a short delay
+    // Simple timeout-based animation trigger
     const timer = setTimeout(() => {
-      setInView(true);
+      setIsVisible(true);
     }, 100 + (index * 150));
     
     return () => clearTimeout(timer);
@@ -50,10 +49,12 @@ function ServiceCard({ service, index }: ServiceCardProps) {
   return (
     <div
       ref={cardRef}
-      className={`service-card ${inView ? 'service-card-entrance service-card-idle' : 'service-card-initial'}`}
-      style={inView ? { animationDelay: `${index * 150}ms` } : {}}
+      className={`service-card ${isVisible ? 'service-card-entrance service-card-idle' : 'service-card-initial'}`}
+      style={isVisible ? { animationDelay: `${index * 150}ms` } : {}}
       onClick={handleClick}
     >
+      {/* Debug indicator */}
+      {isVisible && <div style={{ position: 'absolute', top: '5px', right: '5px', background: 'green', color: 'white', padding: '2px 6px', borderRadius: '3px', fontSize: '10px' }}>ANIMATED</div>}
       <div className="relative h-full flex flex-col justify-between">
         <div>
           <h3 className="text-xl font-semibold text-primary mb-2 service-card-icon">{service.title}</h3>
@@ -74,11 +75,19 @@ function ServiceCard({ service, index }: ServiceCardProps) {
 
 export function ServicesGrid() {
   return (
-    <section className="w-full py-16 md:py-24 bg-eggshell">
+    <section className="w-full py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-primary mb-10 text-center">
-          Our Services
-        </h2>
+        <div className="mb-12">
+          <AuthorityHeading
+            size="h2"
+            className="text-3xl md:text-4xl font-bold text-primary text-center"
+            enableParallax={true}
+            enableProgress={false}
+            enableHighlight={true}
+          >
+            Our Services
+          </AuthorityHeading>
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, i) => (
             <ServiceCard key={service.slug} service={service} index={i} />

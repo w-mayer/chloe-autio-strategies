@@ -2,8 +2,8 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
+import AuthorityHeading from '@/components/ui/AuthorityHeading';
 
-const MotionH1 = dynamic(() => import('framer-motion').then(mod => mod.motion.h1), { ssr: false });
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 
@@ -13,14 +13,17 @@ export function Hero() {
       {/* Brand green accent bar at the top */}
       <div className="absolute top-0 left-0 w-full h-2 bg-primary" />
       <div className="container mx-auto flex flex-col items-center text-center px-4 relative z-10">
-        <MotionH1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="text-4xl md:text-6xl font-bold heading mb-6 text-balance text-eggshell"
-        >
-          Strategic Solutions for a Complex World
-        </MotionH1>
+        <div className="mb-8">
+          <AuthorityHeading
+            size="h1"
+            className="text-4xl md:text-6xl font-bold text-balance text-eggshell"
+            enableParallax={true}
+            enableProgress={false}
+            enableHighlight={true}
+          >
+            Strategic Solutions for a Complex World
+          </AuthorityHeading>
+        </div>
         <MotionP
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
