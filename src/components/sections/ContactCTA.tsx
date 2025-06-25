@@ -3,7 +3,7 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import { BackgroundImage, LogoImage } from '@/components/ui/OptimizedImage';
+import { LogoImage } from '@/components/ui/OptimizedImage';
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
@@ -12,12 +12,16 @@ export function ContactCTA() {
   return (
     <section className="w-full py-16 md:py-24 text-eggshell relative overflow-hidden">
       {/* Background image with overlay */}
-      <BackgroundImage
-        src="/images/stocks/cta-background.jpg"
-        alt="Professional consulting background"
-        overlay={true}
-        className="absolute inset-0 w-full h-full"
-      />
+      <div className="absolute inset-0 w-full h-full">
+        <img
+          src="/images/stocks/cta-background.jpg"
+          alt="Professional consulting background"
+          className="w-full h-full object-cover object-center"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+        />
+        {/* Dark overlay for text legibility */}
+        <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
+      </div>
       
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">

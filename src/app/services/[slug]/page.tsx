@@ -3,7 +3,6 @@ import { services } from '@/data/services';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import { BackgroundImage } from '@/components/ui/OptimizedImage';
 import InsightsPageClient from './InsightsPageClient';
 
 interface ServicePageProps {
@@ -43,12 +42,16 @@ export default async function ServicePage({ params }: ServicePageProps) {
     <>
       {/* Hero Section */}
       <section className="relative flex items-center justify-center w-full h-[40vh] min-h-[240px] mb-0">
-        <BackgroundImage
-          src={getBackgroundImage()}
-          alt={`${service.title} service background`}
-          overlay={true}
-          className="absolute inset-0 w-full h-full"
-        />
+        <div className="absolute inset-0 w-full h-full">
+          <img
+            src={getBackgroundImage()}
+            alt={`${service.title} service background`}
+            className="w-full h-full object-cover object-center"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+          />
+          {/* Dark overlay for text legibility */}
+          <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
+        </div>
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
           <AuthorityHeading
             size="h1"

@@ -3,7 +3,6 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import { BackgroundImage } from '@/components/ui/OptimizedImage';
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
@@ -12,12 +11,16 @@ export function Hero() {
   return (
     <section className="w-full min-h-screen bg-paynesGray relative overflow-hidden flex items-center">
       {/* Background Image */}
-      <BackgroundImage
-        src="/images/stocks/hero-background.jpg"
-        alt="Jefferson Memorial night reflection"
-        overlay={true}
-        className="absolute inset-0 w-full h-full object-cover object-center min-h-screen"
-      />
+      <div className="absolute inset-0 w-full h-full min-h-screen">
+        <img
+          src="/images/stocks/hero-background.jpg"
+          alt="Jefferson Memorial night reflection"
+          className="w-full h-full object-cover object-center min-h-screen"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+        />
+        {/* Dark overlay for text legibility */}
+        <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
+      </div>
       
       {/* Brand green accent bar at the top */}
       <div className="absolute top-0 left-0 w-full h-2 bg-primary z-10" />
