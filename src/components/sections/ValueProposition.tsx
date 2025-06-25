@@ -2,6 +2,7 @@
 import React from 'react';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { motion } from 'framer-motion';
+import { siteContent } from '@/data/content';
 
 function useInViewAnimationVP() {
   const ref = React.useRef<HTMLDivElement | null>(null);
@@ -81,20 +82,8 @@ function Card({ title, desc, index }: CardProps) {
 }
 
 export function ValueProposition() {
-  const cards = [
-    {
-      title: 'AI Policy Expertise',
-      desc: 'Decades of experience advising governments, Fortune 500s, and startups on responsible AI, data governance, and emerging tech policy.'
-    },
-    {
-      title: 'Global Perspective',
-      desc: 'Experience working with international organizations (OECD, NIST, DOD, Meta, DeepMind, Google Cloud, Cohere) to shape global standards and best practices.'
-    },
-    {
-      title: 'Proven Results',
-      desc: 'Trusted by leading organizations to deliver actionable insights, drive compliance, and enable responsible innovation in AI and technology.'
-    }
-  ];
+  const { valueProposition } = siteContent;
+  
   return (
     <section className="w-full py-16 md:py-24 bg-white dark:bg-neutral-950">
       <div className="container mx-auto px-4 flex flex-col items-center text-center">
@@ -103,12 +92,12 @@ export function ValueProposition() {
             size="h2"
             className="text-3xl md:text-4xl font-bold text-center mb-8 heading"
           >
-            Why Choose Autio Strategies?
+            {valueProposition.title}
           </AuthorityHeading>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
-          {cards.map((card, i) => (
-            <Card key={card.title} title={card.title} desc={card.desc} index={i} />
+          {valueProposition.cards.map((card, i) => (
+            <Card key={card.title} title={card.title} desc={card.description} index={i} />
           ))}
         </div>
       </div>

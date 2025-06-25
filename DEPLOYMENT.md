@@ -2,29 +2,31 @@
 
 **For Non-Technical Users**
 
-This guide helps you deploy and manage the Autio Strategies website using Vercel. Follow these instructions carefully to ensure smooth deployment and updates.
+This guide helps you deploy and manage the Autio Strategies website using Netlify. Follow these instructions carefully to ensure smooth deployment and updates.
 
 ---
 
 ## 🚀 Initial Setup
 
-### Why Vercel is Recommended for Next.js Projects
+### Why Netlify is Recommended
 
-**Vercel is the best choice for this website because:**
-- **Built by Next.js creators** - Perfect compatibility
+**Netlify is the best choice for this website because:**
+- **Intuitive interface** - Easy to use for non-technical users
+- **Excellent form handling** - Built-in form processing without external services
+- **Generous free tier** - 100GB bandwidth/month with great limits
+- **Visual deployment** - Drag-and-drop file uploads available
 - **Automatic deployments** - Changes go live instantly
 - **Global CDN** - Fast loading worldwide
-- **Free tier available** - No upfront costs
 - **Easy domain management** - Simple SSL and DNS setup
-- **Built-in analytics** - Track website performance
+- **Excellent support** - Great documentation and community
 
-### Creating a Vercel Account
+### Creating a Netlify Account
 
 #### **Step 1: Sign Up**
-1. Go to [vercel.com](https://vercel.com)
+1. Go to [netlify.com](https://netlify.com)
 2. Click "Sign Up" in the top right
 3. Choose "Continue with GitHub" (recommended)
-4. Authorize Vercel to access your GitHub account
+4. Authorize Netlify to access your GitHub account
 
 #### **Step 2: Complete Profile**
 1. Add your name and email
@@ -35,18 +37,16 @@ This guide helps you deploy and manage the Autio Strategies website using Vercel
 ### Connecting Your Project Repository
 
 #### **Step 1: Import Project**
-1. In Vercel dashboard, click "New Project"
-2. Select "Import Git Repository"
+1. In Netlify dashboard, click "New site from Git"
+2. Select "GitHub" as your Git provider
 3. Find and select `chloe-autio-strategies`
-4. Click "Import"
+4. Click "Connect"
 
-#### **Step 2: Configure Project Settings**
-1. **Project Name:** `autio-strategies` (or your preferred name)
-2. **Framework Preset:** Next.js (should auto-detect)
-3. **Root Directory:** `./` (leave as default)
-4. **Build Command:** `npm run build` (auto-filled)
-5. **Output Directory:** `.next` (auto-filled)
-6. **Install Command:** `npm install` (auto-filled)
+#### **Step 2: Configure Build Settings**
+1. **Build command:** `npm run build`
+2. **Publish directory:** `.next`
+3. **Base directory:** Leave empty (default)
+4. Click "Deploy site"
 
 #### **Step 3: Environment Variables**
 **Add these if needed:**
@@ -56,15 +56,15 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 ```
 
 #### **Step 4: Deploy**
-1. Click "Deploy"
+1. Click "Deploy site"
 2. Wait 2-5 minutes for first deployment
-3. You'll get a URL like: `https://autio-strategies.vercel.app`
+3. You'll get a URL like: `https://random-name.netlify.app`
 
 ---
 
 ## 🌐 Domain Management
 
-### Transferring Domain from Squarespace to Vercel
+### Transferring Domain from Squarespace to Netlify
 
 #### **Pre-Transfer Checklist:**
 - [ ] Domain is older than 60 days
@@ -91,19 +91,18 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
    - Copy the code (you'll need this later)
    - Keep it secure
 
-#### **Step 2: Add Domain to Vercel**
-1. **In Vercel Dashboard:**
-   - Go to your project
-   - Click "Settings" tab
-   - Click "Domains" in left sidebar
-   - Click "Add Domain"
+#### **Step 2: Add Domain to Netlify**
+1. **In Netlify Dashboard:**
+   - Go to your site
+   - Click "Domain settings"
+   - Click "Add custom domain"
 
 2. **Enter Domain:**
    - Type your domain (e.g., `autiostrategies.com`)
-   - Click "Add"
+   - Click "Add domain"
 
 3. **Choose Transfer Option:**
-   - Select "Transfer Domain to Vercel"
+   - Select "Transfer domain to Netlify"
    - Follow the transfer wizard
 
 #### **Step 3: Complete Transfer**
@@ -112,7 +111,7 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
    - Click "Transfer Domain"
 
 2. **Pay Transfer Fee:**
-   - Vercel charges $15 for domain transfers
+   - Netlify charges $15 for domain transfers
    - Add payment method if needed
    - Complete payment
 
@@ -123,7 +122,7 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 
 #### **Step 4: Verify Transfer**
 1. **Check Domain Status:**
-   - In Vercel → Domains
+   - In Netlify → Domain settings
    - Status should show "Active"
    - SSL certificate should be "Valid"
 
@@ -148,7 +147,7 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
    ```
    Type: A
    Name: @
-   Value: 76.76.19.19
+   Value: 75.2.60.5
    TTL: 3600
    ```
 
@@ -156,27 +155,27 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
    ```
    Type: CNAME
    Name: www
-   Value: cname.vercel-dns.com
+   Value: your-site-name.netlify.app
    TTL: 3600
    ```
 
-3. **Add Domain to Vercel:**
-   - In Vercel → Domains → Add Domain
+3. **Add Domain to Netlify:**
+   - In Netlify → Domain settings → Add custom domain
    - Enter your domain
-   - Choose "Add Domain" (not transfer)
-   - Vercel will verify DNS automatically
+   - Choose "Add domain" (not transfer)
+   - Netlify will verify DNS automatically
 
 ### SSL Certificate Configuration
 
 #### **Automatic SSL (Recommended):**
-- Vercel provides free SSL certificates
+- Netlify provides free SSL certificates
 - Automatically renewed
 - No manual configuration needed
 
 #### **Manual SSL (If Needed):**
 1. **Upload Certificate:**
-   - In Vercel → Domains → Your Domain
-   - Click "SSL Certificate"
+   - In Netlify → Domain settings → Your Domain
+   - Click "SSL certificate"
    - Upload certificate files
    - Add private key
 
@@ -216,7 +215,7 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 
 #### **Automatic Deployment Process:**
 1. **Developer pushes code** to GitHub
-2. **Vercel detects changes** automatically
+2. **Netlify detects changes** automatically
 3. **Build process starts** (2-5 minutes)
 4. **Tests run** to check for errors
 5. **Deployment completes** and goes live
@@ -230,7 +229,14 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 ### Types of Updates
 
 #### **Content Changes (Text, Images):**
-- **Location:** `src/data/` files
+- **Location:** `src/data/content.ts` (main content file)
+- **Deployment:** Automatic after GitHub push
+- **Timeline:** 2-3 minutes
+- **Risk:** Low (content only)
+- **User Action:** Edit `content.ts` file directly
+
+#### **Service/Article Content:**
+- **Location:** `src/data/services.ts`, `src/data/insights.ts`
 - **Deployment:** Automatic after GitHub push
 - **Timeline:** 2-3 minutes
 - **Risk:** Low (content only)
@@ -240,20 +246,44 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 - **Deployment:** Automatic after GitHub push
 - **Timeline:** 3-5 minutes
 - **Risk:** Medium (affects appearance)
+- **User Action:** Contact developer
 
 #### **Functionality Updates:**
 - **Location:** JavaScript/TypeScript files
 - **Deployment:** Automatic after GitHub push
 - **Timeline:** 5-10 minutes
 - **Risk:** High (affects functionality)
+- **User Action:** Contact developer
+
+### Content Update Process
+
+#### **For Text Content (You Can Do This):**
+1. **Open the content file:** `src/data/content.ts`
+2. **Find the section** you want to edit (use Ctrl+F or Cmd+F)
+3. **Edit the text** between the quotes
+4. **Save the file**
+5. **Push to GitHub** (or contact developer to push)
+6. **Wait for automatic deployment** (2-3 minutes)
+
+#### **For Images:**
+1. **Upload new image** to appropriate folder in `public/images/`
+2. **Update image reference** in `src/data/content.ts`
+3. **Push to GitHub** (or contact developer to push)
+4. **Wait for automatic deployment**
+
+#### **For New Pages/Features:**
+1. **Contact developer** to create new pages or features
+2. **Review preview deployment** before going live
+3. **Approve changes** when satisfied
+4. **Deploy to production**
 
 ### Previewing Changes Before Going Live
 
 #### **Preview Deployments:**
 1. **Create Pull Request:**
    - Developer creates PR in GitHub
-   - Vercel automatically creates preview URL
-   - URL format: `https://autio-strategies-git-feature-branch.vercel.app`
+   - Netlify automatically creates preview URL
+   - URL format: `https://deploy-preview-123--your-site.netlify.app`
 
 2. **Review Changes:**
    - Visit preview URL
@@ -267,10 +297,10 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
    - Preview URL becomes inactive
 
 #### **Manual Preview (If Needed):**
-1. **In Vercel Dashboard:**
+1. **In Netlify Dashboard:**
    - Go to Deployments tab
    - Find latest deployment
-   - Click "Visit" to preview
+   - Click "Preview" to preview
    - Test thoroughly
 
 ### Rolling Back Changes
@@ -278,10 +308,10 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 #### **If Something Goes Wrong:**
 
 1. **Quick Rollback:**
-   - In Vercel → Deployments
+   - In Netlify → Deployments
    - Find last working deployment
-   - Click three dots (⋯)
-   - Select "Promote to Production"
+   - Click "Publish deploy"
+   - Confirm rollback
 
 2. **Revert Code:**
    - Developer reverts changes in GitHub
@@ -327,7 +357,8 @@ Hi [Developer Name],
 
 I need the following changes made to the website:
 
-**Page:** [Home/About/Services/etc.]
+**Content File:** src/data/content.ts
+**Section:** [site/navigation/hero/about/etc.]
 **Current Text:** [Copy current text]
 **New Text:** [Provide new text]
 **Images:** [List any new images needed]
@@ -388,10 +419,10 @@ Thanks!
 
 ### Monitoring Deployment Status
 
-#### **In Vercel Dashboard:**
+#### **In Netlify Dashboard:**
 1. **Go to Deployments tab**
 2. **Check status indicators:**
-   - 🟢 **Ready:** Deployment successful
+   - 🟢 **Published:** Deployment successful
    - 🟡 **Building:** Deployment in progress
    - 🔴 **Failed:** Deployment failed
    - ⚪ **Cancelled:** Deployment stopped
@@ -412,10 +443,10 @@ Thanks!
 
 ### Other Platforms Overview
 
-#### **Netlify:**
-- **Pros:** Easy to use, good free tier, form handling
-- **Cons:** Less optimized for Next.js, slower builds
-- **Cost:** Free tier available, $19/month for teams
+#### **Vercel:**
+- **Pros:** Optimized for Next.js, fast builds, excellent performance
+- **Cons:** More complex interface, higher pricing
+- **Cost:** Free tier available, $20/month for teams
 
 #### **AWS Amplify:**
 - **Pros:** Powerful, scalable, enterprise features
@@ -430,44 +461,16 @@ Thanks!
 ### When to Consider Switching
 
 #### **Consider switching if:**
-- **Cost:** Vercel becomes too expensive
+- **Performance:** Need maximum Next.js optimization
 - **Features:** Need specific AWS services
-- **Performance:** Website needs global optimization
 - **Team size:** Large team needs advanced features
+- **Budget:** Can afford higher costs for better performance
 
-#### **Stay with Vercel if:**
+#### **Stay with Netlify if:**
+- **Ease of use:** Want simple, intuitive interface
 - **Budget:** Free tier meets needs
-- **Simplicity:** Want easy management
-- **Next.js:** Using Next.js features
-- **Support:** Need good documentation
-
-### Migration Considerations
-
-#### **Before Migrating:**
-1. **Backup everything:**
-   - Code repository
-   - Environment variables
-   - Domain settings
-   - Content files
-
-2. **Test thoroughly:**
-   - Create staging environment
-   - Test all functionality
-   - Verify performance
-   - Check mobile compatibility
-
-3. **Plan downtime:**
-   - Schedule maintenance window
-   - Notify users in advance
-   - Have rollback plan ready
-
-#### **Migration Steps:**
-1. **Set up new platform**
-2. **Configure domain DNS**
-3. **Deploy website**
-4. **Test everything**
-5. **Update DNS records**
-6. **Monitor for 24-48 hours**
+- **Form handling:** Need built-in form processing
+- **Support:** Want excellent documentation and community
 
 ---
 
@@ -487,7 +490,7 @@ Thanks!
 
 **Error: "Environment variable missing"**
 - **Cause:** Required env vars not set
-- **Solution:** Add missing variables in Vercel settings
+- **Solution:** Add missing variables in Netlify settings
 
 #### **Domain Issues:**
 
@@ -501,11 +504,11 @@ Thanks!
 
 **Error: "Redirect loop"**
 - **Cause:** Incorrect redirect settings
-- **Solution:** Check redirect rules in Vercel
+- **Solution:** Check redirect rules in Netlify
 
 ### How to Check if Deployment Failed
 
-#### **In Vercel Dashboard:**
+#### **In Netlify Dashboard:**
 1. **Go to Deployments tab**
 2. **Look for red status indicators**
 3. **Click on failed deployment**
@@ -521,9 +524,9 @@ Thanks!
 
 #### **If Website is Down:**
 
-1. **Check Vercel Status:**
-   - Go to [vercel-status.com](https://vercel-status.com)
-   - Check if Vercel is experiencing issues
+1. **Check Netlify Status:**
+   - Go to [netlify-status.com](https://netlify-status.com)
+   - Check if Netlify is experiencing issues
 
 2. **Check Domain:**
    - Visit your domain directly
@@ -541,10 +544,10 @@ Thanks!
    - Request immediate assistance
 
 #### **Emergency Rollback:**
-1. **In Vercel Dashboard:**
+1. **In Netlify Dashboard:**
    - Go to Deployments
    - Find last working deployment
-   - Click "Promote to Production"
+   - Click "Publish deploy"
    - Confirm rollback
 
 2. **Monitor website:**
@@ -569,7 +572,7 @@ Thanks!
 #### **Monitoring Tools:**
 - **Google PageSpeed Insights**
 - **GTmetrix**
-- **Vercel Analytics**
+- **Netlify Analytics**
 - **WebPageTest**
 
 ---
@@ -580,12 +583,12 @@ Thanks!
 
 #### **Week 1: Performance Review**
 - [ ] Check website loading speed
-- [ ] Review Vercel analytics
+- [ ] Review Netlify analytics
 - [ ] Test all forms and functionality
 - [ ] Check mobile responsiveness
 
 #### **Week 2: Content Updates**
-- [ ] Review and update content
+- [ ] Review and update content in `src/data/content.ts`
 - [ ] Add new articles or case studies
 - [ ] Update service descriptions
 - [ ] Refresh images if needed
@@ -593,7 +596,7 @@ Thanks!
 #### **Week 3: Security & Maintenance**
 - [ ] Check for security updates
 - [ ] Review user access (if applicable)
-- [ ] Backup important content
+- [ ] Backup important content files
 - [ ] Update passwords if needed
 
 #### **Week 4: Monitoring & Optimization**
@@ -613,17 +616,17 @@ Thanks!
 #### **Free Monitoring Tools:**
 - **Google Analytics** - Traffic and user behavior
 - **Google Search Console** - SEO and errors
-- **Vercel Analytics** - Performance metrics
+- **Netlify Analytics** - Performance metrics
 - **UptimeRobot** - Website availability
 
 ### Security Updates and Maintenance
 
 #### **Automatic Updates:**
-- **Vercel handles:** SSL certificates, CDN updates
+- **Netlify handles:** SSL certificates, CDN updates
 - **You handle:** Content updates, security reviews
 
 #### **Security Best Practices:**
-- **Regular backups** of content
+- **Regular backups** of content files
 - **Strong passwords** for all accounts
 - **Two-factor authentication** where available
 - **Monitor for suspicious activity**
@@ -636,21 +639,22 @@ Thanks!
 
 ### Cost Management and Billing
 
-#### **Vercel Pricing:**
-- **Hobby Plan:** Free (perfect for most websites)
-- **Pro Plan:** $20/month (for teams)
-- **Enterprise:** Custom pricing
+#### **Netlify Pricing:**
+- **Starter Plan:** Free (perfect for most websites)
+- **Pro Plan:** $19/month (for teams)
+- **Business Plan:** $99/month (for larger sites)
 
 #### **What's Included in Free Plan:**
 - ✅ 100GB bandwidth/month
-- ✅ 100GB storage
-- ✅ 100GB function execution time
+- ✅ 300 build minutes/month
 - ✅ Automatic deployments
 - ✅ Custom domains
 - ✅ SSL certificates
+- ✅ Form handling
 
 #### **When to Upgrade:**
 - **Bandwidth exceeded** 100GB/month
+- **Build minutes exceeded** 300/month
 - **Team collaboration** needed
 - **Advanced analytics** required
 - **Priority support** needed
@@ -673,7 +677,7 @@ Thanks!
    - Try different browser
    - Check on mobile device
    - Ask someone else to test
-3. **Check Vercel status** at [vercel-status.com](https://vercel-status.com)
+3. **Check Netlify status** at [netlify-status.com](https://netlify-status.com)
 4. **Document the problem** with screenshots
 
 #### **If Website is Completely Down:**
@@ -688,14 +692,13 @@ Thanks!
 ### How to Quickly Revert to Previous Version
 
 #### **Emergency Rollback Process:**
-1. **Log into Vercel Dashboard**
+1. **Log into Netlify Dashboard**
 2. **Go to Deployments tab**
 3. **Find last working deployment** (green checkmark)
-4. **Click three dots (⋯) next to deployment**
-5. **Select "Promote to Production"**
-6. **Confirm the rollback**
-7. **Wait 1-2 minutes for deployment**
-8. **Test website functionality**
+4. **Click "Publish deploy"**
+5. **Confirm the rollback**
+6. **Wait 1-2 minutes for deployment**
+7. **Test website functionality**
 
 #### **If Rollback Doesn't Work:**
 1. **Contact developer immediately**
@@ -708,7 +711,7 @@ Thanks!
 #### **Primary Contacts:**
 - **Developer:** [Add developer contact info]
 - **Backup Developer:** [Add backup contact info]
-- **Vercel Support:** [support@vercel.com](mailto:support@vercel.com)
+- **Netlify Support:** [support@netlify.com](mailto:support@netlify.com)
 
 #### **Emergency Response Times:**
 - **Critical issues:** 1-2 hours
@@ -732,7 +735,7 @@ The website is currently down and I need immediate assistance.
 I've already tried:
 - [ ] Different browser
 - [ ] Mobile device
-- [ ] Checked Vercel status
+- [ ] Checked Netlify status
 - [ ] Attempted rollback
 
 Please contact me immediately at [your phone number].
@@ -745,7 +748,7 @@ Thanks,
 
 #### **Temporary Backup Hosting:**
 1. **GitHub Pages** (free, simple)
-2. **Netlify** (free tier available)
+2. **Vercel** (free tier available)
 3. **Firebase Hosting** (free tier)
 4. **AWS S3 + CloudFront** (pay-per-use)
 
@@ -770,7 +773,7 @@ Thanks,
 
 | Status | Meaning | Action Needed |
 |--------|---------|---------------|
-| 🟢 Ready | Deployment successful | None |
+| 🟢 Published | Deployment successful | None |
 | 🟡 Building | Deployment in progress | Wait |
 | 🔴 Failed | Deployment failed | Check logs, fix errors |
 | ⚪ Cancelled | Deployment stopped | Redeploy if needed |
@@ -779,10 +782,13 @@ Thanks,
 
 | File Type | Location | Purpose |
 |-----------|----------|---------|
-| Content | `src/data/` | Articles, services, resources |
+| **ALL Website Text** | `src/data/content.ts` | Main content file |
+| Services | `src/data/services.ts` | Service-specific content |
+| Articles | `src/data/insights.ts` | Blog posts and resources |
+| SEO Metadata | `src/data/metadata.ts` | Page titles and descriptions |
 | Images | `public/images/` | Logos, photos, graphics |
 | Configuration | `next.config.mjs` | Build settings |
-| Environment | Vercel Dashboard | API keys, settings |
+| Environment | Netlify Dashboard | API keys, settings |
 
 ### Emergency Checklist
 
@@ -804,10 +810,10 @@ Email: [developer@email.com]
 Phone: [Phone Number]
 Response Time: [Expected response time]
 
-Vercel Support:
-Email: support@vercel.com
-Status Page: vercel-status.com
-Documentation: vercel.com/docs
+Netlify Support:
+Email: support@netlify.com
+Status Page: netlify-status.com
+Documentation: netlify.com/docs
 
 Emergency Backup:
 Platform: [Backup hosting platform]

@@ -2,6 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
+import { siteContent } from '@/data/content';
 
 export const metadata: Metadata = {
   title: 'Our Team | AI Policy Consulting & Technology Governance',
@@ -42,6 +43,8 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
+  const { about } = siteContent;
+  
   return (
     <div className="min-h-screen bg-eggshell">
       {/* Hero Section */}
@@ -52,10 +55,10 @@ export default function AboutPage() {
             className="text-4xl md:text-6xl font-bold mb-6 heading"
             enableHighlight={true}
           >
-            Our Team
+            {about.hero.title}
           </AuthorityHeading>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto body-text text-eggshell">
-            Meet the experts behind Autio Strategies - dedicated professionals committed to advancing AI policy and technology governance.
+            {about.hero.subtitle}
           </p>
         </div>
       </section>
@@ -67,8 +70,8 @@ export default function AboutPage() {
           <div className="flex-shrink-0">
             <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary-700 shadow-lg bg-eggshell">
               <Image
-                src="/images/headshot/autio_headshot.jpg"
-                alt="Chloe Autio, Founder & CEO of Autio Strategies"
+                src={about.team.chloe.image.src}
+                alt={about.team.chloe.image.alt}
                 width={224}
                 height={224}
                 className="w-full h-full object-cover"
@@ -78,37 +81,33 @@ export default function AboutPage() {
           </div>
           <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 heading" itemProp="name">
-              Chloe Autio
+              {about.team.chloe.name}
             </h2>
             <p className="text-xl text-primary-600 mb-4 body-text" itemProp="jobTitle">
-              Founder & CEO
+              {about.team.chloe.title}
             </p>
             <p className="text-lg text-gray dark:text-paynesGray mb-4 body-text" itemProp="description">
-              Chloe Autio is a recognized expert in AI policy and technology governance, with over a decade of experience advising government and enterprise organizations. Prior to founding Autio Strategies, Chloe served as the Senior Policy Advisor for AI and Emerging Technologies at the White House Office of Science and Technology Policy (OSTP), where she led the development of the National AI Initiative and coordinated federal AI policy across agencies.
+              {about.team.chloe.description}
             </p>
             <p className="text-lg text-gray dark:text-paynesGray mb-4 body-text">
-              Chloe has also held senior positions at the Department of Defense, where she developed AI governance frameworks for military applications, and at leading technology companies, where she advised on responsible AI development and deployment. She holds a Master's degree in Public Policy from Harvard Kennedy School and a Bachelor's degree in Computer Science from Stanford University.
+              {about.team.chloe.bio}
             </p>
             {/* Chloe Roles & Affiliations */}
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-primary mb-2">Key Roles & Affiliations:</h3>
+              <h3 className="text-lg font-semibold text-primary mb-2">{about.team.chloe.rolesTitle}</h3>
               <ul className="text-sm text-gray dark:text-paynesGray space-y-1">
-                <li>• Senior Policy Advisor, White House Office of Science and Technology Policy</li>
-                <li>• AI Governance Lead, Department of Defense</li>
-                <li>• Member, National AI Advisory Committee</li>
-                <li>• Fellow, Stanford Institute for Human-Centered AI</li>
-                <li>• Advisory Board Member, Partnership on AI</li>
+                {about.team.chloe.roles.map((role, index) => (
+                  <li key={index}>• {role}</li>
+                ))}
               </ul>
             </div>
             {/* Chloe Expertise */}
             <div>
-              <h3 className="text-lg font-semibold text-primary mb-2">Areas of Expertise:</h3>
+              <h3 className="text-lg font-semibold text-primary mb-2">{about.team.chloe.expertiseTitle}</h3>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">AI Policy Development</span>
-                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">Technology Governance</span>
-                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">Regulatory Compliance</span>
-                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">Government Relations</span>
-                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">Strategic Advisory</span>
+                {about.team.chloe.expertise.map((skill, index) => (
+                  <span key={index} className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">{skill}</span>
+                ))}
               </div>
             </div>
           </div>
@@ -119,8 +118,8 @@ export default function AboutPage() {
           <div className="flex-shrink-0">
             <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary-700 shadow-lg bg-eggshell">
               <Image
-                src="/images/headshot/wells_headshot.jpeg"
-                alt="Samuel Wells, Policy Manager at Autio Strategies"
+                src={about.team.samuel.image.src}
+                alt={about.team.samuel.image.alt}
                 width={224}
                 height={224}
                 className="w-full h-full object-cover"
@@ -130,34 +129,30 @@ export default function AboutPage() {
           </div>
           <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 heading" itemProp="name">
-              Samuel Wells
+              {about.team.samuel.name}
             </h2>
             <p className="text-xl text-primary-600 mb-4 body-text" itemProp="jobTitle">
-              Policy Manager
+              {about.team.samuel.title}
             </p>
             <p className="text-lg text-gray dark:text-paynesGray mb-4 body-text" itemProp="description">
-              Samuel Wells holds a wealth of policy and engagement experience at the intersection of science, technology, and government. Before joining Autio Strategies, he served in the White House on Vice President Kamala Harris&apos; team. Prior to that, Sam held a range of research and policy roles, including as a research assistant at the University of Chicago&apos;s Health Lab, where he contributed to the Transform911 initiative aimed at modernizing the nation&apos;s emergency response system. He has also interned for multiple members of Congress, the Office of the Science and Technology Adviser to the  Secretary of State, and the Director of National Intelligence&apos;s Private Sector Group. Sam holds a BA in Public Policy & Leadership from the University of Virginia.
+              {about.team.samuel.description}
             </p>
             {/* Samuel Roles & Affiliations */}
             <div className="mb-6">
-              <h3 className="text-lg font-semibold text-primary mb-2">Key Roles & Affiliations:</h3>
+              <h3 className="text-lg font-semibold text-primary mb-2">{about.team.samuel.rolesTitle}</h3>
               <ul className="text-sm text-gray dark:text-paynesGray space-y-1">
-                <li>• Policy Advisor, White House Office of the Vice President</li>
-                <li>• Research Assistant, University of Chicago Health Lab</li>
-                <li>• Transform911 Initiative Contributor</li>
-                <li>• Congressional Intern, Multiple Offices</li>
-                <li>• State Department Science & Technology Adviser Intern</li>
+                {about.team.samuel.roles.map((role, index) => (
+                  <li key={index}>• {role}</li>
+                ))}
               </ul>
             </div>
             {/* Samuel Expertise */}
             <div>
-              <h3 className="text-lg font-semibold text-primary mb-2">Areas of Expertise:</h3>
+              <h3 className="text-lg font-semibold text-primary mb-2">{about.team.samuel.expertiseTitle}</h3>
               <div className="flex flex-wrap gap-2">
-                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">Policy Research</span>
-                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">Government Relations</span>
-                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">Technology Policy</span>
-                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">Public Sector Advisory</span>
-                <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">Strategic Communications</span>
+                {about.team.samuel.expertise.map((skill, index) => (
+                  <span key={index} className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">{skill}</span>
+                ))}
               </div>
             </div>
           </div>
@@ -166,16 +161,16 @@ export default function AboutPage() {
 
       {/* Call to Action */}
       <section className="text-center">
-        <h2 className="text-2xl font-bold text-primary mb-4 heading">Partner with Our Team</h2>
+        <h2 className="text-2xl font-bold text-primary mb-4 heading">{about.cta.title}</h2>
         <p className="text-lg text-gray dark:text-paynesGray mb-6 max-w-xl mx-auto body-text">
-          Connect with our team to discuss how our combined expertise can help your organization navigate the evolving landscape of AI policy and governance.
+          {about.cta.description}
         </p>
         <a
-          href="/contact"
+          href={about.cta.button.href}
           className="btn-primary btn-primary-cta inline-block mb-8"
-          aria-label="Request a Consultation with Autio Strategies Team"
+          aria-label={`${about.cta.button.text} with Autio Strategies Team`}
         >
-          Request a Consultation
+          {about.cta.button.text}
         </a>
       </section>
 
@@ -200,34 +195,25 @@ export default function AboutPage() {
                 'AI Policy',
                 'Technology Governance',
                 'Regulatory Compliance',
-                'Product Development',
-                'Data Ethics',
-                'Social Implications of Computing'
+                'Government Relations',
+                'Strategic Advisory'
               ]
             },
             {
               '@type': 'Person',
               name: 'Samuel Wells',
               jobTitle: 'Policy Manager',
-              description: 'Policy expert with experience at the intersection of science, technology, and government.',
+              description: 'Policy expert with experience in government relations and technology policy.',
               alumniOf: 'University of Virginia',
               hasCredential: 'B.A. in Public Policy & Leadership',
               knowsAbout: [
+                'Policy Research',
+                'Government Relations',
                 'Technology Policy',
-                'Federal Government',
-                'White House Operations',
-                'Emergency Response Systems',
-                'National Security',
-                'Policy Development'
+                'Public Sector Advisory',
+                'Strategic Communications'
               ]
             }
-          ],
-          knowsAbout: [
-            'AI Policy',
-            'Technology Governance',
-            'Regulatory Compliance',
-            'Government Consulting',
-            'Enterprise Policy Advisory'
           ]
         })}
       </script>

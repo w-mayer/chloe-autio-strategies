@@ -1,14 +1,7 @@
 'use client';
 import React from 'react';
 import { X } from 'lucide-react';
-
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services' },
-  { name: 'Resources', href: '/resources' },
-  { name: 'Contact', href: '/contact' },
-];
+import { siteContent } from '@/data/content';
 
 export interface MobileMenuProps {
   open: boolean;
@@ -16,6 +9,7 @@ export interface MobileMenuProps {
 }
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
+  const { navigation, site, ui } = siteContent;
   const menuRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -48,10 +42,10 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18)' }}
       >
         <div className="flex items-center justify-between mb-8">
-          <span className="font-bold text-xl text-gray heading">Chloe Autio Strategies</span>
+          <span className="font-bold text-xl text-gray heading">{site.name}</span>
           <button
             onClick={onClose}
-            aria-label="Close menu"
+            aria-label={ui.aria.closeMenu}
             className="text-paynesGray hover:text-primary-700 focus:outline-none"
           >
             <X className="w-7 h-7" />
@@ -60,7 +54,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
         <hr className="border-ashGray dark:border-paynesGray mb-6" />
         <nav>
           <ul className="flex flex-col gap-3">
-            {navItems.map((item) => (
+            {navigation.items.map((item) => (
               <li key={item.name}>
                 <a
                   href={item.href}
@@ -74,7 +68,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
           </ul>
         </nav>
         <div className="mt-auto pt-8 text-xs text-paynesGray text-center">
-          &copy; {new Date().getFullYear()} Chloe Autio Strategies
+          &copy; {new Date().getFullYear()} {site.name}
         </div>
       </div>
       <style jsx global>{`

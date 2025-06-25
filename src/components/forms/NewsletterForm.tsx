@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/button';
+import { siteContent } from '@/data/content';
 
 const NewsletterSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -13,8 +14,10 @@ const NewsletterSchema = z.object({
 type NewsletterFormValues = z.infer<typeof NewsletterSchema>;
 
 export function NewsletterFormSkeleton() {
+  const { forms } = siteContent;
+  
   return (
-    <form className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full max-w-md animate-pulse" aria-label="Newsletter signup loading">
+    <form className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full max-w-md animate-pulse" aria-label={`${forms.newsletter.title} loading`}>
       <div className="h-10 w-full sm:w-2/3 bg-eggshell dark:bg-paynesGray rounded" />
       <div className="h-10 w-32 bg-eggshell dark:bg-paynesGray rounded" />
     </form>
@@ -22,6 +25,9 @@ export function NewsletterFormSkeleton() {
 }
 
 export function NewsletterForm({ isLoading = false }: { isLoading?: boolean }) {
+  const { forms } = siteContent;
+  const newsletterForm = forms.newsletter;
+  
   const {
     register,
     handleSubmit,
@@ -38,23 +44,23 @@ export function NewsletterForm({ isLoading = false }: { isLoading?: boolean }) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full max-w-md" aria-label="Newsletter signup form">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full max-w-md" aria-label={newsletterForm.title}>
       <label htmlFor="newsletter-email" className="sr-only">Email address</label>
       <Input
         id="newsletter-email"
         type="email"
-        placeholder="Your email address"
+        placeholder={newsletterForm.placeholder}
         {...register('email')}
         error={errors.email?.message}
         required
         aria-label="Email address"
         className="flex-1"
       />
-      <Button type="submit" disabled={isSubmitting} aria-label="Subscribe">
-        {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+      <Button type="submit" disabled={isSubmitting} aria-label={newsletterForm.button.text}>
+        {isSubmitting ? newsletterForm.button.loading : newsletterForm.button.text}
       </Button>
       {isSubmitSuccessful && (
-        <div className="text-green-600 mt-2 w-full text-center" role="status">Thank you for subscribing!</div>
+        <div className="text-green-600 mt-2 w-full text-center" role="status">{newsletterForm.success}</div>
       )}
     </form>
   );

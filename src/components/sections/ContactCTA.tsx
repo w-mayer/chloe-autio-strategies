@@ -4,18 +4,21 @@ import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
+import { siteContent } from '@/data/content';
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 
 export function ContactCTA() {
+  const { contactCTA } = siteContent;
+  
   return (
     <section className="relative py-16 md:py-24 text-eggshell overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <Image
-          src="/images/stocks/cta-background.jpg"
-          alt="Professional consulting background"
+          src={contactCTA.background.image}
+          alt={contactCTA.background.alt}
           fill
           className="object-cover object-center"
           priority
@@ -36,8 +39,8 @@ export function ContactCTA() {
         >
           <div className="flex flex-col items-center">
             <Image
-              src="/images/logo/AutioStrategies_Logo_AllWhite_Horz.png"
-              alt="Autio Strategies Logo"
+              src={contactCTA.logo.image}
+              alt={contactCTA.logo.alt}
               width={320}
               height={80}
               className="mb-8 w-auto max-w-xs md:max-w-md"
@@ -47,7 +50,7 @@ export function ContactCTA() {
               size="h2"
               className="text-3xl md:text-4xl font-bold mb-4 heading text-eggshell"
             >
-              Ready to Transform Your Organization?
+              {contactCTA.title}
             </AuthorityHeading>
           </div>
           
@@ -58,7 +61,7 @@ export function ContactCTA() {
             viewport={{ once: true, margin: '-100px' }}
             className="text-lg md:text-xl mb-8 body-text text-eggshell/90"
           >
-            Let's discuss how our expertise in AI policy, technology governance, and regulatory compliance can help your organization navigate the complexities of the digital age.
+            {contactCTA.description}
           </MotionP>
           
           <MotionDiv
@@ -68,11 +71,11 @@ export function ContactCTA() {
             viewport={{ once: true, margin: '-100px' }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button href="/contact" className="text-lg px-8 py-3">
-              Schedule a Consultation
+            <Button href={contactCTA.buttons.primary.href} className="text-lg px-8 py-3">
+              {contactCTA.buttons.primary.text}
             </Button>
-            <Button href="/services" variant="outline" className="text-lg px-8 py-3 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray">
-              Learn More
+            <Button href={contactCTA.buttons.secondary.href} variant="outline" className="text-lg px-8 py-3 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray">
+              {contactCTA.buttons.secondary.text}
             </Button>
           </MotionDiv>
         </MotionDiv>

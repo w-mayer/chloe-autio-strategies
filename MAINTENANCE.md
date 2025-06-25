@@ -19,40 +19,84 @@ This guide helps you manage the Autio Strategies website without needing technic
 
 ### How to Update Text Content
 
-Most website text is stored in simple text files that you can edit with any text editor (like Notepad, TextEdit, or VS Code).
+**All website text is now centralized in one file** - `src/data/content.ts`. This makes it much easier to update content without touching code.
 
-#### **Main Content Files Location:**
+#### **Main Content File Location:**
 ```
 src/data/
-├── services.ts     (Service descriptions and details)
+├── content.ts      (ALL website text content - main file)
+├── services.ts     (Service-specific content)
 ├── insights.ts     (Articles, case studies, resources)
-└── constants.ts    (Company information, contact details)
+└── metadata.ts     (SEO and page metadata)
 ```
 
 #### **Step-by-Step Text Updates:**
 
-1. **Open the file** you need to edit
-2. **Find the text** you want to change (use Ctrl+F or Cmd+F to search)
-3. **Edit the text** between the quotes `"your text here"`
+1. **Open the main content file:** `src/data/content.ts`
+2. **Find the section** you want to edit (use Ctrl+F or Cmd+F to search)
+3. **Edit the text** between the quotes `'your text here'`
 4. **Save the file**
 5. **Test the changes** by refreshing the website
 
+#### **Content Organization in content.ts:**
+
+The content is organized by page/section:
+
+```javascript
+export const siteContent = {
+  // Global site information
+  site: { ... },
+  
+  // Navigation menu
+  navigation: { ... },
+  
+  // Homepage sections
+  hero: { ... },
+  services: { ... },
+  valueProposition: { ... },
+  contactCTA: { ... },
+  
+  // About page
+  about: { ... },
+  
+  // Footer
+  footer: { ... },
+  
+  // Forms
+  forms: { ... },
+};
+```
+
 #### **Common Text Updates:**
 
-**Company Information** (`src/lib/constants.ts`):
+**Company Information** (`src/data/content.ts` - `site` section):
 - Company name, taglines, contact information
 - Social media links
-- Legal information
+- Website URLs
 
-**Services** (`src/data/services.ts`):
-- Service descriptions and benefits
-- Case study details
-- Methodology explanations
+**Navigation** (`src/data/content.ts` - `navigation` section):
+- Menu item names and links
+- Mobile menu text
 
-**Articles & Resources** (`src/data/insights.ts`):
-- Article titles and summaries
-- Author information
-- Resource links and descriptions
+**Homepage Sections** (`src/data/content.ts` - `hero`, `services`, etc.):
+- Hero title and subtitle
+- Service descriptions
+- Button text
+- Section titles
+
+**About Page** (`src/data/content.ts` - `about` section):
+- Team member bios and information
+- Page titles and descriptions
+
+**Forms** (`src/data/content.ts` - `forms` section):
+- Form labels and placeholders
+- Error messages
+- Success messages
+- Button text
+
+**Footer** (`src/data/content.ts` - `footer` section):
+- Footer links and text
+- Contact information
 
 ### How to Change Images
 
@@ -61,6 +105,7 @@ src/data/
 public/images/
 ├── headshot/       (Profile photos)
 ├── logo/          (Company logos)
+├── partner_logos/ (Client/partner logos)
 └── stocks/        (Background and content images)
 ```
 
@@ -83,38 +128,48 @@ public/images/
    - Logos → `public/images/logo/`
    - Content images → `public/images/stocks/`
 
-3. **Update code references:**
-   - Find the file that uses the image
-   - Update the file path to match your new image name
+3. **Update image references:**
+   - Open `src/data/content.ts`
+   - Find the image path you want to update
+   - Change the path to match your new image name
 
 #### **Example: Updating a Profile Photo**
 
 1. Save your new photo as `chloe-autio-2024.jpg` in `public/images/headshot/`
-2. Open `src/data/insights.ts`
-3. Find the author section and update:
-   ```typescript
-   avatarUrl: '/images/headshot/chloe-autio-2024.jpg'
+2. Open `src/data/content.ts`
+3. Find the `about.team.chloe.image` field and update:
+   ```javascript
+   about: {
+     team: {
+       chloe: {
+         image: '/images/headshot/chloe-autio-2024.jpg',
+         // ... other fields
+       }
+     }
+   }
    ```
 
 ### How to Modify Navigation Menus
 
-#### **Main Navigation** (`src/components/layout/Navigation.tsx`):
+#### **Main Navigation** (`src/data/content.ts` - `navigation` section):
 
-The main menu items are defined in the `navItems` array:
+The main menu items are defined in the `navigation.items` array:
 
-```typescript
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services' },
-  { name: 'Resources', href: '/resources' },
-  { name: 'Contact', href: '/contact' },
-];
+```javascript
+navigation: {
+  items: [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Resources', href: '/resources' },
+    { name: 'Contact', href: '/contact' },
+  ],
+}
 ```
 
 **To add a new menu item:**
-1. Add a new object to the array
-2. Create the corresponding page file
+1. Add a new object to the `items` array
+2. Create the corresponding page file (contact developer)
 3. Test the navigation
 
 **To change menu text:**
@@ -123,35 +178,32 @@ const navItems = [
 
 ### How to Update Contact Information
 
-#### **Primary Contact Details** (`src/lib/constants.ts`):
+#### **Primary Contact Details** (`src/data/content.ts` - `site` section):
 
 Update these values for company-wide contact information:
 - Email addresses
-- Phone numbers
 - Social media links
-- Office addresses
+- Website URLs
 
-#### **Footer Contact** (`src/components/layout/footer.tsx`):
+#### **Footer Contact** (`src/data/content.ts` - `footer` section):
 
-The footer contains:
-- Email link: `mailto:info@chloeautio.com`
-- LinkedIn: `https://linkedin.com/in/chloeautio`
+The footer contact information is managed in the `footer` section:
+- Email link
+- LinkedIn link
+- Other social media links
 
-**To update footer links:**
-1. Find the `href` attributes in the footer component
-2. Replace with new URLs
+**To update contact information:**
+1. Find the appropriate section in `src/data/content.ts`
+2. Update the values
 3. Test all links work correctly
 
 ### How to Add/Remove Pages or Sections
 
 #### **Adding a New Page:**
 
-1. **Create the page file:**
-   - Create `src/app/your-page-name/page.tsx`
-   - Use existing pages as templates
-
+1. **Contact a developer** to create the page file
 2. **Add to navigation:**
-   - Update `src/components/layout/Navigation.tsx`
+   - Update `src/data/content.ts` - `navigation.items` array
    - Add new menu item
 
 3. **Test the page:**
@@ -162,14 +214,10 @@ The footer contains:
 #### **Removing a Page:**
 
 1. **Remove from navigation first:**
-   - Delete menu item from `Navigation.tsx`
-   - Delete from `MobileMenu.tsx` if present
+   - Delete menu item from `src/data/content.ts` - `navigation.items`
+   - Contact developer to remove page file
 
-2. **Delete the page file:**
-   - Remove `src/app/page-name/page.tsx`
-   - Remove any related components
-
-3. **Update any links:**
+2. **Update any links:**
    - Search for references to the old page
    - Update or remove broken links
 
@@ -191,13 +239,13 @@ The footer contains:
    - **Alternative:** Gmail SMTP (for low volume)
 
 2. **Contact Form Setup:**
-   - Update `src/components/forms/ContactForm.tsx`
+   - Contact developer to update form components
    - Add email service API keys
    - Test form submission
 
 3. **Newsletter Integration:**
    - Choose newsletter service (Mailchimp, ConvertKit)
-   - Update `src/components/forms/NewsletterForm.tsx`
+   - Contact developer to update form components
    - Test subscription flow
 
 #### **Email Configuration Steps:**
@@ -208,7 +256,7 @@ The footer contains:
    EMAIL_API_KEY=your_api_key_here
    EMAIL_FROM=info@chloeautio.com
    ```
-3. **Update form components** to use the service
+3. **Contact developer** to update form components
 4. **Test thoroughly** before going live
 
 ### LinkedIn Integration
@@ -227,8 +275,8 @@ The footer contains:
 
 2. **Update Configuration:**
    - Add LinkedIn API keys to environment variables
-   - Update profile URL in `src/lib/constants.ts`
-   - Configure sharing buttons
+   - Update profile URL in `src/data/content.ts` - `site.linkedin`
+   - Contact developer to configure sharing buttons
 
 3. **Testing LinkedIn Integration:**
    - Verify profile links work
@@ -240,10 +288,11 @@ The footer contains:
 **Current social media links:**
 - LinkedIn: `https://linkedin.com/in/chloeautio`
 
-**To update footer links:**
-1. Find the `href` attributes in the footer component
-2. Replace with new URLs
-3. Test all links work correctly
+**To update social media links:**
+1. Open `src/data/content.ts`
+2. Find the `site` section
+3. Update the appropriate social media URLs
+4. Test all links work correctly
 
 ---
 
@@ -303,9 +352,10 @@ The footer contains:
 
 #### **What to Backup:**
 1. **Content files:**
+   - `src/data/content.ts` (main content file)
    - `src/data/services.ts`
    - `src/data/insights.ts`
-   - `src/lib/constants.ts`
+   - `src/data/metadata.ts`
 
 2. **Images and media:**
    - `public/images/` folder
@@ -344,6 +394,7 @@ The footer contains:
 - Setting up new integrations
 - Performance optimization
 - Security updates
+- Creating new pages or components
 
 ### How to Document Issues
 
@@ -406,7 +457,7 @@ Recent changes: [Any recent updates you made]
 - **Web Development Basics:** MDN Web Docs
 
 #### **Content Management:**
-- **Markdown Guide:** https://www.markdownguide.org/
+- **Content Editing Guide:** See `docs/CONTENT_EDITING.md`
 - **Image Optimization:** https://squoosh.app/
 - **Color Tools:** https://coolors.co/
 
@@ -422,23 +473,24 @@ Recent changes: [Any recent updates you made]
 
 | Content Type | File Location | How to Edit |
 |--------------|---------------|-------------|
-| Company Info | `src/lib/constants.ts` | Text editor |
+| **ALL Website Text** | `src/data/content.ts` | Text editor |
 | Services | `src/data/services.ts` | Text editor |
 | Articles | `src/data/insights.ts` | Text editor |
-| Navigation | `src/components/layout/Navigation.tsx` | Text editor |
+| SEO Metadata | `src/data/metadata.ts` | Text editor |
 | Images | `public/images/` | File manager |
-| Contact Info | `src/components/layout/footer.tsx` | Text editor |
 
 ### Common Tasks Quick Guide
 
 | Task | File to Edit | What to Change |
 |------|--------------|----------------|
-| Update company name | `src/lib/constants.ts` | `companyName` variable |
-| Change service description | `src/data/services.ts` | `overview` or `benefits` arrays |
-| Add new article | `src/data/insights.ts` | Add to `articles` array |
-| Update contact email | `src/components/layout/footer.tsx` | `mailto:` link |
-| Change logo | `public/images/logo/` | Upload new file and update references |
-| Add menu item | `src/components/layout/Navigation.tsx` | `navItems` array |
+| Update company name | `src/data/content.ts` | `site.name` |
+| Change hero title | `src/data/content.ts` | `hero.title` |
+| Update navigation | `src/data/content.ts` | `navigation.items` |
+| Change contact email | `src/data/content.ts` | `site.email` |
+| Update team bio | `src/data/content.ts` | `about.team.[name].description` |
+| Change form labels | `src/data/content.ts` | `forms.[form].fields` |
+| Update button text | `src/data/content.ts` | Various button text fields |
+| Change logo | `public/images/logo/` | Upload new file and update `content.ts` |
 
 ### Emergency Checklist
 

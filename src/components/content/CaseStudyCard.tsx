@@ -1,8 +1,9 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import type { CaseStudy } from '@/data/insights';
+import type { CaseStudy as CaseStudyType } from '@/data/insights';
 import Link from 'next/link';
+import { siteContent } from '@/data/content';
 
 function useInViewAnimation() {
   const ref = React.useRef<HTMLDivElement | null>(null);
@@ -41,12 +42,14 @@ export function CardSkeleton() {
 }
 
 interface CaseStudyCardProps {
-  caseStudy?: CaseStudy;
+  caseStudy?: CaseStudyType;
   isLoading?: boolean;
 }
 
-function CaseStudyCardInner({ caseStudy }: { caseStudy: CaseStudy }) {
+function CaseStudyCardInner({ caseStudy }: { caseStudy: CaseStudyType }) {
   const [ref, inView] = useInViewAnimation();
+  const { ui } = siteContent;
+  
   return (
     <motion.article
       ref={ref}
@@ -59,7 +62,7 @@ function CaseStudyCardInner({ caseStudy }: { caseStudy: CaseStudy }) {
       <h3 className="text-lg font-semibold text-primary mb-2 heading">{caseStudy.title}</h3>
       <p className="text-gray mb-4 flex-1 body-text">{caseStudy.summary}</p>
       <div className="mb-2">
-        <span className="text-sm text-gray dark:text-paynesGray">{caseStudy.author.name}</span>
+        <span className="text-sm text-gray dark:text-paynesGray">{caseStudy.organization}</span>
       </div>
       <div className="flex flex-wrap gap-2 mt-auto">
         {caseStudy.tags.map(tag => (
@@ -76,7 +79,7 @@ function CaseStudyCardInner({ caseStudy }: { caseStudy: CaseStudy }) {
             rel="noopener noreferrer"
             className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors inline-flex items-center gap-1 underline"
           >
-            Read More
+            {ui.buttons.readMore}
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
@@ -86,7 +89,7 @@ function CaseStudyCardInner({ caseStudy }: { caseStudy: CaseStudy }) {
             href={`/resources/${caseStudy.slug}`}
             className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors underline"
           >
-            Read More
+            {ui.buttons.readMore}
           </Link>
         )}
       </div>

@@ -2,20 +2,15 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
-
-const navItems = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Services', href: '/services' },
-  { name: 'Resources', href: '/resources' },
-  { name: 'Contact', href: '/contact' },
-];
+import { siteContent } from '@/data/content';
 
 export function Navigation() {
   const pathname = usePathname();
+  const { navigation } = siteContent;
+  
   return (
     <ul className="flex items-center gap-8 text-base font-normal">
-      {navItems.map((item) => (
+      {navigation.items.map((item) => (
         <li key={item.name}>
           <a
             href={item.href}

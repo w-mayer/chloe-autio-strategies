@@ -3,12 +3,16 @@ import React, { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/button';
+import { siteContent } from '@/data/content';
 
 const MotionH2 = dynamic(() => import('framer-motion').then(mod => mod.motion.h2), { ssr: false });
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
 const MotionForm = dynamic(() => import('framer-motion').then(mod => mod.motion.form), { ssr: false });
 
 export function NewsletterSignup() {
+  const { forms } = siteContent;
+  const newsletterForm = forms.newsletter;
+  
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -16,7 +20,7 @@ export function NewsletterSignup() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
-      setError('Please enter a valid email address.');
+      setError(newsletterForm.error);
       return;
     }
     setError(null);
@@ -43,7 +47,7 @@ export function NewsletterSignup() {
           transition={{ duration: 0.9, ease: 'easeOut' }}
           className="text-lg text-neutral-700 dark:text-neutral-200 mb-8 max-w-xl"
         >
-          Subscribe to our newsletter for the latest insights, strategies, and updates from Autio Strategies.
+          {newsletterForm.description}
         </MotionP>
         <MotionForm
           initial={{ opacity: 0, scale: 0.97 }}
@@ -52,12 +56,12 @@ export function NewsletterSignup() {
           transition={{ duration: 1.1, ease: 'easeOut' }}
           onSubmit={handleSubmit}
           className="w-full max-w-md flex flex-col sm:flex-row gap-4 items-center justify-center"
-          aria-label="Newsletter signup form"
+          aria-label={newsletterForm.title}
         >
           <Input
             type="email"
             name="email"
-            placeholder="Your email address"
+            placeholder={newsletterForm.placeholder}
             value={email}
             onChange={e => setEmail(e.target.value)}
             error={error || undefined}
@@ -65,8 +69,8 @@ export function NewsletterSignup() {
             aria-label="Email address"
             className="flex-1"
           />
-          <Button type="submit" variant="primary" aria-label="Subscribe">
-            Subscribe
+          <Button type="submit" variant="primary" aria-label={newsletterForm.button.text}>
+            {newsletterForm.button.text}
           </Button>
         </MotionForm>
         {submitted && !error && (
@@ -75,7 +79,7 @@ export function NewsletterSignup() {
             animate={{ opacity: 1 }}
             className="mt-4 text-green-600 dark:text-green-400 font-medium"
           >
-            Thank you for subscribing!
+            {newsletterForm.success}
           </MotionP>
         )}
       </div>

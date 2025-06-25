@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { services } from '@/data/services';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { motion } from 'framer-motion';
+import { siteContent } from '@/data/content';
 
 interface ServiceCardProps {
   service: (typeof services)[number];
@@ -48,6 +49,8 @@ function ServiceCard({ service, index }: ServiceCardProps) {
   const [ref, inView] = useInViewAnimation();
   const delay = getStaggeredDelay(index) / 1000; // seconds for framer-motion
   const router = useRouter();
+  const { services: servicesContent } = siteContent;
+  const { ui } = siteContent;
 
   const [hasMounted, setHasMounted] = React.useState(false);
   React.useEffect(() => {
@@ -93,34 +96,36 @@ function ServiceCard({ service, index }: ServiceCardProps) {
       onClick={handleClick}
       role="button"
       tabIndex={0}
-      aria-label={`Service card for ${service.title}`}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           handleClick(e as any);
         }
       }}
+      aria-label={`Service card for ${service.title}`}
     >
       <div className="relative h-full flex flex-col justify-between">
         <div>
           <h3 className="text-xl font-semibold text-primary mb-2 service-card-icon">{service.title}</h3>
           <p className="text-gray text-base mb-4 body-text">{service.overview}</p>
         </div>
-        <div
+        <Link
+          href={`/services/${service.slug}`}
           className="mt-auto text-primary font-medium underline underline-offset-4 transition-colors rounded px-2 py-1 service-card-number"
           onClick={(e) => e.stopPropagation()}
-          role="button"
-          tabIndex={-1}
-          aria-label={`Learn more about ${service.title}`}
+          aria-label={`${ui.aria.learnMoreAbout} ${service.title}`}
         >
-          Learn More
-        </div>
+          {servicesContent.learnMore}
+        </Link>
       </div>
     </motion.div>
   );
 }
 
 export function ServicesGrid() {
+  const { services: servicesContent } = siteContent;
+  const { ui } = siteContent;
+
   return (
     <section className="w-full py-16 md:py-24">
       <div className="container mx-auto px-4">
@@ -129,7 +134,7 @@ export function ServicesGrid() {
             size="h2"
             className="text-3xl md:text-4xl font-bold text-center mb-12 heading"
           >
-            Our Services
+            {servicesContent.title}
           </AuthorityHeading>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

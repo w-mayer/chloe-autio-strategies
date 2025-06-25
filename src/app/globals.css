@@ -693,3 +693,10 @@ section.text-eggshell .authority-heading {
 .force-eggshell {
   color: #F8F6F0 !important;
 }
+
+/* Override authority heading color for specific homepage sections to use old gray color */
+.w-full .authority-heading {
+  color: #434344 !important; /* Old gray color for "Our Services" and "Trusted by" sections */
+}
+
+/* Removed the .authority-heading.text-eggshell override since eggshell is now the default */

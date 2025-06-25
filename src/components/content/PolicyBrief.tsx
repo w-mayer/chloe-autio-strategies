@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import type { PolicyBrief as PolicyBriefType } from '@/data/insights';
 import Link from 'next/link';
+import { siteContent } from '@/data/content';
 
 function useInViewAnimation() {
   const ref = React.useRef<HTMLDivElement | null>(null);
@@ -47,6 +48,8 @@ interface PolicyBriefProps {
 
 function PolicyBriefInner({ brief }: { brief: PolicyBriefType }) {
   const [ref, inView] = useInViewAnimation();
+  const { ui } = siteContent;
+  
   return (
     <motion.article
       ref={ref}
@@ -76,7 +79,7 @@ function PolicyBriefInner({ brief }: { brief: PolicyBriefType }) {
             rel="noopener noreferrer"
             className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors inline-flex items-center gap-1 underline"
           >
-            Read More
+            {ui.buttons.readMore}
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
             </svg>
@@ -86,7 +89,7 @@ function PolicyBriefInner({ brief }: { brief: PolicyBriefType }) {
             href={`/resources/${brief.slug}`}
             className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors underline"
           >
-            Read More
+            {ui.buttons.readMore}
           </Link>
         )}
       </div>
