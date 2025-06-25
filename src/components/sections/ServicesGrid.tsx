@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { services } from '@/data/services';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { motion } from 'framer-motion';
@@ -46,6 +47,7 @@ function getStaggeredDelay(index: number) {
 function ServiceCard({ service, index }: ServiceCardProps) {
   const [ref, inView] = useInViewAnimation();
   const delay = getStaggeredDelay(index) / 1000; // seconds for framer-motion
+  const router = useRouter();
 
   const [hasMounted, setHasMounted] = React.useState(false);
   React.useEffect(() => {
@@ -56,9 +58,11 @@ function ServiceCard({ service, index }: ServiceCardProps) {
     console.log('ServiceCard', { index, inView, title: service.title });
   }, [inView, index, service.title]);
 
-  // Ripple effect on click
+  // Ripple effect and navigation on click
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
+    
+    // Create ripple effect
     const rect = ref.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -74,6 +78,9 @@ function ServiceCard({ service, index }: ServiceCardProps) {
         ripple.parentNode.removeChild(ripple);
       }
     }, 600);
+
+    // Navigate to service page
+    router.push(`/services/${service.slug}`);
   };
 
   return (
@@ -83,22 +90,31 @@ function ServiceCard({ service, index }: ServiceCardProps) {
       animate={hasMounted && inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ delay, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       className="service-card"
-      style={{ transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)' }}
       onClick={handleClick}
+      role="button"
+      tabIndex={0}
+      aria-label={`Service card for ${service.title}`}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleClick(e as any);
+        }
+      }}
     >
       <div className="relative h-full flex flex-col justify-between">
         <div>
           <h3 className="text-xl font-semibold text-primary mb-2 service-card-icon">{service.title}</h3>
           <p className="text-gray text-base mb-4 body-text">{service.overview}</p>
         </div>
-        <Link
-          href={`/services/${service.slug}`}
-          className="mt-auto text-primary font-medium underline underline-offset-4 transition-colors hover:bg-vanilla rounded px-2 py-1 service-card-number"
-          aria-label={`Learn more about ${service.title}`}
+        <div
+          className="mt-auto text-primary font-medium underline underline-offset-4 transition-colors rounded px-2 py-1 service-card-number"
           onClick={(e) => e.stopPropagation()}
+          role="button"
+          tabIndex={-1}
+          aria-label={`Learn more about ${service.title}`}
         >
           Learn More
-        </Link>
+        </div>
       </div>
     </motion.div>
   );
@@ -111,10 +127,7 @@ export function ServicesGrid() {
         <div className="mb-12 flex flex-col items-center text-center">
           <AuthorityHeading
             size="h2"
-            className="text-3xl md:text-4xl font-bold text-primary text-center"
-            enableParallax={true}
-            enableProgress={false}
-            enableHighlight={true}
+            className="text-3xl md:text-4xl font-bold text-center mb-12 heading"
           >
             Our Services
           </AuthorityHeading>

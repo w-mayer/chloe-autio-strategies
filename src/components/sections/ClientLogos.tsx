@@ -82,10 +82,7 @@ export function ClientLogos() {
         <div className="mb-12 flex flex-col items-center text-center">
           <AuthorityHeading
             size="h2"
-            className="text-2xl md:text-3xl font-bold text-primary"
-            enableParallax={true}
-            enableProgress={false}
-            enableHighlight={true}
+            className="text-3xl md:text-4xl font-bold text-center mb-8 heading"
           >
             Trusted by Leading Organizations
           </AuthorityHeading>

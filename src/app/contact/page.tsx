@@ -33,13 +33,6 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website'
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Contact | AI Policy Consulting & Technology Governance',
-    description: 'Contact Autio Strategies for AI policy consulting, technology governance, and regulatory compliance advisory for government and enterprise organizations.',
-    images: ['https://chloeautio.com/og-image.png'],
-    creator: '@autiostrategies'
-  },
   alternates: {
     canonical: 'https://chloeautio.com/contact'
   }
@@ -50,14 +43,14 @@ import ContactPageClient from './ContactPageClient';
 export default function ContactPage() {
   return (
     <>
-      <section className="relative min-h-[40vh] flex items-center justify-center mb-0">
+      <section className="relative h-[50vh] flex items-center justify-center">
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
             src="/images/stocks/contact.jpg"
             alt="Contact background"
             fill
-            className="object-cover object-center"
+            className="object-cover object-top"
             priority
             sizes="100vw"
           />
@@ -67,10 +60,7 @@ export default function ContactPage() {
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
           <AuthorityHeading
             size="h1"
-            className="text-4xl md:text-5xl font-bold mb-4 text-eggshell drop-shadow-lg force-eggshell"
-            enableParallax={true}
-            enableProgress={false}
-            enableHighlight={true}
+            className="text-4xl md:text-6xl font-bold mb-6 heading text-eggshell"
           >
             Contact Us
           </AuthorityHeading>

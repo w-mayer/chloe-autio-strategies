@@ -27,10 +27,7 @@ export default function InsightsPageClient() {
         <div className="relative z-20 flex flex-col items-center justify-center w-full h-full text-center">
           <AuthorityHeading
             size="h1"
-            className="text-4xl md:text-5xl font-bold mb-4 text-eggshell"
-            enableParallax={true}
-            enableProgress={false}
-            enableHighlight={true}
+            className="text-4xl md:text-6xl font-bold mb-6 heading text-eggshell"
           >
             Insights & Analysis
           </AuthorityHeading>

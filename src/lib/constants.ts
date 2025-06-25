@@ -33,7 +33,6 @@ type SocialLink = {
 
 export const socialLinks: SocialLink[] = [
   { platform: "LinkedIn", url: "https://linkedin.com/in/chloeautio" },
-  { platform: "Twitter", url: "https://twitter.com/chloeautio" },
   { platform: "Email", url: "mailto:hello@chloeautio.com" },
 ];
 

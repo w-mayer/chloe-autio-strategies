@@ -36,10 +36,7 @@ export function Hero() {
         >
           <AuthorityHeading
             size="h1"
-            className="text-5xl md:text-7xl font-bold mb-6 heading"
-            enableParallax={true}
-            enableProgress={true}
-            enableHighlight={true}
+            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 heading text-eggshell"
           >
             AI Policy Consulting
           </AuthorityHeading>
@@ -59,10 +56,10 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button className="text-lg px-8 py-3">
+            <Button href="/services" className="text-lg px-8 py-3">
               Our Services
             </Button>
-            <Button variant="outline" className="text-lg px-8 py-3 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray">
+            <Button href="/contact" variant="outline" className="text-lg px-8 py-3 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray">
               Contact Us
             </Button>
           </MotionDiv>

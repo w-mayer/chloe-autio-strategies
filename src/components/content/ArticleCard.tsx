@@ -2,8 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { Article } from '@/data/insights';
-import { OptimizedImage } from '@/components/ui/OptimizedImage';
-import { FiExternalLink } from 'react-icons/fi';
 import Link from 'next/link';
 
 function useInViewAnimation() {
@@ -47,39 +45,22 @@ interface ArticleCardProps {
   isLoading?: boolean;
 }
 
-function isValidUrl(url?: string) {
-  if (!url) return false;
-  try {
-    new URL(url);
-    return true;
-  } catch {
-    return false;
-  }
-}
-
 function ArticleCardInner({ article }: { article: Article }) {
   const [ref, inView] = useInViewAnimation();
-  const showExternalButton = isValidUrl(article.externalUrl);
+  const hasExternalUrl = !!article.externalUrl;
+  
   return (
     <motion.article
       ref={ref}
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="rounded-lg border border-ashGray bg-eggshell p-6 shadow-soft flex flex-col h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+      className="rounded-lg border border-ashGray bg-eggshell p-6 shadow-soft flex flex-col h-full transition-all duration-200"
     >
       <div className="mb-2 text-xs text-primary-700">{new Date(article.date).toLocaleDateString()}</div>
       <h3 className="text-lg font-semibold text-primary mb-2 heading">{article.title}</h3>
       <p className="text-gray mb-4 flex-1 body-text" style={{ minHeight: 48 }}>{article.summary}</p>
-      <div className="flex items-center gap-2 mb-2">
-        <OptimizedImage 
-          src={article.author.avatarUrl} 
-          alt={article.author.name} 
-          width={32} 
-          height={32} 
-          className="w-8 h-8 rounded-full object-cover"
-          type="headshot"
-        />
+      <div className="mb-2">
         <span className="text-sm text-gray dark:text-paynesGray">{article.author.name}</span>
       </div>
       <div className="flex flex-wrap gap-2 mb-4">
@@ -89,23 +70,26 @@ function ArticleCardInner({ article }: { article: Article }) {
           </span>
         ))}
       </div>
-      <div className="mt-auto flex items-center justify-between">
-        <Link
-          href={`/resources/${article.slug}`}
-          className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors"
-        >
-          Read More →
-        </Link>
-        {showExternalButton && (
+      <div className="mt-4">
+        {hasExternalUrl ? (
           <a
             href={article.externalUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 hover:text-primary-600 transition-colors"
-            aria-label={`Open ${article.title} in new tab`}
+            className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors inline-flex items-center gap-1 underline"
           >
-            <FiExternalLink className="w-4 h-4" />
+            Read More
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
           </a>
+        ) : (
+          <Link
+            href={`/resources/${article.slug}`}
+            className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors underline"
+          >
+            Read More
+          </Link>
         )}
       </div>
     </motion.article>

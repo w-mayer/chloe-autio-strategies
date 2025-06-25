@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     "tech policy",
     "compliance consulting",
     "public sector advisory",
-    "Chloe Autio"
+    "Autio Strategies"
   ],
-  authors: [{ name: "Chloe Autio" }],
+  authors: [{ name: "Autio Strategies" }],
   openGraph: {
     title: "Autio Strategies | AI Policy Consulting & Technology Governance",
     description: "Professional AI policy consulting, technology governance, and regulatory compliance advisory for government and enterprise organizations.",
@@ -36,13 +36,6 @@ export const metadata: Metadata = {
     ],
     locale: "en_US",
     type: "website"
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Autio Strategies | AI Policy Consulting & Technology Governance",
-    description: "Professional AI policy consulting, technology governance, and regulatory compliance advisory for government and enterprise organizations.",
-    images: [`${siteMeta.url}/og-image.png`],
-    creator: "@chloeautio"
   },
   metadataBase: new URL(siteMeta.url),
   alternates: {
@@ -75,11 +68,11 @@ export default function RootLayout({
               logo: `${siteMeta.url}/og-image.png`,
               description: 'Professional AI policy consulting, technology governance, and regulatory compliance advisory for government and enterprise organizations.',
               sameAs: [
-                'https://linkedin.com/in/chloeautio'
+                'https://linkedin.com/in/autiostrategies'
               ],
               contactPoint: [{
                 '@type': 'ContactPoint',
-                email: 'info@chloeautio.com',
+                  email: 'info@autiostrategies.com',
                 contactType: 'customer support',
                 url: `${siteMeta.url}/contact`
               }]

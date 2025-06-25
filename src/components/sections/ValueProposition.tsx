@@ -70,7 +70,6 @@ function Card({ title, desc, index }: CardProps) {
       animate={hasMounted && inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ delay, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       className="service-card"
-      style={{ transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)' }}
       onClick={handleClick}
     >
       <div className="relative h-full flex flex-col justify-between">
@@ -102,10 +101,7 @@ export function ValueProposition() {
         <div className="mb-12">
           <AuthorityHeading
             size="h2"
-            className="text-2xl md:text-3xl font-bold text-primary"
-            enableParallax={true}
-            enableProgress={false}
-            enableHighlight={true}
+            className="text-3xl md:text-4xl font-bold text-center mb-8 heading"
           >
             Why Choose Autio Strategies?
           </AuthorityHeading>

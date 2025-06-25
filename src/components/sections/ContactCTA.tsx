@@ -3,7 +3,6 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import { LogoImage } from '@/components/ui/OptimizedImage';
 import Image from 'next/image';
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
@@ -36,7 +35,7 @@ export function ContactCTA() {
           className="max-w-3xl mx-auto"
         >
           <div className="flex flex-col items-center">
-            <LogoImage
+            <Image
               src="/images/logo/AutioStrategies_Logo_AllWhite_Horz.png"
               alt="Autio Strategies Logo"
               width={320}
@@ -46,10 +45,7 @@ export function ContactCTA() {
             />
             <AuthorityHeading
               size="h2"
-              className="text-3xl md:text-4xl font-bold mb-6 heading"
-              enableParallax={true}
-              enableProgress={false}
-              enableHighlight={true}
+              className="text-3xl md:text-4xl font-bold mb-4 heading text-eggshell"
             >
               Ready to Transform Your Organization?
             </AuthorityHeading>
@@ -72,10 +68,10 @@ export function ContactCTA() {
             viewport={{ once: true, margin: '-100px' }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button className="text-lg px-8 py-3">
+            <Button href="/contact" className="text-lg px-8 py-3">
               Schedule a Consultation
             </Button>
-            <Button variant="outline" className="text-lg px-8 py-3 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray">
+            <Button href="/services" variant="outline" className="text-lg px-8 py-3 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray">
               Learn More
             </Button>
           </MotionDiv>

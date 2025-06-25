@@ -1,13 +1,11 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 
 interface AuthorityHeadingProps {
   children: string;
   className?: string;
   size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  enableParallax?: boolean;
-  enableProgress?: boolean;
   enableHighlight?: boolean;
 }
 
@@ -15,78 +13,32 @@ export const AuthorityHeading: React.FC<AuthorityHeadingProps> = ({
   children,
   className = '',
   size = 'h1',
-  enableParallax = true,
-  enableProgress = false,
   enableHighlight = true,
 }) => {
   const headingRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [underlineComplete, setUnderlineComplete] = useState(false);
-  const [progressWidth, setProgressWidth] = useState(0);
-  const [parallaxOffset, setParallaxOffset] = useState(0);
 
   // Split text into words
   const words = children.split(' ').filter(word => word.length > 0);
 
   // Calculate animation duration based on word count
-  const getAnimationDuration = () => {
+  const getAnimationDuration = useCallback(() => {
     const baseDuration = 0.8;
     const wordCount = words.length;
     return Math.min(baseDuration + (wordCount * 0.1), 2.5); // Cap at 2.5s
-  };
+  }, [words.length]);
 
   // Handle scroll interactions
   useEffect(() => {
     const handleScroll = () => {
       if (!headingRef.current) return;
 
-      const rect = headingRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       
-      // Parallax effect - relative to element position in viewport
-      if (enableParallax) {
-        // Dramatic parallax for Insights hero
-        const isInsightsHero = words.join(' ') === 'Insights & Thought Leadership';
-        const parallaxSpeed = isInsightsHero ? 0.7 : 0.3;
-        const maxParallaxUp = isInsightsHero ? -60 : -25;
-        const maxParallaxDown = isInsightsHero ? 40 : 20;
-        const elementTop = rect.top;
-        const elementHeight = rect.height;
-        const viewportCenter = windowHeight / 2;
-        
-        // Calculate how far the element is from viewport center
-        const distanceFromCenter = viewportCenter - (elementTop + elementHeight / 2);
-        const parallaxDistance = distanceFromCenter * parallaxSpeed;
-        
-        // Limit parallax movement to prevent overlap with next element
-        const limitedParallaxDistance = Math.max(maxParallaxUp, Math.min(maxParallaxDown, parallaxDistance));
-        
-        // Only apply parallax when element is in or near viewport
-        if (elementTop < windowHeight && elementTop + elementHeight > 0) {
-          setParallaxOffset(limitedParallaxDistance);
-        } else {
-          setParallaxOffset(0);
-        }
-      }
-
-      // Progress indicator
-      if (enableProgress) {
-        const elementTop = rect.top;
-        const elementHeight = rect.height;
-        const viewportCenter = windowHeight / 2;
-        
-        if (elementTop < viewportCenter && elementTop + elementHeight > 0) {
-          const progress = Math.max(0, Math.min(100, 
-            ((viewportCenter - elementTop) / (elementHeight + windowHeight)) * 100
-          ));
-          setProgressWidth(progress);
-        }
-      }
-
       // Color shift based on scroll depth
       if (headingRef.current) {
-        const scrollDepth = Math.max(0, Math.min(1, scrollTop / (document.body.scrollHeight - windowHeight)));
+        const scrollDepth = Math.max(0, Math.min(1, scrollTop / (document.body.scrollHeight - window.innerHeight)));
         headingRef.current.style.filter = `brightness(${1 - scrollDepth * 0.1}) saturate(${1 + scrollDepth * 0.1})`;
       }
     };
@@ -115,51 +67,15 @@ export const AuthorityHeading: React.FC<AuthorityHeadingProps> = ({
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [enableParallax, enableProgress, words.length]);
-
-  // Dynamic CSS for word animations
-  useEffect(() => {
-    if (!headingRef.current || !isVisible) return;
-
-    const style = document.createElement('style');
-    const wordCount = words.length;
-    
-    let cssRules = '';
-    for (let i = 0; i < wordCount; i++) {
-      const delay = i * 0.1;
-      cssRules += `
-        .authority-heading-word-${i} {
-          animation: authorityWordSlide 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) ${delay}s forwards !important;
-        }
-      `;
-    }
-    
-    style.textContent = cssRules;
-    document.head.appendChild(style);
-
-    return () => {
-      document.head.removeChild(style);
-    };
-  }, [isVisible, words]);
+  }, [getAnimationDuration]);
 
   const HeadingTag = size as keyof JSX.IntrinsicElements;
 
   return (
     <div
       ref={headingRef}
-      className={`authority-heading ${enableParallax ? 'authority-heading-parallax' : ''} ${className} ${underlineComplete ? 'underline-complete' : ''}`}
-      style={{
-        transform: enableParallax ? `translateY(${parallaxOffset}px)` : undefined,
-        willChange: enableParallax ? 'transform' : 'auto',
-      }}
+      className={`authority-heading ${className} ${isVisible ? 'visible' : ''} ${underlineComplete ? 'underline-complete' : ''}`}
     >
-      {enableProgress && (
-        <div 
-          className="authority-heading-progress"
-          style={{ width: `${progressWidth}%` }}
-        />
-      )}
-      
       {enableHighlight && (
         <div className="authority-heading-highlight" />
       )}
@@ -168,7 +84,7 @@ export const AuthorityHeading: React.FC<AuthorityHeadingProps> = ({
         {words.map((word, index) => (
           <span
             key={index}
-            className={`authority-heading-word authority-heading-word-${index}`}
+            className="authority-heading-word"
             style={{
               animationDelay: isVisible ? `${index * 0.1}s` : '0s',
             }}

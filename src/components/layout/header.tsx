@@ -3,7 +3,7 @@ import React from 'react';
 import { Menu } from 'lucide-react';
 import { Navigation } from './Navigation';
 import { MobileMenu } from './MobileMenu';
-import { LogoImage } from '@/components/ui/OptimizedImage';
+import Image from 'next/image';
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -12,7 +12,7 @@ export function Header() {
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 transition-all duration-200">
       <div className="container flex h-16 items-center justify-between">
         <a className="flex items-center" href="/" aria-label="Home">
-          <LogoImage
+          <Image
             src="/images/logo/AutioStrategies_Logo_FullColor_Horz (1).png"
             alt="Autio Strategies Logo"
             width={138}

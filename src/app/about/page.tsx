@@ -1,7 +1,7 @@
 import React from 'react';
 import { Metadata } from 'next';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import { HeadshotImage } from '@/components/ui/OptimizedImage';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Our Team | AI Policy Consulting & Technology Governance',
@@ -36,13 +36,6 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website'
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Our Team | AI Policy Consulting & Technology Governance',
-    description: "Meet the Autio Strategies team - Chloe Autio (Founder & CEO) and Samuel Wells (Policy Manager) - experts in AI policy consulting, technology governance, and regulatory compliance.",
-    images: ['https://chloeautio.com/og-image.png'],
-    creator: '@chloeautio'
-  },
   alternates: {
     canonical: 'https://chloeautio.com/about'
   }
@@ -52,18 +45,16 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-eggshell">
       {/* Hero Section */}
-      <section className="bg-primary text-eggshell py-16 md:py-24">
+      <section className="bg-primary py-16 md:py-24">
         <div className="container mx-auto px-4 text-center">
           <AuthorityHeading
             size="h1"
             className="text-4xl md:text-6xl font-bold mb-6 heading"
-            enableParallax={true}
-            enableProgress={true}
             enableHighlight={true}
           >
             Our Team
           </AuthorityHeading>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto body-text">
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto body-text text-eggshell">
             Meet the experts behind Autio Strategies - dedicated professionals committed to advancing AI policy and technology governance.
           </p>
         </div>
@@ -74,18 +65,18 @@ export default function AboutPage() {
         {/* Chloe Autio */}
         <section className="flex flex-col md:flex-row items-start gap-10 mb-16" itemScope itemType="https://schema.org/Person">
           <div className="flex-shrink-0">
-            <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary-700 shadow-lg bg-eggshell flex items-center justify-center">
-              <HeadshotImage
+            <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary-700 shadow-lg bg-eggshell">
+              <Image
                 src="/images/headshot/autio_headshot.jpg"
                 alt="Chloe Autio, Founder & CEO of Autio Strategies"
                 width={224}
                 height={224}
-                className="object-cover w-full h-full"
+                className="w-full h-full object-cover"
                 priority={true}
               />
             </div>
           </div>
-          <div>
+          <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 heading" itemProp="name">
               Chloe Autio
             </h2>
@@ -124,20 +115,20 @@ export default function AboutPage() {
         </section>
 
         {/* Samuel Wells */}
-        <section className="flex flex-col md:flex-row items-start gap-10 mb-16" itemScope itemType="https://schema.org/Person">
+        <section className="flex flex-col md:flex-row items-start gap-10" itemScope itemType="https://schema.org/Person">
           <div className="flex-shrink-0">
-            <div className="w-40 h-40 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-primary-700 shadow-lg bg-eggshell flex items-center justify-center">
-              <HeadshotImage
+            <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary-700 shadow-lg bg-eggshell">
+              <Image
                 src="/images/headshot/wells_headshot.jpeg"
                 alt="Samuel Wells, Policy Manager at Autio Strategies"
                 width={224}
                 height={224}
-                className="object-cover w-full h-full"
+                className="w-full h-full object-cover"
                 priority={true}
               />
             </div>
           </div>
-          <div>
+          <div className="max-w-2xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 heading" itemProp="name">
               Samuel Wells
             </h2>
@@ -173,37 +164,15 @@ export default function AboutPage() {
         </section>
       </section>
 
-      {/* Team Credentials & Expertise */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-primary mb-4 heading">Team Credentials & Expertise</h2>
-        <ul className="list-disc list-inside text-gray dark:text-paynesGray space-y-2">
-          <li className="body-text">Advisors to government bodies, Fortune 50 companies, large AI labs, startups, and trade associations</li>
-          <li className="body-text">Strategic guidance on AI policy, governance, compliance, and regulatory engagement</li>
-          <li className="body-text">White House and federal government experience in technology policy development</li>
-          <li className="body-text">Deep expertise in product development, compliance, communications, and social responsibility</li>
-          <li className="body-text">Broad network of contacts in Washington, D.C. and beyond</li>
-          <li className="body-text">Research experience in emergency response systems and technology transformation</li>
-        </ul>
-      </section>
-
-      {/* Media & Recognition */}
-      <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-primary mb-4 heading">Media & Recognition</h2>
-        <ul className="list-disc list-inside text-gray dark:text-paynesGray space-y-2">
-          <li className="body-text">Frequently sought after by government and civil society organizations</li>
-          <li className="body-text">Expertise highlighted in The Wall Street Journal, Axios, POLITICO, Bloomberg, and more</li>
-        </ul>
-      </section>
-
       {/* Call to Action */}
-      <section className="text-center mt-16">
+      <section className="text-center">
         <h2 className="text-2xl font-bold text-primary mb-4 heading">Partner with Our Team</h2>
         <p className="text-lg text-gray dark:text-paynesGray mb-6 max-w-xl mx-auto body-text">
           Connect with our team to discuss how our combined expertise can help your organization navigate the evolving landscape of AI policy and governance.
         </p>
         <a
           href="/contact"
-          className="btn-primary btn-primary-cta inline-block"
+          className="btn-primary btn-primary-cta inline-block mb-8"
           aria-label="Request a Consultation with Autio Strategies Team"
         >
           Request a Consultation

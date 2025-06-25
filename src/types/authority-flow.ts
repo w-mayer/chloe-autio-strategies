@@ -14,10 +14,8 @@ export interface AuthorityFlowConfig {
   gradientDuration?: number;
   
   // Scroll interactions
-  enableParallax?: boolean;
   enableProgress?: boolean;
   enableColorShift?: boolean;
-  parallaxSpeed?: number;
   progressThreshold?: number;
   colorShiftIntensity?: number;
   
@@ -36,7 +34,6 @@ export interface AuthorityFlowState {
   isVisible: boolean;
   isAnimating: boolean;
   progressWidth: number;
-  parallaxOffset: number;
   underlineComplete: boolean;
   currentWordIndex: number;
   scrollDepth: number;
@@ -135,10 +132,8 @@ export const DEFAULT_AUTHORITY_FLOW_CONFIG: AuthorityFlowConfig = {
   gradientColors: ['#3B82F6', '#14B8A6', '#3B82F6'],
   gradientDuration: 3,
   
-  enableParallax: true,
   enableProgress: true,
   enableColorShift: true,
-  parallaxSpeed: 0.3,
   progressThreshold: 0.3,
   colorShiftIntensity: 0.1,
   

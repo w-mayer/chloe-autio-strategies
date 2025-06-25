@@ -6,6 +6,7 @@ import { ResourceCard } from '@/components/content/ResourceCard';
 import type { Metadata } from 'next';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 
 export const metadata: Metadata = {
   title: 'Resources | AI Policy Consulting',
@@ -27,24 +28,17 @@ export const metadata: Metadata = {
     title: 'Resources | AI Policy Consulting',
     description: 'Explore resources, articles, policy briefs, and case studies on AI policy consulting, technology governance, and regulatory compliance for government and enterprise leaders.',
     url: 'https://chloeautio.com/resources',
-    siteName: 'Chloe Autio Strategies',
+    siteName: 'Autio Strategies',
     images: [
       {
         url: 'https://chloeautio.com/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Chloe Autio Strategies - AI Policy Consulting & Technology Governance'
+        alt: 'Autio Strategies - AI Policy Consulting & Technology Governance'
       }
     ],
     locale: 'en_US',
     type: 'website'
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Resources | AI Policy Consulting',
-    description: 'Explore resources, articles, policy briefs, and case studies on AI policy consulting, technology governance, and regulatory compliance for government and enterprise leaders.',
-    images: ['https://chloeautio.com/og-image.png'],
-    creator: '@chloeautio'
   },
   alternates: {
     canonical: 'https://chloeautio.com/resources'
@@ -73,10 +67,7 @@ export default function ResourcesPage() {
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
           <AuthorityHeading
             size="h1"
-            className="text-4xl md:text-5xl font-bold mb-4 text-eggshell drop-shadow-lg force-eggshell"
-            enableParallax={true}
-            enableProgress={false}
-            enableHighlight={true}
+            className="text-4xl md:text-6xl font-bold mb-6 heading text-eggshell"
           >
             Resources & Thought Leadership
           </AuthorityHeading>
@@ -123,6 +114,24 @@ export default function ResourcesPage() {
           {resources.map(resource => (
             <ResourceCard key={resource.slug} resource={resource} />
           ))}
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="container mx-auto px-4 py-16 text-center bg-primary-50 dark:bg-neutral-900">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold text-primary mb-4 heading">Need Expert Guidance?</h2>
+          <p className="text-lg text-gray dark:text-paynesGray mb-8 body-text">
+            Ready to put these insights into action? Let's discuss how our expertise can help your organization navigate AI policy and governance challenges.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button href="/contact" className="text-lg px-8 py-3">
+              Schedule a Consultation
+            </Button>
+            <Button href="/services" variant="outline" className="text-lg px-8 py-3">
+              Explore Our Services
+            </Button>
+          </div>
         </div>
       </section>
     </>

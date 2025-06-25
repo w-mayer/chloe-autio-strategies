@@ -1,30 +1,25 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface UseAuthorityFlowOptions {
-  enableParallax?: boolean;
   enableProgress?: boolean;
   enableHighlight?: boolean;
   enableColorShift?: boolean;
-  parallaxSpeed?: number;
   progressThreshold?: number;
 }
 
 interface UseAuthorityFlowReturn {
   ref: React.RefObject<HTMLDivElement>;
   isVisible: boolean;
-  progressWidth: number;
-  parallaxOffset: number;
   underlineComplete: boolean;
+  progressWidth: number;
   triggerAnimation: () => void;
   resetAnimation: () => void;
 }
 
 export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuthorityFlowReturn => {
   const {
-    enableParallax = true,
     enableProgress = false,
     enableColorShift = true,
-    parallaxSpeed = 0.3,
     progressThreshold = 0.3,
   } = options;
 
@@ -32,7 +27,6 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
   const [isVisible, setIsVisible] = useState(false);
   const [underlineComplete, setUnderlineComplete] = useState(false);
   const [progressWidth, setProgressWidth] = useState(0);
-  const [parallaxOffset, setParallaxOffset] = useState(0);
 
   // Calculate animation duration based on text length
   const getAnimationDuration = useCallback((text: string) => {
@@ -49,31 +43,6 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
     const windowHeight = window.innerHeight;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     
-    // Parallax effect - relative to element position in viewport
-    if (enableParallax) {
-      const elementTop = rect.top;
-      const elementHeight = rect.height;
-      const viewportCenter = windowHeight / 2;
-      
-      // Calculate how far the element is from viewport center
-      const distanceFromCenter = viewportCenter - (elementTop + elementHeight / 2);
-      const parallaxDistance = distanceFromCenter * parallaxSpeed;
-      
-      // Limit parallax movement to prevent overlap with next element
-      // Allow more movement but still prevent extreme overlap
-      const maxParallaxUp = -25; // Allow more upward movement
-      const maxParallaxDown = 20; // Allow more downward movement
-      
-      const limitedParallaxDistance = Math.max(maxParallaxUp, Math.min(maxParallaxDown, parallaxDistance));
-      
-      // Only apply parallax when element is in or near viewport
-      if (elementTop < windowHeight && elementTop + elementHeight > 0) {
-        setParallaxOffset(limitedParallaxDistance);
-      } else {
-        setParallaxOffset(0);
-      }
-    }
-
     // Progress indicator
     if (enableProgress) {
       const elementTop = rect.top;
@@ -93,21 +62,18 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
       const scrollDepth = Math.max(0, Math.min(1, scrollTop / (document.body.scrollHeight - windowHeight)));
       ref.current.style.filter = `brightness(${1 - scrollDepth * 0.1}) saturate(${1 + scrollDepth * 0.1})`;
     }
-  }, [enableParallax, enableProgress, enableColorShift, parallaxSpeed]);
+  }, [enableProgress, enableColorShift]);
 
-  // Intersection Observer setup
+  // Intersection Observer for visibility
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          
-          // Calculate underline completion timing
-          if (ref.current) {
-            const text = ref.current.textContent || '';
-            const totalDuration = getAnimationDuration(text);
-            setTimeout(() => setUnderlineComplete(true), (totalDuration + 0.3) * 1000);
-          }
+          // Add underline complete class after text animation
+          const text = ref.current?.textContent || '';
+          const totalDuration = getAnimationDuration(text);
+          setTimeout(() => setUnderlineComplete(true), (totalDuration + 0.3) * 1000);
         }
       },
       { threshold: progressThreshold, rootMargin: '50px' }
@@ -124,32 +90,31 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [handleScroll, getAnimationDuration, progressThreshold]);
+  }, [enableProgress, enableColorShift, progressThreshold, getAnimationDuration, handleScroll]);
 
-  // Manual trigger function
+  // Manual trigger for animation
   const triggerAnimation = useCallback(() => {
     setIsVisible(true);
-    if (ref.current) {
-      const text = ref.current.textContent || '';
-      const totalDuration = getAnimationDuration(text);
-      setTimeout(() => setUnderlineComplete(true), (totalDuration + 0.3) * 1000);
-    }
+    const text = ref.current?.textContent || '';
+    const totalDuration = getAnimationDuration(text);
+    setTimeout(() => setUnderlineComplete(true), (totalDuration + 0.3) * 1000);
   }, [getAnimationDuration]);
 
-  // Reset function
+  // Reset animation state
   const resetAnimation = useCallback(() => {
     setIsVisible(false);
     setUnderlineComplete(false);
     setProgressWidth(0);
-    setParallaxOffset(0);
+    if (ref.current) {
+      ref.current.style.filter = '';
+    }
   }, []);
 
   return {
     ref,
     isVisible,
-    progressWidth,
-    parallaxOffset,
     underlineComplete,
+    progressWidth,
     triggerAnimation,
     resetAnimation,
   };

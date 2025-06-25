@@ -2,8 +2,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import type { Service } from '@/data/services';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
+import { Button } from '@/components/ui/button';
 
 function ServiceCardSkeleton() {
   return (
@@ -24,6 +26,7 @@ interface ServicesGridClientProps {
 function ServiceCard({ service, index }: { service: Service; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     if (!cardRef.current) return;
@@ -36,10 +39,11 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
     return () => clearTimeout(timer);
   }, [index]);
 
-  // Ripple effect on click
+  // Ripple effect and navigation on click
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     
+    // Create ripple effect
     const rect = cardRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -58,6 +62,9 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         ripple.parentNode.removeChild(ripple);
       }
     }, 600);
+
+    // Navigate to service page
+    router.push(`/services/${service.slug}`);
   };
 
   // Handle keyboard events
@@ -85,6 +92,9 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           }
         }, 600);
       }
+      
+      // Navigate to service page
+      router.push(`/services/${service.slug}`);
     }
   };
 
@@ -104,14 +114,15 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           <h3 className="text-2xl font-semibold text-primary mb-2 service-card-icon">{service.title}</h3>
           <p className="text-gray mb-4 body-text">{service.overview}</p>
         </div>
-        <Link
-          href={`/services/${service.slug}`}
-          className="text-primary font-medium underline underline-offset-4 transition-colors hover:bg-vanilla rounded px-2 py-1 service-card-number"
-          aria-label={`Learn more about ${service.title}`}
+        <div
+          className="text-primary font-medium underline underline-offset-4 transition-colors rounded px-2 py-1 service-card-number"
           onClick={(e) => e.stopPropagation()}
+          role="button"
+          tabIndex={-1}
+          aria-label={`Learn more about ${service.title}`}
         >
           Learn More
-        </Link>
+        </div>
       </div>
     </div>
   );
@@ -158,6 +169,24 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
               ))}
         </div>
       </main>
+
+      {/* CTA Section */}
+      <section className="container mx-auto px-4 py-16 text-center bg-primary-50 dark:bg-neutral-900">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold text-primary mb-4 heading">Ready to Get Started?</h2>
+          <p className="text-lg text-gray dark:text-paynesGray mb-8 body-text">
+            Let's discuss how our comprehensive suite of services can help your organization navigate AI policy and governance challenges.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button href="/contact" className="text-lg px-8 py-3">
+              Schedule a Consultation
+            </Button>
+            <Button href="/about" variant="outline" className="text-lg px-8 py-3">
+              Learn About Our Team
+            </Button>
+          </div>
+        </div>
+      </section>
     </>
   );
 } 

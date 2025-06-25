@@ -26,6 +26,7 @@ export interface PolicyBrief {
   date: string;
   author: Author;
   tags: string[];
+  externalUrl?: string; // Optional external link
 }
 
 export interface CaseStudy {
@@ -37,6 +38,7 @@ export interface CaseStudy {
   organization: string;
   author: Author;
   tags: string[];
+  externalUrl?: string; // Optional external link
 }
 
 export interface Resource {
@@ -111,77 +113,60 @@ export const articles: Article[] = [
     related: [],
     externalUrl: 'https://www.wsj.com/articles/election-wargames-tech-and-politics-try-their-hands-at-detecting-voting-threats-70ba3331?gaa_at=eafs&gaa_n=ASWzDAgUfo9m81vO9Xz5fOjBfA0WrYxhD3QKMEy761v2zQjbeWyJV8O2i5EX47Vji4Q%3D&gaa_ts=6855ca2f&gaa_sig=dRPSE8ravwIF-nB426iz1uy5sj-8e_94QpOEh3xH6sERAin1QDT8f0339LBFPYGVIjYYxIYfkJINh-QKIALklw%3D%3D',
   },
-  {
-    slug: 'navigating-ai-regulation-2025',
-    title: 'Navigating the Evolving Landscape of AI Regulation in 2025',
-    summary: 'A comprehensive overview of global AI regulatory trends and what they mean for government and enterprise leaders.',
-    content: '<p>As AI technologies advance, regulatory frameworks are rapidly evolving. This article explores the latest developments in AI policy, compliance requirements, and best practices for organizations operating in this dynamic environment.</p>',
-    date: '2024-06-01',
-    author: authors[0],
-    tags: ['AI Policy', 'Regulation', 'Compliance'],
-    featured: true,
-    related: ['ai-governance-best-practices'],
-  },
-  {
-    slug: 'ai-governance-best-practices',
-    title: 'Best Practices for AI Governance in the Public Sector',
-    summary: 'Key strategies for implementing effective AI governance frameworks in government agencies.',
-    content: '<p>Effective AI governance is essential for public trust and accountability. This article outlines actionable steps for agencies to establish robust oversight and risk management processes.</p>',
-    date: '2024-05-15',
-    author: authors[0],
-    tags: ['AI Governance', 'Public Sector'],
-    related: ['navigating-ai-regulation-2025'],
-  },
 ];
 
 export const policyBriefs: PolicyBrief[] = [
   {
     slug: 'us-ai-policy-brief',
     title: 'U.S. Federal AI Policy: 2024 Brief',
-    summary: 'An executive summary of recent U.S. federal actions on AI policy and implications for regulated entities.',
+    summary: 'This is a placeholder for a policy brief that links to an internal source.',
     content: '<p>This brief distills the latest federal guidance, executive orders, and legislative proposals shaping the U.S. AI policy landscape.</p>',
     date: '2024-04-20',
     author: authors[0],
     tags: ['Policy Brief', 'Federal Policy'],
   },
+  {
+    slug: 'eu-ai-act-analysis',
+    title: 'EU AI Act Implementation Guide',
+    summary: 'This is a placeholder for a policy brief that links to an external source.',
+    content: '<p>This policy brief provides a detailed analysis of the EU AI Act.</p>',
+    date: '2024-03-15',
+    author: authors[1],
+    tags: ['Policy Brief', 'EU Policy', 'AI Regulation'],
+    externalUrl: 'https://example.com/eu-ai-act-analysis',
+  },
 ];
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: 'public-sector-ai-implementation',
-    title: 'AI Implementation in the Public Sector: A Case Study',
-    summary: 'How a federal agency successfully deployed AI for regulatory compliance and operational efficiency.',
-    content: '<p>This case study examines the challenges, solutions, and outcomes of a major AI deployment in a government context.</p>',
-    date: '2024-03-10',
-    organization: 'U.S. Federal Agency',
-    author: authors[0],
-    tags: ['Case Study', 'Public Sector', 'AI Implementation'],
-  },
-  {
     slug: 'placeholder-case-study',
     title: 'Placeholder Case Study',
-    summary: 'This is a placeholder case study to preview the UI.',
+    summary: 'This is a placeholder case study that links to an internal source.',
     content: '<p>Placeholder content for the case study. Replace with real content.</p>',
     date: '2024-07-01',
     organization: 'Placeholder Organization',
     author: authors[0],
     tags: ['Placeholder', 'Case Study'],
   },
+  {
+    slug: 'ai-governance-implementation',
+    title: 'AI Governance Implementation at Fortune 500 Company',
+    summary: 'This is a placeholder for a policy brief that links to an external source.',
+    content: '<p>This case study examines the successful implementation of AI governance.</p>',
+    date: '2024-06-15',
+    organization: 'Fortune 500 Tech Company',
+    author: authors[1],
+    tags: ['Case Study', 'AI Governance', 'Enterprise'],
+    externalUrl: 'https://example.com/ai-governance-case-study',
+  },
 ];
 
 export const resources: Resource[] = [
   {
-    slug: 'nist-ai-risk-management-framework',
-    title: 'NIST AI Risk Management Framework',
-    url: 'https://www.nist.gov/itl/ai-risk-management-framework',
-    description: 'Comprehensive framework for managing risks associated with AI systems, published by NIST.',
-    type: 'guideline',
-  },
-  {
-    slug: 'oecd-ai-policy-observatory',
-    title: 'OECD AI Policy Observatory',
-    url: 'https://oecd.ai/',
-    description: 'Global resource for AI policy analysis, data, and best practices.',
+    slug: 'placeholder-resource',
+    title: 'Placeholder Resource',
+    url: 'https://example.com',
+    description: 'This is a placeholder resource. It can link to an internal or external source.',
     type: 'report',
   },
 ]; 

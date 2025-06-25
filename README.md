@@ -1,227 +1,321 @@
 # Autio Strategies
 
-A professional tech policy consulting firm website built with Next.js 15, TypeScript, and Tailwind CSS.
+A professional AI policy consulting, technology governance, and regulatory compliance advisory website built with Next.js 14, TypeScript, and Tailwind CSS.
 
-## Features
+## Project Overview
 
-- **Next.js 15** with App Router
-- **TypeScript** for type safety
-- **Tailwind CSS** for styling with custom design system
-- **Framer Motion** for animations
-- **React Hook Form** with Zod validation
-- **ESLint** for code quality
-- **Responsive design** with mobile-first approach
-- **Component-based architecture** with reusable UI components
-- **Professional layout** with header and footer
-- **SEO optimized** with metadata and structured data
-- **Accessibility focused** with ARIA labels and keyboard navigation
+Autio Strategies provides expert guidance for government and enterprise leaders navigating the complex landscape of AI policy, technology governance, and regulatory compliance. This website serves as the digital presence for our consulting services, showcasing our expertise and facilitating client engagement.
+
+### Key Features
+- **Service Showcase**: Comprehensive display of consulting services including insight analysis, research, policy development, and events facilitation
+- **Content Management**: Dynamic content system for articles, policy briefs, case studies, and resources
+- **Interactive Animations**: Sophisticated text animations and hover effects for enhanced user experience
+- **Responsive Design**: Mobile-first approach with optimized performance across all devices
+- **SEO Optimized**: Comprehensive metadata, structured data, and performance optimization
+- **Accessibility Focused**: WCAG compliant with ARIA labels and keyboard navigation support
+
+### Target Audience
+- Government agencies and policymakers
+- Enterprise technology leaders
+- Regulatory compliance officers
+- Technology governance professionals
+- Organizations seeking AI policy guidance
+
+## Technical Stack
+
+### Core Framework
+- **Next.js**: 14.2.30 with App Router
+- **React**: 18.3.1 with TypeScript 5
+- **TypeScript**: For type safety and developer experience
+
+### Styling & UI
+- **Tailwind CSS**: 3.4.1 with custom design system
+- **Framer Motion**: 12.19.1 for animations
+- **React Hook Form**: 7.58.1 with Zod validation
+- **Lucide React**: 0.522.0 for icons
+- **React Icons**: 5.5.0 for additional icon sets
+
+### Development Tools
+- **ESLint**: Code quality and consistency
+- **PostCSS**: CSS processing
+- **Prettier**: Code formatting
+
+### Deployment
+- **Platform**: Vercel (recommended) or any Next.js-compatible hosting
+- **Database**: Static site - no database required
+- **External Services**: None currently integrated
 
 ## Project Structure
 
 ```
-src/
-├── app/                    # Next.js App Router pages
-│   ├── about/             # About page
-│   ├── authority-demo/    # Animation demo page
-│   ├── contact/           # Contact page
-│   ├── insights/          # Insights and blog pages
-│   ├── resources/         # Resources and articles
-│   ├── services/          # Services pages
-│   ├── globals.css        # Global styles and CSS variables
-│   ├── layout.tsx         # Root layout component
-│   └── page.tsx           # Home page
-├── components/            # Reusable components
-│   ├── content/           # Content display components
-│   │   ├── ArticleCard.tsx
-│   │   ├── CaseStudyCard.tsx
-│   │   ├── PolicyBrief.tsx
-│   │   └── ResourceCard.tsx
-│   ├── forms/             # Form components
-│   │   ├── ConsultationForm.tsx
-│   │   ├── ContactForm.tsx
-│   │   └── NewsletterForm.tsx
-│   ├── layout/            # Layout components
-│   │   ├── header.tsx
-│   │   ├── footer.tsx
-│   │   ├── MobileMenu.tsx
-│   │   ├── Navigation.tsx
-│   │   └── PageTransition.tsx
-│   ├── sections/          # Page sections
-│   │   ├── ClientLogos.tsx
-│   │   ├── ContactCTA.tsx
-│   │   ├── Hero.tsx
-│   │   ├── NewsletterSignup.tsx
-│   │   ├── ServicesGrid.tsx
-│   │   ├── Testimonials.tsx
-│   │   └── ValueProposition.tsx
-│   └── ui/                # Base UI components
-│       ├── AuthorityHeading.tsx
-│       ├── Badge.tsx
-│       ├── button.tsx
-│       ├── Card.tsx
-│       ├── Input.tsx
-│       ├── Modal.tsx
-│       └── Textarea.tsx
-├── data/                  # Static data and content
-│   ├── insights.ts        # Articles, policy briefs, case studies
-│   └── services.ts        # Services data
-├── lib/                   # Utility functions and constants
-│   ├── constants.ts       # Site constants and metadata
-│   ├── hooks/             # Custom React hooks
-│   │   └── useAuthorityFlow.ts
-│   └── utils.ts           # Common utilities (clsx, etc.)
-└── types/                 # TypeScript type definitions
-    ├── authority-flow.ts  # Authority flow animation types
-    └── index.ts           # Common interfaces and types
+chloe-autio-strategies/
+├── src/
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── about/             # About page
+│   │   ├── contact/           # Contact page
+│   │   ├── insights/          # Insights and blog pages
+│   │   ├── resources/         # Resources and articles
+│   │   ├── services/          # Services pages
+│   │   ├── globals.css        # Global styles and CSS variables
+│   │   ├── layout.tsx         # Root layout component
+│   │   └── page.tsx           # Home page
+│   ├── components/            # Reusable components
+│   │   ├── content/           # Content display components
+│   │   ├── forms/             # Form components
+│   │   ├── layout/            # Layout components
+│   │   ├── sections/          # Page sections
+│   │   └── ui/                # Base UI components
+│   ├── data/                  # Static data and content
+│   │   ├── insights.ts        # Articles, policy briefs, case studies
+│   │   └── services.ts        # Services data
+│   ├── lib/                   # Utility functions and constants
+│   │   ├── constants.ts       # Site constants and metadata
+│   │   ├── hooks/             # Custom React hooks
+│   │   └── utils.ts           # Common utilities
+│   └── types/                 # TypeScript type definitions
+├── public/                    # Static assets
+│   └── images/               # Image assets
+├── scripts/                   # Build and utility scripts
+└── docs/                      # Documentation files
 ```
+
+### Key Configuration Files
+- **`next.config.mjs`**: Next.js configuration with image optimization
+- **`tailwind.config.ts`**: Tailwind CSS configuration with custom design system
+- **`tsconfig.json`**: TypeScript configuration
+- **`.eslintrc.json`**: ESLint rules and configuration
 
 ## Getting Started
 
 ### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
+- **Node.js**: 18.0.0 or higher
+- **npm**: 8.0.0 or higher (or yarn)
+- **Git**: For version control
 
 ### Installation
 
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd chloe-autio-strategies
-```
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/autiostrategies/chloe-autio-strategies.git
+   cd chloe-autio-strategies
+   ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-3. Run the development server:
-```bash
-npm run dev
-```
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000)
 
-## Available Scripts
+### Environment Variables
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
-
-## Environment Variables
-
-This project currently doesn't require any environment variables as it's a static site. If you need to add API integrations or external services, create a `.env.local` file in the root directory:
+This project currently operates as a static site and doesn't require environment variables. However, if you plan to integrate external services, create a `.env.local` file in the root directory:
 
 ```bash
 # Example environment variables (not currently required)
-# NEXT_PUBLIC_API_URL=your_api_url
+# NEXT_PUBLIC_SITE_URL=https://yourdomain.com
 # NEXT_PUBLIC_ANALYTICS_ID=your_analytics_id
+# NEXT_PUBLIC_CONTACT_EMAIL=contact@yourdomain.com
 ```
 
-## Tech Stack
+### First-Time Setup Checklist
 
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript 5
-- **Styling**: Tailwind CSS 3.4
-- **UI Components**: Custom component library
-- **Animations**: Framer Motion 12.19
-- **Forms**: React Hook Form 7.58 with Zod validation
-- **Icons**: Lucide React 0.522, React Icons 5.5
-- **Code Quality**: ESLint 8.57
-- **Package Manager**: npm
+- [ ] Install Node.js 18+ and npm
+- [ ] Clone the repository
+- [ ] Install dependencies with `npm install`
+- [ ] Start development server with `npm run dev`
+- [ ] Verify the site loads at http://localhost:3000
+- [ ] Run `npm run type-check` to verify TypeScript
+- [ ] Run `npm run lint` to check code quality
 
-## Dependencies
+## Available Scripts
 
-### Production Dependencies
-- `next`: ^15.3.4 - React framework
-- `react`: ^19.1.0 - React library
-- `react-dom`: ^19.1.0 - React DOM
-- `typescript`: ^5 - TypeScript compiler
-- `tailwindcss`: ^3.4.1 - CSS framework
-- `framer-motion`: ^12.19.1 - Animation library
-- `react-hook-form`: ^7.58.1 - Form handling
-- `zod`: ^3.25.67 - Schema validation
-- `@hookform/resolvers`: ^5.1.1 - Form validation resolvers
-- `clsx`: ^2.1.1 - Conditional CSS classes
-- `tailwind-merge`: ^3.3.1 - Tailwind class merging
-- `tailwindcss-animate`: ^1.0.7 - Tailwind animations
-- `@heroicons/react`: ^2.2.0 - Heroicons
-- `lucide-react`: ^0.522.0 - Lucide icons
-- `react-icons`: ^5.5.0 - React icons
-- `@fontsource/cormorant`: ^5.2.6 - Cormorant font
-- `@fontsource/dm-sans`: ^5.2.6 - DM Sans font
-- `@tailwindcss/forms`: ^0.5.10 - Tailwind form styles
-- `@tailwindcss/typography`: ^0.5.16 - Tailwind typography
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run start` | Start production server |
+| `npm run lint` | Run ESLint |
+| `npm run lint:fix` | Auto-fix linting issues |
+| `npm run type-check` | TypeScript type checking |
+| `npm run format` | Format code with Prettier |
+| `npm run format:check` | Check code formatting |
+| `npm run analyze-images` | Analyze image optimization |
 
-### Development Dependencies
-- `@types/node`: ^20 - Node.js types
-- `@types/react`: ^18 - React types
-- `@types/react-dom`: ^18 - React DOM types
-- `eslint`: ^8 - Linting
-- `eslint-config-next`: 14.2.30 - Next.js ESLint config
-- `eslint-plugin-jsx-a11y`: ^6.10.2 - Accessibility linting
-- `postcss`: ^8 - CSS processing
-- `tailwindcss`: ^3.4.1 - CSS framework
+## Key Integrations
 
-## Design System
+### Current Integrations
+- **None currently active** - This is a static site with no external service integrations
 
-The project uses a consistent design system with:
+### Planned Integrations
+- **Email Services**: Contact form submission handling
+- **Analytics**: Google Analytics or similar for user tracking
+- **Social Media**: LinkedIn sharing capabilities
+- **Content Management**: Headless CMS for dynamic content updates
 
-- **Colors**: Custom color palette with primary green (#6F9C3B), grays, and accent colors
-- **Typography**: Inter font family with custom font weights
-- **Spacing**: Consistent spacing scale (0-128)
-- **Components**: Reusable UI components with variants
-- **Animations**: Smooth transitions and micro-interactions
-- **Accessibility**: WCAG compliant with proper contrast ratios
+## Development Guidelines
 
-### Color Palette
-- Primary: #6F9C3B (Green)
-- Gray: #434344
-- Payne's Gray: #455D6A
-- Eggshell: #E8E9D7
-- Vanilla: #E1DBA7
-- Ash Gray: #AAC1BF
-- Pale Dogwood: #E5C5BB
+### Code Organization
 
-## Animation System
+**Component Structure**
+- Use functional components with TypeScript
+- Follow the established component hierarchy:
+  - `ui/` - Base UI components (Button, Card, Input, etc.)
+  - `layout/` - Layout components (Header, Footer, Navigation)
+  - `sections/` - Page sections (Hero, ServicesGrid, etc.)
+  - `content/` - Content display components (ArticleCard, etc.)
+  - `forms/` - Form components (ContactForm, etc.)
 
-The project includes sophisticated animation systems:
+**File Naming**
+- Components: PascalCase (e.g., `AuthorityHeading.tsx`)
+- Utilities: camelCase (e.g., `utils.ts`)
+- Pages: kebab-case (e.g., `contact/page.tsx`)
 
-### Authority Flow Animations
-- Text reveal animations with staggered timing
-- Parallax scrolling effects
-- Progress indicators
-- Background highlights
-- See `AUTHORITY_FLOW_ANIMATIONS.md` for detailed documentation
+### Styling Approach
 
-### Service Card Animations
-- Entrance animations with staggered delays
-- Hover effects with scale and shadow
-- Ripple effects on click
-- See `SERVICE_CARD_ANIMATIONS.md` for detailed documentation
+**Tailwind CSS**
+- Use utility classes for styling
+- Leverage the custom design system defined in `tailwind.config.ts`
+- Follow mobile-first responsive design principles
+- Use CSS custom properties for theme values
+
+**Design System**
+- **Colors**: Primary green (#6F9C3B), grays, and accent colors
+- **Typography**: Inter font family with custom weights
+- **Spacing**: Consistent scale (0-128)
+- **Components**: Reusable with consistent variants
+
+### State Management
+
+**Current Approach**
+- React hooks for local component state
+- No global state management required (static site)
+- Form state handled by React Hook Form
+
+**Future Considerations**
+- Consider Zustand or Redux Toolkit if global state needed
+- Implement React Query for API data fetching
+
+### Animation Guidelines
+
+**Framer Motion**
+- Use for complex animations and transitions
+- Implement reduced motion support for accessibility
+- Follow performance best practices
+
+**CSS Animations**
+- Use for simple hover effects and micro-interactions
+- Leverage Tailwind's animation utilities
+- Ensure 60fps performance
 
 ## Content Management
 
-Content is managed through static data files:
+### Static Data Files
+- **`src/data/services.ts`**: Service offerings and details
+- **`src/data/insights.ts`**: Articles, policy briefs, case studies
 
-- `src/data/services.ts` - Service offerings and details
-- `src/data/insights.ts` - Articles, policy briefs, case studies, and resources
+### Content Updates
+1. Edit the appropriate data file in `src/data/`
+2. Follow the established TypeScript interfaces
+3. Test changes locally
+4. Deploy through the standard deployment process
 
-## SEO and Performance
+### Image Assets
+- Store images in `public/images/`
+- Use Next.js Image component for optimization
+- Follow the established naming conventions
+- Optimize images before adding to the project
 
-- **Metadata**: Comprehensive meta tags for all pages
-- **Structured Data**: JSON-LD schema markup
-- **Open Graph**: Social media optimization
-- **Performance**: Optimized images and fonts
-- **Accessibility**: ARIA labels and keyboard navigation
+## Troubleshooting
 
-## Browser Support
+### Common Issues
 
-- Chrome 60+
-- Firefox 55+
-- Safari 12+
-- Edge 79+
+**Build Failures**
+```bash
+# Check Node.js version
+node --version  # Should be 18+
+
+# Clear cache and reinstall
+rm -rf node_modules package-lock.json
+npm install
+
+# Check for TypeScript errors
+npm run type-check
+```
+
+**Development Server Issues**
+```bash
+# Check if port 3000 is in use
+lsof -i :3000
+
+# Use different port
+npm run dev -- -p 3001
+```
+
+**Styling Issues**
+```bash
+# Rebuild Tailwind CSS
+npm run build
+
+# Check for CSS conflicts
+npm run lint
+```
+
+### Debug Mode
+
+**Enable Debug Logging**
+```bash
+# Set debug environment variable
+DEBUG=* npm run dev
+```
+
+**Component Debugging**
+- Add `console.log` statements in components
+- Use React Developer Tools browser extension
+- Check browser console for errors
+
+### Performance Issues
+
+**Image Optimization**
+```bash
+# Analyze image optimization
+npm run analyze-images
+
+# Check Core Web Vitals
+# Use Lighthouse in Chrome DevTools
+```
+
+**Bundle Size**
+```bash
+# Analyze bundle size
+npm run build
+# Check .next/analyze/ for detailed breakdown
+```
+
+### Log Locations
+
+**Development Logs**
+- Browser console for client-side errors
+- Terminal for server-side errors
+- Next.js logs in terminal output
+
+**Production Logs**
+- Vercel dashboard (if deployed on Vercel)
+- Hosting platform logs
+- Browser console for client-side errors
+
+## Additional Documentation
+
+For detailed information on specific topics, refer to:
+
+- **[Deployment Guide](DEPLOYMENT.md)** - Comprehensive deployment instructions for multiple platforms
+- **[Maintenance Guide](MAINTENANCE.md)** - Non-technical user guide for website management
 
 ## Contributing
 
@@ -232,36 +326,9 @@ Content is managed through static data files:
 5. Ensure accessibility compliance
 6. Update documentation for new features
 
-## Deployment
-
-### Vercel (Recommended)
-1. Connect your repository to Vercel
-2. Configure build settings:
-   - Build Command: `npm run build`
-   - Output Directory: `.next`
-   - Install Command: `npm install`
-3. Deploy automatically on push to main branch
-
-### Other Platforms
-The project can be deployed to any platform that supports Next.js:
-- Netlify
-- AWS Amplify
-- Railway
-- DigitalOcean App Platform
-
 ## License
 
 This project is proprietary to Autio Strategies.
-
-## Learn More
-
-To learn more about the technologies used:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs) - learn about Tailwind CSS.
-- [Framer Motion Documentation](https://www.framer.com/motion/) - learn about animations.
-- [React Hook Form Documentation](https://react-hook-form.com/) - learn about form handling.
 
 ## Support
 

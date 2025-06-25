@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { NewsletterSignup } from '@/components/sections/NewsletterSignup';
-import { OptimizedImage } from '@/components/ui/OptimizedImage';
+import Image from 'next/image';
 import type { Article } from '@/data/insights';
 
 interface ResourceArticlePageProps {
@@ -47,10 +47,7 @@ export default async function ResourceArticlePage({ params }: ResourceArticlePag
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
           <AuthorityHeading
             size="h1"
-            className="text-4xl md:text-5xl font-bold mb-4 text-eggshell drop-shadow-lg force-eggshell"
-            enableParallax={true}
-            enableProgress={false}
-            enableHighlight={true}
+            className="text-4xl md:text-6xl font-bold mb-6 heading"
           >
             {content.title}
           </AuthorityHeading>
@@ -60,19 +57,9 @@ export default async function ResourceArticlePage({ params }: ResourceArticlePag
       <section className="container mx-auto px-4 py-12 flex flex-col items-center">
         <div className="body-text text-lg text-neutral-800 dark:text-neutral-200 max-w-2xl mx-auto bg-white/80 dark:bg-paynesGray/80 rounded-xl shadow-lg p-8 -mt-16 relative z-20 backdrop-blur">
           {/* Author and date */}
-          <div className="flex items-center gap-3 mb-6">
-            <OptimizedImage 
-              src={content.author.avatarUrl} 
-              alt={content.author.name} 
-              width={40} 
-              height={40} 
-              className="w-10 h-10 rounded-full object-cover"
-              type="headshot"
-            />
-            <div>
-              <div className="text-sm font-medium text-neutral-700 dark:text-neutral-300">{content.author.name}</div>
-              <div className="text-xs text-neutral-500">{new Date(content.date).toLocaleDateString()}</div>
-            </div>
+          <div className="mb-6">
+            <div className="text-sm font-medium text-neutral-700 dark:text-neutral-300">{content.author.name}</div>
+            <div className="text-xs text-neutral-500">{new Date(content.date).toLocaleDateString()}</div>
           </div>
           {/* Tags */}
           {content.tags && (
@@ -87,35 +74,14 @@ export default async function ResourceArticlePage({ params }: ResourceArticlePag
           {/* Content */}
           <div className="prose prose-blue dark:prose-invert max-w-none mb-8" dangerouslySetInnerHTML={{ __html: content.content }} />
           {/* Author Bio */}
-          <div className="mb-8 p-4 bg-primary-50 dark:bg-paynesGray/40 rounded-lg flex items-center gap-4">
-            <OptimizedImage 
-              src={content.author.avatarUrl} 
-              alt={content.author.name} 
-              width={48} 
-              height={48} 
-              className="w-12 h-12 rounded-full object-cover"
-              type="headshot"
-            />
-            <div>
-              <div className="font-semibold text-primary-700">{content.author.name}</div>
-              <div className="text-xs text-neutral-600 mb-1">{content.author.title}</div>
-              <div className="text-sm text-neutral-700 dark:text-neutral-200">{content.author.bio}</div>
-            </div>
+          <div className="mb-8 p-4 bg-primary-50 dark:bg-paynesGray/40 rounded-lg">
+            <div className="font-semibold text-primary-700">{content.author.name}</div>
+            <div className="text-xs text-neutral-600 mb-1">{content.author.title}</div>
+            <div className="text-sm text-neutral-700 dark:text-neutral-200">{content.author.bio}</div>
           </div>
           {/* Social Sharing */}
           <div className="flex items-center gap-4 mb-8 pt-4 border-t border-neutral-200 dark:border-neutral-700">
             <span className="text-sm text-neutral-600">Share this article:</span>
-            <a
-              href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(content.title)}&url=${encodeURIComponent(window.location.href)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:text-blue-600 transition-colors"
-              aria-label="Share on Twitter"
-            >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-              </svg>
-            </a>
             <a
               href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
               target="_blank"

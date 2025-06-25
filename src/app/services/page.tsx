@@ -34,13 +34,6 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website'
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Services | AI Policy Consulting & Technology Governance',
-    description: 'Explore our suite of AI policy consulting, technology governance, and regulatory compliance services for government and enterprise organizations.',
-    images: ['https://chloeautio.com/og-image.png'],
-    creator: '@chloeautio'
-  },
   alternates: {
     canonical: 'https://chloeautio.com/services'
   }

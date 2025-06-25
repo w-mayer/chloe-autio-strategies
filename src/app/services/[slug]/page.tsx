@@ -5,6 +5,7 @@ import Link from 'next/link';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import InsightsPageClient from './InsightsPageClient';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
@@ -59,9 +60,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
           <AuthorityHeading
             size="h1"
-            className="text-4xl md:text-5xl font-bold mb-4 text-eggshell drop-shadow-lg force-eggshell"
-            enableParallax={true}
-            enableProgress={false}
+            className="text-4xl md:text-6xl font-bold mb-6 heading"
             enableHighlight={true}
           >
             {service.title}
@@ -108,6 +107,24 @@ export default async function ServicePage({ params }: ServicePageProps) {
               })}
             </ul>
           </section>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="container mx-auto px-4 py-16 text-center">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl font-bold text-primary mb-4 heading">Ready to Get Started?</h2>
+          <p className="text-lg text-gray dark:text-paynesGray mb-8 body-text">
+            Let's discuss how our {service.title.toLowerCase()} expertise can help your organization achieve its goals.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button href="/contact" className="text-lg px-8 py-3">
+              Schedule a Consultation
+            </Button>
+            <Button href="/services" variant="outline" className="text-lg px-8 py-3">
+              Explore All Services
+            </Button>
+          </div>
         </div>
       </section>
     </>

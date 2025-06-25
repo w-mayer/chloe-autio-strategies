@@ -2,7 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import type { CaseStudy } from '@/data/insights';
-import { OptimizedImage } from '@/components/ui/OptimizedImage';
 import Link from 'next/link';
 
 function useInViewAnimation() {
@@ -54,20 +53,12 @@ function CaseStudyCardInner({ caseStudy }: { caseStudy: CaseStudy }) {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6, ease: 'easeOut' }}
-      className="rounded-lg border border-ashGray bg-eggshell p-6 shadow-soft flex flex-col h-full hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+      className="rounded-lg border border-ashGray bg-eggshell p-6 shadow-soft flex flex-col h-full transition-all duration-200"
     >
       <div className="mb-2 text-xs text-primary-700">{new Date(caseStudy.date).toLocaleDateString()}</div>
       <h3 className="text-lg font-semibold text-primary mb-2 heading">{caseStudy.title}</h3>
       <p className="text-gray mb-4 flex-1 body-text">{caseStudy.summary}</p>
-      <div className="flex items-center gap-2 mb-2">
-        <OptimizedImage 
-          src={caseStudy.author.avatarUrl} 
-          alt={caseStudy.author.name} 
-          width={32} 
-          height={32} 
-          className="w-8 h-8 rounded-full object-cover"
-          type="headshot"
-        />
+      <div className="mb-2">
         <span className="text-sm text-gray dark:text-paynesGray">{caseStudy.author.name}</span>
       </div>
       <div className="flex flex-wrap gap-2 mt-auto">
@@ -78,12 +69,26 @@ function CaseStudyCardInner({ caseStudy }: { caseStudy: CaseStudy }) {
         ))}
       </div>
       <div className="mt-4">
-        <Link
-          href={`/resources/${caseStudy.slug}`}
-          className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors"
-        >
-          Read More →
-        </Link>
+        {caseStudy.externalUrl ? (
+          <a
+            href={caseStudy.externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors inline-flex items-center gap-1 underline"
+          >
+            Read More
+            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        ) : (
+          <Link
+            href={`/resources/${caseStudy.slug}`}
+            className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors underline"
+          >
+            Read More
+          </Link>
+        )}
       </div>
     </motion.article>
   );

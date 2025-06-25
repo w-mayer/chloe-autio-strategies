@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Linkedin } from 'lucide-react';
 import Image from "next/image";
 
 export function Footer() {
@@ -62,15 +62,6 @@ export function Footer() {
               aria-label="LinkedIn"
             >
               <Linkedin className="w-5 h-5" />
-            </a>
-            <a
-              href="https://twitter.com/chloeautio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[#434344] hover:text-[#6F9C3B] transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter className="w-5 h-5" />
             </a>
           </div>
         </div>

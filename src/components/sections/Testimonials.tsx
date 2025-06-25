@@ -59,7 +59,7 @@ function TestimonialCard({ testimonial, delay }: TestimonialCardProps) {
       initial={{ opacity: 0, y: 30 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ delay, duration: 0.6, ease: 'easeOut' }}
-      className="rounded-lg bg-eggshell border border-ashGray p-8 shadow-soft flex flex-col items-center text-center hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
+      className="rounded-lg bg-eggshell border border-ashGray p-8 shadow-soft flex flex-col items-center text-center transition-all duration-200"
     >
       <p className="text-lg text-neutral-800 dark:text-neutral-100 mb-4 font-medium body-text">“{testimonial.quote}”</p>
       <footer className="mt-4">
