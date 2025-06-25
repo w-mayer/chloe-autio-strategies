@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Contact | AI Policy Consulting & Technology Governance',
@@ -49,16 +50,20 @@ import ContactPageClient from './ContactPageClient';
 export default function ContactPage() {
   return (
     <>
-      <section
-        className="relative flex items-center justify-center w-full h-[40vh] min-h-[240px] mb-0"
-        style={{
-          backgroundImage: `url('/images/stocks/contact.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-        }}
-      >
-        {/* Dark overlay for text legibility */}
-        <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
+      <section className="relative min-h-[40vh] flex items-center justify-center mb-0">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/stocks/contact.jpg"
+            alt="Contact background"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Dark overlay for text legibility */}
+          <div className="absolute inset-0 bg-black/50" />
+        </div>
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
           <AuthorityHeading
             size="h1"

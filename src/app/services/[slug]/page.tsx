@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import InsightsPageClient from './InsightsPageClient';
+import Image from 'next/image';
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
@@ -43,11 +44,14 @@ export default async function ServicePage({ params }: ServicePageProps) {
       {/* Hero Section */}
       <section className="relative flex items-center justify-center w-full h-[40vh] min-h-[240px] mb-0">
         <div className="absolute inset-0 w-full h-full">
-          <img
+          <Image
             src={getBackgroundImage()}
             alt={`${service.title} service background`}
+            fill
             className="w-full h-full object-cover object-center"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
+            priority
+            sizes="100vw"
           />
           {/* Dark overlay for text legibility */}
           <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />

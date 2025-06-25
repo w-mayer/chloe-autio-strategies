@@ -4,23 +4,26 @@ import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { LogoImage } from '@/components/ui/OptimizedImage';
+import Image from 'next/image';
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 
 export function ContactCTA() {
   return (
-    <section className="w-full py-16 md:py-24 text-eggshell relative overflow-hidden">
+    <section className="relative py-16 md:py-24 text-eggshell overflow-hidden">
       {/* Background image with overlay */}
-      <div className="absolute inset-0 w-full h-full">
-        <img
+      <div className="absolute inset-0">
+        <Image
           src="/images/stocks/cta-background.jpg"
           alt="Professional consulting background"
-          className="w-full h-full object-cover object-center"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+          fill
+          className="object-cover object-center"
+          priority
+          sizes="100vw"
         />
         {/* Dark overlay for text legibility */}
-        <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
       
       {/* Content */}

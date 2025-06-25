@@ -5,6 +5,7 @@ import { CaseStudyCard } from '@/components/content/CaseStudyCard';
 import { ResourceCard } from '@/components/content/ResourceCard';
 import type { Metadata } from 'next';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Resources | AI Policy Consulting',
@@ -55,16 +56,20 @@ export default function ResourcesPage() {
   return (
     <>
       {/* Hero Section */}
-      <section
-        className="relative flex items-center justify-center w-full h-[44vh] min-h-[260px] mb-0 bg-primary-900"
-        style={{
-          backgroundImage: `url('/images/stocks/services.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* Dark overlay for text legibility */}
-        <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.55)' }} />
+      <section className="relative min-h-[44vh] flex items-center justify-center mb-0 bg-primary-900">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/stocks/services.jpg"
+            alt="Resources background"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Dark overlay for text legibility */}
+          <div className="absolute inset-0 bg-black/55" />
+        </div>
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
           <AuthorityHeading
             size="h1"

@@ -1,24 +1,29 @@
 'use client';
 import React from 'react';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
+import Image from 'next/image';
 
 export default function InsightsPageClient() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center w-full h-[50vh] min-h-[320px] mb-0 bg-paynesGray">
-        <div className="absolute inset-0 w-full h-full">
-          <img
+      <section className="relative min-h-[50vh] flex items-center justify-center bg-paynesGray">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
             src="/images/stocks/insights-analysis.jpg"
             alt="Insights and analysis background"
-            className="w-full h-full object-cover object-center"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
           />
           {/* Dark overlay for text legibility */}
-          <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
+          <div className="absolute inset-0 bg-black/50" />
+          {/* Green overlay */}
+          <div className="absolute inset-0 z-10" style={{ background: 'rgba(139,172,79,0.2)' }} />
         </div>
-        {/* Green overlay */}
-        <div className="absolute inset-0 z-10" style={{ background: 'rgba(139,172,79,0.2)' }} />
+        {/* Hero content */}
         <div className="relative z-20 flex flex-col items-center justify-center w-full h-full text-center">
           <AuthorityHeading
             size="h1"

@@ -126,22 +126,19 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
 
   return (
     <>
-      <section
-        className="w-full relative overflow-hidden flex items-center justify-center min-h-screen"
-        style={{ minHeight: '100vh' }}
-      >
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/images/stocks/services.jpg"
             alt="Jefferson Memorial night reflection"
             fill
-            className="w-full h-full object-cover object-center min-h-screen"
-            style={{ backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh' }}
+            className="object-cover object-center"
             priority
+            sizes="100vw"
           />
           {/* Dark overlay for text readability */}
-          <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
+          <div className="absolute inset-0 bg-black/50" />
         </div>
         <div className="container mx-auto flex flex-col items-center text-center px-4 py-16 relative z-10">
           <div className="mb-8">
