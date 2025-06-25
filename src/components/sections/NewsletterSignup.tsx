@@ -1,9 +1,10 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/button';
 import { siteContent } from '@/data/content';
+import { useSearchParams } from 'next/navigation';
 
 const MotionH2 = dynamic(() => import('framer-motion').then(mod => mod.motion.h2), { ssr: false });
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
@@ -11,11 +12,21 @@ const MotionForm = dynamic(() => import('framer-motion').then(mod => mod.motion.
 
 export function NewsletterSignup() {
   const { forms } = siteContent;
-  const newsletterForm = forms.newsletter;
+  const newsletterForm = forms.newsletterSignup;
+  const searchParams = useSearchParams();
   
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Check for success parameter from Netlify redirect
+  useEffect(() => {
+    const isSuccessFromNetlify = searchParams.get('newsletter') === 'success' || searchParams.get('form') === 'success';
+    if (isSuccessFromNetlify) {
+      setSubmitted(true);
+      setError(null);
+    }
+  }, [searchParams]);
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -57,7 +68,13 @@ export function NewsletterSignup() {
           onSubmit={handleSubmit}
           className="w-full max-w-md flex flex-col sm:flex-row gap-4 items-center justify-center"
           aria-label={newsletterForm.title}
+          data-netlify="true"
+          name={newsletterForm.netlifyName}
+          method="POST"
         >
+          {/* Netlify form detection */}
+          <input type="hidden" name="form-name" value={newsletterForm.netlifyName} />
+          
           <Input
             type="email"
             name="email"

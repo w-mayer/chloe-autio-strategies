@@ -3,6 +3,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { siteContent } from '@/data/content';
+import Image from 'next/image';
 
 function useInViewAnimation() {
   const ref = React.useRef<HTMLDivElement | null>(null);
@@ -31,7 +32,7 @@ function useInViewAnimation() {
 }
 
 interface LogoCardProps {
-  logo: { name: string; color: string; textColor: string };
+  logo: { name: string; image: string; alt: string };
   delay: number;
 }
 
@@ -41,8 +42,9 @@ function LogoCard({ logo, delay }: LogoCardProps) {
   React.useEffect(() => {
     setHasMounted(true);
   }, []);
-
-  const letter = logo.name.split(' ')[1]; // Extract the letter from "Client A" -> "A"
+  
+  // Determine if this logo needs extra large sizing
+  const isExtraLarge = logo.name === 'Google Cloud Platform' || logo.name === 'Cohere';
   
   return (
     <motion.div
@@ -50,14 +52,20 @@ function LogoCard({ logo, delay }: LogoCardProps) {
       initial={{ opacity: 0, y: 50 }}
       animate={hasMounted && inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ delay, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      className="flex items-center justify-center h-16"
+      className={`flex items-center justify-center p-6 ${
+        isExtraLarge 
+          ? 'h-28 sm:h-32 md:h-36' 
+          : 'h-24 sm:h-28 md:h-32'
+      }`}
       aria-label={logo.name}
     >
-      <svg width="80" height="32" viewBox="0 0 80 32" fill="none" role="img" aria-label={logo.name}>
-        <title>{logo.name}</title>
-        <rect width="80" height="32" rx="8" fill={logo.color}/>
-        <text x="40" y="21" textAnchor="middle" fill={logo.textColor} fontSize="16" fontWeight="bold">{letter}</text>
-      </svg>
+      <Image
+        src={logo.image}
+        alt={logo.alt}
+        width={isExtraLarge ? 200 : 180}
+        height={isExtraLarge ? 100 : 90}
+        className="max-w-full max-h-full object-contain hover:opacity-80 transition-all duration-300"
+      />
     </motion.div>
   );
 }
@@ -76,9 +84,9 @@ export function ClientLogos() {
             {clientLogos.title}
           </AuthorityHeading>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center justify-center">
+        <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-12 items-center justify-center">
           {clientLogos.logos.map((logo, i) => (
-            <LogoCard key={logo.name} logo={logo} delay={i * 0.2} />
+            <LogoCard key={logo.name} logo={logo} delay={i * 0.1} />
           ))}
         </div>
       </div>

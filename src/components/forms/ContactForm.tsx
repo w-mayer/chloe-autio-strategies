@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/button';
 import { services } from '@/data/services';
 import { siteContent } from '@/data/content';
+import { useSearchParams } from 'next/navigation';
 
 const ContactSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -23,7 +24,7 @@ export function ContactFormSkeleton() {
   const { forms } = siteContent;
   
   return (
-    <form className="space-y-4 max-w-lg animate-pulse" aria-label={forms.contact.loading}>
+    <form className="space-y-4 max-w-lg animate-pulse" aria-label={`${forms.contact.title} loading`}>
       <div>
         <div className="h-4 w-1/3 bg-eggshell dark:bg-paynesGray rounded mb-2" />
         <div className="h-10 w-full bg-eggshell dark:bg-paynesGray rounded" />
@@ -48,6 +49,7 @@ export function ContactFormSkeleton() {
 export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
   const { forms } = siteContent;
   const contactForm = forms.contact;
+  const searchParams = useSearchParams();
   
   const {
     register,
@@ -66,6 +68,9 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
   const selectedServices = watch('services');
   const showOtherService = selectedServices.includes('other');
 
+  // Check for success parameter from Netlify redirect
+  const isSuccessFromNetlify = searchParams.get('success') === 'true' || searchParams.get('consultation') === 'success';
+
   if (isLoading) return <ContactFormSkeleton />;
 
   async function onSubmit(data: ContactFormValues) {
@@ -74,7 +79,17 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-lg" aria-label={contactForm.title}>
+    <form 
+      onSubmit={handleSubmit(onSubmit)} 
+      className="space-y-4 max-w-lg" 
+      aria-label={contactForm.title}
+      data-netlify="true"
+      name={contactForm.netlifyName}
+      method="POST"
+    >
+      {/* Netlify form detection */}
+      <input type="hidden" name="form-name" value={contactForm.netlifyName} />
+      
       <div>
         <label htmlFor="name" className="form-label">{contactForm.fields.name.label}</label>
         <Input id="name" {...register('name')} error={errors.name?.message} required aria-invalid={!!errors.name} />
@@ -130,7 +145,7 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
       <Button type="submit" disabled={isSubmitting} className="w-full">
         {isSubmitting ? contactForm.buttons.submit.loading : contactForm.buttons.submit.text}
       </Button>
-      {isSubmitSuccessful && (
+      {(isSubmitSuccessful || isSuccessFromNetlify) && (
         <div className="text-green-600 mt-2" role="status">{contactForm.success}</div>
       )}
     </form>

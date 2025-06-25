@@ -19,6 +19,8 @@ This guide helps you deploy and manage the Autio Strategies website using Netlif
 - **Global CDN** - Fast loading worldwide
 - **Easy domain management** - Simple SSL and DNS setup
 - **Excellent support** - Great documentation and community
+- **Form spam protection** - Built-in filtering and security
+- **Email notifications** - Automatic emails on form submissions
 
 ### Creating a Netlify Account
 
@@ -59,6 +61,16 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 1. Click "Deploy site"
 2. Wait 2-5 minutes for first deployment
 3. You'll get a URL like: `https://random-name.netlify.app`
+
+#### **Step 5: Verify Forms**
+1. After deployment, check "Forms" in Netlify dashboard
+2. Verify all forms are detected:
+   - `contact` - Contact form
+   - `newsletter` - Newsletter signup
+   - `newsletter-signup` - Newsletter section
+   - `consultation` - Consultation form
+3. Test form submissions
+4. Check email notifications are working
 
 ---
 
@@ -264,6 +276,7 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 4. **Save the file**
 5. **Push to GitHub** (or contact developer to push)
 6. **Wait for automatic deployment** (2-3 minutes)
+7. **Test forms** to ensure they still work correctly
 
 #### **For Images:**
 1. **Upload new image** to appropriate folder in `public/images/`
@@ -271,11 +284,21 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 3. **Push to GitHub** (or contact developer to push)
 4. **Wait for automatic deployment**
 
+#### **For Form Content:**
+1. **Open the content file:** `src/data/content.ts`
+2. **Find the forms section** you want to edit
+3. **Edit form labels, messages, or success text**
+4. **Save the file**
+5. **Push to GitHub** (or contact developer to push)
+6. **Wait for automatic deployment**
+7. **Test form functionality** and success messages
+
 #### **For New Pages/Features:**
 1. **Contact developer** to create new pages or features
 2. **Review preview deployment** before going live
-3. **Approve changes** when satisfied
-4. **Deploy to production**
+3. **Test all forms** in preview environment
+4. **Approve changes** when satisfied
+5. **Deploy to production**
 
 ### Previewing Changes Before Going Live
 
@@ -288,6 +311,8 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 2. **Review Changes:**
    - Visit preview URL
    - Test all functionality
+   - **Test all forms** (contact, newsletter, consultation)
+   - Check form success messages
    - Check on mobile devices
    - Verify design looks correct
 
@@ -301,7 +326,20 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
    - Go to Deployments tab
    - Find latest deployment
    - Click "Preview" to preview
-   - Test thoroughly
+   - Test thoroughly including forms
+
+### Form Testing Checklist
+
+#### **After Any Deployment:**
+- [ ] Contact form submits successfully
+- [ ] Newsletter form submits successfully
+- [ ] Consultation form submits successfully
+- [ ] Form success messages appear
+- [ ] Form redirects work correctly
+- [ ] No JavaScript errors in console
+- [ ] Forms work on mobile devices
+- [ ] Email notifications are received
+- [ ] Form submissions appear in Netlify dashboard
 
 ### Rolling Back Changes
 
@@ -678,7 +716,8 @@ Thanks!
    - Check on mobile device
    - Ask someone else to test
 3. **Check Netlify status** at [netlify-status.com](https://netlify-status.com)
-4. **Document the problem** with screenshots
+4. **Test form functionality** - check if forms are working
+5. **Document the problem** with screenshots
 
 #### **If Website is Completely Down:**
 1. **Contact developer immediately**
@@ -686,8 +725,30 @@ Thanks!
    - What you were doing when it broke
    - Error messages you see
    - Screenshots of the issue
+   - Form functionality status
 3. **Check recent changes** that might have caused it
 4. **Prepare backup communication** if needed
+
+### Form-Specific Issues
+
+#### **If Forms Stop Working:**
+1. **Check Netlify Forms Dashboard:**
+   - Log into Netlify dashboard
+   - Go to Forms section
+   - Verify forms are still detected
+   - Check for any form errors
+
+2. **Test Form Submissions:**
+   - Try submitting each form type
+   - Check for success messages
+   - Verify email notifications
+   - Test on different devices
+
+3. **Common Form Issues:**
+   - **Forms not detected:** Check `public/forms.html` exists
+   - **Success messages not showing:** Check URL parameters
+   - **Email notifications not working:** Check Netlify settings
+   - **Spam submissions:** Review spam filtering settings
 
 ### How to Quickly Revert to Previous Version
 
@@ -698,7 +759,7 @@ Thanks!
 4. **Click "Publish deploy"**
 5. **Confirm the rollback**
 6. **Wait 1-2 minutes for deployment**
-7. **Test website functionality**
+7. **Test website functionality including forms**
 
 #### **If Rollback Doesn't Work:**
 1. **Contact developer immediately**
@@ -729,6 +790,7 @@ The website is currently down and I need immediate assistance.
 **Issue:** [Brief description]
 **When it started:** [Time/date]
 **Error messages:** [Any error text]
+**Form status:** [Are forms working?]
 **What I was doing:** [Context]
 **Screenshots:** [Attached]
 
@@ -736,6 +798,7 @@ I've already tried:
 - [ ] Different browser
 - [ ] Mobile device
 - [ ] Checked Netlify status
+- [ ] Tested form functionality
 - [ ] Attempted rollback
 
 Please contact me immediately at [your phone number].
@@ -787,6 +850,9 @@ Thanks,
 | Articles | `src/data/insights.ts` | Blog posts and resources |
 | SEO Metadata | `src/data/metadata.ts` | Page titles and descriptions |
 | Images | `public/images/` | Logos, photos, graphics |
+| Form Configuration | `src/data/content.ts` | Form labels, messages, names |
+| Netlify Config | `netlify.toml` | Deployment and form settings |
+| Form Detection | `public/forms.html` | Static forms for Netlify |
 | Configuration | `next.config.mjs` | Build settings |
 | Environment | Netlify Dashboard | API keys, settings |
 
@@ -794,12 +860,28 @@ Thanks,
 
 - [ ] Website accessible?
 - [ ] All pages loading?
-- [ ] Forms working?
+- [ ] Forms working and submitting?
+- [ ] Form success messages appearing?
 - [ ] Images displaying?
 - [ ] SSL certificate valid?
 - [ ] Mobile site working?
 - [ ] No error messages?
 - [ ] Performance acceptable?
+- [ ] Netlify deployment successful?
+- [ ] Form submissions being received?
+
+### Form Testing Checklist
+
+- [ ] Contact form submits successfully
+- [ ] Newsletter form submits successfully
+- [ ] Consultation form submits successfully
+- [ ] Form success messages appear
+- [ ] Form redirects work correctly
+- [ ] No JavaScript errors in console
+- [ ] Forms work on mobile devices
+- [ ] Email notifications are received
+- [ ] Form submissions appear in Netlify dashboard
+- [ ] Spam filtering is working
 
 ### Contact Information Template
 

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms - Autio Strategies</title>
+</head>
+<body>
+    <!-- Contact Form -->
+    <form name="contact" method="POST" data-netlify="true" style="display: none;">
+        <input type="hidden" name="form-name" value="contact" />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="checkbox" name="services" value="ai-policy-development" />
+        <input type="checkbox" name="services" value="technology-governance" />
+        <input type="checkbox" name="services" value="regulatory-compliance" />
+        <input type="checkbox" name="services" value="government-relations" />
+        <input type="checkbox" name="services" value="strategic-advisory" />
+        <input type="checkbox" name="services" value="other" />
+        <input type="text" name="otherService" />
+        <textarea name="message"></textarea>
+    </form>
+
+    <!-- Newsletter Form -->
+    <form name="newsletter" method="POST" data-netlify="true" style="display: none;">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <input type="email" name="email" />
+    </form>
+
+    <!-- Newsletter Signup Form -->
+    <form name="newsletter-signup" method="POST" data-netlify="true" style="display: none;">
+        <input type="hidden" name="form-name" value="newsletter-signup" />
+        <input type="email" name="email" />
+    </form>
+
+    <!-- Consultation Form -->
+    <form name="consultation" method="POST" data-netlify="true" style="display: none;">
+        <input type="hidden" name="form-name" value="consultation" />
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <input type="text" name="organization" />
+        <select name="service">
+            <option value="AI Policy Development">AI Policy Development</option>
+            <option value="Technology Governance">Technology Governance</option>
+            <option value="Regulatory Compliance">Regulatory Compliance</option>
+            <option value="Government Relations">Government Relations</option>
+            <option value="Strategic Advisory">Strategic Advisory</option>
+        </select>
+        <textarea name="message"></textarea>
+    </form>
+</body>
+</html> 

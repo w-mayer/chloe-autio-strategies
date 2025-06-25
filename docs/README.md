@@ -8,7 +8,8 @@ Autio Strategies provides expert guidance for government and enterprise leaders 
 
 ### Key Features
 - **Service Showcase**: Comprehensive display of consulting services including insight analysis, research, policy development, and events facilitation
-- **Content Management**: Dynamic content system for articles, policy briefs, case studies, and resources
+- **Content Management**: Centralized content system for easy non-technical updates
+- **Form Handling**: Netlify-powered forms with spam protection and email notifications
 - **Interactive Animations**: Sophisticated text animations and hover effects for enhanced user experience
 - **Responsive Design**: Mobile-first approach with optimized performance across all devices
 - **SEO Optimized**: Comprehensive metadata, structured data, and performance optimization
@@ -40,10 +41,11 @@ Autio Strategies provides expert guidance for government and enterprise leaders 
 - **PostCSS**: CSS processing
 - **Prettier**: Code formatting
 
-### Deployment
-- **Platform**: Vercel (recommended) or any Next.js-compatible hosting
+### Deployment & Forms
+- **Platform**: Netlify (recommended) with automatic form handling
+- **Form Processing**: Netlify Forms with spam protection
 - **Database**: Static site - no database required
-- **External Services**: None currently integrated
+- **Email Notifications**: Built-in Netlify form notifications
 
 ## Project Structure
 
@@ -61,22 +63,27 @@ chloe-autio-strategies/
 │   │   └── page.tsx           # Home page
 │   ├── components/            # Reusable components
 │   │   ├── content/           # Content display components
-│   │   ├── forms/             # Form components
+│   │   ├── forms/             # Netlify-enabled form components
 │   │   ├── layout/            # Layout components
 │   │   ├── sections/          # Page sections
 │   │   └── ui/                # Base UI components
-│   ├── data/                  # Static data and content
+│   ├── data/                  # Centralized content and data
+│   │   ├── content.ts         # ALL website text content (main file)
 │   │   ├── insights.ts        # Articles, policy briefs, case studies
-│   │   └── services.ts        # Services data
+│   │   ├── services.ts        # Services data
+│   │   └── metadata.ts        # SEO and page metadata
 │   ├── lib/                   # Utility functions and constants
 │   │   ├── constants.ts       # Site constants and metadata
 │   │   ├── hooks/             # Custom React hooks
 │   │   └── utils.ts           # Common utilities
 │   └── types/                 # TypeScript type definitions
 ├── public/                    # Static assets
-│   └── images/               # Image assets
+│   ├── images/               # Image assets
+│   └── forms.html            # Netlify form detection file
 ├── scripts/                   # Build and utility scripts
-└── docs/                      # Documentation files
+├── docs/                      # Documentation files
+├── netlify.toml              # Netlify configuration
+└── docs/NETLIFY_FORMS.md     # Form configuration guide
 ```
 
 ### Key Configuration Files
@@ -84,6 +91,8 @@ chloe-autio-strategies/
 - **`tailwind.config.ts`**: Tailwind CSS configuration with custom design system
 - **`tsconfig.json`**: TypeScript configuration
 - **`.eslintrc.json`**: ESLint rules and configuration
+- **`netlify.toml`**: Netlify deployment and form configuration
+- **`public/forms.html`**: Static HTML forms for Netlify detection
 
 ## Getting Started
 
@@ -115,7 +124,7 @@ chloe-autio-strategies/
 
 ### Environment Variables
 
-This project currently operates as a static site and doesn't require environment variables. However, if you plan to integrate external services, create a `.env.local` file in the root directory:
+This project operates as a static site with Netlify form handling. No environment variables are required for basic functionality. However, if you plan to integrate additional services, create a `.env.local` file in the root directory:
 
 ```bash
 # Example environment variables (not currently required)
@@ -131,6 +140,7 @@ This project currently operates as a static site and doesn't require environment
 - [ ] Install dependencies with `npm install`
 - [ ] Start development server with `npm run dev`
 - [ ] Verify the site loads at http://localhost:3000
+- [ ] Test form functionality (contact, newsletter, consultation)
 - [ ] Run `npm run type-check` to verify TypeScript
 - [ ] Run `npm run lint` to check code quality
 
@@ -151,13 +161,53 @@ This project currently operates as a static site and doesn't require environment
 ## Key Integrations
 
 ### Current Integrations
-- **None currently active** - This is a static site with no external service integrations
+- **Netlify Forms**: Automatic form handling with spam protection
+- **Email Notifications**: Built-in Netlify form notifications
+- **Content Centralization**: All text content in `src/data/content.ts`
 
 ### Planned Integrations
-- **Email Services**: Contact form submission handling
 - **Analytics**: Google Analytics or similar for user tracking
 - **Social Media**: LinkedIn sharing capabilities
 - **Content Management**: Headless CMS for dynamic content updates
+- **Email Marketing**: Newsletter service integration
+
+## Content Management
+
+### Centralized Content System
+
+**All website text is centralized** in `src/data/content.ts` for easy non-technical updates:
+
+- **Site Information**: Company name, contact details, social links
+- **Navigation**: Menu items and links
+- **Page Content**: Hero sections, service descriptions, team bios
+- **Forms**: Labels, placeholders, error messages, success messages
+- **UI Elements**: Button text, loading states, aria labels
+
+### Content Updates
+
+**For Non-Technical Users:**
+1. Open `src/data/content.ts` in any text editor
+2. Find the section you want to edit (use Ctrl+F to search)
+3. Edit text between quotes: `'Your new text here'`
+4. Save the file and refresh the website
+
+**For Developers:**
+- Follow TypeScript interfaces in `src/types/`
+- Maintain content structure and organization
+- Test changes locally before deployment
+
+### Form Configuration
+
+**Netlify Forms** are configured with:
+- Automatic spam protection
+- Email notifications
+- Success/error redirects
+- Centralized form content
+
+**Form Types:**
+- **Contact Form**: General inquiries with service selection
+- **Newsletter Form**: Email signup for updates
+- **Consultation Form**: Detailed consultation requests
 
 ## Development Guidelines
 
@@ -170,7 +220,7 @@ This project currently operates as a static site and doesn't require environment
   - `layout/` - Layout components (Header, Footer, Navigation)
   - `sections/` - Page sections (Hero, ServicesGrid, etc.)
   - `content/` - Content display components (ArticleCard, etc.)
-  - `forms/` - Form components (ContactForm, etc.)
+  - `forms/` - Netlify-enabled form components
 
 **File Naming**
 - Components: PascalCase (e.g., `AuthorityHeading.tsx`)
@@ -197,6 +247,7 @@ This project currently operates as a static site and doesn't require environment
 - React hooks for local component state
 - No global state management required (static site)
 - Form state handled by React Hook Form
+- Netlify handles form submissions and notifications
 
 **Future Considerations**
 - Consider Zustand or Redux Toolkit if global state needed
@@ -214,24 +265,6 @@ This project currently operates as a static site and doesn't require environment
 - Leverage Tailwind's animation utilities
 - Ensure 60fps performance
 
-## Content Management
-
-### Static Data Files
-- **`src/data/services.ts`**: Service offerings and details
-- **`src/data/insights.ts`**: Articles, policy briefs, case studies
-
-### Content Updates
-1. Edit the appropriate data file in `src/data/`
-2. Follow the established TypeScript interfaces
-3. Test changes locally
-4. Deploy through the standard deployment process
-
-### Image Assets
-- Store images in `public/images/`
-- Use Next.js Image component for optimization
-- Follow the established naming conventions
-- Optimize images before adding to the project
-
 ## Troubleshooting
 
 ### Common Issues
@@ -248,6 +281,12 @@ npm install
 # Check for TypeScript errors
 npm run type-check
 ```
+
+**Form Issues**
+- Verify `data-netlify="true"` attributes on forms
+- Check `public/forms.html` exists for form detection
+- Ensure form names match in `src/data/content.ts`
+- Test form submissions in Netlify dashboard
 
 **Development Server Issues**
 ```bash
@@ -306,16 +345,17 @@ npm run build
 - Next.js logs in terminal output
 
 **Production Logs**
-- Vercel dashboard (if deployed on Vercel)
-- Hosting platform logs
+- Netlify dashboard for deployment and form logs
 - Browser console for client-side errors
 
 ## Additional Documentation
 
 For detailed information on specific topics, refer to:
 
-- **[Deployment Guide](DEPLOYMENT.md)** - Comprehensive deployment instructions for multiple platforms
+- **[Content Editing Guide](CONTENT_EDITING.md)** - Complete guide for non-technical content updates
+- **[Deployment Guide](DEPLOYMENT.md)** - Comprehensive deployment instructions for Netlify
 - **[Maintenance Guide](MAINTENANCE.md)** - Non-technical user guide for website management
+- **[Netlify Forms Guide](NETLIFY_FORMS.md)** - Form configuration and troubleshooting
 
 ## Contributing
 
@@ -325,6 +365,7 @@ For detailed information on specific topics, refer to:
 4. Test your changes thoroughly
 5. Ensure accessibility compliance
 6. Update documentation for new features
+7. Maintain content centralization approach
 
 ## License
 

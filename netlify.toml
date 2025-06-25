@@ -1,0 +1,47 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/forms.html"
+  to = "/"
+  status = 301
+
+# Form handling
+[[redirects]]
+  from = "/contact"
+  to = "/contact?success=true"
+  status = 302
+  conditions = {Role = ["admin"]}
+
+[[redirects]]
+  from = "/newsletter"
+  to = "/?newsletter=success"
+  status = 302
+  conditions = {Role = ["admin"]}
+
+[[redirects]]
+  from = "/consultation"
+  to = "/contact?consultation=success"
+  status = 302
+  conditions = {Role = ["admin"]}
+
+# Handle form submissions
+[[redirects]]
+  from = "/"
+  to = "/?form=success"
+  status = 302
+  conditions = {Role = ["admin"]}
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-ancestors 'none';" 

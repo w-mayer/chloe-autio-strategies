@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/Textarea';
 import { Button } from '@/components/ui/button';
 import { services } from '@/data/services';
 import { siteContent } from '@/data/content';
+import { useSearchParams } from 'next/navigation';
 
 const ConsultationSchema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -52,6 +53,7 @@ export function ConsultationFormSkeleton() {
 export function ConsultationForm({ isLoading = false }: { isLoading?: boolean }) {
   const { forms } = siteContent;
   const consultationForm = forms.consultation;
+  const searchParams = useSearchParams();
   
   const {
     register,
@@ -63,13 +65,26 @@ export function ConsultationForm({ isLoading = false }: { isLoading?: boolean })
   });
   if (isLoading) return <ConsultationFormSkeleton />;
 
+  // Check for success parameter from Netlify redirect
+  const isSuccessFromNetlify = searchParams.get('consultation') === 'success';
+
   async function onSubmit(data: ConsultationFormValues) {
     console.log('Consultation form submitted:', data);
     reset();
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 max-w-lg" aria-label={consultationForm.title}>
+    <form 
+      onSubmit={handleSubmit(onSubmit)} 
+      className="space-y-4 max-w-lg" 
+      aria-label={consultationForm.title}
+      data-netlify="true"
+      name={consultationForm.netlifyName}
+      method="POST"
+    >
+      {/* Netlify form detection */}
+      <input type="hidden" name="form-name" value={consultationForm.netlifyName} />
+      
       <div>
         <label htmlFor="name" className="form-label">{consultationForm.fields.name.label}</label>
         <Input id="name" {...register('name')} error={errors.name?.message} required aria-invalid={!!errors.name} />
@@ -105,7 +120,7 @@ export function ConsultationForm({ isLoading = false }: { isLoading?: boolean })
       <Button type="submit" disabled={isSubmitting} className="w-full">
         {isSubmitting ? consultationForm.buttons.submit.loading : consultationForm.buttons.submit.text}
       </Button>
-      {isSubmitSuccessful && (
+      {(isSubmitSuccessful || isSuccessFromNetlify) && (
         <div className="text-green-600 mt-2" role="status">{consultationForm.success}</div>
       )}
     </form>

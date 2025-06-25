@@ -47,42 +47,42 @@ export const siteContent = {
     logos: [
       { 
         name: 'Cohere', 
-        image: '/images/partner_logos/svg_logos/Cohere-Logo.svg',
+        image: '/images/partner_logos/Cohere-Logo.png',
         alt: 'Cohere Logo'
       },
       { 
         name: 'Department of Defense', 
-        image: '/images/partner_logos/svg_logos/DoD-Logo-Stacked.svg',
+        image: '/images/partner_logos/DoD-Logo-Stacked.png',
         alt: 'Department of Defense Logo'
       },
       { 
         name: 'NIST', 
-        image: '/images/partner_logos/svg_logos/f_nist-logo-brand-black.svg',
+        image: '/images/partner_logos/f_nist-logo-brand-black.png',
         alt: 'NIST Logo'
       },
       { 
         name: 'Google Cloud Platform', 
-        image: '/images/partner_logos/svg_logos/Google_Cloud_Platform-Logo.svg',
+        image: '/images/partner_logos/Google_Cloud_Platform-Logo.png',
         alt: 'Google Cloud Platform Logo'
       },
       { 
         name: 'Google DeepMind', 
-        image: '/images/partner_logos/svg_logos/Google_DeepMind_logo.svg',
+        image: '/images/partner_logos/Google_DeepMind_logo.png',
         alt: 'Google DeepMind Logo'
       },
       { 
         name: 'Meta', 
-        image: '/images/partner_logos/svg_logos/Meta-Logo.svg',
+        image: '/images/partner_logos/Meta-Logo.png',
         alt: 'Meta Logo'
       },
       { 
         name: 'OECD', 
-        image: '/images/partner_logos/svg_logos/OCED.svg',
+        image: '/images/partner_logos/OCED.jpeg',
         alt: 'OECD Logo'
       },
       { 
         name: 'Uber', 
-        image: '/images/partner_logos/svg_logos/Uber_logo_2018.svg',
+        image: '/images/partner_logos/Uber_logo_2018.png',
         alt: 'Uber Logo'
       },
     ],
@@ -246,6 +246,7 @@ export const siteContent = {
   forms: {
     contact: {
       title: 'Contact Form',
+      netlifyName: 'contact',
       fields: {
         name: { label: 'Name', placeholder: '', error: 'Name is required' },
         email: { label: 'Email', placeholder: '', error: 'Invalid email address' },
@@ -266,6 +267,16 @@ export const siteContent = {
     },
     newsletter: {
       title: 'Newsletter Signup',
+      netlifyName: 'newsletter',
+      description: 'Stay updated with the latest insights in AI policy and technology governance.',
+      placeholder: 'Enter your email address',
+      button: { text: 'Subscribe', loading: 'Subscribing...' },
+      success: 'Thank you for subscribing!',
+      error: 'Please enter a valid email address.',
+    },
+    newsletterSignup: {
+      title: 'Newsletter Signup',
+      netlifyName: 'newsletter-signup',
       description: 'Stay updated with the latest insights in AI policy and technology governance.',
       placeholder: 'Enter your email address',
       button: { text: 'Subscribe', loading: 'Subscribing...' },
@@ -274,6 +285,7 @@ export const siteContent = {
     },
     consultation: {
       title: 'Request Consultation',
+      netlifyName: 'consultation',
       description: 'Schedule a consultation to discuss your organization\'s AI policy and governance needs.',
       fields: {
         name: { label: 'Full Name', placeholder: 'Enter your full name' },

@@ -6,6 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/button';
 import { siteContent } from '@/data/content';
+import { useSearchParams } from 'next/navigation';
 
 const NewsletterSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -27,6 +28,7 @@ export function NewsletterFormSkeleton() {
 export function NewsletterForm({ isLoading = false }: { isLoading?: boolean }) {
   const { forms } = siteContent;
   const newsletterForm = forms.newsletter;
+  const searchParams = useSearchParams();
   
   const {
     register,
@@ -38,13 +40,26 @@ export function NewsletterForm({ isLoading = false }: { isLoading?: boolean }) {
   });
   if (isLoading) return <NewsletterFormSkeleton />;
 
+  // Check for success parameter from Netlify redirect
+  const isSuccessFromNetlify = searchParams.get('newsletter') === 'success';
+
   async function onSubmit(data: NewsletterFormValues) {
     console.log('Newsletter signup:', data);
     reset();
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full max-w-md" aria-label={newsletterForm.title}>
+    <form 
+      onSubmit={handleSubmit(onSubmit)} 
+      className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full max-w-md" 
+      aria-label={newsletterForm.title}
+      data-netlify="true"
+      name={newsletterForm.netlifyName}
+      method="POST"
+    >
+      {/* Netlify form detection */}
+      <input type="hidden" name="form-name" value={newsletterForm.netlifyName} />
+      
       <label htmlFor="newsletter-email" className="sr-only">Email address</label>
       <Input
         id="newsletter-email"
@@ -59,7 +74,7 @@ export function NewsletterForm({ isLoading = false }: { isLoading?: boolean }) {
       <Button type="submit" disabled={isSubmitting} aria-label={newsletterForm.button.text}>
         {isSubmitting ? newsletterForm.button.loading : newsletterForm.button.text}
       </Button>
-      {isSubmitSuccessful && (
+      {(isSubmitSuccessful || isSuccessFromNetlify) && (
         <div className="text-green-600 mt-2 w-full text-center" role="status">{newsletterForm.success}</div>
       )}
     </form>
