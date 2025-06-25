@@ -1,0 +1,187 @@
+export interface Author {
+  name: string;
+  title: string;
+  bio: string;
+  avatarUrl: string;
+}
+
+export interface Article {
+  slug: string;
+  title: string;
+  summary: string;
+  content: string;
+  date: string;
+  author: Author;
+  tags: string[];
+  featured?: boolean;
+  related: string[]; // slugs of related articles
+  externalUrl?: string; // Optional external link for news articles
+}
+
+export interface PolicyBrief {
+  slug: string;
+  title: string;
+  summary: string;
+  content: string;
+  date: string;
+  author: Author;
+  tags: string[];
+}
+
+export interface CaseStudy {
+  slug: string;
+  title: string;
+  summary: string;
+  content: string;
+  date: string;
+  organization: string;
+  author: Author;
+  tags: string[];
+}
+
+export interface Resource {
+  slug: string;
+  title: string;
+  url: string;
+  description: string;
+  type: 'report' | 'toolkit' | 'dataset' | 'guideline';
+}
+
+export const authors: Author[] = [
+  {
+    name: 'Chloe Autio',
+    title: 'Founder, Chloe Autio Strategies',
+    bio: 'Chloe Autio is a leading expert in AI policy, governance, and technology strategy, advising government and enterprise clients on responsible innovation.',
+    avatarUrl: '/profile-placeholder.jpg',
+  },
+  {
+    name: 'External Source',
+    title: 'External News Outlet',
+    bio: 'This article is featured as a resource from a leading news organization.',
+    avatarUrl: '/profile-placeholder.jpg',
+  },
+];
+
+export const articles: Article[] = [
+  {
+    slug: 'wsj-trump-ai-kratsios-thiel',
+    title: 'Trump Taps Michael Kratsios, Peter Thiel Protégé, for AI Policy Role',
+    summary: 'Wall Street Journal coverage of Trump\'s appointment of Michael Kratsios to lead AI policy, with insights on Peter Thiel\'s influence.',
+    content: '<p>Read the full article at the Wall Street Journal.</p>',
+    date: '2025-03-30',
+    author: authors[1],
+    tags: ['AI Policy', 'Trump', 'Kratsios', 'WSJ'],
+    featured: true,
+    related: [],
+    externalUrl: 'https://www.wsj.com/politics/policy/trump-ai-michael-kratsios-peter-thiel-protege-1457e276?gaa_at=eafs&gaa_n=ASWzDAgOWM6oChXjBrH5loUci3BtDKlAtOMWZ_YEBBgsXVFQazOdR-9aTvaVUeUW3Eg%3D&gaa_ts=685b774e&gaa_sig=A-FqfocXwtTkC3KwHT6XWeaWKSgptOmyDfpKOp-DarBkOWJr8mYjLw2N1kieFSCXdJMljAH1PgP0qywsQpMGzQ%3D%3D',
+  },
+  {
+    slug: 'politico-paris-ai-summit',
+    title: 'Paris AI Summit: Vance, Musk, Macron, DeepSeek',
+    summary: 'POLITICO\'s Digital Future Daily newsletter recaps the Paris AI Summit, featuring Vance, Musk, Macron, and DeepSeek.',
+    content: '<p>Read the full article at POLITICO.</p>',
+    date: '2025-02-11',
+    author: authors[1],
+    tags: ['AI Summit', 'Paris', 'POLITICO', 'Musk', 'Macron'],
+    featured: true,
+    related: [],
+    externalUrl: 'https://www.politico.com/newsletters/digital-future-daily/2025/02/11/paris-ai-summit-vance-musk-macron-deepseek-00203604',
+  },
+  {
+    slug: 'fortune-trump-ai-crypto-czar-sacks',
+    title: 'Trump AI and Crypto "Czar" Role for David Sacks Scaled Back',
+    summary: 'Fortune reports on the evolving role of David Sacks as Trump\'s AI and crypto advisor, and the tech industry\'s response.',
+    content: '<p>Read the full article at Fortune.</p>',
+    date: '2024-12-20',
+    author: authors[1],
+    tags: ['AI Policy', 'Crypto', 'Trump', 'Sacks', 'Fortune'],
+    featured: true,
+    related: [],
+    externalUrl: 'https://fortune.com/2024/12/20/trump-ai-crypto-czar-role-limited-david-sacks-silicon-valley-commitments/',
+  },
+  {
+    slug: 'wsj-election-wargames-tech-politics',
+    title: 'Election Wargames: Tech and Politics Try Their Hands at Detecting Voting Threats',
+    summary: 'Wall Street Journal explores how tech and political leaders are preparing for election security threats in 2024.',
+    content: '<p>Read the full article at the Wall Street Journal.</p>',
+    date: '2024-11-04',
+    author: authors[1],
+    tags: ['Election Security', 'Tech Policy', 'WSJ'],
+    featured: true,
+    related: [],
+    externalUrl: 'https://www.wsj.com/articles/election-wargames-tech-and-politics-try-their-hands-at-detecting-voting-threats-70ba3331?gaa_at=eafs&gaa_n=ASWzDAgUfo9m81vO9Xz5fOjBfA0WrYxhD3QKMEy761v2zQjbeWyJV8O2i5EX47Vji4Q%3D&gaa_ts=6855ca2f&gaa_sig=dRPSE8ravwIF-nB426iz1uy5sj-8e_94QpOEh3xH6sERAin1QDT8f0339LBFPYGVIjYYxIYfkJINh-QKIALklw%3D%3D',
+  },
+  {
+    slug: 'navigating-ai-regulation-2025',
+    title: 'Navigating the Evolving Landscape of AI Regulation in 2025',
+    summary: 'A comprehensive overview of global AI regulatory trends and what they mean for government and enterprise leaders.',
+    content: '<p>As AI technologies advance, regulatory frameworks are rapidly evolving. This article explores the latest developments in AI policy, compliance requirements, and best practices for organizations operating in this dynamic environment.</p>',
+    date: '2024-06-01',
+    author: authors[0],
+    tags: ['AI Policy', 'Regulation', 'Compliance'],
+    featured: true,
+    related: ['ai-governance-best-practices'],
+  },
+  {
+    slug: 'ai-governance-best-practices',
+    title: 'Best Practices for AI Governance in the Public Sector',
+    summary: 'Key strategies for implementing effective AI governance frameworks in government agencies.',
+    content: '<p>Effective AI governance is essential for public trust and accountability. This article outlines actionable steps for agencies to establish robust oversight and risk management processes.</p>',
+    date: '2024-05-15',
+    author: authors[0],
+    tags: ['AI Governance', 'Public Sector'],
+    related: ['navigating-ai-regulation-2025'],
+  },
+];
+
+export const policyBriefs: PolicyBrief[] = [
+  {
+    slug: 'us-ai-policy-brief',
+    title: 'U.S. Federal AI Policy: 2024 Brief',
+    summary: 'An executive summary of recent U.S. federal actions on AI policy and implications for regulated entities.',
+    content: '<p>This brief distills the latest federal guidance, executive orders, and legislative proposals shaping the U.S. AI policy landscape.</p>',
+    date: '2024-04-20',
+    author: authors[0],
+    tags: ['Policy Brief', 'Federal Policy'],
+  },
+];
+
+export const caseStudies: CaseStudy[] = [
+  {
+    slug: 'public-sector-ai-implementation',
+    title: 'AI Implementation in the Public Sector: A Case Study',
+    summary: 'How a federal agency successfully deployed AI for regulatory compliance and operational efficiency.',
+    content: '<p>This case study examines the challenges, solutions, and outcomes of a major AI deployment in a government context.</p>',
+    date: '2024-03-10',
+    organization: 'U.S. Federal Agency',
+    author: authors[0],
+    tags: ['Case Study', 'Public Sector', 'AI Implementation'],
+  },
+  {
+    slug: 'placeholder-case-study',
+    title: 'Placeholder Case Study',
+    summary: 'This is a placeholder case study to preview the UI.',
+    content: '<p>Placeholder content for the case study. Replace with real content.</p>',
+    date: '2024-07-01',
+    organization: 'Placeholder Organization',
+    author: authors[0],
+    tags: ['Placeholder', 'Case Study'],
+  },
+];
+
+export const resources: Resource[] = [
+  {
+    slug: 'nist-ai-risk-management-framework',
+    title: 'NIST AI Risk Management Framework',
+    url: 'https://www.nist.gov/itl/ai-risk-management-framework',
+    description: 'Comprehensive framework for managing risks associated with AI systems, published by NIST.',
+    type: 'guideline',
+  },
+  {
+    slug: 'oecd-ai-policy-observatory',
+    title: 'OECD AI Policy Observatory',
+    url: 'https://oecd.ai/',
+    description: 'Global resource for AI policy analysis, data, and best practices.',
+    type: 'report',
+  },
+]; 

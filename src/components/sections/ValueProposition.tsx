@@ -1,0 +1,121 @@
+'use client';
+import React from 'react';
+import AuthorityHeading from '@/components/ui/AuthorityHeading';
+import { motion } from 'framer-motion';
+
+function useInViewAnimationVP() {
+  const ref = React.useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!ref.current) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setInView(true);
+      return;
+    }
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, inView] as const;
+}
+
+interface CardProps {
+  title: string;
+  desc: string;
+  index: number;
+}
+
+function Card({ title, desc, index }: CardProps) {
+  const [ref, inView] = useInViewAnimationVP();
+  const delay = index * 0.2; // 200ms per card
+  const [hasMounted, setHasMounted] = React.useState(false);
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  // Ripple effect on click
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const ripple = document.createElement('div');
+    ripple.className = 'service-card-ripple';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    ripple.style.width = '20px';
+    ripple.style.height = '20px';
+    ref.current.appendChild(ripple);
+    setTimeout(() => {
+      if (ripple.parentNode) {
+        ripple.parentNode.removeChild(ripple);
+      }
+    }, 600);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={hasMounted && inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ delay, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      className="service-card"
+      style={{ transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)' }}
+      onClick={handleClick}
+    >
+      <div className="relative h-full flex flex-col justify-between">
+        <h3 className="text-xl font-semibold text-primary mb-2 service-card-icon">{title}</h3>
+        <p className="text-neutral-700 dark:text-neutral-200 text-base body-text service-card-number">{desc}</p>
+      </div>
+    </motion.div>
+  );
+}
+
+export function ValueProposition() {
+  const cards = [
+    {
+      title: 'AI Policy Expertise',
+      desc: 'Decades of experience advising governments, Fortune 500s, and startups on responsible AI, data governance, and emerging tech policy.'
+    },
+    {
+      title: 'Global Perspective',
+      desc: 'Experience working with international organizations (OECD, NIST, DOD, Meta, DeepMind, Google Cloud, Cohere) to shape global standards and best practices.'
+    },
+    {
+      title: 'Proven Results',
+      desc: 'Trusted by leading organizations to deliver actionable insights, drive compliance, and enable responsible innovation in AI and technology.'
+    }
+  ];
+  return (
+    <section className="w-full py-16 md:py-24 bg-white dark:bg-neutral-950">
+      <div className="container mx-auto px-4 flex flex-col items-center text-center">
+        <div className="mb-12">
+          <AuthorityHeading
+            size="h2"
+            className="text-2xl md:text-3xl font-bold text-primary"
+            enableParallax={true}
+            enableProgress={false}
+            enableHighlight={true}
+          >
+            Why Choose Autio Strategies?
+          </AuthorityHeading>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl">
+          {cards.map((card, i) => (
+            <Card key={card.title} title={card.title} desc={card.desc} index={i} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+} 
