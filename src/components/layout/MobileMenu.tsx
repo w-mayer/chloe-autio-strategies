@@ -9,7 +9,7 @@ export interface MobileMenuProps {
 }
 
 export function MobileMenu({ open, onClose }: MobileMenuProps) {
-  const { navigation, site, ui } = siteContent;
+  const { navigation, site } = siteContent;
   const menuRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {

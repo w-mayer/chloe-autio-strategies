@@ -15,5 +15,5 @@ Allow: /public/
 # Crawl delay for respectful crawling
 Crawl-delay: 1
 
-# Sitemap location
-Sitemap: https://chloeautio.com/sitemap.xml 
+# Sitemap location - UPDATE THIS TO YOUR ACTUAL DOMAIN
+Sitemap: https://yourdomain.com/sitemap.xml 
