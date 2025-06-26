@@ -7,6 +7,7 @@ interface AuthorityHeadingProps {
   className?: string;
   size?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   enableHighlight?: boolean;
+  style?: React.CSSProperties;
 }
 
 export const AuthorityHeading: React.FC<AuthorityHeadingProps> = ({
@@ -14,6 +15,7 @@ export const AuthorityHeading: React.FC<AuthorityHeadingProps> = ({
   className = '',
   size = 'h1',
   enableHighlight = true,
+  style,
 }) => {
   const headingRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -75,6 +77,7 @@ export const AuthorityHeading: React.FC<AuthorityHeadingProps> = ({
     <div
       ref={headingRef}
       className={`authority-heading ${className} ${isVisible ? 'visible' : ''} ${underlineComplete ? 'underline-complete' : ''}`}
+      style={style}
     >
       {enableHighlight && (
         <div className="authority-heading-highlight" />

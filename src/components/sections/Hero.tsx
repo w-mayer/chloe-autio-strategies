@@ -40,7 +40,8 @@ export function Hero() {
           <div className="text-container">
             <AuthorityHeading
               size="h1"
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 heading text-eggshell leading-tight"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 heading leading-tight"
+              style={{ color: '#fff' }}
             >
               {hero.title}
             </AuthorityHeading>

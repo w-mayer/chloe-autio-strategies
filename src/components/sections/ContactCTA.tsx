@@ -48,7 +48,8 @@ export function ContactCTA() {
             />
             <AuthorityHeading
               size="h2"
-              className="text-3xl md:text-4xl font-bold mb-4 heading text-eggshell"
+              className="text-3xl md:text-4xl font-bold mb-4 heading"
+              style={{ color: '#fff' }}
             >
               {contactCTA.title}
             </AuthorityHeading>

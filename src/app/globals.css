@@ -759,7 +759,7 @@ body {
 
 /* About page hero - white underline */
 .bg-primary .authority-heading::after {
-  background: #ffffff !important; /* White underline for about page */
+  /* Removed white color override to match hero section eggshell color */
 }
 
 /* Hero section wrapper spacing */
@@ -773,9 +773,7 @@ body {
 }
 
 /* CTA section with background image - white text */
-section.text-eggshell .authority-heading {
-  color: #ffffff !important; /* Force white color for CTA */
-}
+/* Removed white color override to match hero section eggshell color */
 
 .bg-gradient-to-r .authority-heading::after {
   background: linear-gradient(90deg, #E8E9D7, #E1DBA7, #E8E9D7);
@@ -937,10 +935,6 @@ section.text-eggshell .authority-heading {
 
 .insights-hero .authority-heading {
   color: #2D5016 !important;
-}
-
-.force-eggshell {
-  color: #F8F6F0 !important;
 }
 
 /* Override authority heading color for specific homepage sections to use old gray color */
