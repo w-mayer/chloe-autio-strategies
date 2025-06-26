@@ -28,37 +28,46 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
   }, [open]);
 
   if (!open) return null;
+
   return (
-    <div
-      className="fixed inset-0 z-50 flex md:hidden mobile-menu-overlay transition-opacity duration-300"
-      role="dialog"
-      aria-modal="true"
-    >
+    <>
+      {/* Backdrop overlay */}
+      <div 
+        className="fixed inset-0 z-50 bg-black/60 md:hidden"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      
+      {/* Mobile menu panel */}
       <div
         ref={menuRef}
-        className="fixed left-0 top-0 h-full w-full max-w-sm bg-white shadow-2xl flex flex-col animate-slide-in-left focus:outline-none border-r border-gray-200"
+        className="mobile-menu-panel fixed left-0 top-0 z-50 h-full w-80 max-w-[85vw] bg-white shadow-2xl md:hidden"
         tabIndex={-1}
-        role="document"
-        style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18)' }}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Mobile navigation menu"
+        style={{ backgroundColor: '#ffffff' }}
       >
-        <div className="flex items-center justify-between mb-8 p-6">
-          <span className="font-bold text-xl text-gray-900 heading">{site.name}</span>
+        {/* Header */}
+        <div className="mobile-menu-header flex h-16 items-center justify-between border-b border-gray-200 bg-white px-6">
+          <span className="font-bold text-xl text-gray-900">{site.name}</span>
           <button
             onClick={onClose}
-            aria-label={ui.aria.closeMenu}
-            className="text-gray-500 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded p-1 transition-colors"
+            aria-label="Close menu"
+            className="rounded p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary-500"
           >
-            <X className="w-7 h-7" />
+            <X className="h-6 w-6" />
           </button>
         </div>
-        <hr className="border-gray-200 mb-6" />
-        <nav className="px-6">
-          <ul className="flex flex-col gap-3">
+
+        {/* Navigation */}
+        <nav className="mobile-menu-nav flex-1 bg-white px-6 py-6">
+          <ul className="space-y-2">
             {navigation.items.map((item) => (
               <li key={item.name}>
                 <a
                   href={item.href}
-                  className="block px-4 py-3 rounded-lg text-lg font-semibold text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors focus:bg-gray-100 focus:outline-none nav-text"
+                  className="block rounded-lg px-4 py-3 text-lg font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-primary focus:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500"
                   onClick={onClose}
                 >
                   {item.name}
@@ -67,19 +76,30 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             ))}
           </ul>
         </nav>
-        <div className="mt-auto pt-8 pb-6 px-6 text-xs text-gray-500 text-center">
-          &copy; {new Date().getFullYear()} {site.name}
+
+        {/* Footer */}
+        <div className="mobile-menu-footer border-t border-gray-200 bg-white px-6 py-4">
+          <p className="text-center text-sm text-gray-500">
+            &copy; {new Date().getFullYear()} {site.name}
+          </p>
         </div>
       </div>
+
+      {/* Animation styles */}
       <style jsx global>{`
         @keyframes slide-in-left {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(0); }
+          from {
+            transform: translateX(-100%);
+          }
+          to {
+            transform: translateX(0);
+          }
         }
-        .animate-slide-in-left {
-          animation: slide-in-left 0.35s cubic-bezier(0.4,0,0.2,1);
+        
+        .mobile-menu-enter {
+          animation: slide-in-left 0.3s ease-out;
         }
       `}</style>
-    </div>
+    </>
   );
 } 

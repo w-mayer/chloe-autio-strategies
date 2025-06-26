@@ -116,6 +116,184 @@ body {
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
   }
+  
+  /* Mobile menu solid background */
+  .mobile-menu-panel {
+    background-color: #ffffff !important;
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  /* Ensure mobile menu sections are solid */
+  .mobile-menu-header,
+  .mobile-menu-nav,
+  .mobile-menu-footer {
+    background-color: #ffffff !important;
+    background-image: none !important;
+  }
+  
+  /* Mobile responsive layout fixes */
+  @media (max-width: 768px) {
+    /* Container adjustments */
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Hero section mobile fixes */
+    .hero-section {
+      min-height: 100vh;
+      padding: 1rem 0;
+    }
+    
+    /* Authority heading mobile sizing */
+    .authority-heading {
+      font-size: 2rem !important;
+      line-height: 1.2 !important;
+      margin-bottom: 1.5rem !important;
+      padding: 0.5rem 0 !important;
+    }
+    
+    .authority-heading-words {
+      font-size: inherit !important;
+      line-height: inherit !important;
+    }
+    
+    .authority-heading-word {
+      font-size: inherit !important;
+      line-height: inherit !important;
+      margin-right: 0.1em !important;
+    }
+    
+    /* Body text mobile sizing */
+    .body-text {
+      font-size: 1rem !important;
+      line-height: 1.6 !important;
+      margin-bottom: 1.5rem !important;
+      padding: 0 0.5rem !important;
+    }
+    
+    /* Button mobile styling */
+    .btn-primary,
+    .btn-secondary {
+      width: 100% !important;
+      min-height: 44px !important;
+      font-size: 1rem !important;
+      padding: 0.75rem 1.5rem !important;
+      margin-bottom: 0.75rem !important;
+    }
+    
+    /* Button container mobile layout */
+    .button-container {
+      flex-direction: column !important;
+      gap: 0.75rem !important;
+      width: 100% !important;
+      padding: 0 1rem !important;
+    }
+    
+    /* Content container mobile adjustments */
+    .content-container {
+      padding: 1rem !important;
+      max-width: 100% !important;
+    }
+    
+    /* Text container mobile adjustments */
+    .text-container {
+      padding: 0 0.5rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+  }
+  
+  /* Extra small mobile devices */
+  @media (max-width: 480px) {
+    /* Even smaller text for very small screens */
+    .authority-heading {
+      font-size: 1.75rem !important;
+      line-height: 1.1 !important;
+      margin-bottom: 1rem !important;
+    }
+    
+    .body-text {
+      font-size: 0.9rem !important;
+      line-height: 1.5 !important;
+      margin-bottom: 1rem !important;
+    }
+    
+    /* Smaller buttons for very small screens */
+    .btn-primary,
+    .btn-secondary {
+      font-size: 0.9rem !important;
+      padding: 0.625rem 1.25rem !important;
+      min-height: 40px !important;
+    }
+    
+    /* Tighter spacing for very small screens */
+    .container {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+    }
+    
+    .content-container {
+      padding: 0.75rem !important;
+    }
+    
+    .text-container {
+      padding: 0 0.25rem !important;
+    }
+  }
+  
+  /* Landscape mobile devices */
+  @media (max-width: 768px) and (orientation: landscape) {
+    .hero-section {
+      min-height: 100vh;
+      padding: 0.5rem 0;
+    }
+    
+    .authority-heading {
+      font-size: 1.5rem !important;
+      margin-bottom: 0.75rem !important;
+    }
+    
+    .body-text {
+      font-size: 0.875rem !important;
+      margin-bottom: 0.75rem !important;
+    }
+    
+    .button-container {
+      flex-direction: row !important;
+      gap: 0.5rem !important;
+      justify-content: center !important;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+      width: auto !important;
+      min-width: 120px !important;
+      font-size: 0.875rem !important;
+      padding: 0.5rem 1rem !important;
+      margin-bottom: 0 !important;
+    }
+  }
+  
+  /* Prevent horizontal scrolling */
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  /* Ensure proper viewport scaling */
+  @media screen and (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    html {
+      font-size: 13px;
+    }
+  }
 }
 
 /* Service Card Animations - Confident Flow Style */
@@ -684,14 +862,32 @@ section.text-eggshell .authority-heading {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    margin-right: 0.1em !important;
   }
   
   .authority-heading {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+    margin-bottom: 1.5rem !important;
+    padding: 0.5rem 0 !important;
     animation: authorityWordSlide 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+  }
+  
+  .authority-heading-words {
+    font-size: inherit !important;
+    line-height: inherit !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
   }
   
   .authority-heading::after {
     animation: authorityUnderlineDraw 0.4s ease-out 0.6s forwards;
+    height: 2px !important;
   }
   
   .authority-heading::before {
@@ -700,6 +896,16 @@ section.text-eggshell .authority-heading {
   
   .authority-heading-highlight {
     display: none;
+  }
+  
+  /* Prevent text overflow on mobile */
+  .authority-heading,
+  .authority-heading-words,
+  .authority-heading-word {
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+    hyphens: auto !important;
   }
 }
 

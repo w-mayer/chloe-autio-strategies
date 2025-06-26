@@ -13,7 +13,7 @@ export function Hero() {
   const { hero } = siteContent;
   
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-paynesGray">
+    <section className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden bg-paynesGray">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
@@ -30,39 +30,48 @@ export function Hero() {
       {/* Brand green accent bar at the top */}
       <div className="absolute top-0 left-0 w-full h-2 bg-primary z-10" />
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 text-center text-eggshell">
+      <div className="content-container relative z-10 container mx-auto px-4 sm:px-6 text-center text-eggshell">
         <MotionDiv
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           className="max-w-4xl mx-auto"
         >
-          <AuthorityHeading
-            size="h1"
-            className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 heading text-eggshell"
-          >
-            {hero.title}
-          </AuthorityHeading>
-          
-          <MotionP
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="text-xl md:text-2xl mb-8 body-text text-eggshell/90"
-          >
-            {hero.subtitle}
-          </MotionP>
+          <div className="text-container">
+            <AuthorityHeading
+              size="h1"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 heading text-eggshell leading-tight"
+            >
+              {hero.title}
+            </AuthorityHeading>
+            
+            <MotionP
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+              className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 body-text text-eggshell/90 leading-relaxed px-2 sm:px-0"
+            >
+              {hero.subtitle}
+            </MotionP>
+          </div>
           
           <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="button-container flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0"
           >
-            <Button href={hero.buttons.primary.href} className="text-lg px-8 py-3">
+            <Button 
+              href={hero.buttons.primary.href} 
+              className="btn-primary w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-3 min-h-[44px] touch-target"
+            >
               {hero.buttons.primary.text}
             </Button>
-            <Button href={hero.buttons.secondary.href} variant="outline" className="text-lg px-8 py-3 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray">
+            <Button 
+              href={hero.buttons.secondary.href} 
+              variant="outline" 
+              className="btn-secondary w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-3 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray min-h-[44px] touch-target"
+            >
               {hero.buttons.secondary.text}
             </Button>
           </MotionDiv>
