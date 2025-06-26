@@ -1,46 +1,32 @@
 import type { Metadata } from 'next';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
+import { siteMetadata } from '@/data/metadata';
+import { siteContent } from '@/data/content';
 
 export const metadata: Metadata = {
-  title: 'Contact | AI Policy Consulting & Technology Governance',
-  description: 'Contact Autio Strategies for AI policy consulting, technology governance, and regulatory compliance advisory for government and enterprise organizations.',
-  keywords: [
-    'AI policy consulting',
-    'technology governance',
-    'regulatory compliance',
-    'government consulting',
-    'enterprise policy advisory',
-    'AI governance',
-    'tech policy',
-    'compliance consulting',
-    'public sector advisory',
-    'contact'
-  ],
+  title: siteMetadata.pages.contact.title,
+  description: siteMetadata.pages.contact.description,
+  keywords: siteMetadata.pages.contact.keywords,
   openGraph: {
-    title: 'Contact | AI Policy Consulting & Technology Governance',
-    description: 'Contact Autio Strategies for AI policy consulting, technology governance, and regulatory compliance advisory for government and enterprise organizations.',
-    url: 'https://chloeautio.com/contact',
-    siteName: 'Autio Strategies',
-    images: [
-      {
-        url: 'https://chloeautio.com/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Autio Strategies - AI Policy Consulting & Technology Governance'
-      }
-    ],
-    locale: 'en_US',
-    type: 'website'
+    title: siteMetadata.pages.contact.title,
+    description: siteMetadata.pages.contact.description,
+    url: siteMetadata.pages.contact.url,
+    siteName: siteMetadata.default.siteName,
+    images: [siteMetadata.default.image],
+    locale: siteMetadata.default.locale,
+    type: 'website' as const,
   },
   alternates: {
-    canonical: 'https://chloeautio.com/contact'
-  }
+    canonical: siteMetadata.pages.contact.url,
+  },
 };
 
 import ContactPageClient from './ContactPageClient';
 
 export default function ContactPage() {
+  const { ui } = siteContent;
+  
   return (
     <>
       <section className="relative h-[50vh] flex items-center justify-center">
@@ -62,7 +48,7 @@ export default function ContactPage() {
             size="h1"
             className="text-4xl md:text-6xl font-bold mb-6 heading text-eggshell"
           >
-            Contact Us
+            {ui.pages.contact.title}
           </AuthorityHeading>
         </div>
       </section>

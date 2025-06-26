@@ -3,44 +3,26 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { PageTransition } from "@/components/layout/PageTransition";
-import { siteMeta } from "@/lib/constants";
+import { siteMetadata } from "@/data/metadata";
 
 export const metadata: Metadata = {
-  title: "Autio Strategies | AI Policy Consulting & Technology Governance",
-  description: "Professional AI policy consulting, technology governance, and regulatory compliance advisory for government and enterprise organizations.",
-  keywords: [
-    "AI policy consulting",
-    "technology governance",
-    "regulatory compliance",
-    "government consulting",
-    "enterprise policy advisory",
-    "AI governance",
-    "tech policy",
-    "compliance consulting",
-    "public sector advisory",
-    "Autio Strategies"
-  ],
-  authors: [{ name: "Autio Strategies" }],
+  title: siteMetadata.default.title,
+  description: siteMetadata.default.description,
+  keywords: siteMetadata.default.keywords,
+  authors: [{ name: siteMetadata.default.siteName }],
   openGraph: {
-    title: "Autio Strategies | AI Policy Consulting & Technology Governance",
-    description: "Professional AI policy consulting, technology governance, and regulatory compliance advisory for government and enterprise organizations.",
-    url: siteMeta.url,
-    siteName: "Autio Strategies",
-    images: [
-      {
-        url: `${siteMeta.url}/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: "Autio Strategies - AI Policy Consulting & Technology Governance"
-      }
-    ],
-    locale: "en_US",
-    type: "website"
+    title: siteMetadata.default.title,
+    description: siteMetadata.default.description,
+    url: siteMetadata.default.url,
+    siteName: siteMetadata.default.siteName,
+    images: [siteMetadata.default.image],
+    locale: siteMetadata.default.locale,
+    type: 'website' as const,
   },
-  metadataBase: new URL(siteMeta.url),
+  metadataBase: new URL(siteMetadata.default.url),
   alternates: {
-    canonical: siteMeta.url
-  }
+    canonical: siteMetadata.default.url,
+  },
 };
 
 export const viewport: Viewport = {
@@ -64,17 +46,17 @@ export default function RootLayout({
               '@context': 'https://schema.org',
               '@type': 'Organization',
               name: 'Autio Strategies',
-              url: siteMeta.url,
-              logo: `${siteMeta.url}/og-image.png`,
+              url: siteMetadata.default.url,
+              logo: `${siteMetadata.default.url}/images/logo/AutioStrategies_Logo_FullColor_Horz.png`,
               description: 'Professional AI policy consulting, technology governance, and regulatory compliance advisory for government and enterprise organizations.',
               sameAs: [
-                'https://linkedin.com/in/autiostrategies'
+                'https://linkedin.com/in/chloeautio'
               ],
               contactPoint: [{
                 '@type': 'ContactPoint',
-                  email: 'info@autiostrategies.com',
+                email: 'info@chloeautio.com',
                 contactType: 'customer support',
-                url: `${siteMeta.url}/contact`
+                url: `${siteMetadata.default.url}/contact`
               }]
             })
           }}

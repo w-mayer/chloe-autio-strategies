@@ -49,8 +49,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
   const [ref, inView] = useInViewAnimation();
   const delay = getStaggeredDelay(index) / 1000; // seconds for framer-motion
   const router = useRouter();
-  const { services: servicesContent } = siteContent;
-  const { ui } = siteContent;
+  const { services: servicesContent, ui } = siteContent;
 
   const [hasMounted, setHasMounted] = React.useState(false);
   React.useEffect(() => {
@@ -86,6 +85,14 @@ function ServiceCard({ service, index }: ServiceCardProps) {
     router.push(`/services/${service.slug}`);
   };
 
+  // Keyboard handler for accessibility
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      router.push(`/services/${service.slug}`);
+    }
+  };
+
   return (
     <motion.div
       ref={ref}
@@ -94,14 +101,9 @@ function ServiceCard({ service, index }: ServiceCardProps) {
       transition={{ delay, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       className="service-card"
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          handleClick(e as any);
-        }
-      }}
       aria-label={`Service card for ${service.title}`}
     >
       <div className="relative h-full flex flex-col justify-between">
@@ -111,11 +113,14 @@ function ServiceCard({ service, index }: ServiceCardProps) {
         </div>
         <Link
           href={`/services/${service.slug}`}
-          className="mt-auto text-primary font-medium underline underline-offset-4 transition-colors rounded px-2 py-1 service-card-number"
-          onClick={(e) => e.stopPropagation()}
+          className="mt-auto text-primary font-medium underline underline-offset-4 transition-colors rounded px-2 py-1 service-card-number hover:text-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/20 relative z-10 cursor-pointer"
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log('Learn More clicked for:', service.title, 'navigating to:', `/services/${service.slug}`);
+          }}
           aria-label={`${ui.aria.learnMoreAbout} ${service.title}`}
         >
-          {servicesContent.learnMore}
+          {servicesContent.learnMore} →
         </Link>
       </div>
     </motion.div>
@@ -124,10 +129,9 @@ function ServiceCard({ service, index }: ServiceCardProps) {
 
 export function ServicesGrid() {
   const { services: servicesContent } = siteContent;
-  const { ui } = siteContent;
 
   return (
-    <section className="w-full py-16 md:py-24">
+    <section className="w-full py-16 md:py-24 bg-white">
       <div className="container mx-auto px-4">
         <div className="mb-12 flex flex-col items-center text-center">
           <AuthorityHeading
@@ -145,4 +149,4 @@ export function ServicesGrid() {
       </div>
     </section>
   );
-} 
+}

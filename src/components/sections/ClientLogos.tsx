@@ -74,7 +74,7 @@ export function ClientLogos() {
   const { clientLogos } = siteContent;
   
   return (
-    <section className="w-full py-12 md:py-20">
+    <section className="w-full py-12 md:py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="mb-12 flex flex-col items-center text-center">
           <AuthorityHeading

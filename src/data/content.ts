@@ -274,15 +274,6 @@ export const siteContent = {
       success: 'Thank you for subscribing!',
       error: 'Please enter a valid email address.',
     },
-    newsletterSignup: {
-      title: 'Newsletter Signup',
-      netlifyName: 'newsletter-signup',
-      description: 'Stay updated with the latest insights in AI policy and technology governance.',
-      placeholder: 'Enter your email address',
-      button: { text: 'Subscribe', loading: 'Subscribing...' },
-      success: 'Thank you for subscribing!',
-      error: 'Please enter a valid email address.',
-    },
     consultation: {
       title: 'Request Consultation',
       netlifyName: 'consultation',
@@ -313,6 +304,9 @@ export const siteContent = {
       scheduleConsultation: 'Schedule a Consultation',
       requestConsultation: 'Request a Consultation',
       readMore: 'Read More',
+      exploreAllServices: 'Explore All Services',
+      learnAboutTeam: 'Learn About Our Team',
+      exploreServices: 'Explore Our Services',
     },
     loading: {
       loading: 'Loading...',
@@ -329,6 +323,64 @@ export const siteContent = {
       closeMenu: 'Close menu',
       openMenu: 'Open menu',
       learnMoreAbout: 'Learn more about',
+    },
+    cta: {
+      readyToGetStarted: 'Ready to Get Started?',
+      needExpertGuidance: 'Need Expert Guidance?',
+      discussExpertise: "Let's discuss how our expertise can help your organization achieve its goals.",
+      discussServices: "Let's discuss how our comprehensive suite of services can help your organization navigate AI policy and governance challenges.",
+      putInsightsIntoAction: "Ready to put these insights into action? Let's discuss how our expertise can help your organization navigate AI policy and governance challenges.",
+    },
+    pages: {
+      contact: {
+        title: 'Contact Us',
+      },
+      services: {
+        title: 'Our Services',
+        description: 'Autio Strategies offers a comprehensive suite of services designed to empower government and enterprise clients to navigate the evolving landscape of AI and technology policy with confidence and clarity.',
+      },
+      resources: {
+        title: 'Resources & Thought Leadership',
+        description: 'Explore our latest articles, policy briefs, case studies, and curated resources on AI policy, governance, and regulatory topics for government and enterprise leaders.',
+      },
+    },
+    navigation: {
+      backToResources: '← Back to Resources',
+    },
+    sharing: {
+      shareArticle: 'Share this article:',
+      shareCaseStudy: 'Share this case study:',
+      shareBrief: 'Share this brief:',
+      shareOnLinkedIn: 'Share on LinkedIn',
+    },
+    sections: {
+      relatedArticles: 'Related Articles',
+      featuredArticles: 'Featured Articles',
+      policyBriefs: 'Policy Briefs',
+      caseStudies: 'Case Studies',
+      resourceLibrary: 'Resource Library',
+      serviceDetails: 'Service Details',
+      keyBenefits: 'Key Benefits',
+      ourMethodology: 'Our Methodology',
+      relatedServices: 'Related Services',
+    },
+  },
+
+  // Resource-specific content
+  resources: {
+    'placeholder-case-study': {
+      title: 'Placeholder Case Study',
+      subtitle: 'Demonstrating AI governance implementation and regulatory compliance',
+      organization: 'Placeholder Organization',
+      date: 'July 1, 2024',
+      tags: ['Placeholder', 'Case Study', 'AI Governance', 'Implementation'],
+      note: 'This is a placeholder case study designed to demonstrate the structure and content format for real case studies. The specific details, outcomes, and recommendations would be based on actual organizational experiences and results.',
+    },
+    'us-ai-policy-brief': {
+      title: 'U.S. Federal AI Policy: 2024 Brief',
+      subtitle: 'A comprehensive analysis of the evolving U.S. federal AI policy landscape',
+      date: 'April 20, 2024',
+      tags: ['Policy Brief', 'Federal Policy', 'AI Governance', 'Regulation'],
     },
   },
 }; 

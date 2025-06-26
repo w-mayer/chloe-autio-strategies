@@ -23,11 +23,7 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
     return (
       <div
         className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 animate-fadein"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={title ? "modal-title" : undefined}
-        onClick={onClose}
-        onKeyDown={e => { if (e.key === 'Escape') onClose(); }}
+        role="presentation"
       >
         <div
           ref={ref}
@@ -35,10 +31,9 @@ export const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
             "bg-white dark:bg-neutral-900 rounded-lg shadow-soft p-8 max-w-lg w-full relative animate-slide-up",
             className
           )}
-          onClick={e => e.stopPropagation()}
-          onKeyDown={e => { if (e.key === 'Escape') onClose(); }}
-          tabIndex={-1}
-          role="document"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={title ? "modal-title" : undefined}
           {...props}
         >
           {title && (

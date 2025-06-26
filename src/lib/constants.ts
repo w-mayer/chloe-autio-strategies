@@ -6,9 +6,9 @@ type SiteMeta = {
 };
 
 export const siteMeta: SiteMeta = {
-  title: "Chloe Autio Strategies",
+  title: "Autio Strategies",
   description: "Professional tech policy consulting for the digital age.",
-  url: "https://chloeautio.com",
+  url: "https://autiostrategies.com",
 };
 
 // Navigation menu
@@ -21,7 +21,7 @@ export const navMenu: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Blog", href: "/blog" },
+  { label: "Resources", href: "/resources" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -32,8 +32,8 @@ type SocialLink = {
 };
 
 export const socialLinks: SocialLink[] = [
-  { platform: "LinkedIn", url: "https://linkedin.com/in/chloeautio" },
-  { platform: "Email", url: "mailto:hello@chloeautio.com" },
+  { platform: "LinkedIn", url: "https://linkedin.com/in/autiostrategies" },
+  { platform: "Email", url: "mailto:info@autiostrategies.com" },
 ];
 
 // Contact information
@@ -44,5 +44,5 @@ type ContactInfo = {
 };
 
 export const contactInfo: ContactInfo = {
-  email: "hello@chloeautio.com",
+  email: "info@autiostrategies.com",
 }; 

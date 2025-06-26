@@ -1,45 +1,33 @@
 import React from 'react';
 import Link from 'next/link';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import { NewsletterSignup } from '@/components/sections/NewsletterSignup';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { siteMetadata } from '@/data/metadata';
+import { siteContent } from '@/data/content';
 
 export const metadata: Metadata = {
-  title: 'U.S. Federal AI Policy: 2024 Brief | Autio Strategies',
-  description: 'A comprehensive analysis of the evolving U.S. federal AI policy landscape, including executive orders, legislative proposals, and regulatory frameworks shaping AI governance in 2024.',
-  keywords: [
-    'AI policy',
-    'federal policy',
-    'AI governance',
-    'executive orders',
-    'legislation',
-    'regulation',
-    'government AI',
-    'policy brief'
-  ],
+  title: siteMetadata.resources['us-ai-policy-brief'].title,
+  description: siteMetadata.resources['us-ai-policy-brief'].description,
+  keywords: siteMetadata.resources['us-ai-policy-brief'].keywords,
   openGraph: {
-    title: 'U.S. Federal AI Policy: 2024 Brief',
-    description: 'A comprehensive analysis of the evolving U.S. federal AI policy landscape.',
-    url: 'https://chloeautio.com/resources/us-ai-policy-brief',
-    siteName: 'Autio Strategies',
-    images: [
-      {
-        url: 'https://chloeautio.com/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'U.S. Federal AI Policy: 2024 Brief'
-      }
-    ],
-    locale: 'en_US',
-    type: 'article'
+    title: siteMetadata.resources['us-ai-policy-brief'].title,
+    description: siteMetadata.resources['us-ai-policy-brief'].description,
+    url: siteMetadata.resources['us-ai-policy-brief'].url,
+    siteName: siteMetadata.default.siteName,
+    images: [siteMetadata.default.image],
+    locale: siteMetadata.default.locale,
+    type: 'article' as const,
   },
   alternates: {
-    canonical: 'https://chloeautio.com/resources/us-ai-policy-brief'
-  }
+    canonical: siteMetadata.resources['us-ai-policy-brief'].url,
+  },
 };
 
-export default function USFederalAIPolicyBriefPage() {
+export default function USPolicyBriefPage() {
+  const { ui, resources } = siteContent;
+  const brief = resources['us-ai-policy-brief'];
+
   const author = {
     name: 'Chloe Autio',
     title: 'Founder, Chloe Autio Strategies',
@@ -49,25 +37,29 @@ export default function USFederalAIPolicyBriefPage() {
   return (
     <>
       {/* Hero Section */}
-      <section
-        className="relative flex items-center justify-center w-full h-[40vh] min-h-[240px] mb-0"
-        style={{
-          backgroundImage: `url('/images/stocks/policy-development.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-        }}
-      >
-        {/* Dark overlay for text legibility */}
-        <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
+      <section className="relative min-h-[44vh] flex items-center justify-center mb-0 bg-primary-900">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/stocks/briefings-talks.jpg"
+            alt="Policy brief background"
+            fill
+            className="object-cover object-center"
+            priority
+            sizes="100vw"
+          />
+          {/* Dark overlay for text legibility */}
+          <div className="absolute inset-0 bg-black/55" />
+        </div>
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
           <AuthorityHeading
             size="h1"
-            className="text-4xl md:text-6xl font-bold mb-6 heading"
+            className="text-4xl md:text-6xl font-bold mb-6 heading text-eggshell"
           >
-            U.S. Federal AI Policy: 2024 Brief
+            {brief.title}
           </AuthorityHeading>
-          <p className="text-lg text-white/90 max-w-2xl mx-auto">
-            A comprehensive analysis of the evolving U.S. federal AI policy landscape
+          <p className="text-lg text-eggshell/90 max-w-2xl mx-auto mt-4">
+            {brief.subtitle}
           </p>
         </div>
       </section>
@@ -101,7 +93,7 @@ export default function USFederalAIPolicyBriefPage() {
 
             <h2 className="text-2xl font-bold text-primary mb-4">Key Executive Orders</h2>
             <p className="mb-4">
-              The Biden administration's Executive Order on AI Safety and Security represents a landmark effort to balance innovation 
+              The Biden administration&apos;s Executive Order on AI Safety and Security represents a landmark effort to balance innovation 
               with responsible AI development. This comprehensive framework addresses multiple aspects of AI governance:
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2">
@@ -193,7 +185,7 @@ export default function USFederalAIPolicyBriefPage() {
             <p className="mb-6">
               As the policy landscape continues to evolve, organizations must stay informed and proactive in their AI governance strategies. 
               Regular monitoring of regulatory developments and engagement with policymakers will be essential for successful AI implementation. 
-              The organizations that adapt quickly and responsibly will be best positioned to leverage AI's benefits while managing its risks.
+              The organizations that adapt quickly and responsibly will be best positioned to leverage AI&apos;s benefits while managing its risks.
             </p>
 
             <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mb-6">
@@ -214,13 +206,13 @@ export default function USFederalAIPolicyBriefPage() {
 
           {/* Social Sharing */}
           <div className="flex items-center gap-4 mb-8 pt-4 border-t border-neutral-200 dark:border-neutral-700">
-            <span className="text-sm text-neutral-600">Share this brief:</span>
+            <span className="text-sm text-neutral-600">{ui.sharing.shareBrief}</span>
             <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent('https://chloeautio.com/resources/us-ai-policy-brief')}`}
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(siteMetadata.resources['us-ai-policy-brief'].url)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-700 hover:text-blue-800 transition-colors"
-              aria-label="Share on LinkedIn"
+              aria-label={ui.sharing.shareOnLinkedIn}
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
@@ -234,14 +226,11 @@ export default function USFederalAIPolicyBriefPage() {
               href="/resources"
               className="inline-flex items-center text-primary-600 hover:text-primary-800 font-medium transition-colors"
             >
-              ← Back to Resources
+              {ui.navigation.backToResources}
             </Link>
           </div>
         </div>
       </section>
-      
-      {/* Newsletter Signup */}
-      <NewsletterSignup />
     </>
   );
 } 

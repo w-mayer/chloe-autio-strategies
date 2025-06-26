@@ -6,6 +6,8 @@ export interface Service {
   methodology: string;
   caseStudies: { title: string; description: string }[];
   related: string[]; // slugs of related services
+  backgroundImage: string; // path to hero background image
+  detailedContent?: string[]; // optional detailed content for services that need it
 }
 
 export const services: Service[] = [
@@ -26,6 +28,13 @@ export const services: Service[] = [
       }
     ],
     related: ['research', 'policy-development'],
+    backgroundImage: '/images/stocks/insights-analysis.jpg',
+    detailedContent: [
+      '<strong>Overview of Policy Landscape:</strong> Receive tailored reviews of relevant international, domestic, and local policy frameworks that align with your organization\'s interests and priorities.',
+      '<strong>Real-Time Policy Updates and Ecosystem Insights:</strong> Stay informed with timely updates on policy initiatives and gain comprehensive analysis of the regulatory landscape to navigate changes effectively.',
+      '<strong>Legislative and Policy Analysis:</strong> Benefit from expert evaluation of specific policy proposals, initiatives, and emerging trends, helping you anticipate impacts and adjust your strategies proactively.',
+      '<strong>Targeted Insights:</strong> Receive briefings on relevant sectoral agencies, and/or identify key AI policy players, incentives, and possible engagement channels to pursue in short to long-term timeframes.'
+    ],
   },
   {
     slug: 'research',
@@ -44,6 +53,7 @@ export const services: Service[] = [
       }
     ],
     related: ['insight-analysis', 'policy-development'],
+    backgroundImage: '/images/stocks/research.jpg',
   },
   {
     slug: 'policy-development',
@@ -62,6 +72,7 @@ export const services: Service[] = [
       }
     ],
     related: ['insight-analysis', 'research'],
+    backgroundImage: '/images/stocks/policy-development.jpg',
   },
   {
     slug: 'events-facilitation',
@@ -80,6 +91,7 @@ export const services: Service[] = [
       }
     ],
     related: ['policy-development', 'briefings-talks'],
+    backgroundImage: '/images/stocks/events-facilitation.jpg',
   },
   {
     slug: 'briefings-talks',
@@ -98,6 +110,7 @@ export const services: Service[] = [
       }
     ],
     related: ['events-facilitation', 'third-party-management'],
+    backgroundImage: '/images/stocks/briefings-talks.jpg',
   },
   {
     slug: 'third-party-management',
@@ -116,5 +129,6 @@ export const services: Service[] = [
       }
     ],
     related: ['briefings-talks', 'insight-analysis'],
+    backgroundImage: '/images/stocks/third-party.jpg',
   },
 ]; 

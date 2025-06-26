@@ -1,11 +1,11 @@
 'use client';
 import React, { useEffect, useState, useRef } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import type { Service } from '@/data/services';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { Button } from '@/components/ui/button';
+import { siteContent } from '@/data/content';
+import type { Service } from '@/data/services';
 
 function ServiceCardSkeleton() {
   return (
@@ -27,6 +27,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
   const router = useRouter();
+  const { ui } = siteContent;
 
   useEffect(() => {
     if (!cardRef.current) return;
@@ -114,15 +115,14 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
           <h3 className="text-2xl font-semibold text-primary mb-2 service-card-icon">{service.title}</h3>
           <p className="text-gray mb-4 body-text">{service.overview}</p>
         </div>
-        <div
+        <button
+          type="button"
           className="text-primary font-medium underline underline-offset-4 transition-colors rounded px-2 py-1 service-card-number"
-          onClick={(e) => e.stopPropagation()}
-          role="button"
-          tabIndex={-1}
-          aria-label={`Learn more about ${service.title}`}
+          onClick={e => e.stopPropagation()}
+          aria-label={`${ui.aria.learnMoreAbout} ${service.title}`}
         >
-          Learn More
-        </div>
+          {ui.buttons.learnMore}
+        </button>
       </div>
     </div>
   );
@@ -130,6 +130,8 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
 export default function ServicesGridClient({ services }: ServicesGridClientProps) {
   const [loading, setLoading] = useState(true);
+  const { ui } = siteContent;
+  
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 1200);
     return () => clearTimeout(t);
@@ -153,10 +155,10 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
         </div>
         <div className="container mx-auto flex flex-col items-center text-center px-4 py-16 relative z-10">
           <div className="mb-8">
-            <AuthorityHeading className="text-4xl md:text-5xl font-bold text-eggshell text-center force-eggshell mb-4 drop-shadow-lg" size="h1">Our Services</AuthorityHeading>
+            <AuthorityHeading className="text-4xl md:text-5xl font-bold text-eggshell text-center force-eggshell mb-4 drop-shadow-lg" size="h1">{ui.pages.services.title}</AuthorityHeading>
           </div>
           <p className="text-lg text-eggshell mb-8 max-w-2xl mx-auto body-text drop-shadow-lg">
-            Autio Strategies offers a comprehensive suite of services designed to empower government and enterprise clients to navigate the evolving landscape of AI and technology policy with confidence and clarity.
+            {ui.pages.services.description}
           </p>
         </div>
       </section>
@@ -173,16 +175,16 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-16 text-center bg-primary-50 dark:bg-neutral-900">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-primary mb-4 heading">Ready to Get Started?</h2>
+          <h2 className="text-2xl font-bold text-primary mb-4 heading">{ui.cta.readyToGetStarted}</h2>
           <p className="text-lg text-gray dark:text-paynesGray mb-8 body-text">
-            Let's discuss how our comprehensive suite of services can help your organization navigate AI policy and governance challenges.
+            {ui.cta.discussServices}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/contact" className="text-lg px-8 py-3">
-              Schedule a Consultation
+              {ui.buttons.scheduleConsultation}
             </Button>
             <Button href="/about" variant="outline" className="text-lg px-8 py-3">
-              Learn About Our Team
+              {ui.buttons.learnAboutTeam}
             </Button>
           </div>
         </div>

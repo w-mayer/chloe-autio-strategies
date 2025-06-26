@@ -95,8 +95,8 @@ export const siteMetadata = {
       url: 'https://chloeautio.com/contact',
     },
     resources: {
-      title: 'Resources | AI Policy Consulting & Technology Governance',
-      description: 'Access insights, policy briefs, case studies, and resources on AI policy, technology governance, and regulatory compliance.',
+      title: 'Resources & Thought Leadership | AI Policy Consulting',
+      description: 'Explore articles, policy briefs, case studies, and resources on AI policy consulting, technology governance, and regulatory compliance for government and enterprise leaders.',
       keywords: [
         'AI policy resources',
         'technology governance insights',
@@ -104,8 +104,206 @@ export const siteMetadata = {
         'case studies',
         'regulatory compliance resources',
         'AI governance tools',
+        'thought leadership',
+        'AI policy articles',
       ],
       url: 'https://chloeautio.com/resources',
+    },
+    authorityDemo: {
+      title: 'Authority Demo | AI Policy Consulting',
+      description: 'Experience our interactive authority flow demonstration showcasing AI policy consulting expertise and thought leadership.',
+      keywords: [
+        'AI policy demo',
+        'authority demonstration',
+        'interactive consulting',
+        'policy expertise showcase',
+      ],
+      url: 'https://chloeautio.com/authority-demo',
+    },
+  },
+
+  // Service-specific metadata
+  services: {
+    'insight-analysis': {
+      title: 'Insight & Analysis Services | AI Policy Consulting',
+      description: 'Receive tailored insights and analysis to inform your organization\'s strategy, anticipate trends, and proactively address emerging challenges in AI and technology policy.',
+      keywords: [
+        'AI policy insights',
+        'technology trend analysis',
+        'policy monitoring',
+        'strategic intelligence',
+        'regulatory forecasting',
+      ],
+      url: 'https://chloeautio.com/services/insight-analysis',
+    },
+    'research': {
+      title: 'Research Services | AI Policy Consulting',
+      description: 'Comprehensive research and rigorous analysis to support evidence-based policy making and strategic planning.',
+      keywords: [
+        'AI policy research',
+        'policy analysis',
+        'evidence-based policy',
+        'strategic research',
+        'policy benchmarking',
+      ],
+      url: 'https://chloeautio.com/services/research',
+    },
+    'policy-development': {
+      title: 'Policy Development Services | AI Policy Consulting',
+      description: 'Expert guidance in drafting, refining, and implementing effective policies that align with organizational goals and regulatory requirements.',
+      keywords: [
+        'AI policy development',
+        'policy drafting',
+        'policy implementation',
+        'regulatory alignment',
+        'stakeholder engagement',
+      ],
+      url: 'https://chloeautio.com/services/policy-development',
+    },
+    'events-facilitation': {
+      title: 'Events & Facilitation Services | AI Policy Consulting',
+      description: 'Strategic facilitation of events, workshops, and stakeholder engagement to ensure policy initiatives are informed, inclusive, and actionable.',
+      keywords: [
+        'AI policy events',
+        'stakeholder facilitation',
+        'policy workshops',
+        'engagement strategies',
+        'multi-stakeholder processes',
+      ],
+      url: 'https://chloeautio.com/services/events-facilitation',
+    },
+    'briefings-talks': {
+      title: 'Briefings & Talks Services | AI Policy Consulting',
+      description: 'Custom briefings, talks, and educational resources to build internal capacity and foster a culture of responsible innovation.',
+      keywords: [
+        'AI policy briefings',
+        'educational talks',
+        'capacity building',
+        'responsible innovation',
+        'policy training',
+      ],
+      url: 'https://chloeautio.com/services/briefings-talks',
+    },
+    'third-party-management': {
+      title: 'Third Party Management Services | AI Policy Consulting',
+      description: 'Facilitate alliances, collaborations, and third-party relationships that advance shared policy objectives and drive innovation across sectors.',
+      keywords: [
+        'third party management',
+        'policy alliances',
+        'cross-sector collaboration',
+        'partnership facilitation',
+        'innovation networks',
+      ],
+      url: 'https://chloeautio.com/services/third-party-management',
+    },
+  },
+
+  // Resource-specific metadata
+  resources: {
+    'wsj-trump-ai-kratsios-thiel': {
+      title: 'Trump Taps Michael Kratsios for AI Policy Role | Autio Strategies',
+      description: 'Wall Street Journal coverage of Trump\'s appointment of Michael Kratsios to lead AI policy, with insights on Peter Thiel\'s influence.',
+      keywords: [
+        'Trump AI policy',
+        'Michael Kratsios',
+        'Peter Thiel',
+        'AI policy appointments',
+        'WSJ coverage',
+      ],
+      url: 'https://chloeautio.com/resources/wsj-trump-ai-kratsios-thiel',
+    },
+    'politico-paris-ai-summit': {
+      title: 'Paris AI Summit: Vance, Musk, Macron, DeepSeek | Autio Strategies',
+      description: 'POLITICO\'s Digital Future Daily newsletter recaps the Paris AI Summit, featuring Vance, Musk, Macron, and DeepSeek.',
+      keywords: [
+        'Paris AI Summit',
+        'Vance Musk Macron',
+        'DeepSeek',
+        'AI policy summit',
+        'POLITICO coverage',
+      ],
+      url: 'https://chloeautio.com/resources/politico-paris-ai-summit',
+    },
+    'fortune-trump-ai-crypto-czar-sacks': {
+      title: 'Trump AI and Crypto "Czar" Role for David Sacks | Autio Strategies',
+      description: 'Fortune reports on the evolving role of David Sacks as Trump\'s AI and crypto advisor, and the tech industry\'s response.',
+      keywords: [
+        'Trump AI crypto czar',
+        'David Sacks',
+        'AI crypto policy',
+        'tech industry response',
+        'Fortune coverage',
+      ],
+      url: 'https://chloeautio.com/resources/fortune-trump-ai-crypto-czar-sacks',
+    },
+    'wsj-election-wargames-tech-politics': {
+      title: 'Election Wargames: Tech and Politics Detect Voting Threats | Autio Strategies',
+      description: 'Wall Street Journal explores how tech and political leaders are preparing for election security threats in 2024.',
+      keywords: [
+        'election security',
+        'tech politics',
+        'voting threats',
+        'election wargames',
+        'WSJ coverage',
+      ],
+      url: 'https://chloeautio.com/resources/wsj-election-wargames-tech-politics',
+    },
+    'us-ai-policy-brief': {
+      title: 'U.S. Federal AI Policy: 2024 Brief | Autio Strategies',
+      description: 'Comprehensive analysis of the latest federal guidance, executive orders, and legislative proposals shaping the U.S. AI policy landscape.',
+      keywords: [
+        'US AI policy',
+        'federal AI regulation',
+        'AI executive orders',
+        'AI legislation',
+        'policy brief',
+      ],
+      url: 'https://chloeautio.com/resources/us-ai-policy-brief',
+    },
+    'eu-ai-act-analysis': {
+      title: 'EU AI Act Implementation Guide | Autio Strategies',
+      description: 'Detailed analysis of the EU AI Act and implementation guidance for organizations navigating European AI regulation.',
+      keywords: [
+        'EU AI Act',
+        'European AI regulation',
+        'AI implementation guide',
+        'EU policy analysis',
+        'AI compliance',
+      ],
+      url: 'https://chloeautio.com/resources/eu-ai-act-analysis',
+    },
+    'placeholder-case-study': {
+      title: 'Placeholder Case Study | Autio Strategies',
+      description: 'Example case study showcasing AI governance implementation and policy development in organizational settings.',
+      keywords: [
+        'AI governance case study',
+        'policy implementation',
+        'organizational AI',
+        'governance example',
+      ],
+      url: 'https://chloeautio.com/resources/placeholder-case-study',
+    },
+    'ai-governance-implementation': {
+      title: 'AI Governance Implementation at Fortune 500 Company | Autio Strategies',
+      description: 'Case study examining the successful implementation of AI governance frameworks in enterprise environments.',
+      keywords: [
+        'AI governance implementation',
+        'Fortune 500 case study',
+        'enterprise AI governance',
+        'governance frameworks',
+      ],
+      url: 'https://chloeautio.com/resources/ai-governance-implementation',
+    },
+    'placeholder-resource': {
+      title: 'Placeholder Resource | Autio Strategies',
+      description: 'Example resource demonstrating the types of tools, reports, and guidelines available for AI policy and governance.',
+      keywords: [
+        'AI policy resources',
+        'governance tools',
+        'policy guidelines',
+        'resource library',
+      ],
+      url: 'https://chloeautio.com/resources/placeholder-resource',
     },
   },
 

@@ -1,11 +1,13 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { ContactForm, ContactFormSkeleton } from '@/components/forms/ContactForm';
-import { ConsultationForm, ConsultationFormSkeleton } from '@/components/forms/ConsultationForm';
 import { NewsletterForm, NewsletterFormSkeleton } from '@/components/forms/NewsletterForm';
+import { siteContent } from '@/data/content';
 
 export default function ContactPageClient() {
   const [loading, setLoading] = useState(true);
+  const { forms } = siteContent;
+  
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(t);
@@ -18,13 +20,13 @@ export default function ContactPageClient() {
       </p>
 
       <section className="mb-12">
-        <h2 className="text-2xl font-semibold text-primary mb-4">Request a Consultation</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-4">{forms.consultation.title}</h2>
         {loading ? <ContactFormSkeleton /> : <ContactForm />}
       </section>
 
 
       <section>
-        <h2 className="text-2xl font-semibold text-primary mb-4">Subscribe to Our Newsletter</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-4">{forms.newsletter.title}</h2>
         {loading ? <NewsletterFormSkeleton /> : <NewsletterForm />}
       </section>
     </main>

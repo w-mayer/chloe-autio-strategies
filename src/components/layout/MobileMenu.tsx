@@ -30,35 +30,35 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
   if (!open) return null;
   return (
     <div
-      className="fixed inset-0 z-50 flex md:hidden bg-black/60 transition-opacity duration-300"
+      className="fixed inset-0 z-50 flex md:hidden mobile-menu-overlay transition-opacity duration-300"
       role="dialog"
       aria-modal="true"
     >
       <div
         ref={menuRef}
-        className="fixed left-0 top-0 h-full w-full max-w-sm bg-eggshell dark:bg-paynesGray p-7 shadow-2xl flex flex-col animate-slide-in-left focus:outline-none border-r border-ashGray dark:border-paynesGray"
+        className="fixed left-0 top-0 h-full w-full max-w-sm bg-white shadow-2xl flex flex-col animate-slide-in-left focus:outline-none border-r border-gray-200"
         tabIndex={-1}
         role="document"
         style={{ boxShadow: '0 8px 32px 0 rgba(0,0,0,0.18)' }}
       >
-        <div className="flex items-center justify-between mb-8">
-          <span className="font-bold text-xl text-gray heading">{site.name}</span>
+        <div className="flex items-center justify-between mb-8 p-6">
+          <span className="font-bold text-xl text-gray-900 heading">{site.name}</span>
           <button
             onClick={onClose}
             aria-label={ui.aria.closeMenu}
-            className="text-paynesGray hover:text-primary-700 focus:outline-none"
+            className="text-gray-500 hover:text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 rounded p-1 transition-colors"
           >
             <X className="w-7 h-7" />
           </button>
         </div>
-        <hr className="border-ashGray dark:border-paynesGray mb-6" />
-        <nav>
+        <hr className="border-gray-200 mb-6" />
+        <nav className="px-6">
           <ul className="flex flex-col gap-3">
             {navigation.items.map((item) => (
               <li key={item.name}>
                 <a
                   href={item.href}
-                  className="block px-4 py-3 rounded-lg text-lg font-semibold text-gray dark:text-primary-100 hover:bg-eggshell dark:hover:bg-paynesGray transition-colors focus:bg-eggshell focus:outline-none nav-text"
+                  className="block px-4 py-3 rounded-lg text-lg font-semibold text-gray-700 hover:bg-gray-100 hover:text-primary transition-colors focus:bg-gray-100 focus:outline-none nav-text"
                   onClick={onClose}
                 >
                   {item.name}
@@ -67,7 +67,7 @@ export function MobileMenu({ open, onClose }: MobileMenuProps) {
             ))}
           </ul>
         </nav>
-        <div className="mt-auto pt-8 text-xs text-paynesGray text-center">
+        <div className="mt-auto pt-8 pb-6 px-6 text-xs text-gray-500 text-center">
           &copy; {new Date().getFullYear()} {site.name}
         </div>
       </div>

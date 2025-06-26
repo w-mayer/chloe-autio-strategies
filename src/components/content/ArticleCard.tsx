@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import type { Article as ArticleType } from '@/data/insights';
+import type { Article as ArticleType } from '@/data/resources';
 import Link from 'next/link';
 import { siteContent } from '@/data/content';
 
@@ -86,10 +86,10 @@ function ArticleCardInner({ article }: { article: ArticleType }) {
           </a>
         ) : (
           <Link
-            href={`/insights/${article.slug}`}
-            className="text-primary-600 hover:text-primary-800 font-medium text-sm transition-colors underline"
+            href={`/resources/${article.slug}`}
+            className="text-primary-700 hover:text-primary-900 underline underline-offset-4 font-medium body-text"
           >
-            {ui.buttons.readMore}
+            {ui.buttons.readMore} →
           </Link>
         )}
       </div>

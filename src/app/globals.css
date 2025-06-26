@@ -73,6 +73,49 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Hide scrollbar for webkit browsers */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+  
+  /* Smooth scrolling for touch devices */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Better touch targets for mobile */
+  @media (max-width: 768px) {
+    .touch-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+  
+  /* Enhanced navbar visibility */
+  .navbar-enhanced {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  /* Better contrast for navigation text */
+  .nav-text {
+    font-family: 'DM Sans', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Mobile menu overlay enhancement */
+  .mobile-menu-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
 }
 
 /* Service Card Animations - Confident Flow Style */
@@ -695,8 +738,13 @@ section.text-eggshell .authority-heading {
 }
 
 /* Override authority heading color for specific homepage sections to use old gray color */
-.w-full .authority-heading {
+/* Only target specific sections, not all w-full containers */
+.bg-white .authority-heading,
+section.bg-white .authority-heading {
   color: #434344 !important; /* Old gray color for "Our Services" and "Trusted by" sections */
 }
 
-/* Removed the .authority-heading.text-eggshell override since eggshell is now the default */
+/* Ensure services subpages maintain eggshell color */
+section:not(.bg-white) .authority-heading {
+  color: #E8E9D7 !important; /* Eggshell color for services subpages and other sections */
+}

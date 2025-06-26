@@ -3,43 +3,24 @@ import { Metadata } from 'next';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
 import { siteContent } from '@/data/content';
+import { siteMetadata } from '@/data/metadata';
 
 export const metadata: Metadata = {
-  title: 'Our Team | AI Policy Consulting & Technology Governance',
-  description: "Meet the Autio Strategies team - Chloe Autio (Founder & CEO) and Samuel Wells (Policy Manager) - experts in AI policy consulting, technology governance, and regulatory compliance.",
-  keywords: [
-    'AI policy consulting',
-    'technology governance',
-    'regulatory compliance',
-    'government consulting',
-    'enterprise policy advisory',
-    'Chloe Autio',
-    'Samuel Wells',
-    'AI governance',
-    'tech policy',
-    'compliance consulting',
-    'public sector advisory',
-    'Autio Strategies team'
-  ],
+  title: siteMetadata.pages.about.title,
+  description: siteMetadata.pages.about.description,
+  keywords: siteMetadata.pages.about.keywords,
   openGraph: {
-    title: 'Our Team | AI Policy Consulting & Technology Governance',
-    description: "Meet the Autio Strategies team - Chloe Autio (Founder & CEO) and Samuel Wells (Policy Manager) - experts in AI policy consulting, technology governance, and regulatory compliance.",
-    url: 'https://chloeautio.com/about',
-    siteName: 'Autio Strategies',
-    images: [
-      {
-        url: 'https://chloeautio.com/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Autio Strategies - AI Policy Consulting & Technology Governance'
-      }
-    ],
-    locale: 'en_US',
-    type: 'website'
+    title: siteMetadata.pages.about.title,
+    description: siteMetadata.pages.about.description,
+    url: siteMetadata.pages.about.url,
+    siteName: siteMetadata.default.siteName,
+    images: [siteMetadata.default.image],
+    locale: siteMetadata.default.locale,
+    type: 'website' as const,
   },
   alternates: {
-    canonical: 'https://chloeautio.com/about'
-  }
+    canonical: siteMetadata.pages.about.url,
+  },
 };
 
 export default function AboutPage() {
@@ -181,8 +162,8 @@ export default function AboutPage() {
           '@type': 'Organization',
           name: 'Autio Strategies',
           description: 'AI policy consulting and technology governance experts providing strategic guidance to government bodies, Fortune 50 companies, and leading organizations.',
-          url: 'https://chloeautio.com',
-          logo: 'https://chloeautio.com/images/logo/AutioStrategies_Logo_FullColor_Horz.png',
+          url: siteMetadata.default.url,
+          logo: `${siteMetadata.default.url}/images/logo/AutioStrategies_Logo_FullColor_Horz.png`,
           employee: [
             {
               '@type': 'Person',

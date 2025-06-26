@@ -1,3 +1,19 @@
 User-agent: *
 Allow: /
+
+# Disallow admin and form processing pages
+Disallow: /forms.html
+Disallow: /contact?success=true
+Disallow: /?newsletter=success
+Disallow: /contact?consultation=success
+Disallow: /?form=success
+
+# Allow important directories
+Allow: /images/
+Allow: /public/
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Sitemap location
 Sitemap: https://chloeautio.com/sitemap.xml 

@@ -1,52 +1,42 @@
-import { articles, policyBriefs, caseStudies, resources } from '@/data/insights';
+import { articles, policyBriefs, caseStudies, resources } from '@/data/resources';
 import { ArticleCard } from '@/components/content/ArticleCard';
-import { PolicyBrief } from '@/components/content/PolicyBrief';
-import { CaseStudyCard } from '@/components/content/CaseStudyCard';
 import { ResourceCard } from '@/components/content/ResourceCard';
 import type { Metadata } from 'next';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
+import { siteMetadata } from '@/data/metadata';
+import { siteContent } from '@/data/content';
 
 export const metadata: Metadata = {
-  title: 'Resources | AI Policy Consulting',
-  description: 'Explore resources, articles, policy briefs, and case studies on AI policy consulting, technology governance, and regulatory compliance for government and enterprise leaders.',
-  keywords: [
-    'AI policy consulting',
-    'technology governance',
-    'regulatory compliance',
-    'government consulting',
-    'enterprise policy advisory',
-    'AI governance',
-    'tech policy',
-    'compliance consulting',
-    'public sector advisory',
-    'thought leadership',
-    'resources'
-  ],
+  title: siteMetadata.pages.resources.title,
+  description: siteMetadata.pages.resources.description,
+  keywords: siteMetadata.pages.resources.keywords,
   openGraph: {
-    title: 'Resources | AI Policy Consulting',
-    description: 'Explore resources, articles, policy briefs, and case studies on AI policy consulting, technology governance, and regulatory compliance for government and enterprise leaders.',
-    url: 'https://chloeautio.com/resources',
-    siteName: 'Autio Strategies',
-    images: [
-      {
-        url: 'https://chloeautio.com/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Autio Strategies - AI Policy Consulting & Technology Governance'
-      }
-    ],
-    locale: 'en_US',
-    type: 'website'
+    title: siteMetadata.pages.resources.title,
+    description: siteMetadata.pages.resources.description,
+    url: siteMetadata.pages.resources.url,
+    siteName: siteMetadata.default.siteName,
+    images: [siteMetadata.default.image],
+    locale: siteMetadata.default.locale,
+    type: 'website' as const,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteMetadata.pages.resources.title,
+    description: siteMetadata.pages.resources.description,
+    images: [siteMetadata.default.image.url],
+    creator: siteMetadata.twitter.creator,
   },
   alternates: {
-    canonical: 'https://chloeautio.com/resources'
-  }
+    canonical: siteMetadata.pages.resources.url,
+  },
 };
 
 export default function ResourcesPage() {
   const featuredArticles = articles.filter(a => a.featured);
+  const { ui } = siteContent;
+  
   return (
     <>
       {/* Hero Section */}
@@ -69,17 +59,17 @@ export default function ResourcesPage() {
             size="h1"
             className="text-4xl md:text-6xl font-bold mb-6 heading text-eggshell"
           >
-            Resources & Thought Leadership
+            {ui.pages.resources.title}
           </AuthorityHeading>
           <p className="text-lg text-eggshell/90 max-w-2xl mx-auto mt-4">
-            Explore our latest articles, policy briefs, case studies, and curated resources on AI policy, governance, and regulatory topics for government and enterprise leaders.
+            {ui.pages.resources.description}
           </p>
         </div>
       </section>
 
       {/* Featured Articles */}
       <section className="container mx-auto px-4 py-16">
-        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">Featured Articles</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.featuredArticles}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {featuredArticles.map(article => (
             <ArticleCard key={article.slug} article={article} />
@@ -89,27 +79,27 @@ export default function ResourcesPage() {
 
       {/* Policy Briefs */}
       <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">Policy Briefs</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.policyBriefs}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {policyBriefs.map(brief => (
-            <PolicyBrief key={brief.slug} brief={brief} />
+            <ResourceCard key={brief.slug} resource={brief} />
           ))}
         </div>
       </section>
 
       {/* Case Studies */}
       <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">Case Studies</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.caseStudies}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {caseStudies.map(cs => (
-            <CaseStudyCard key={cs.slug} caseStudy={cs} />
+            <ResourceCard key={cs.slug} resource={cs} />
           ))}
         </div>
       </section>
 
       {/* Resource Library */}
       <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">Resource Library</h2>
+        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.resourceLibrary}</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {resources.map(resource => (
             <ResourceCard key={resource.slug} resource={resource} />
@@ -120,16 +110,16 @@ export default function ResourcesPage() {
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-16 text-center bg-primary-50 dark:bg-neutral-900">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl font-bold text-primary mb-4 heading">Need Expert Guidance?</h2>
+          <h2 className="text-2xl font-bold text-primary mb-4 heading">{ui.cta.needExpertGuidance}</h2>
           <p className="text-lg text-gray dark:text-paynesGray mb-8 body-text">
-            Ready to put these insights into action? Let's discuss how our expertise can help your organization navigate AI policy and governance challenges.
+            {ui.cta.putInsightsIntoAction}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/contact" className="text-lg px-8 py-3">
-              Schedule a Consultation
+              {ui.buttons.scheduleConsultation}
             </Button>
             <Button href="/services" variant="outline" className="text-lg px-8 py-3">
-              Explore Our Services
+              {ui.buttons.exploreServices}
             </Button>
           </div>
         </div>
