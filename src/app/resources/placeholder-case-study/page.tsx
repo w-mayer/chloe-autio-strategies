@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import { siteMetadata } from '@/data/metadata';
 import { siteContent } from '@/data/content';
 import { Button } from '@/components/ui/button';
+import { PageHero } from '@/components/sections/PageHero';
 
 export const metadata: Metadata = {
   title: siteMetadata.resources['placeholder-case-study'].title,
@@ -26,38 +27,16 @@ export const metadata: Metadata = {
 };
 
 export default function PlaceholderCaseStudyPage() {
-  const { ui, resources } = siteContent;
+  const { ui, resources, pages } = siteContent;
   const caseStudy = resources['placeholder-case-study'];
   
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[44vh] flex items-center justify-center mb-0 bg-primary-900">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/stocks/contact.jpg"
-            alt="Case study background"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
-          {/* Dark overlay for text legibility */}
-          <div className="absolute inset-0 bg-black/55" />
-        </div>
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
-          <AuthorityHeading
-            size="h1"
-            className="text-4xl md:text-6xl font-bold mb-6 heading text-eggshell"
-          >
-            {caseStudy.title}
-          </AuthorityHeading>
-          <p className="text-lg text-eggshell/90 max-w-2xl mx-auto mt-4">
-            {caseStudy.subtitle}
-          </p>
-        </div>
-      </section>
+      <PageHero 
+        pageName="resources" 
+        title={caseStudy.title}
+        subtitle={caseStudy.subtitle}
+      />
 
       {/* Navigation */}
       <section className="container mx-auto px-4 py-4">

@@ -130,7 +130,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
 export default function ServicesGridClient({ services }: ServicesGridClientProps) {
   const [loading, setLoading] = useState(true);
-  const { ui } = siteContent;
+  const { ui, pages } = siteContent;
   
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 1200);
@@ -143,8 +143,8 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/stocks/services.jpg"
-            alt="Jefferson Memorial night reflection"
+            src={pages.services.hero.background.image}
+            alt={pages.services.hero.background.alt}
             fill
             className="object-cover object-center"
             priority
@@ -155,10 +155,10 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
         </div>
         <div className="container mx-auto flex flex-col items-center text-center px-4 py-16 relative z-10">
           <div className="mb-8">
-            <AuthorityHeading className="text-4xl md:text-5xl font-bold text-eggshell text-center force-eggshell mb-4 drop-shadow-lg" size="h1">{ui.pages.services.title}</AuthorityHeading>
+            <AuthorityHeading className="text-4xl md:text-5xl font-bold text-eggshell text-center force-eggshell mb-4 drop-shadow-lg" size="h1">{pages.services.hero.title}</AuthorityHeading>
           </div>
           <p className="text-lg text-eggshell mb-8 max-w-2xl mx-auto body-text drop-shadow-lg">
-            {ui.pages.services.description}
+            {pages.services.hero.subtitle}
           </p>
         </div>
       </section>

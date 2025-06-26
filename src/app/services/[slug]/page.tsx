@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
   const service = services.find(s => s.slug === slug);
-  const { ui } = siteContent;
+  const { ui, pages } = siteContent;
   
   if (!service) {
     return notFound();
@@ -72,8 +72,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="relative flex items-center justify-center w-full h-[40vh] min-h-[240px] mb-0">
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src={service.backgroundImage}
-            alt={`${service.title} service background`}
+            src={pages.services.hero.background.image}
+            alt={pages.services.hero.background.alt}
             fill
             className="w-full h-full object-cover object-center"
             style={{ objectFit: 'cover', objectPosition: 'center' }}

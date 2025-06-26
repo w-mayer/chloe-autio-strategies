@@ -21,17 +21,61 @@ export const siteContent = {
     ],
   },
 
-  // Hero section
-  hero: {
-    title: 'AI Policy Consulting',
-    subtitle: 'Professional technology governance and regulatory compliance advisory for government and enterprise organizations',
-    buttons: {
-      primary: { text: 'Our Services', href: '/services' },
-      secondary: { text: 'Contact Us', href: '/contact' },
+  // Page-specific hero configurations
+  pages: {
+    home: {
+      hero: {
+        title: 'AI Policy Consulting',
+        subtitle: 'Professional technology governance and regulatory compliance advisory for government and enterprise organizations',
+        buttons: {
+          primary: { text: 'Our Services', href: '/services' },
+          secondary: { text: 'Contact Us', href: '/contact' },
+        },
+        background: {
+          image: '/images/stocks/hero-background.jpg',
+          alt: 'Jefferson Memorial night reflection',
+        },
+      },
     },
-    background: {
-      image: '/images/stocks/hero-background.jpg',
-      alt: 'Jefferson Memorial night reflection',
+    about: {
+      hero: {
+        title: 'Our Team',
+        subtitle: 'Meet the experts behind Autio Strategies - dedicated professionals committed to advancing AI policy and technology governance.',
+        background: {
+          image: '/images/stocks/hero-background.jpg',
+          alt: 'Team background',
+        },
+      },
+    },
+    services: {
+      hero: {
+        title: 'Our Services',
+        subtitle: 'Autio Strategies offers a comprehensive suite of services designed to empower government and enterprise clients to navigate the evolving landscape of AI and technology policy with confidence and clarity.',
+        background: {
+          image: '/images/stocks/services.jpg',
+          alt: 'Services background',
+        },
+      },
+    },
+    resources: {
+      hero: {
+        title: 'Resources & Thought Leadership',
+        subtitle: 'Explore our latest articles, policy briefs, case studies, and curated resources on AI policy, governance, and regulatory topics for government and enterprise leaders.',
+        background: {
+          image: '/images/stocks/resources.jpg',
+          alt: 'Resources background',
+        },
+      },
+    },
+    contact: {
+      hero: {
+        title: 'Contact Us',
+        subtitle: 'Get in touch to discuss how our expertise can help your organization navigate AI policy and governance challenges.',
+        background: {
+          image: '/images/stocks/contact.jpg',
+          alt: 'Contact background',
+        },
+      },
     },
   },
 
@@ -273,25 +317,6 @@ export const siteContent = {
       button: { text: 'Subscribe', loading: 'Subscribing...' },
       success: 'Thank you for subscribing!',
       error: 'Please enter a valid email address.',
-    },
-    consultation: {
-      title: 'Request Consultation',
-      netlifyName: 'consultation',
-      description: 'Schedule a consultation to discuss your organization\'s AI policy and governance needs.',
-      fields: {
-        name: { label: 'Full Name', placeholder: 'Enter your full name' },
-        email: { label: 'Email Address', placeholder: 'Enter your email address' },
-        organization: { label: 'Organization', placeholder: 'Enter your organization name' },
-        role: { label: 'Role/Title', placeholder: 'Enter your role or title' },
-        services: { label: 'Services of Interest', placeholder: 'Select services you\'re interested in' },
-        timeline: { label: 'Timeline', placeholder: 'When do you need this completed?' },
-        budget: { label: 'Budget Range', placeholder: 'What is your budget range?' },
-        message: { label: 'Additional Details', placeholder: 'Tell us more about your needs and objectives' },
-      },
-      buttons: {
-        submit: { text: 'Request Consultation', loading: 'Sending...' },
-      },
-      success: 'Thank you for your consultation request! We\'ll be in touch soon.',
     },
   },
 

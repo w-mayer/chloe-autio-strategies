@@ -23,12 +23,6 @@
   status = 302
   conditions = {Role = ["admin"]}
 
-[[redirects]]
-  from = "/consultation"
-  to = "/contact?consultation=success"
-  status = 302
-  conditions = {Role = ["admin"]}
-
 # Handle form submissions
 [[redirects]]
   from = "/"

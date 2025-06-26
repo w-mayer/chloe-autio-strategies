@@ -17,10 +17,8 @@ All forms on the website are configured to work with Netlify's form handling ser
 
 Each form has a unique name that Netlify uses to identify and handle submissions:
 
-- **Contact Form**: `contact`
-- **Newsletter Form**: `newsletter`
-- **Newsletter Signup (Section)**: `newsletter-signup`
-- **Consultation Form**: `consultation`
+- **Contact Form**: `contact` - For inquiries and service questions with checkbox selection
+- **Newsletter Form**: `newsletter` - For newsletter signup and email subscriptions
 
 ### Required Attributes
 
@@ -52,7 +50,6 @@ Forms are configured to redirect to specific URLs with success parameters:
 
 - Contact form: `/contact?success=true`
 - Newsletter form: `/?newsletter=success`
-- Consultation form: `/contact?consultation=success`
 
 ### Success State Detection
 
@@ -60,6 +57,7 @@ Components check for URL parameters to show success messages:
 
 ```javascript
 const isSuccessFromNetlify = searchParams.get('success') === 'true';
+const isNewsletterSuccess = searchParams.get('newsletter') === 'success';
 ```
 
 ## Configuration Files
@@ -99,25 +97,17 @@ forms: {
 ## Form Components
 
 ### ContactForm
-- Handles contact inquiries
+- Handles contact inquiries and service questions
 - Service selection with checkboxes
 - Optional "other" service field
 - Success state from URL parameters
+- Used on contact page for general inquiries
 
 ### NewsletterForm
-- Simple email signup
-- Used in contact page
+- Simple email signup for newsletter
+- Used on contact page
 - Success state from URL parameters
-
-### NewsletterSignup
-- Newsletter signup section
-- Used on homepage and other pages
-- Success state from URL parameters
-
-### ConsultationForm
-- Detailed consultation requests
-- Service selection dropdown
-- Success state from URL parameters
+- Horizontal layout with inline button
 
 ## Testing Forms
 

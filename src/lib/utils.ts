@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { siteContent } from "@/data/content"
 
 /**
  * Combines class names conditionally using clsx and tailwind-merge.
@@ -36,4 +37,11 @@ export function slugify(text: string): string {
 export function truncateText(text: string, maxLength: number): string {
   if (text.length <= maxLength) return text;
   return text.slice(0, maxLength).trimEnd() + '...';
+}
+
+/**
+ * Gets the hero configuration for a specific page.
+ */
+export function getPageHero(pageName: keyof typeof siteContent.pages) {
+  return siteContent.pages[pageName].hero;
 } 

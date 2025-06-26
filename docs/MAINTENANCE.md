@@ -230,7 +230,6 @@ The footer contact information is managed in the `footer` section:
 #### **Current Email Setup:**
 - **Contact Form:** Netlify Forms with automatic email notifications
 - **Newsletter:** Netlify Forms with email notifications
-- **Consultation Form:** Netlify Forms with email notifications
 - **Spam Protection:** Built-in Netlify spam filtering
 - **Form Data Storage:** Automatic storage in Netlify dashboard
 
@@ -273,16 +272,6 @@ The footer contact information is managed in the `footer` section:
 - Email signup for updates
 - Used on contact page
 - Success redirect to `/?newsletter=success`
-
-**Newsletter Signup (`newsletter-signup`):**
-- Newsletter signup section
-- Used on homepage and other pages
-- Success redirect to `/?newsletter=success`
-
-**Consultation Form (`consultation`):**
-- Detailed consultation requests
-- Service selection dropdown
-- Success redirect to `/contact?consultation=success`
 
 #### **To Customize Form Notifications:**
 

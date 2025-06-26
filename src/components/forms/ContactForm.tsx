@@ -81,7 +81,7 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
   return (
     <form 
       onSubmit={handleSubmit(onSubmit)} 
-      className="space-y-4 max-w-lg" 
+      className="space-y-4 w-full" 
       aria-label={contactForm.title}
       data-netlify="true"
       name={contactForm.netlifyName}
@@ -92,17 +92,17 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
       
       <div>
         <label htmlFor="name" className="form-label">{contactForm.fields.name.label}</label>
-        <Input id="name" {...register('name')} error={errors.name?.message} required aria-invalid={!!errors.name} />
+        <Input id="name" {...register('name')} error={errors.name?.message} required aria-invalid={!!errors.name} className="w-full" />
       </div>
       <div>
         <label htmlFor="email" className="form-label">{contactForm.fields.email.label}</label>
-        <Input id="email" type="email" {...register('email')} error={errors.email?.message} required aria-invalid={!!errors.email} />
+        <Input id="email" type="email" {...register('email')} error={errors.email?.message} required aria-invalid={!!errors.email} className="w-full" />
       </div>
       <div>
         <label className="form-label">{contactForm.fields.services.label}</label>
-        <div className="space-y-2 max-h-48 overflow-y-auto border border-neutral-200 dark:border-neutral-700 rounded-lg p-3">
+        <div className="space-y-2 max-h-48 overflow-y-auto border border-neutral-200 dark:border-neutral-700 rounded-lg p-3 w-full">
           {services.map((service) => (
-            <label key={service.slug} className="flex items-center space-x-2 cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-800 p-2 rounded">
+            <label key={service.slug} className="flex items-center space-x-2 cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-800 p-2 rounded w-full">
               <input
                 type="checkbox"
                 value={service.slug}
@@ -112,7 +112,7 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
               <span className="text-sm text-neutral-700 dark:text-neutral-200">{service.title}</span>
             </label>
           ))}
-          <label className="flex items-center space-x-2 cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-800 p-2 rounded">
+          <label className="flex items-center space-x-2 cursor-pointer hover:bg-neutral-50 dark:hover:bg-neutral-800 p-2 rounded w-full">
             <input
               type="checkbox"
               value="other"
@@ -135,12 +135,13 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
             placeholder={contactForm.fields.services.otherPlaceholder}
             error={errors.otherService?.message} 
             aria-invalid={!!errors.otherService} 
+            className="w-full"
           />
         </div>
       )}
       <div>
         <label htmlFor="message" className="form-label">{contactForm.fields.message.label}</label>
-        <Textarea id="message" {...register('message')} error={errors.message?.message} required aria-invalid={!!errors.message} />
+        <Textarea id="message" {...register('message')} error={errors.message?.message} required aria-invalid={!!errors.message} className="w-full" />
       </div>
       <Button type="submit" disabled={isSubmitting} className="w-full">
         {isSubmitting ? contactForm.buttons.submit.loading : contactForm.buttons.submit.text}

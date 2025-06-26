@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { siteMetadata } from '@/data/metadata';
 import { siteContent } from '@/data/content';
+import { PageHero } from '@/components/sections/PageHero';
 
 export const metadata: Metadata = {
   title: siteMetadata.pages.resources.title,
@@ -35,37 +36,11 @@ export const metadata: Metadata = {
 
 export default function ResourcesPage() {
   const featuredArticles = articles.filter(a => a.featured);
-  const { ui } = siteContent;
+  const { ui, pages } = siteContent;
   
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[44vh] flex items-center justify-center mb-0 bg-primary-900">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/stocks/services.jpg"
-            alt="Resources background"
-            fill
-            className="object-cover object-center"
-            priority
-            sizes="100vw"
-          />
-          {/* Dark overlay for text legibility */}
-          <div className="absolute inset-0 bg-black/55" />
-        </div>
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
-          <AuthorityHeading
-            size="h1"
-            className="text-4xl md:text-6xl font-bold mb-6 heading text-eggshell"
-          >
-            {ui.pages.resources.title}
-          </AuthorityHeading>
-          <p className="text-lg text-eggshell/90 max-w-2xl mx-auto mt-4">
-            {ui.pages.resources.description}
-          </p>
-        </div>
-      </section>
+      <PageHero pageName="resources" overlayOpacity={60} />
 
       {/* Featured Articles */}
       <section className="container mx-auto px-4 py-16">

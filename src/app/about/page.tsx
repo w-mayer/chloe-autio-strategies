@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const { about } = siteContent;
+  const { about, pages } = siteContent;
   
   return (
     <div className="min-h-screen bg-eggshell">
@@ -36,10 +36,10 @@ export default function AboutPage() {
             className="text-4xl md:text-6xl font-bold mb-6 heading"
             enableHighlight={true}
           >
-            {about.hero.title}
+            {pages.about.hero.title}
           </AuthorityHeading>
           <p className="text-xl md:text-2xl max-w-3xl mx-auto body-text text-eggshell">
-            {about.hero.subtitle}
+            {pages.about.hero.subtitle}
           </p>
         </div>
       </section>

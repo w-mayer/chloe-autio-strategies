@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: ResourceArticlePageProps): Pr
 
 export default async function ResourceArticlePage({ params }: ResourceArticlePageProps) {
   const { slug } = await params;
-  const { ui } = siteContent;
+  const { ui, pages } = siteContent;
   
   // Find the article, policy brief, or case study by slug
   const article = articles.find(a => a.slug === slug);
@@ -78,18 +78,13 @@ export default async function ResourceArticlePage({ params }: ResourceArticlePag
     related = articles.filter(a => article.related.includes(a.slug));
   }
 
-  // Choose a background image (default or per-type)
-  let heroImage = '/images/stocks/research.jpg';
-  if (caseStudy) heroImage = '/images/stocks/briefings-talks.jpg';
-  if (brief) heroImage = '/images/stocks/policy-development.jpg';
-
   return (
     <>
       {/* Hero Section */}
       <section
         className="relative flex items-center justify-center w-full h-[40vh] min-h-[240px] mb-0"
         style={{
-          backgroundImage: `url('${heroImage}')`,
+          backgroundImage: `url('${pages.resources.hero.background.image}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center top',
         }}

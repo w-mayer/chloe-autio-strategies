@@ -65,10 +65,8 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 #### **Step 5: Verify Forms**
 1. After deployment, check "Forms" in Netlify dashboard
 2. Verify all forms are detected:
-   - `contact` - Contact form
-   - `newsletter` - Newsletter signup
-   - `newsletter-signup` - Newsletter section
-   - `consultation` - Consultation form
+   - `contact` - Contact form (inquiries and service questions with checkboxes)
+   - `newsletter` - Newsletter signup form (email subscriptions)
 3. Test form submissions
 4. Check email notifications are working
 
