@@ -327,6 +327,7 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
    - Find latest deployment
    - Click "Preview" to preview
    - Test thoroughly including forms
+   - Hello
 
 ### Form Testing Checklist
 
