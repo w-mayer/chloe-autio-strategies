@@ -1,11 +1,11 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { siteMetadata } from '@/data/metadata';
 import { siteContent } from '@/data/content';
 import { articles, policyBriefs, caseStudies } from '@/data/resources';
 import type { Metadata } from 'next';
+import { PageHero } from '@/components/sections/PageHero';
 
 interface ResourceArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: ResourceArticlePageProps): Pr
 
 export default async function ResourceArticlePage({ params }: ResourceArticlePageProps) {
   const { slug } = await params;
-  const { ui, pages } = siteContent;
+  const { ui } = siteContent;
   
   // Find the article, policy brief, or case study by slug
   const article = articles.find(a => a.slug === slug);
@@ -92,25 +92,11 @@ export default async function ResourceArticlePage({ params }: ResourceArticlePag
   return (
     <>
       {/* Hero Section */}
-      <section
-        className="relative flex items-center justify-center w-full h-[40vh] min-h-[240px] mb-0"
-        style={{
-          backgroundImage: `url('${pages.resources.hero.background.image}')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-        }}
-      >
-        {/* Dark overlay for text legibility */}
-        <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
-          <AuthorityHeading
-            size="h1"
-            className="text-4xl md:text-6xl font-bold mb-6 heading"
-          >
-            {content.title}
-          </AuthorityHeading>
-        </div>
-      </section>
+      <PageHero 
+        pageName="resources" 
+        title={content.title}
+        overlayOpacity={50}
+      />
       {/* Content Section */}
       <section className="container mx-auto px-4 py-12 flex flex-col items-center">
         <div className="body-text text-lg text-neutral-800 dark:text-neutral-200 max-w-2xl mx-auto bg-white/80 dark:bg-paynesGray/80 rounded-xl shadow-lg p-8 -mt-16 relative z-20 backdrop-blur">

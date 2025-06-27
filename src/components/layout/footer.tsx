@@ -37,7 +37,6 @@ export function Footer() {
         <div className="flex flex-col items-center gap-2 md:flex-row md:gap-6">
           <div className="flex items-center space-x-4 text-sm" style={{ color: '#434344', fontFamily: 'DM Sans, Arial, Helvetica, sans-serif' }}>
             <a href={footer.links.privacy.href} className="hover:text-[#6F9C3B] transition-colors">{footer.links.privacy.text}</a>
-            <a href={footer.links.terms.href} className="hover:text-[#6F9C3B] transition-colors">{footer.links.terms.text}</a>
           </div>
           <div className="flex items-center space-x-4 mt-2 md:mt-0">
             <a

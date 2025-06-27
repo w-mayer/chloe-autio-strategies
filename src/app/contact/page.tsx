@@ -27,7 +27,6 @@ export default function ContactPage() {
     <>
       <PageHero 
         pageName="contact" 
-        className="relative h-[50vh] flex items-center justify-center"
         overlayOpacity={50}
         objectPosition="center top"
       />

@@ -89,7 +89,7 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
 };
 
 // Utility function to split text into words with animation classes
-export const createWordElements = (text: string, isVisible: boolean, baseDelay: number = 0) => {
+export const createWordElements = (text: string) => {
   const words = text.split(' ').filter(word => word.length > 0);
   
   return words.map((word, index) => ({
@@ -100,7 +100,7 @@ export const createWordElements = (text: string, isVisible: boolean, baseDelay: 
 };
 
 // Utility function to generate dynamic CSS for word animations
-export const generateWordAnimationCSS = (wordCount: number, isVisible: boolean) => {
+export const generateWordAnimationCSS = () => {
   // No longer needed since we're not animating text
   return '';
 };

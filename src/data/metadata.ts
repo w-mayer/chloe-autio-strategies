@@ -120,6 +120,21 @@ export const siteMetadata = {
       ],
       url: 'https://autiostrategies.com/authority-demo',
     },
+    privacy: {
+      title: 'Privacy Policy | Autio Strategies',
+      description: 'Learn how Autio Strategies collects, uses, and protects your personal information. Our privacy policy explains your rights and our data practices.',
+      keywords: [
+        'privacy policy',
+        'data protection',
+        'personal information',
+        'privacy practices',
+        'data security',
+        'cookie policy',
+        'information collection',
+        'user rights',
+      ],
+      url: 'https://autiostrategies.com/privacy',
+    },
   },
 
   // Service-specific metadata

@@ -1,7 +1,6 @@
 import React from 'react';
 import { services } from '@/data/services';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -73,29 +72,36 @@ export default async function ServicePage({ params }: ServicePageProps) {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative flex items-center justify-center w-full h-[40vh] min-h-[240px] mb-0">
-        <div className="absolute inset-0 w-full h-full">
+      {/* Hero Section with Service-Specific Background */}
+      <section className="relative bg-primary py-16 md:py-24 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
           <Image
             src={service.backgroundImage}
             alt={`${service.title} background`}
             fill
-            className="w-full h-full object-cover object-center"
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-            priority
+            className="object-cover"
+            style={{ objectPosition: "center 18%" }}
+            priority={true}
+            quality={90}
             sizes="100vw"
           />
-          {/* Dark overlay for text legibility */}
-          <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.5)' }} />
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/50 z-10"></div>
         </div>
-        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full text-center">
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 text-center relative z-20">
           <AuthorityHeading
             size="h1"
-            className="text-4xl md:text-6xl font-bold mb-6 heading"
+            className="text-4xl md:text-6xl font-bold mb-6 heading text-white"
             enableHighlight={true}
           >
             {service.title}
           </AuthorityHeading>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto body-text text-white">
+            {service.overview}
+          </p>
         </div>
       </section>
 

@@ -42,6 +42,9 @@ export function truncateText(text: string, maxLength: number): string {
 /**
  * Gets the hero configuration for a specific page.
  */
-export function getPageHero(pageName: keyof typeof siteContent.pages) {
+export function getPageHero(pageName: keyof typeof siteContent.pages | 'privacy') {
+  if (pageName === 'privacy') {
+    return siteContent.privacy.hero;
+  }
   return siteContent.pages[pageName].hero;
 } 

@@ -130,6 +130,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 export default function ServicesGridClient({ services }: ServicesGridClientProps) {
   const [loading, setLoading] = useState(true);
   const { ui, pages } = siteContent;
+  const { hero } = pages.services;
   
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 1200);
@@ -137,30 +138,39 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
   }, []);
 
   return (
-    <>
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="min-h-screen bg-eggshell">
+      {/* Hero Section with Background Image */}
+      <section className="relative bg-primary py-16 md:py-24 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src={pages.services.hero.background.image}
-            alt={pages.services.hero.background.alt}
+            src={hero.background.image}
+            alt={hero.background.alt}
             fill
-            className="object-cover object-center"
-            priority
+            className="object-cover"
+            priority={true}
+            quality={90}
             sizes="100vw"
           />
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/50" />
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/50 z-10"></div>
         </div>
-        <div className="container mx-auto flex flex-col items-center text-center px-4 py-16 relative z-10">
-          <div className="mb-8">
-            <AuthorityHeading className="text-4xl md:text-5xl font-bold text-eggshell text-center force-eggshell mb-4 drop-shadow-lg" size="h1">{pages.services.hero.title}</AuthorityHeading>
-          </div>
-          <p className="text-lg text-eggshell mb-8 max-w-2xl mx-auto body-text drop-shadow-lg">
-            {pages.services.hero.subtitle}
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 text-center relative z-20">
+          <AuthorityHeading
+            size="h1"
+            className="text-4xl md:text-6xl font-bold mb-6 heading text-white"
+            enableHighlight={true}
+          >
+            {hero.title}
+          </AuthorityHeading>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto body-text text-white">
+            {hero.subtitle}
           </p>
         </div>
       </section>
+
       <main className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {loading
@@ -188,6 +198,6 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 } 
