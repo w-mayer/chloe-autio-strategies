@@ -136,7 +136,7 @@ export function ServicesGrid() {
         <div className="mb-12 flex flex-col items-center text-center">
           <AuthorityHeading
             size="h2"
-            className="text-3xl md:text-4xl font-bold text-center mb-12 heading"
+            className="text-3xl md:text-4xl font-bold text-center mb-12 heading max-w-full overflow-hidden"
           >
             {servicesContent.title}
           </AuthorityHeading>

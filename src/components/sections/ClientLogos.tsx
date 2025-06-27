@@ -79,7 +79,7 @@ export function ClientLogos() {
         <div className="mb-12 flex flex-col items-center text-center">
           <AuthorityHeading
             size="h2"
-            className="text-3xl md:text-4xl font-bold text-center mb-8 heading"
+            className="text-3xl md:text-4xl font-bold text-center mb-8 heading max-w-full overflow-hidden"
           >
             {clientLogos.title}
           </AuthorityHeading>

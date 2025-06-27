@@ -25,6 +25,140 @@ Fixed mobile responsive layout issues to ensure proper content display, text siz
 - **Problem**: Heading and description text getting cut off or overflowing containers
 - **Solution**: Implemented responsive font sizing with proper line heights and text wrapping
 
+### 6. Text Overflow Prevention
+
+#### Authority Heading Text Wrapping
+```css
+.authority-heading,
+.authority-heading-words,
+.authority-heading-word {
+  max-width: 100% !important;
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  hyphens: auto !important;
+  white-space: normal !important;
+}
+```
+
+#### Mobile Authority Heading Specific Fixes
+```css
+@media (max-width: 768px) {
+  .authority-heading {
+    white-space: normal !important;
+    text-align: center !important;
+  }
+  
+  .authority-heading-words {
+    white-space: normal !important;
+    display: block !important;
+    width: 100% !important;
+  }
+  
+  /* Specific fixes for white background sections */
+  .bg-white .authority-heading {
+    max-width: 100vw !important;
+    padding: 0 1rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  section.bg-white .authority-heading {
+    max-width: 100vw !important;
+    padding: 0 1rem !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+}
+```
+
+#### Extra Small Mobile Devices
+```css
+@media (max-width: 480px) {
+  .authority-heading {
+    font-size: 1.75rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 1rem !important;
+    white-space: normal !important;
+    text-align: center !important;
+    padding: 0 0.5rem !important;
+  }
+  
+  .authority-heading-words {
+    white-space: normal !important;
+    display: block !important;
+    width: 100% !important;
+  }
+}
+```
+
+#### Landscape Mobile Devices
+```css
+@media (max-width: 768px) and (orientation: landscape) {
+  .authority-heading {
+    font-size: 1.5rem !important;
+    margin-bottom: 0.75rem !important;
+    white-space: normal !important;
+    text-align: center !important;
+  }
+  
+  .authority-heading-words {
+    white-space: normal !important;
+    display: block !important;
+    width: 100% !important;
+  }
+}
+```
+
+### 7. Component-Level Mobile Fixes
+
+#### AuthorityHeading Component Updates
+The following components have been updated with mobile-specific classes to prevent text overflow:
+
+**ClientLogos Component:**
+```tsx
+<AuthorityHeading
+  size="h2"
+  className="text-3xl md:text-4xl font-bold text-center mb-8 heading max-w-full overflow-hidden"
+>
+  {clientLogos.title}
+</AuthorityHeading>
+```
+
+**ValueProposition Component:**
+```tsx
+<AuthorityHeading
+  size="h2"
+  className="text-3xl md:text-4xl font-bold text-center mb-8 heading max-w-full overflow-hidden"
+>
+  {valueProposition.title}
+</AuthorityHeading>
+```
+
+**ServicesGrid Component:**
+```tsx
+<AuthorityHeading
+  size="h2"
+  className="text-3xl md:text-4xl font-bold text-center mb-12 heading max-w-full overflow-hidden"
+>
+  {servicesContent.title}
+</AuthorityHeading>
+```
+
+**ContactCTA Component:**
+```tsx
+<AuthorityHeading
+  size="h2"
+  className="text-3xl md:text-4xl font-bold mb-4 heading max-w-full overflow-hidden"
+  style={{ color: '#fff' }}
+>
+  {contactCTA.title}
+</AuthorityHeading>
+```
+
+#### Key Mobile Classes Added
+- `max-w-full`: Ensures the heading doesn't exceed container width
+- `overflow-hidden`: Prevents text from overflowing the container
+- Mobile-specific CSS overrides for `white-space: normal` and `text-align: center`
+
 ## Changes Made
 
 ### 1. Hero Component Updates (`src/components/sections/Hero.tsx`)
@@ -205,20 +339,6 @@ html, body {
   html {
     font-size: 13px;
   }
-}
-```
-
-### 6. Text Overflow Prevention
-
-#### Authority Heading Text Wrapping
-```css
-.authority-heading,
-.authority-heading-words,
-.authority-heading-word {
-  max-width: 100% !important;
-  overflow-wrap: break-word !important;
-  word-wrap: break-word !important;
-  hyphens: auto !important;
 }
 ```
 
