@@ -133,7 +133,6 @@ export const siteContent = {
     buttons: {
       contact: 'Contact Us',
       readMore: 'Read More',
-      scheduleConsultation: 'Schedule a Consultation',
       exploreServices: 'Explore Our Services',
     },
     navigation: {
@@ -248,7 +247,7 @@ export interface SiteContent {
     buttons: {
       contact: string;
       readMore: string;
-      scheduleConsultation: string;
+      exploreServices: string;
     };
     navigation: {
       home: string;

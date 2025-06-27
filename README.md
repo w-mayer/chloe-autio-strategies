@@ -140,7 +140,7 @@ This project operates as a static site with Netlify form handling. No environmen
 - [ ] Install dependencies with `npm install`
 - [ ] Start development server with `npm run dev`
 - [ ] Verify the site loads at http://localhost:3000
-- [ ] Test form functionality (contact, newsletter, consultation)
+- [ ] Test form functionality (contact, newsletter)
 - [ ] Run `npm run type-check` to verify TypeScript
 - [ ] Run `npm run lint` to check code quality
 
@@ -198,16 +198,12 @@ This project operates as a static site with Netlify form handling. No environmen
 
 ### Form Configuration
 
-**Netlify Forms** are configured with:
-- Automatic spam protection
-- Email notifications
-- Success/error redirects
-- Centralized form content
+## 📝 Forms
 
-**Form Types:**
-- **Contact Form**: General inquiries with service selection
-- **Newsletter Form**: Email signup for updates
-- **Consultation Form**: Detailed consultation requests
+The website includes two main forms:
+
+- **Contact Form**: General inquiries and service questions with checkbox selection
+- **Newsletter Form**: Email signup for updates and insights
 
 ## Development Guidelines
 

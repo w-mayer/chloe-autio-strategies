@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface UseAuthorityFlowOptions {
-  enableProgress?: boolean;
   enableHighlight?: boolean;
   enableColorShift?: boolean;
   progressThreshold?: number;
@@ -11,14 +10,12 @@ interface UseAuthorityFlowReturn {
   ref: React.RefObject<HTMLDivElement>;
   isVisible: boolean;
   underlineComplete: boolean;
-  progressWidth: number;
   triggerAnimation: () => void;
   resetAnimation: () => void;
 }
 
 export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuthorityFlowReturn => {
   const {
-    enableProgress = false,
     enableColorShift = true,
     progressThreshold = 0.3,
   } = options;
@@ -26,7 +23,6 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [underlineComplete, setUnderlineComplete] = useState(false);
-  const [progressWidth, setProgressWidth] = useState(0);
 
   // Calculate animation duration based on text length
   const getAnimationDuration = useCallback((text: string) => {
@@ -42,27 +38,13 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
     const rect = ref.current.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    // Progress indicator
-    if (enableProgress) {
-      const elementTop = rect.top;
-      const elementHeight = rect.height;
-      const viewportCenter = windowHeight / 2;
-      
-      if (elementTop < viewportCenter && elementTop + elementHeight > 0) {
-        const progress = Math.max(0, Math.min(100, 
-          ((viewportCenter - elementTop) / (elementHeight + windowHeight)) * 100
-        ));
-        setProgressWidth(progress);
-      }
-    }
 
     // Color shift based on scroll depth
     if (enableColorShift && ref.current) {
       const scrollDepth = Math.max(0, Math.min(1, scrollTop / (document.body.scrollHeight - windowHeight)));
       ref.current.style.filter = `brightness(${1 - scrollDepth * 0.1}) saturate(${1 + scrollDepth * 0.1})`;
     }
-  }, [enableProgress, enableColorShift]);
+  }, [enableColorShift]);
 
   // Intersection Observer for visibility
   useEffect(() => {
@@ -90,7 +72,7 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [enableProgress, enableColorShift, progressThreshold, getAnimationDuration, handleScroll]);
+  }, [enableColorShift, progressThreshold, getAnimationDuration, handleScroll]);
 
   // Manual trigger for animation
   const triggerAnimation = useCallback(() => {
@@ -104,7 +86,6 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
   const resetAnimation = useCallback(() => {
     setIsVisible(false);
     setUnderlineComplete(false);
-    setProgressWidth(0);
     if (ref.current) {
       ref.current.style.filter = '';
     }
@@ -114,7 +95,6 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
     ref,
     isVisible,
     underlineComplete,
-    progressWidth,
     triggerAnimation,
     resetAnimation,
   };

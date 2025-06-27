@@ -309,7 +309,7 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 2. **Review Changes:**
    - Visit preview URL
    - Test all functionality
-   - **Test all forms** (contact, newsletter, consultation)
+   - **Test all forms** (contact, newsletter)
    - Check form success messages
    - Check on mobile devices
    - Verify design looks correct
@@ -331,7 +331,6 @@ NEXT_PUBLIC_GA_ID=your-google-analytics-id
 #### **After Any Deployment:**
 - [ ] Contact form submits successfully
 - [ ] Newsletter form submits successfully
-- [ ] Consultation form submits successfully
 - [ ] Form success messages appear
 - [ ] Form redirects work correctly
 - [ ] No JavaScript errors in console
@@ -872,7 +871,6 @@ Thanks,
 
 - [ ] Contact form submits successfully
 - [ ] Newsletter form submits successfully
-- [ ] Consultation form submits successfully
 - [ ] Form success messages appear
 - [ ] Form redirects work correctly
 - [ ] No JavaScript errors in console

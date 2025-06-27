@@ -178,7 +178,7 @@ export const siteContent = {
     title: 'Ready to Transform Your Organization?',
     description: "Let's discuss how our expertise in AI policy, technology governance, and regulatory compliance can help your organization navigate the complexities of the digital age.",
     buttons: {
-      primary: { text: 'Schedule a Consultation', href: '/contact' },
+      primary: { text: 'Contact Us', href: '/contact' },
       secondary: { text: 'Learn More', href: '/services' },
     },
     background: {
@@ -253,7 +253,7 @@ export const siteContent = {
     cta: {
       title: 'Partner with Our Team',
       description: 'Connect with our team to discuss how our combined expertise can help your organization navigate the evolving landscape of AI policy and governance.',
-      button: { text: 'Request a Consultation', href: '/contact' },
+      button: { text: 'Contact Us', href: '/contact' },
     },
   },
 
@@ -326,8 +326,6 @@ export const siteContent = {
       learnMore: 'Learn More',
       contactUs: 'Contact Us',
       getStarted: 'Get Started',
-      scheduleConsultation: 'Schedule a Consultation',
-      requestConsultation: 'Request a Consultation',
       readMore: 'Read More',
       exploreAllServices: 'Explore All Services',
       learnAboutTeam: 'Learn About Our Team',

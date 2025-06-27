@@ -69,7 +69,7 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
   const showOtherService = selectedServices.includes('other');
 
   // Check for success parameter from Netlify redirect
-  const isSuccessFromNetlify = searchParams.get('success') === 'true' || searchParams.get('consultation') === 'success';
+  const isSuccessFromNetlify = searchParams.get('success') === 'true';
 
   if (isLoading) return <ContactFormSkeleton />;
 

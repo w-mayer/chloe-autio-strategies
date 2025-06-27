@@ -5,7 +5,6 @@ Allow: /
 Disallow: /forms.html
 Disallow: /contact?success=true
 Disallow: /?newsletter=success
-Disallow: /contact?consultation=success
 Disallow: /?form=success
 
 # Allow important directories

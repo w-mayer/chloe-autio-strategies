@@ -53,7 +53,7 @@ This guide helps you edit website content without needing technical knowledge. A
 **Contact CTA Section (`src/data/content.ts` - `contactCTA` section):**
 - [x] Title: "Ready to Transform Your Organization?"
 - [x] Description: "Let's discuss how our expertise..."
-- [x] Primary button: "Schedule a Consultation" → "/contact"
+- [x] Primary button: "Contact Us" → "/contact"
 - [x] Secondary button: "Learn More" → "/services"
 - [x] Background image: "/images/stocks/cta-background.jpg"
 - [x] Logo image: "/images/logo/AutioStrategies_Logo_AllWhite_Horz.png"
@@ -82,10 +82,9 @@ This guide helps you edit website content without needing technical knowledge. A
 **Forms (`src/data/content.ts` - `forms` section):**
 - [x] Contact form title, field labels, placeholders, error messages, and success messages
 - [x] Newsletter form title, description, placeholder, button text, and messages
-- [x] Consultation form title, description, field labels, placeholders, and messages
 
 **Common UI Elements (`src/data/content.ts` - `ui` section):**
-- [x] Button text: "Learn More", "Contact Us", "Get Started", "Schedule a Consultation", "Request a Consultation", "Read More"
+- [x] Button text: "Learn More", "Contact Us", "Get Started", "Read More"
 - [x] Loading text: "Loading...", "Sending...", "Submitting..."
 - [x] Error messages: "This field is required", "Please enter a valid email address", etc.
 - [x] Aria labels: "Close menu", "Open menu", "Learn more about"
@@ -118,7 +117,6 @@ This guide helps you edit website content without needing technical knowledge. A
 **Form Components:**
 - [x] ContactForm (`src/components/forms/ContactForm.tsx`)
 - [x] NewsletterForm (`src/components/forms/NewsletterForm.tsx`)
-- [x] ConsultationForm (`src/components/forms/ConsultationForm.tsx`)
 
 **Content Components:**
 - [x] ArticleCard (`src/components/content/ArticleCard.tsx`)

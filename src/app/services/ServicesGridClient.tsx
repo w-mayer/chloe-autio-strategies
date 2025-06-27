@@ -181,7 +181,7 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/contact" className="text-lg px-8 py-3">
-              {ui.buttons.scheduleConsultation}
+              {ui.buttons.contactUs}
             </Button>
             <Button href="/about" variant="outline" className="text-lg px-8 py-3">
               {ui.buttons.learnAboutTeam}

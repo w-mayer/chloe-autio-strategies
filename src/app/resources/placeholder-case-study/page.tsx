@@ -155,7 +155,7 @@ export default function PlaceholderCaseStudyPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button href="/contact" className="text-lg px-8 py-3">
-              {ui.buttons.scheduleConsultation}
+              {ui.buttons.contactUs}
             </Button>
             <Button href="/services" variant="outline" className="text-lg px-8 py-3">
               {ui.buttons.exploreServices}

@@ -90,7 +90,14 @@ forms: {
     buttons: { /* button configurations */ },
     success: 'Thank you for your message!',
   },
-  // ... other forms
+  newsletter: {
+    title: 'Newsletter Signup',
+    netlifyName: 'newsletter',
+    description: 'Stay updated with the latest insights...',
+    placeholder: 'Enter your email address',
+    button: { text: 'Subscribe', loading: 'Subscribing...' },
+    success: 'Thank you for subscribing!',
+  },
 }
 ```
 
@@ -159,21 +166,7 @@ forms: {
 
 ## Security
 
-### Spam Protection
-- Netlify provides automatic spam protection
-- Honeypot fields can be added if needed
-- Rate limiting is configurable
-
-### Data Privacy
-- Form data is stored securely by Netlify
-- GDPR compliance features available
-- Data retention policies configurable
-
-## Best Practices
-
-1. **Always include `data-netlify="true"`** on forms
-2. **Use descriptive form names** for easy identification
-3. **Include hidden `form-name` input** for proper detection
-4. **Test forms thoroughly** before deployment
-5. **Monitor form submissions** in Netlify dashboard
-6. **Keep form content centralized** for easy maintenance 
+- All forms include spam protection via Netlify
+- Form data is encrypted in transit
+- No sensitive data is stored in client-side code
+- Success redirects prevent form resubmission 

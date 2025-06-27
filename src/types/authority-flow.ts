@@ -14,7 +14,6 @@ export interface AuthorityFlowConfig {
   gradientDuration?: number;
   
   // Scroll interactions
-  enableProgress?: boolean;
   enableColorShift?: boolean;
   progressThreshold?: number;
   colorShiftIntensity?: number;
@@ -33,7 +32,6 @@ export interface AuthorityFlowConfig {
 export interface AuthorityFlowState {
   isVisible: boolean;
   isAnimating: boolean;
-  progressWidth: number;
   underlineComplete: boolean;
   currentWordIndex: number;
   scrollDepth: number;
@@ -45,7 +43,6 @@ export interface AuthorityFlowRefs {
   underline: React.RefObject<HTMLDivElement>;
   dot: React.RefObject<HTMLDivElement>;
   highlight: React.RefObject<HTMLDivElement>;
-  progress: React.RefObject<HTMLDivElement>;
 }
 
 export interface WordElement {
@@ -62,7 +59,6 @@ export interface AuthorityFlowEvents {
   onUnderlineComplete?: () => void;
   onAnimationComplete?: () => void;
   onVisibilityChange?: (isVisible: boolean) => void;
-  onScrollProgress?: (progress: number) => void;
 }
 
 export interface AuthorityFlowTheme {
@@ -71,12 +67,10 @@ export interface AuthorityFlowTheme {
   underlineColor: string;
   dotColor: string;
   highlightColor: string;
-  progressColor: string;
   
   // Gradients
   underlineGradient: string[];
   highlightGradient: string[];
-  progressGradient: string[];
   
   // Typography
   fontFamily: string;
@@ -91,7 +85,6 @@ export interface AuthorityFlowTheme {
   // Sizes
   underlineHeight: string;
   dotSize: string;
-  progressHeight: string;
 }
 
 export interface AuthorityFlowBreakpoints {
@@ -132,7 +125,6 @@ export const DEFAULT_AUTHORITY_FLOW_CONFIG: AuthorityFlowConfig = {
   gradientColors: ['#3B82F6', '#14B8A6', '#3B82F6'],
   gradientDuration: 3,
   
-  enableProgress: true,
   enableColorShift: true,
   progressThreshold: 0.3,
   colorShiftIntensity: 0.1,
@@ -151,11 +143,9 @@ export const DEFAULT_AUTHORITY_FLOW_THEME: AuthorityFlowTheme = {
   underlineColor: '#14B8A6',
   dotColor: '#14B8A6',
   highlightColor: 'rgba(111, 156, 59, 0.1)',
-  progressColor: '#3B82F6',
   
   underlineGradient: ['#3B82F6', '#14B8A6', '#3B82F6'],
   highlightGradient: ['rgba(111, 156, 59, 0.1)', 'rgba(20, 184, 166, 0.1)'],
-  progressGradient: ['#3B82F6', '#14B8A6'],
   
   fontFamily: 'DM Sans, Arial, Helvetica, sans-serif',
   fontWeight: 700,
@@ -167,7 +157,6 @@ export const DEFAULT_AUTHORITY_FLOW_THEME: AuthorityFlowTheme = {
   
   underlineHeight: '3px',
   dotSize: '6px',
-  progressHeight: '2px',
 };
 
 export const DEFAULT_AUTHORITY_FLOW_BREAKPOINTS: AuthorityFlowBreakpoints = {

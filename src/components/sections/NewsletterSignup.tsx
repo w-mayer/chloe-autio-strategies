@@ -12,7 +12,7 @@ const MotionForm = dynamic(() => import('framer-motion').then(mod => mod.motion.
 
 export function NewsletterSignup() {
   const { forms } = siteContent;
-  const newsletterForm = forms.newsletterSignup;
+  const newsletterForm = forms.newsletter;
   const searchParams = useSearchParams();
   
   const [email, setEmail] = useState('');
