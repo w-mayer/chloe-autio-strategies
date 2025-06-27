@@ -31,10 +31,11 @@ export default function PrivacyPage() {
   // Helper function to render content with line breaks
   const renderContent = (content: string) => {
     return content.split('\n').map((line, index) => {
-      if (line.trim().startsWith('•')) {
+      const trimmedLine = line.trim();
+      if (trimmedLine.startsWith('•')) {
         return (
-          <li key={index} className="text-gray-700 leading-relaxed ml-4">
-            {line.trim().substring(1).trim()}
+          <li key={index} className="text-gray-700 leading-relaxed ml-4 list-disc">
+            {trimmedLine.substring(1).trim()}
           </li>
         );
       }
@@ -44,6 +45,38 @@ export default function PrivacyPage() {
         </p>
       );
     });
+  };
+
+  // Helper function to render list items with nested content
+  const renderListItem = (item: string) => {
+    const lines = item.split('\n');
+    const firstLine = lines[0];
+    const remainingLines = lines.slice(1);
+    
+    return (
+      <div className="space-y-2">
+        <div className="font-semibold text-gray-900">{firstLine}</div>
+        {remainingLines.length > 0 && (
+          <ul className="list-disc list-inside space-y-1 text-gray-700 ml-4">
+            {remainingLines.map((line, index) => {
+              const trimmedLine = line.trim();
+              if (trimmedLine.startsWith('•')) {
+                return (
+                  <li key={index} className="leading-relaxed">
+                    {trimmedLine.substring(1).trim()}
+                  </li>
+                );
+              }
+              return (
+                <li key={index} className="leading-relaxed">
+                  {trimmedLine}
+                </li>
+              );
+            })}
+          </ul>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -106,13 +139,13 @@ export default function PrivacyPage() {
             <div className="text-gray-700 leading-relaxed mb-4">
               {renderContent(sections.howWeUseInformation.content)}
             </div>
-            <ul className="list-disc list-inside space-y-4 text-gray-700">
+            <div className="space-y-4 text-gray-700">
               {sections.howWeUseInformation.list.map((item, index) => (
-                <li key={index} className="leading-relaxed">
-                  {renderContent(item)}
-                </li>
+                <div key={index} className="leading-relaxed">
+                  {renderListItem(item)}
+                </div>
               ))}
-            </ul>
+            </div>
           </section>
 
           {/* Legal Basis for Processing */}
@@ -133,13 +166,13 @@ export default function PrivacyPage() {
             <div className="text-gray-700 leading-relaxed mb-4">
               {renderContent(sections.informationSharing.content)}
             </div>
-            <ul className="list-disc list-inside space-y-4 text-gray-700">
+            <div className="space-y-4 text-gray-700">
               {sections.informationSharing.list.map((item, index) => (
-                <li key={index} className="leading-relaxed">
-                  {renderContent(item)}
-                </li>
+                <div key={index} className="leading-relaxed">
+                  {renderListItem(item)}
+                </div>
               ))}
-            </ul>
+            </div>
           </section>
 
           {/* Data Retention */}
@@ -162,13 +195,13 @@ export default function PrivacyPage() {
                 {renderContent(sections.yourRights.content)}
               </div>
             )}
-            <ul className="list-disc list-inside space-y-4 text-gray-700">
+            <div className="space-y-4 text-gray-700">
               {sections.yourRights.list.map((item, index) => (
-                <li key={index} className="leading-relaxed">
-                  {renderContent(item)}
-                </li>
+                <div key={index} className="leading-relaxed">
+                  {renderListItem(item)}
+                </div>
               ))}
-            </ul>
+            </div>
           </section>
 
           {/* International Data Transfers */}
@@ -240,11 +273,46 @@ export default function PrivacyPage() {
               {renderContent(sections.contact.content)}
             </div>
             <div className="space-y-2">
-              {sections.contact.details.map((detail, index) => (
-                <p key={index} className="text-gray-700 leading-relaxed">
-                  {detail}
-                </p>
-              ))}
+              {sections.contact.details.map((detail, index) => {
+                // Check if this detail contains a website URL
+                if (detail.includes('Website:')) {
+                  const websiteUrl = detail.replace('Website: ', '');
+                  return (
+                    <p key={index} className="text-gray-700 leading-relaxed">
+                      Website:{' '}
+                      <a 
+                        href={`https://${websiteUrl}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-800 underline"
+                      >
+                        {websiteUrl}
+                      </a>
+                    </p>
+                  );
+                }
+                // Check if this detail contains an email
+                if (detail.includes('Email:')) {
+                  const email = detail.replace('Email: ', '');
+                  return (
+                    <p key={index} className="text-gray-700 leading-relaxed">
+                      Email:{' '}
+                      <a 
+                        href={`mailto:${email}`}
+                        className="text-blue-600 hover:text-blue-800 underline"
+                      >
+                        {email}
+                      </a>
+                    </p>
+                  );
+                }
+                // Default rendering for other details
+                return (
+                  <p key={index} className="text-gray-700 leading-relaxed">
+                    {detail}
+                  </p>
+                );
+              })}
             </div>
           </section>
         </div>

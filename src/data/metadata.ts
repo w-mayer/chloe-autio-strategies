@@ -263,18 +263,6 @@ export const siteMetadata = {
       ],
       url: 'https://autiostrategies.com/resources/wsj-election-wargames-tech-politics',
     },
-    'eu-ai-act-analysis': {
-      title: 'EU AI Act Implementation Guide | Autio Strategies',
-      description: 'Detailed analysis of the EU AI Act and implementation guidance for organizations navigating European AI regulation.',
-      keywords: [
-        'EU AI Act',
-        'European AI regulation',
-        'AI implementation guide',
-        'EU policy analysis',
-        'AI compliance',
-      ],
-      url: 'https://autiostrategies.com/resources/eu-ai-act-analysis',
-    },
   },
 
   // Open Graph metadata
@@ -316,7 +304,7 @@ export const siteMetadata = {
     url: 'https://autiostrategies.com',
     logo: 'https://autiostrategies.com/images/logo/AutioStrategies_Logo_FullColor_Horz.png',
     sameAs: [
-      'https://github.com/chloeautio/chloe-autio-strategies',
+      'https://github.com/w-mayer/chloe-autio-strategies',
     ],
     contactPoint: {
       '@type': 'ContactPoint',

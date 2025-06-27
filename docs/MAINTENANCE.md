@@ -413,7 +413,7 @@ export const siteMeta: SiteMeta = {
 };
 
 export const contactInfo: ContactInfo = {
-  email: "info@autiostrategies.com",
+  email: "chloe@autiostrategies.com",
 };
 ```
 
@@ -509,14 +509,14 @@ Footer links and information are configured here:
 
 ```javascript
 footer: {
-  builtBy: { text: 'Built by', href: 'https://github.com/chloeautio' },
-  sourceCode: { text: 'The source code is available on', href: 'https://github.com/chloeautio/chloe-autio-strategies' },
+  builtBy: { text: 'Built by', href: 'https://github.com/w-mayer' },
+  sourceCode: { text: 'The source code is available on', href: 'https://github.com/w-mayer/chloe-autio-strategies' },
   links: [
     { text: 'Privacy', href: '/privacy' },
     { text: 'Terms', href: '/terms' },
   ],
   contact: {
-    email: { text: 'Email', href: 'mailto:info@autiostrategies.com' },
+    email: { text: 'Email', href: 'mailto:chloe@autiostrategies.com' },
     linkedin: { text: 'LinkedIn', href: 'https://linkedin.com/in/chloeautio' },
   },
   logo: {
@@ -1164,10 +1164,10 @@ jsonLd: {
   url: 'https://autiostrategies.com',
   logo: 'https://autiostrategies.com/images/logo/AutioStrategies_Logo_FullColor_Horz.png',
   description: 'Professional technology governance and regulatory compliance advisory...',
-  email: 'info@autiostrategies.com',
+  email: 'chloe@autiostrategies.com',
   sameAs: [
     'https://linkedin.com/in/chloeautio',
-    'https://github.com/chloeautio/chloe-autio-strategies',
+    'https://github.com/w-mayer/chloe-autio-strategies',
   ],
 }
 ```
@@ -1199,11 +1199,11 @@ export const navMenu: NavItem[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { platform: "Email", url: "mailto:info@autiostrategies.com" },
+  { platform: "Email", url: "mailto:chloe@autiostrategies.com" },
 ];
 
 export const contactInfo: ContactInfo = {
-  email: "info@autiostrategies.com",
+  email: "chloe@autiostrategies.com",
 };
 ```
 

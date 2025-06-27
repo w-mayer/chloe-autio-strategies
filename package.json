@@ -17,7 +17,7 @@
   "license": "UNLICENSED",
   "repository": {
     "type": "git",
-    "url": "https://github.com/autiostrategies/chloe-autio-strategies.git"
+    "url": "https://github.com/w-mayer/chloe-autio-strategies"
   },
   "scripts": {
     "dev": "next dev",

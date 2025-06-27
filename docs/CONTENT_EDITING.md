@@ -14,9 +14,9 @@ This guide helps you edit website content without needing technical knowledge. A
 - [x] Company name: "Autio Strategies"
 - [x] Tagline: "AI Policy Consulting & Technology Governance"
 - [x] Description: "Professional technology governance and regulatory compliance advisory..."
-- [x] Contact email: "info@autiostrategies.com"
+- [x] Contact email: "chloe@autiostrategies.com"
 - [x] LinkedIn URL: "https://linkedin.com/in/chloeautio"
-- [x] GitHub URL: "https://github.com/chloeautio/chloe-autio-strategies"
+- [x] GitHub URL: "https://github.com/w-mayer/chloe-autio-strategies"
 - [x] Website URL: "https://autiostrategies.com"
 
 **Navigation (`src/data/content.ts` - `navigation` section):**
@@ -71,7 +71,7 @@ This guide helps you edit website content without needing technical knowledge. A
 - [x] Source code text: "The source code is available on"
 - [x] Privacy link: "Privacy" → "/privacy"
 - [x] Terms link: "Terms" → "/terms"
-- [x] Email link: "Email" → "mailto:info@autiostrategies.com"
+- [x] Email link: "Email" → "mailto:chloe@autiostrategies.com"
 - [x] LinkedIn link: "LinkedIn" → "https://linkedin.com/in/chloeautio"
 - [x] Logo image: "/images/logo/AutioStrategies_Logo_FullColor_JustMark.png"
 
@@ -269,7 +269,7 @@ site: {
   name: 'Autio Strategies',
   tagline: 'AI Policy Consulting & Technology Governance',
   description: 'Professional technology governance...',
-  email: 'info@autiostrategies.com',
+  email: 'chloe@autiostrategies.com',
   website: 'https://autiostrategies.com',
 }
 ```

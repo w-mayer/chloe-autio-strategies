@@ -55,7 +55,7 @@ This audit identified and corrected several critical issues with the site's SEO 
 - ✅ Updated Open Graph image URLs
 - ✅ Updated Twitter image URLs
 - ✅ Updated organization schema URLs
-- ✅ Updated contact email to `info@autiostrategies.com`
+- ✅ Updated contact email to `chloe@autiostrategies.com`
 
 ### 4. Content.ts (`src/data/content.ts`)
 
@@ -64,7 +64,7 @@ This audit identified and corrected several critical issues with the site's SEO 
 
 **Fixes Applied:**
 - ✅ Updated site website URL to `https://autiostrategies.com`
-- ✅ Updated contact email to `info@autiostrategies.com`
+- ✅ Updated contact email to `chloe@autiostrategies.com`
 - ✅ Updated footer email link
 
 ### 5. Layout.tsx (`src/app/layout.tsx`)
@@ -73,7 +73,7 @@ This audit identified and corrected several critical issues with the site's SEO 
 - ❌ Used `chloeautio.com` email in organization schema
 
 **Fixes Applied:**
-- ✅ Updated contact email to `info@autiostrategies.com`
+- ✅ Updated contact email to `chloe@autiostrategies.com`
 
 ## Current Site Structure
 

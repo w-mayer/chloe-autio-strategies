@@ -105,7 +105,7 @@ chloe-autio-strategies/
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/autiostrategies/chloe-autio-strategies.git
+   git clone https://github.com/w-mayer/chloe-autio-strategies.git
    cd chloe-autio-strategies
    ```
 

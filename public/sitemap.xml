@@ -37,6 +37,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  <url>
+    <loc>https://autiostrategies.com/privacy</loc>
+    <lastmod>2024-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 
   <!-- Service Pages -->
   <url>
@@ -98,12 +104,6 @@
   <url>
     <loc>https://autiostrategies.com/resources/wsj-election-wargames-tech-politics</loc>
     <lastmod>2024-11-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://autiostrategies.com/resources/eu-ai-act-analysis</loc>
-    <lastmod>2024-03-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

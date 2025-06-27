@@ -5,7 +5,7 @@ export const siteContent = {
     tagline: 'AI Policy Consulting & Technology Governance',
     description: 'Professional technology governance and regulatory compliance advisory for government and enterprise organizations',
     email: 'chloe@autiostrategies.com',
-    github: 'https://github.com/chloeautio/chloe-autio-strategies',
+    github: 'https://github.com/w-mayer/chloe-autio-strategies',
     website: 'https://autiostrategies.com',
   },
 
@@ -424,7 +424,7 @@ export const siteContent = {
         content: '',
         list: [
           '7.1 Access and Control\nYou have the right to:\n• Access: Request a copy of the personal information we hold about you\n• Correction: Update or correct inaccurate information\n• Deletion: Request deletion of your personal information (subject to legal requirements)\n• Portability: Receive your data in a portable format\n• Restriction: Limit how we process your information\n• Objection: Object to processing based on legitimate interests',
-          '7.2 Marketing Communications\nYou can opt out of marketing communications by:\n• Clicking "unsubscribe" in any marketing email\n• Contacting us directly at [privacy@autiostrategies.com]\n• Updating your preferences through our communication preference center',
+          '7.2 Marketing Communications\nYou can opt out of marketing communications by:\n• Clicking "unsubscribe" in any marketing email\n• Contacting us directly at [chloe@autiostrategies.com]\n• Updating your preferences through our communication preference center',
           '7.3 Cookies\nYou can control cookies through your browser settings. Note that disabling cookies may affect website functionality.',
         ],
       },
@@ -454,7 +454,7 @@ export const siteContent = {
       },
       contact: {
         title: '14. Contact Information',
-        content: 'If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:\n\nAutio Strategies\nEmail: chloe@autiostrategies.com',
+        content: 'If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:\n\nAutio Strategies',
         details: [
           'Email: chloe@autiostrategies.com',
           'Website: autiostrategies.com',
