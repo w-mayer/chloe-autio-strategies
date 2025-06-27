@@ -4,7 +4,7 @@ export const siteContent = {
     name: 'Autio Strategies',
     tagline: 'AI Policy Consulting & Technology Governance',
     description: 'Professional technology governance and regulatory compliance advisory for government and enterprise organizations',
-    email: 'info@autiostrategies.com',
+    email: 'chloe@autiostrategies.com',
     github: 'https://github.com/chloeautio/chloe-autio-strategies',
     website: 'https://autiostrategies.com',
   },
@@ -49,7 +49,7 @@ export const siteContent = {
     services: {
       hero: {
         title: 'Our Services',
-        subtitle: 'Autio Strategies offers a comprehensive suite of services designed to empower government and enterprise clients to navigate the evolving landscape of AI and technology policy with confidence and clarity.',
+        subtitle: 'Autio Strategies offers a comprehensive suite of services designed to empower enterprise and government clients to navigate the evolving landscape of AI and technology policy with confidence and clarity.',
         background: {
           image: '/images/stocks/services.jpg',
           alt: 'Services background',
@@ -58,8 +58,8 @@ export const siteContent = {
     },
     resources: {
       hero: {
-        title: 'Resources & Thought Leadership',
-        subtitle: 'Explore our latest articles, policy briefs, case studies, and curated resources on AI policy, governance, and regulatory topics for government and enterprise leaders.',
+        title: 'Resources',
+        subtitle: 'Explore our latest articles, policy briefs, case studies, and curated resources on AI policy, governance, and regulatory topics.',
         background: {
           image: '/images/stocks/hero-background.jpg',
           alt: 'Resources background',
@@ -69,7 +69,6 @@ export const siteContent = {
     contact: {
       hero: {
         title: 'Contact Us',
-        subtitle: 'Get in touch to discuss how our expertise can help your organization navigate AI policy and governance challenges.',
         background: {
           image: '/images/stocks/contact.jpg',
           alt: 'Contact background',
@@ -233,7 +232,8 @@ export const siteContent = {
       terms: { text: 'Terms', href: '/terms' },
     },
     contact: {
-      email: { text: 'Email', href: 'mailto:info@autiostrategies.com' },
+      email: { text: 'Email', href: 'mailto:chloe@autiostrategies.com' },
+      linkedin: { text: 'LinkedIn', href: 'https://www.linkedin.com/company/autio-strategies' },
     },
     logo: {
       src: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',

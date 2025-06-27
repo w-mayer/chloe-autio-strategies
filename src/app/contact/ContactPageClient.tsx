@@ -1,7 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { ContactForm, ContactFormSkeleton } from '@/components/forms/ContactForm';
-import { NewsletterForm, NewsletterFormSkeleton } from '@/components/forms/NewsletterForm';
 import { siteContent } from '@/data/content';
 
 export default function ContactPageClient() {
@@ -15,27 +14,13 @@ export default function ContactPageClient() {
 
   return (
     <main className="container mx-auto px-4 py-16 max-w-2xl flex flex-col items-center text-center">
-      <p className="body-text text-lg text-neutral-700 dark:text-neutral-200 mb-12 max-w-xl">
-        Please use the forms below to get in touch or subscribe to our newsletter. 
-      </p>
-
-      <section className="mb-12 w-full flex flex-col items-center text-center">
+      <section className="w-full flex flex-col items-center text-center">
         <h2 className="text-2xl font-semibold text-primary mb-4">{forms.contact.title}</h2>
         <p className="text-neutral-600 dark:text-neutral-300 mb-6">
           Have an inquiry or want to learn more about our services? Send us a message.
         </p>
         <div className="w-full flex justify-center">
           {loading ? <ContactFormSkeleton /> : <ContactForm />}
-        </div>
-      </section>
-
-      <section className="w-full flex flex-col items-center text-center">
-        <h2 className="text-2xl font-semibold text-primary mb-4">{forms.newsletter.title}</h2>
-        <p className="text-neutral-600 dark:text-neutral-300 mb-6">
-          {forms.newsletter.description}
-        </p>
-        <div className="w-full flex justify-center">
-          {loading ? <NewsletterFormSkeleton /> : <NewsletterForm />}
         </div>
       </section>
     </main>

@@ -24,13 +24,6 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
   const [isVisible, setIsVisible] = useState(false);
   const [underlineComplete, setUnderlineComplete] = useState(false);
 
-  // Calculate animation duration based on text length
-  const getAnimationDuration = useCallback((text: string) => {
-    const wordCount = text.split(' ').length;
-    const baseDuration = 0.8;
-    return Math.min(baseDuration + (wordCount * 0.1), 2.5);
-  }, []);
-
   // Handle scroll interactions
   const handleScroll = useCallback(() => {
     if (!ref.current) return;
@@ -51,10 +44,8 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Add underline complete class after text animation
-          const text = ref.current?.textContent || '';
-          const totalDuration = getAnimationDuration(text);
-          setTimeout(() => setUnderlineComplete(true), (totalDuration + 0.3) * 1000);
+          // Add underline complete class after underline animation
+          setTimeout(() => setUnderlineComplete(true), 1.1 * 1000);
         }
       },
       { threshold: progressThreshold, rootMargin: '50px' }
@@ -71,15 +62,13 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [enableColorShift, progressThreshold, getAnimationDuration, handleScroll]);
+  }, [enableColorShift, progressThreshold, handleScroll]);
 
   // Manual trigger for animation
   const triggerAnimation = useCallback(() => {
     setIsVisible(true);
-    const text = ref.current?.textContent || '';
-    const totalDuration = getAnimationDuration(text);
-    setTimeout(() => setUnderlineComplete(true), (totalDuration + 0.3) * 1000);
-  }, [getAnimationDuration]);
+    setTimeout(() => setUnderlineComplete(true), 1.1 * 1000);
+  }, []);
 
   // Reset animation state
   const resetAnimation = useCallback(() => {
@@ -106,27 +95,14 @@ export const createWordElements = (text: string, isVisible: boolean, baseDelay: 
   return words.map((word, index) => ({
     word,
     className: `authority-heading-word authority-heading-word-${index}`,
-    style: {
-      animationDelay: isVisible ? `${baseDelay + index * 0.1}s` : '0s',
-    },
+    style: {},
   }));
 };
 
 // Utility function to generate dynamic CSS for word animations
 export const generateWordAnimationCSS = (wordCount: number, isVisible: boolean) => {
-  if (!isVisible) return '';
-  
-  let cssRules = '';
-  for (let i = 0; i < wordCount; i++) {
-    const delay = i * 0.1;
-    cssRules += `
-      .authority-heading-word-${i} {
-        animation: authorityWordSlide 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) ${delay}s forwards !important;
-      }
-    `;
-  }
-  
-  return cssRules;
+  // No longer needed since we're not animating text
+  return '';
 };
 
 export default useAuthorityFlow; 

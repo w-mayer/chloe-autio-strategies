@@ -29,6 +29,7 @@ export default function ContactPage() {
         pageName="contact" 
         className="relative h-[50vh] flex items-center justify-center"
         overlayOpacity={50}
+        objectPosition="center top"
       />
       <ContactPageClient />
     </>

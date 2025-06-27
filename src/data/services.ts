@@ -41,6 +41,10 @@ export const services: Service[] = [
     methodology: 'We employ qualitative and quantitative research methods, including stakeholder interviews, literature reviews, and comparative policy analysis, to deliver robust findings and recommendations.',
     related: ['insight-analysis', 'policy-development'],
     backgroundImage: '/images/stocks/research.jpg',
+    detailedContent: [
+      '<strong>In-Depth Research:</strong> Conduct comprehensive descriptive, exploratory, and qualitative research on technology policy and governance issues tailored to your needs.',
+      '<strong>Customized Deliverables:</strong> Provide detailed reports, white papers, memos, and case studies, crafted in the format and structure that best suits your objectives.'
+    ],
   },
   {
     slug: 'policy-development',
@@ -54,6 +58,11 @@ export const services: Service[] = [
     methodology: 'Our team collaborates closely with clients to co-create policy documents, facilitate stakeholder workshops, and ensure seamless adoption and compliance.',
     related: ['insight-analysis', 'research'],
     backgroundImage: '/images/stocks/policy-development.jpg',
+    detailedContent: [
+      '<strong>Tailored Policy Position Development:</strong> Craft and refine AI, privacy, and data policies that align with your business needs and adapt to external dynamics.',
+      '<strong>Development of Briefs, Testimony, and Requests:</strong> Efficiently handle government RFIs, develop compelling testimony, and prepare impactful letter responses.',
+      '<strong>Strategic Thought Leadership:</strong> Enhance your policy messaging through thought leadership and seamless coordination with your communications or PR teams.'
+    ],
   },
   {
     slug: 'events-facilitation',
@@ -67,6 +76,12 @@ export const services: Service[] = [
     methodology: 'We design and execute engagement strategies, including roundtables, public consultations, and digital feedback platforms, to capture diverse perspectives and foster collaboration.',
     related: ['policy-development', 'briefings-talks'],
     backgroundImage: '/images/stocks/events-facilitation.jpg',
+    detailedContent: [
+      '<strong>Customized Workshops and Roundtables:</strong> Organize and lead targeted workshops or roundtables on pressing policy and governance topics to drive informed discussions and decision-making.',
+      '<strong>Stakeholder Feedback Sessions:</strong> Design and facilitate focus groups to gather valuable feedback from diverse stakeholders on governance processes and policy positions.',
+      '<strong>Exclusive Networking Events:</strong> Host salon dinners, issue-focused happy hours, and receptions to foster meaningful connections and discussions.',
+      '<strong>Event Selection and Prioritization:</strong> Provide expert advice on key events and engagement opportunities to maximize your organization\'s impact and visibility.'
+    ],
   },
   {
     slug: 'briefings-talks',
@@ -80,6 +95,10 @@ export const services: Service[] = [
     methodology: 'We assess organizational needs, design interactive learning experiences, and provide follow-up resources to ensure lasting impact.',
     related: ['events-facilitation', 'third-party-management'],
     backgroundImage: '/images/stocks/briefings-talks.jpg',
+    detailedContent: [
+      '<strong>Tailored Presentations:</strong> Custom presentations on specialized topics, expertly designed for your target audiences.',
+      '<strong>Custom Briefing and Programming:</strong> Create and organize detailed briefings on policy or technology, including program development and speaker selection.'
+    ],
   },
   {
     slug: 'third-party-management',
@@ -93,5 +112,10 @@ export const services: Service[] = [
     methodology: 'We identify potential partners, broker introductions, and support the design and management of joint projects from inception to completion.',
     related: ['briefings-talks', 'insight-analysis'],
     backgroundImage: '/images/stocks/third-party.jpg',
+    detailedContent: [
+      '<strong>Partner Selection and Management:</strong> Assist in identifying and managing external partners such as think tanks, convening organizations, and civil society initiatives to enhance your strategic goals.',
+      '<strong>Government and Public Affairs Coordination:</strong> Support the selection and collaboration with government affairs partners, including trade associations and lobbying firms, to effectively navigate regulatory landscapes.',
+      '<strong>Technology Governance Solutions:</strong> Provide recommendations for third-party technology governance solutions, such as algorithmic auditors and red-teaming platforms, to ensure robust oversight and compliance.'
+    ],
   },
 ]; 

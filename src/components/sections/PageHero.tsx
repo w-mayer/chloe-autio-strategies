@@ -9,6 +9,7 @@ interface PageHeroProps {
   subtitle?: string;
   className?: string;
   overlayOpacity?: number;
+  objectPosition?: string;
 }
 
 export function PageHero({ 
@@ -16,11 +17,12 @@ export function PageHero({
   title, 
   subtitle, 
   className = "relative min-h-[44vh] flex items-center justify-center mb-0 bg-primary-900",
-  overlayOpacity = 55 
+  overlayOpacity = 55,
+  objectPosition = "center"
 }: PageHeroProps) {
   const hero = getPageHero(pageName);
   const displayTitle = title || hero.title;
-  const displaySubtitle = subtitle || hero.subtitle;
+  const displaySubtitle = subtitle || ('subtitle' in hero ? hero.subtitle : undefined);
 
   return (
     <section className={className}>
@@ -30,7 +32,8 @@ export function PageHero({
           src={hero.background.image}
           alt={hero.background.alt}
           fill
-          className="object-cover object-center"
+          className="object-cover"
+          style={{ objectPosition }}
           priority
           sizes="100vw"
         />

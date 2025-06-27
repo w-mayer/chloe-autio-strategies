@@ -24,13 +24,6 @@ export const AuthorityHeading: React.FC<AuthorityHeadingProps> = ({
   // Split text into words
   const words = children.split(' ').filter(word => word.length > 0);
 
-  // Calculate animation duration based on word count
-  const getAnimationDuration = useCallback(() => {
-    const baseDuration = 0.8;
-    const wordCount = words.length;
-    return Math.min(baseDuration + (wordCount * 0.1), 2.5); // Cap at 2.5s
-  }, [words.length]);
-
   // Handle scroll interactions
   useEffect(() => {
     const handleScroll = () => {
@@ -50,9 +43,8 @@ export const AuthorityHeading: React.FC<AuthorityHeadingProps> = ({
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          // Add underline complete class after text animation
-          const totalDuration = getAnimationDuration();
-          setTimeout(() => setUnderlineComplete(true), (totalDuration + 0.3) * 1000);
+          // Add underline complete class after a short delay (underline animation timing)
+          setTimeout(() => setUnderlineComplete(true), 1.1 * 1000);
         }
       },
       { threshold: 0.3, rootMargin: '50px' }
@@ -69,7 +61,7 @@ export const AuthorityHeading: React.FC<AuthorityHeadingProps> = ({
       observer.disconnect();
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [getAnimationDuration]);
+  }, []);
 
   const HeadingTag = size as keyof JSX.IntrinsicElements;
 
@@ -88,9 +80,6 @@ export const AuthorityHeading: React.FC<AuthorityHeadingProps> = ({
           <span
             key={index}
             className="authority-heading-word"
-            style={{
-              animationDelay: isVisible ? `${index * 0.1}s` : '0s',
-            }}
           >
             {word}
           </span>

@@ -57,7 +57,7 @@ export default function RootLayout({
               ],
               contactPoint: [{
                 '@type': 'ContactPoint',
-                email: 'info@autiostrategies.com',
+                email: 'chloe@autiostrategies.com',
                 contactType: 'customer support',
                 url: `${siteMetadata.default.url}/contact`
               }]

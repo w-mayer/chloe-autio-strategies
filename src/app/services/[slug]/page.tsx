@@ -126,22 +126,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <h2 className="text-2xl subheading text-primary-800 mb-2">{ui.sections.ourMethodology}</h2>
             <p className="body-text">{service.methodology}</p>
           </section>
-          <section>
-            <h2 className="text-2xl subheading text-primary-800 mb-2">{ui.sections.relatedServices}</h2>
-            <ul className="flex flex-wrap gap-4">
-              {service.related.map(slug => {
-                const rel = services.find(s => s.slug === slug);
-                if (!rel) return null;
-                return (
-                  <li key={rel.slug}>
-                    <Link href={`/services/${rel.slug}`} className="text-primary-700 hover:text-primary-900 underline underline-offset-4 font-medium body-text">
-                      {rel.title}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
         </div>
       </section>
 

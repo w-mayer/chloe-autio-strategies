@@ -542,8 +542,8 @@ body {
 /* Authority Flow Heading Animations */
 @keyframes authorityWordSlide {
   0% {
-    opacity: 0;
-    transform: translateX(-60px);
+    opacity: 1;
+    transform: translateX(0);
   }
   100% {
     opacity: 1;
@@ -639,13 +639,13 @@ body {
 
 .authority-heading-word {
   display: inline-block;
-  opacity: 0;
-  transform: translateX(-60px);
+  opacity: 1;
+  transform: translateX(0);
   margin-right: 0.2em;
   position: relative;
   z-index: 1;
-  animation: authorityWordSlide 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-  animation-play-state: paused;
+  animation: none;
+  animation-play-state: running;
 }
 
 /* When the heading is visible, start the animations */
@@ -893,7 +893,7 @@ body {
     line-height: 1.2 !important;
     margin-bottom: 1.5rem !important;
     padding: 0.5rem 0 !important;
-    animation: authorityWordSlide 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    animation: none !important;
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
     hyphens: auto !important;

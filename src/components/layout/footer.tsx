@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail } from 'lucide-react';
+import { Mail, Linkedin } from 'lucide-react';
 import Image from "next/image";
 import { siteContent } from '@/data/content';
 
@@ -31,16 +31,6 @@ export function Footer() {
             >
               {site.name}
             </a>
-            . {footer.sourceCode}{" "}
-            <a
-              href={site.github}
-              target="_blank"
-              rel="noreferrer"
-              className="font-medium underline underline-offset-4 hover:text-[#6F9C3B] transition-colors"
-              style={{ fontFamily: 'DM Sans, Arial, Helvetica, sans-serif', color: '#434344' }}
-            >
-              GitHub
-            </a>
             .
           </p>
         </div>
@@ -56,6 +46,15 @@ export function Footer() {
               aria-label={footer.contact.email.text}
             >
               <Mail className="w-5 h-5" />
+            </a>
+            <a
+              href={footer.contact.linkedin.href}
+              target="_blank"
+              rel="noreferrer"
+              className="text-[#434344] hover:text-[#6F9C3B] transition-colors"
+              aria-label={footer.contact.linkedin.text}
+            >
+              <Linkedin className="w-5 h-5" />
             </a>
           </div>
         </div>
