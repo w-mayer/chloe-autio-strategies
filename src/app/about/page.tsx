@@ -49,7 +49,7 @@ export default function AboutPage() {
         {/* Chloe Autio */}
         <section className="flex flex-col lg:flex-row items-start gap-10 mb-16" itemScope itemType="https://schema.org/Person">
           <div className="flex-shrink-0 w-full lg:w-80">
-            <div className="relative w-full h-96 lg:h-auto lg:min-h-[400px] rounded-lg overflow-hidden shadow-lg bg-eggshell">
+            <div className="relative w-full h-96 lg:h-96 rounded-lg overflow-hidden shadow-lg bg-eggshell">
               <Image
                 src={about.team.chloe.image.src}
                 alt={about.team.chloe.image.alt}
@@ -79,7 +79,7 @@ export default function AboutPage() {
         {/* Samuel Wells */}
         <section className="flex flex-col lg:flex-row items-start gap-10" itemScope itemType="https://schema.org/Person">
           <div className="flex-shrink-0 w-full lg:w-80">
-            <div className="relative w-full h-96 lg:h-auto lg:min-h-[400px] rounded-lg overflow-hidden shadow-lg bg-eggshell">
+            <div className="relative w-full h-96 lg:h-96 rounded-lg overflow-hidden shadow-lg bg-eggshell">
               <Image
                 src={about.team.samuel.image.src}
                 alt={about.team.samuel.image.alt}

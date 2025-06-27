@@ -25,7 +25,7 @@ export const siteContent = {
     home: {
       hero: {
         title: 'AI Policy Consulting',
-        subtitle: 'Professional technology governance and regulatory compliance advisory for government and enterprise organizations',
+        subtitle: 'Helping organizations develop and implement successful strategies related to AI policy and governance',
         buttons: {
           primary: { text: 'Our Services', href: '/services' },
           secondary: { text: 'Contact Us', href: '/contact' },
