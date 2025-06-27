@@ -52,15 +52,15 @@ export interface Resource {
 export const authors: Author[] = [
   {
     name: 'Chloe Autio',
-    title: 'Founder, Chloe Autio Strategies',
+    title: 'Founder, Autio Strategies',
     bio: 'Chloe Autio is a leading expert in AI policy, governance, and technology strategy, advising government and enterprise clients on responsible innovation.',
-    avatarUrl: '/profile-placeholder.jpg',
+    avatarUrl: '/images/headshot/autio_headshot.jpg',
   },
   {
     name: 'External Source',
     title: 'External News Outlet',
     bio: 'This article is featured as a resource from a leading news organization.',
-    avatarUrl: '/profile-placeholder.jpg',
+    avatarUrl: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
   },
 ];
 
@@ -115,58 +115,8 @@ export const articles: Article[] = [
   },
 ];
 
-export const policyBriefs: PolicyBrief[] = [
-  {
-    slug: 'us-ai-policy-brief',
-    title: 'U.S. Federal AI Policy: 2024 Brief',
-    summary: 'This is a placeholder for a policy brief that links to an internal source.',
-    content: '<p>This brief distills the latest federal guidance, executive orders, and legislative proposals shaping the U.S. AI policy landscape.</p>',
-    date: '2024-04-20',
-    author: authors[0],
-    tags: ['Policy Brief', 'Federal Policy'],
-  },
-  {
-    slug: 'eu-ai-act-analysis',
-    title: 'EU AI Act Implementation Guide',
-    summary: 'This is a placeholder for a policy brief that links to an external source.',
-    content: '<p>This policy brief provides a detailed analysis of the EU AI Act.</p>',
-    date: '2024-03-15',
-    author: authors[1],
-    tags: ['Policy Brief', 'EU Policy', 'AI Regulation'],
-    externalUrl: 'https://example.com/eu-ai-act-analysis',
-  },
-];
+export const policyBriefs: PolicyBrief[] = [];
 
-export const caseStudies: CaseStudy[] = [
-  {
-    slug: 'placeholder-case-study',
-    title: 'Placeholder Case Study',
-    summary: 'This is a placeholder case study that links to an internal source.',
-    content: '<p>Placeholder content for the case study. Replace with real content.</p>',
-    date: '2024-07-01',
-    organization: 'Placeholder Organization',
-    author: authors[0],
-    tags: ['Placeholder', 'Case Study'],
-  },
-  {
-    slug: 'ai-governance-implementation',
-    title: 'AI Governance Implementation at Fortune 500 Company',
-    summary: 'This is a placeholder for a policy brief that links to an external source.',
-    content: '<p>This case study examines the successful implementation of AI governance.</p>',
-    date: '2024-06-15',
-    organization: 'Fortune 500 Tech Company',
-    author: authors[1],
-    tags: ['Case Study', 'AI Governance', 'Enterprise'],
-    externalUrl: 'https://example.com/ai-governance-case-study',
-  },
-];
+export const caseStudies: CaseStudy[] = [];
 
-export const resources: Resource[] = [
-  {
-    slug: 'placeholder-resource',
-    title: 'Placeholder Resource',
-    url: 'https://example.com',
-    description: 'This is a placeholder resource. It can link to an internal or external source.',
-    type: 'report',
-  },
-]; 
+export const resources: Resource[] = []; 

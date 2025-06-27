@@ -31,7 +31,7 @@ export const siteContent = {
           secondary: { text: 'Contact Us', href: '/contact' },
         },
         background: {
-          image: '/images/stocks/hero-background.jpg',
+          image: '/images/stocks/resources.jpg',
           alt: 'Jefferson Memorial night reflection',
         },
       },
@@ -41,7 +41,7 @@ export const siteContent = {
         title: 'Our Team',
         subtitle: 'Meet the experts behind Autio Strategies - dedicated professionals committed to advancing AI policy and technology governance.',
         background: {
-          image: '/images/stocks/hero-background.jpg',
+          image: '/images/stocks/about-background.jpg',
           alt: 'Team background',
         },
       },
@@ -61,7 +61,7 @@ export const siteContent = {
         title: 'Resources & Thought Leadership',
         subtitle: 'Explore our latest articles, policy briefs, case studies, and curated resources on AI policy, governance, and regulatory topics for government and enterprise leaders.',
         background: {
-          image: '/images/stocks/resources.jpg',
+          image: '/images/stocks/hero-background.jpg',
           alt: 'Resources background',
         },
       },
@@ -200,24 +200,8 @@ export const siteContent = {
       chloe: {
         name: 'Chloe Autio',
         title: 'Founder & CEO',
-        description: 'Chloe Autio is a recognized expert in AI policy and technology governance, with over a decade of experience advising government and enterprise organizations. Prior to founding Autio Strategies, Chloe served as the Senior Policy Advisor for AI and Emerging Technologies at the White House Office of Science and Technology Policy (OSTP), where she led the development of the National AI Initiative and coordinated federal AI policy across agencies.',
-        bio: 'Chloe has also held senior positions at the Department of Defense, where she developed AI governance frameworks for military applications, and at leading technology companies, where she advised on responsible AI development and deployment. She holds a Master\'s degree in Public Policy from Harvard Kennedy School and a Bachelor\'s degree in Computer Science from Stanford University.',
-        rolesTitle: 'Key Roles & Affiliations:',
-        roles: [
-          'Senior Policy Advisor, White House Office of Science and Technology Policy',
-          'AI Governance Lead, Department of Defense',
-          'Member, National AI Advisory Committee',
-          'Fellow, Stanford Institute for Human-Centered AI',
-          'Advisory Board Member, Partnership on AI',
-        ],
-        expertiseTitle: 'Areas of Expertise:',
-        expertise: [
-          'AI Policy Development',
-          'Technology Governance',
-          'Regulatory Compliance',
-          'Government Relations',
-          'Strategic Advisory',
-        ],
+        description: 'Chloe Autio is a technology policy expert with nearly a decade of experience advising organizations on AI policy and governance. Through her practice Autio Strategies, she provides strategic guidance to clients including government bodies, Fortune 50 companies, large AI labs and startups, and leading trade associations. Her advice helps organizations develop clear policy positions, enhance engagement and internal strategies, and anticipate regulatory implications. Chloe\'s consultancy is built on a solid foundation of experience, including her pivotal role in shaping Intel Corps emerging technology policy portfolio and developing their Responsible AI (RAI) program from its beginning.',
+        bio: 'Chloe is an Adjunct AI Policy Advisor at the Institute for Security and Technology, a Faculty Lecturer at the Future of Privacy Forum, and board member of Humane Intelligence. Her insights are frequently sought after by both government and civil society organizations, and her expertise has been highlighted in prominent media outlets such as the Wall Street Journal, Axios, POLITICO, and Bloomberg, among others. She holds an economics degree from UC Berkeley, where she studied a range of topics related to technology policy, data ethics, and the social implications of computing. Chloe resides in the Washington, D.C. area with her husband and stepdaughter.',
         image: {
           src: '/images/headshot/autio_headshot.jpg',
           alt: 'Chloe Autio, Founder & CEO of Autio Strategies',
@@ -227,22 +211,6 @@ export const siteContent = {
         name: 'Samuel Wells',
         title: 'Policy Manager',
         description: 'Samuel Wells holds a wealth of policy and engagement experience at the intersection of science, technology, and government. Before joining Autio Strategies, he served in the White House on Vice President Kamala Harris\' team. Prior to that, Sam held a range of research and policy roles, including as a research assistant at the University of Chicago\'s Health Lab, where he contributed to the Transform911 initiative aimed at modernizing the nation\'s emergency response system. He has also interned for multiple members of Congress, the Office of the Science and Technology Adviser to the Secretary of State, and the Director of National Intelligence\'s Private Sector Group. Sam holds a BA in Public Policy & Leadership from the University of Virginia.',
-        rolesTitle: 'Key Roles & Affiliations:',
-        roles: [
-          'Policy Advisor, White House Office of the Vice President',
-          'Research Assistant, University of Chicago Health Lab',
-          'Transform911 Initiative Contributor',
-          'Congressional Intern, Multiple Offices',
-          'State Department Science & Technology Adviser Intern',
-        ],
-        expertiseTitle: 'Areas of Expertise:',
-        expertise: [
-          'Policy Research',
-          'Government Relations',
-          'Technology Policy',
-          'Public Sector Advisory',
-          'Strategic Communications',
-        ],
         image: {
           src: '/images/headshot/wells_headshot.jpeg',
           alt: 'Samuel Wells, Policy Manager at Autio Strategies',
@@ -384,24 +352,6 @@ export const siteContent = {
       keyBenefits: 'Key Benefits',
       ourMethodology: 'Our Methodology',
       relatedServices: 'Related Services',
-    },
-  },
-
-  // Resource-specific content
-  resources: {
-    'placeholder-case-study': {
-      title: 'Placeholder Case Study',
-      subtitle: 'Demonstrating AI governance implementation and regulatory compliance',
-      organization: 'Placeholder Organization',
-      date: 'July 1, 2024',
-      tags: ['Placeholder', 'Case Study', 'AI Governance', 'Implementation'],
-      note: 'This is a placeholder case study designed to demonstrate the structure and content format for real case studies. The specific details, outcomes, and recommendations would be based on actual organizational experiences and results.',
-    },
-    'us-ai-policy-brief': {
-      title: 'U.S. Federal AI Policy: 2024 Brief',
-      subtitle: 'A comprehensive analysis of the evolving U.S. federal AI policy landscape',
-      date: 'April 20, 2024',
-      tags: ['Policy Brief', 'Federal Policy', 'AI Governance', 'Regulation'],
     },
   },
 }; 

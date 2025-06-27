@@ -47,20 +47,20 @@ export default function AboutPage() {
       {/* Team Members */}
       <section className="container mx-auto px-4 py-16">
         {/* Chloe Autio */}
-        <section className="flex flex-col md:flex-row items-start gap-10 mb-16" itemScope itemType="https://schema.org/Person">
-          <div className="flex-shrink-0">
-            <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary-700 shadow-lg bg-eggshell">
+        <section className="flex flex-col lg:flex-row items-start gap-10 mb-16" itemScope itemType="https://schema.org/Person">
+          <div className="flex-shrink-0 w-full lg:w-80">
+            <div className="relative w-full h-96 lg:h-auto lg:min-h-[400px] rounded-lg overflow-hidden shadow-lg bg-eggshell">
               <Image
                 src={about.team.chloe.image.src}
                 alt={about.team.chloe.image.alt}
-                width={224}
-                height={224}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 priority={true}
+                sizes="(max-width: 1024px) 100vw, 320px"
               />
             </div>
           </div>
-          <div className="max-w-2xl mx-auto">
+          <div className="flex-1 max-w-2xl">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 heading" itemProp="name">
               {about.team.chloe.name}
             </h2>
@@ -73,42 +73,24 @@ export default function AboutPage() {
             <p className="text-lg text-gray dark:text-paynesGray mb-4 body-text">
               {about.team.chloe.bio}
             </p>
-            {/* Chloe Roles & Affiliations */}
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-primary mb-2">{about.team.chloe.rolesTitle}</h3>
-              <ul className="text-sm text-gray dark:text-paynesGray space-y-1">
-                {about.team.chloe.roles.map((role, index) => (
-                  <li key={index}>• {role}</li>
-                ))}
-              </ul>
-            </div>
-            {/* Chloe Expertise */}
-            <div>
-              <h3 className="text-lg font-semibold text-primary mb-2">{about.team.chloe.expertiseTitle}</h3>
-              <div className="flex flex-wrap gap-2">
-                {about.team.chloe.expertise.map((skill, index) => (
-                  <span key={index} className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">{skill}</span>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
         {/* Samuel Wells */}
-        <section className="flex flex-col md:flex-row items-start gap-10" itemScope itemType="https://schema.org/Person">
-          <div className="flex-shrink-0">
-            <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-primary-700 shadow-lg bg-eggshell">
+        <section className="flex flex-col lg:flex-row items-start gap-10" itemScope itemType="https://schema.org/Person">
+          <div className="flex-shrink-0 w-full lg:w-80">
+            <div className="relative w-full h-96 lg:h-auto lg:min-h-[400px] rounded-lg overflow-hidden shadow-lg bg-eggshell">
               <Image
                 src={about.team.samuel.image.src}
                 alt={about.team.samuel.image.alt}
-                width={224}
-                height={224}
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
                 priority={true}
+                sizes="(max-width: 1024px) 100vw, 320px"
               />
             </div>
           </div>
-          <div className="max-w-2xl mx-auto">
+          <div className="flex-1 max-w-2xl">
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 heading" itemProp="name">
               {about.team.samuel.name}
             </h2>
@@ -118,24 +100,6 @@ export default function AboutPage() {
             <p className="text-lg text-gray dark:text-paynesGray mb-4 body-text" itemProp="description">
               {about.team.samuel.description}
             </p>
-            {/* Samuel Roles & Affiliations */}
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold text-primary mb-2">{about.team.samuel.rolesTitle}</h3>
-              <ul className="text-sm text-gray dark:text-paynesGray space-y-1">
-                {about.team.samuel.roles.map((role, index) => (
-                  <li key={index}>• {role}</li>
-                ))}
-              </ul>
-            </div>
-            {/* Samuel Expertise */}
-            <div>
-              <h3 className="text-lg font-semibold text-primary mb-2">{about.team.samuel.expertiseTitle}</h3>
-              <div className="flex flex-wrap gap-2">
-                {about.team.samuel.expertise.map((skill, index) => (
-                  <span key={index} className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">{skill}</span>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
       </section>
@@ -171,14 +135,7 @@ export default function AboutPage() {
               jobTitle: 'Founder & CEO',
               description: 'Technology policy expert specializing in AI policy, governance, and regulatory strategy.',
               alumniOf: 'University of California, Berkeley',
-              hasCredential: 'B.A. in Economics',
-              knowsAbout: [
-                'AI Policy',
-                'Technology Governance',
-                'Regulatory Compliance',
-                'Government Relations',
-                'Strategic Advisory'
-              ]
+              hasCredential: 'B.A. in Economics'
             },
             {
               '@type': 'Person',
@@ -186,14 +143,7 @@ export default function AboutPage() {
               jobTitle: 'Policy Manager',
               description: 'Policy expert with experience in government relations and technology policy.',
               alumniOf: 'University of Virginia',
-              hasCredential: 'B.A. in Public Policy & Leadership',
-              knowsAbout: [
-                'Policy Research',
-                'Government Relations',
-                'Technology Policy',
-                'Public Sector Advisory',
-                'Strategic Communications'
-              ]
+              hasCredential: 'B.A. in Public Policy & Leadership'
             }
           ]
         })}

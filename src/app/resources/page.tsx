@@ -41,44 +41,52 @@ export default function ResourcesPage() {
       <PageHero pageName="resources" overlayOpacity={60} />
 
       {/* Featured Articles */}
-      <section className="container mx-auto px-4 py-16">
-        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.featuredArticles}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {featuredArticles.map(article => (
-            <ArticleCard key={article.slug} article={article} />
-          ))}
-        </div>
-      </section>
+      {featuredArticles.length > 0 && (
+        <section className="container mx-auto px-4 py-16">
+          <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.featuredArticles}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {featuredArticles.map(article => (
+              <ArticleCard key={article.slug} article={article} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Policy Briefs */}
-      <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.policyBriefs}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {policyBriefs.map(brief => (
-            <ResourceCard key={brief.slug} resource={brief} />
-          ))}
-        </div>
-      </section>
+      {policyBriefs.length > 0 && (
+        <section className="container mx-auto px-4 py-12">
+          <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.policyBriefs}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {policyBriefs.map(brief => (
+              <ResourceCard key={brief.slug} resource={brief} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Case Studies */}
-      <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.caseStudies}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {caseStudies.map(cs => (
-            <ResourceCard key={cs.slug} resource={cs} />
-          ))}
-        </div>
-      </section>
+      {caseStudies.length > 0 && (
+        <section className="container mx-auto px-4 py-12">
+          <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.caseStudies}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {caseStudies.map(cs => (
+              <ResourceCard key={cs.slug} resource={cs} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* Resource Library */}
-      <section className="container mx-auto px-4 py-12">
-        <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.resourceLibrary}</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {resources.map(resource => (
-            <ResourceCard key={resource.slug} resource={resource} />
-          ))}
-        </div>
-      </section>
+      {resources.length > 0 && (
+        <section className="container mx-auto px-4 py-12">
+          <h2 className="text-2xl font-semibold text-primary mb-8 text-center">{ui.sections.resourceLibrary}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {resources.map(resource => (
+              <ResourceCard key={resource.slug} resource={resource} />
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section className="container mx-auto px-4 py-16 text-center bg-primary-50 dark:bg-neutral-900">

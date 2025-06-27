@@ -248,18 +248,6 @@ export const siteMetadata = {
       ],
       url: 'https://autiostrategies.com/resources/wsj-election-wargames-tech-politics',
     },
-    'us-ai-policy-brief': {
-      title: 'U.S. Federal AI Policy: 2024 Brief | Autio Strategies',
-      description: 'Comprehensive analysis of the latest federal guidance, executive orders, and legislative proposals shaping the U.S. AI policy landscape.',
-      keywords: [
-        'US AI policy',
-        'federal AI regulation',
-        'AI executive orders',
-        'AI legislation',
-        'policy brief',
-      ],
-      url: 'https://autiostrategies.com/resources/us-ai-policy-brief',
-    },
     'eu-ai-act-analysis': {
       title: 'EU AI Act Implementation Guide | Autio Strategies',
       description: 'Detailed analysis of the EU AI Act and implementation guidance for organizations navigating European AI regulation.',
@@ -271,39 +259,6 @@ export const siteMetadata = {
         'AI compliance',
       ],
       url: 'https://autiostrategies.com/resources/eu-ai-act-analysis',
-    },
-    'placeholder-case-study': {
-      title: 'Placeholder Case Study | Autio Strategies',
-      description: 'Example case study showcasing AI governance implementation and policy development in organizational settings.',
-      keywords: [
-        'AI governance case study',
-        'policy implementation',
-        'organizational AI',
-        'governance example',
-      ],
-      url: 'https://autiostrategies.com/resources/placeholder-case-study',
-    },
-    'ai-governance-implementation': {
-      title: 'AI Governance Implementation at Fortune 500 Company | Autio Strategies',
-      description: 'Case study examining the successful implementation of AI governance frameworks in enterprise environments.',
-      keywords: [
-        'AI governance implementation',
-        'Fortune 500 case study',
-        'enterprise AI governance',
-        'governance frameworks',
-      ],
-      url: 'https://autiostrategies.com/resources/ai-governance-implementation',
-    },
-    'placeholder-resource': {
-      title: 'Placeholder Resource | Autio Strategies',
-      description: 'Example resource demonstrating the types of tools, reports, and guidelines available for AI policy and governance.',
-      keywords: [
-        'AI policy resources',
-        'governance tools',
-        'policy guidelines',
-        'resource library',
-      ],
-      url: 'https://autiostrategies.com/resources/placeholder-resource',
     },
   },
 

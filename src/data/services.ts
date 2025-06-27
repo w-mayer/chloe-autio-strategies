@@ -4,7 +4,6 @@ export interface Service {
   overview: string;
   benefits: string[];
   methodology: string;
-  caseStudies: { title: string; description: string }[];
   related: string[]; // slugs of related services
   backgroundImage: string; // path to hero background image
   detailedContent?: string[]; // optional detailed content for services that need it
@@ -21,12 +20,6 @@ export const services: Service[] = [
       'Actionable recommendations for your organization',
     ],
     methodology: 'We combine proprietary data, expert analysis, and ongoing monitoring to deliver actionable intelligence tailored to your needs.',
-    caseStudies: [
-      {
-        title: 'AI Risk Monitoring for Federal Agency',
-        description: 'Developed a real-time dashboard for a federal agency to monitor global AI policy developments and assess potential impacts on national programs.'
-      }
-    ],
     related: ['research', 'policy-development'],
     backgroundImage: '/images/stocks/insights-analysis.jpg',
     detailedContent: [
@@ -46,12 +39,6 @@ export const services: Service[] = [
       'Clear, actionable reporting for stakeholders',
     ],
     methodology: 'We employ qualitative and quantitative research methods, including stakeholder interviews, literature reviews, and comparative policy analysis, to deliver robust findings and recommendations.',
-    caseStudies: [
-      {
-        title: 'Comparative AI Policy Study',
-        description: 'Conducted a cross-jurisdictional analysis of AI governance frameworks for an international standards body.'
-      }
-    ],
     related: ['insight-analysis', 'policy-development'],
     backgroundImage: '/images/stocks/research.jpg',
   },
@@ -65,12 +52,6 @@ export const services: Service[] = [
       'Stakeholder buy-in and implementation support',
     ],
     methodology: 'Our team collaborates closely with clients to co-create policy documents, facilitate stakeholder workshops, and ensure seamless adoption and compliance.',
-    caseStudies: [
-      {
-        title: 'AI Ethics Policy for Tech Company',
-        description: 'Partnered with a leading technology firm to develop and roll out an AI ethics policy adopted across multiple business units.'
-      }
-    ],
     related: ['insight-analysis', 'research'],
     backgroundImage: '/images/stocks/policy-development.jpg',
   },
@@ -84,12 +65,6 @@ export const services: Service[] = [
       'Enhanced policy legitimacy and impact',
     ],
     methodology: 'We design and execute engagement strategies, including roundtables, public consultations, and digital feedback platforms, to capture diverse perspectives and foster collaboration.',
-    caseStudies: [
-      {
-        title: 'National AI Strategy Consultation',
-        description: 'Led a multi-stakeholder engagement process for a national AI strategy, resulting in broad consensus and actionable recommendations.'
-      }
-    ],
     related: ['policy-development', 'briefings-talks'],
     backgroundImage: '/images/stocks/events-facilitation.jpg',
   },
@@ -103,12 +78,6 @@ export const services: Service[] = [
       'Ongoing support and resource development',
     ],
     methodology: 'We assess organizational needs, design interactive learning experiences, and provide follow-up resources to ensure lasting impact.',
-    caseStudies: [
-      {
-        title: 'AI Policy Bootcamp',
-        description: 'Delivered a series of workshops for public sector leaders on AI policy fundamentals and emerging trends.'
-      }
-    ],
     related: ['events-facilitation', 'third-party-management'],
     backgroundImage: '/images/stocks/briefings-talks.jpg',
   },
@@ -122,12 +91,6 @@ export const services: Service[] = [
       'Sustainable, long-term collaborations',
     ],
     methodology: 'We identify potential partners, broker introductions, and support the design and management of joint projects from inception to completion.',
-    caseStudies: [
-      {
-        title: 'Public-Private AI Consortium',
-        description: 'Coordinated a multi-organization partnership to launch a public-private consortium focused on responsible AI deployment.'
-      }
-    ],
     related: ['briefings-talks', 'insight-analysis'],
     backgroundImage: '/images/stocks/third-party.jpg',
   },

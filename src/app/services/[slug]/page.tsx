@@ -126,15 +126,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
             <h2 className="text-2xl subheading text-primary-800 mb-2">{ui.sections.ourMethodology}</h2>
             <p className="body-text">{service.methodology}</p>
           </section>
-          <section className="mb-10">
-            <h2 className="text-2xl subheading text-primary-800 mb-2">{ui.sections.caseStudies}</h2>
-            {service.caseStudies.map((cs, i) => (
-              <div key={i} className="mb-6">
-                <h3 className="text-lg font-semibold text-primary-700 heading">{cs.title}</h3>
-                <p className="body-text">{cs.description}</p>
-              </div>
-            ))}
-          </section>
           <section>
             <h2 className="text-2xl subheading text-primary-800 mb-2">{ui.sections.relatedServices}</h2>
             <ul className="flex flex-wrap gap-4">
