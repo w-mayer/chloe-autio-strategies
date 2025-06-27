@@ -35,7 +35,6 @@ export const useAuthorityFlow = (options: UseAuthorityFlowOptions = {}): UseAuth
   const handleScroll = useCallback(() => {
     if (!ref.current) return;
 
-    const rect = ref.current.getBoundingClientRect();
     const windowHeight = window.innerHeight;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 

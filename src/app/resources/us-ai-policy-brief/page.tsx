@@ -1,7 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import Image from 'next/image';
 import type { Metadata } from 'next';
 import { siteMetadata } from '@/data/metadata';
 import { siteContent } from '@/data/content';
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
 };
 
 export default function USPolicyBriefPage() {
-  const { ui, resources, pages } = siteContent;
+  const { ui, resources } = siteContent;
   const brief = resources['us-ai-policy-brief'];
 
   const author = {

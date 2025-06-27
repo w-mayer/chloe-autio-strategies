@@ -2,8 +2,6 @@ import { articles, policyBriefs, caseStudies, resources } from '@/data/resources
 import { ArticleCard } from '@/components/content/ArticleCard';
 import { ResourceCard } from '@/components/content/ResourceCard';
 import type { Metadata } from 'next';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { siteMetadata } from '@/data/metadata';
 import { siteContent } from '@/data/content';
@@ -36,7 +34,7 @@ export const metadata: Metadata = {
 
 export default function ResourcesPage() {
   const featuredArticles = articles.filter(a => a.featured);
-  const { ui, pages } = siteContent;
+  const { ui } = siteContent;
   
   return (
     <>

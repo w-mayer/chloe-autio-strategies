@@ -1,9 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import Image from 'next/image';
 import { siteMetadata } from '@/data/metadata';
-import { siteContent } from '@/data/content';
 import ContactPageClient from './ContactPageClient';
 import { PageHero } from '@/components/sections/PageHero';
 
@@ -26,8 +23,6 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const { ui, pages } = siteContent;
-  
   return (
     <>
       <PageHero 
