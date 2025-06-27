@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
 export default async function ServicePage({ params }: ServicePageProps) {
   const { slug } = await params;
   const service = services.find(s => s.slug === slug);
-  const { ui, pages } = siteContent;
+  const { ui } = siteContent;
   
   if (!service) {
     return notFound();
