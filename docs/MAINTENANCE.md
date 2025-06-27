@@ -26,8 +26,11 @@ This guide helps you manage the Autio Strategies website without needing technic
 src/data/
 ├── content.ts      (ALL website text content - main file)
 ├── services.ts     (Service-specific content)
-├── insights.ts     (Articles, case studies, resources)
+├── resources.ts    (Articles, case studies, resources)
 └── metadata.ts     (SEO and page metadata)
+
+src/lib/
+└── constants.ts    (Site-wide constants and configuration)
 ```
 
 #### **Step-by-Step Text Updates:**
@@ -201,428 +204,1328 @@ The footer contact information is managed in the `footer` section:
 
 #### **Adding a New Page:**
 
-1. **Contact a developer** to create the page file
-2. **Add to navigation:**
-   - Update `src/data/content.ts` - `navigation.items` array
-   - Add new menu item
+1. **Add navigation item** in `src/data/content.ts`:
+   ```javascript
+   navigation: {
+     items: [
+       // ... existing items
+       { name: 'New Page', href: '/new-page' },
+     ],
+   }
+   ```
 
-3. **Test the page:**
-   - Visit the new URL
-   - Check navigation works
-   - Verify mobile menu includes new page
+2. **Add metadata** in `src/data/metadata.ts`:
+   ```javascript
+   pages: {
+     // ... existing pages
+     newPage: {
+       title: 'New Page | Autio Strategies',
+       description: 'Description of the new page',
+       keywords: ['relevant', 'keywords'],
+       url: 'https://autiostrategies.com/new-page',
+     },
+   }
+   ```
+
+3. **Create the page component** (contact developer for this step)
+4. **Test the navigation** and page functionality
 
 #### **Removing a Page:**
 
-1. **Remove from navigation first:**
-   - Delete menu item from `src/data/content.ts` - `navigation.items`
-   - Contact developer to remove page file
+1. **Remove navigation item** from `src/data/content.ts`
+2. **Remove metadata** from `src/data/metadata.ts`
+3. **Delete the page component** (contact developer)
+4. **Test navigation** to ensure no broken links
 
-2. **Update any links:**
-   - Search for references to the old page
-   - Update or remove broken links
+### How to Update SEO Information
 
----
+#### **Page Metadata** (`src/data/metadata.ts`):
 
-## 📱 Social Media & Communication Setup
+Each page has its own metadata section:
 
-### Email Services Configuration
+```javascript
+pages: {
+  home: {
+    title: 'Autio Strategies | AI Policy Consulting & Technology Governance',
+    description: 'Professional technology governance and regulatory compliance advisory...',
+    keywords: ['AI policy consulting', 'technology governance', 'regulatory compliance'],
+    url: 'https://autiostrategies.com',
+  },
+  about: {
+    title: 'Our Team | AI Policy Consulting & Technology Governance',
+    description: 'Meet the Autio Strategies team...',
+    keywords: ['AI policy consulting', 'team', 'about us'],
+    url: 'https://autiostrategies.com/about',
+  },
+  // ... other pages
+}
+```
 
-#### **Current Email Setup:**
-- **Contact Form:** Netlify Forms with automatic email notifications
-- **Newsletter:** Netlify Forms with email notifications
-- **Spam Protection:** Built-in Netlify spam filtering
-- **Form Data Storage:** Automatic storage in Netlify dashboard
+**To update SEO information:**
+1. Find the page section in `src/data/metadata.ts`
+2. Update the title, description, and keywords
+3. Keep titles under 60 characters
+4. Keep descriptions under 160 characters
+5. Use relevant keywords naturally
 
-#### **Netlify Forms Benefits:**
-- **No setup required** - Forms work automatically
-- **Spam protection** - Built-in filtering and honeypot
-- **Email notifications** - Automatic emails on form submission
-- **Data storage** - All submissions stored in Netlify dashboard
-- **Success redirects** - Automatic redirects after submission
-- **No external services** - Everything handled by Netlify
+### How to Update Service Information
 
-#### **Form Management in Netlify Dashboard:**
+#### **Service Details** (`src/data/services.ts`):
 
-1. **Access Form Submissions:**
-   - Log into [netlify.com](https://netlify.com)
-   - Go to your site dashboard
-   - Click "Forms" in the left sidebar
-   - View all form submissions
+Each service has detailed information:
 
-2. **Configure Email Notifications:**
-   - In Forms section, click "Settings"
-   - Add email addresses for notifications
-   - Choose notification frequency
-   - Set up spam filtering preferences
+```javascript
+{
+  slug: 'insight-analysis',
+  title: 'Insight & Analysis',
+  overview: 'Receive tailored insights and analysis...',
+  benefits: [
+    'Data-driven insights for decision-making',
+    'Early identification of policy and regulatory trends',
+    'Actionable recommendations for your organization',
+  ],
+  methodology: 'We combine proprietary data, expert analysis...',
+  caseStudies: [
+    {
+      title: 'AI Risk Monitoring for Federal Agency',
+      description: 'Developed a real-time dashboard...',
+    },
+  ],
+  related: ['research', 'policy-development'],
+  backgroundImage: '/images/stocks/insights-analysis.jpg',
+}
+```
 
-3. **Export Form Data:**
-   - Select form submissions
-   - Click "Export" to download CSV
-   - Use for CRM integration or analysis
+**To update service information:**
+1. Find the service in `src/data/services.ts`
+2. Update the title, overview, benefits, or methodology
+3. Add or modify case studies
+4. Update related services if needed
+5. Test the service page displays correctly
 
-#### **Form Types and Handling:**
+### How to Update Resource Information
 
-**Contact Form (`contact`):**
-- General inquiries and service requests
-- Service selection with checkboxes
-- Automatic email to specified address
-- Success redirect to `/contact?success=true`
+#### **Articles and Resources** (`src/data/resources.ts`):
 
-**Newsletter Form (`newsletter`):**
-- Email signup for updates
-- Used on contact page
-- Success redirect to `/?newsletter=success`
+Resources include articles, policy briefs, case studies, and general resources:
 
-#### **To Customize Form Notifications:**
+```javascript
+// Articles
+{
+  slug: 'article-slug',
+  title: 'Article Title',
+  summary: 'Brief summary of the article',
+  content: '<p>Article content in HTML format</p>',
+  date: '2024-01-15',
+  author: authors[0], // Reference to author array
+  tags: ['AI Policy', 'Technology'],
+  featured: true, // Show on homepage
+  externalUrl: 'https://external-site.com/article', // For external articles
+}
 
-1. **In Netlify Dashboard:**
-   - Go to Site settings → Forms
-   - Configure notification emails
-   - Set up custom email templates
-   - Adjust spam filtering settings
+// Policy Briefs
+{
+  slug: 'policy-brief-slug',
+  title: 'Policy Brief Title',
+  summary: 'Brief summary',
+  content: '<p>Policy brief content</p>',
+  date: '2024-01-15',
+  author: authors[0],
+  tags: ['Policy Brief', 'AI Regulation'],
+}
 
-2. **Form Content Updates:**
-   - Edit form labels and messages in `src/data/content.ts`
-   - Update form names in `forms` section
-   - Test form functionality after changes
+// Case Studies
+{
+  slug: 'case-study-slug',
+  title: 'Case Study Title',
+  summary: 'Brief summary',
+  content: '<p>Case study content</p>',
+  date: '2024-01-15',
+  organization: 'Organization Name',
+  author: authors[0],
+  tags: ['Case Study', 'AI Governance'],
+}
 
-3. **Success Page Customization:**
-   - Forms automatically redirect with success parameters
-   - Components check URL parameters for success states
-   - Success messages show from centralized content
+// General Resources
+{
+  slug: 'resource-slug',
+  title: 'Resource Title',
+  url: 'https://external-site.com/resource',
+  description: 'Description of the resource',
+  type: 'report', // 'report', 'toolkit', 'dataset', 'guideline'
+}
+```
 
-### LinkedIn Integration
+**To add a new resource:**
+1. Choose the appropriate array (articles, policyBriefs, caseStudies, or resources)
+2. Add a new object following the existing format
+3. Use a unique slug (lowercase, hyphens instead of spaces)
+4. Set the date in YYYY-MM-DD format
+5. Use existing authors from the authors array
+6. Add relevant tags for categorization
 
-#### **Current LinkedIn Setup:**
-- **Profile:** https://linkedin.com/in/chloeautio
-- **Integration:** Basic link in footer
-- **API Integration:** None currently configured
+**To update existing resources:**
+1. Find the resource in the appropriate array
+2. Update the title, summary, content, or other fields
+3. Keep the slug the same (unless you want to change the URL)
+4. Test the resource page displays correctly
 
-#### **To Add LinkedIn API Integration:**
+### How to Update Author Information
 
-1. **LinkedIn Developer Setup:**
-   - Go to [LinkedIn Developers](https://developer.linkedin.com/)
-   - Create a new app
-   - Get API credentials
+#### **Authors** (`src/data/resources.ts`):
 
-2. **Update Configuration:**
-   - Add LinkedIn API keys to environment variables
-   - Update profile URL in `src/data/content.ts` - `site.linkedin`
-   - Contact developer to configure sharing buttons
+Authors are defined at the top of the resources file:
 
-3. **Testing LinkedIn Integration:**
-   - Verify profile links work
-   - Test sharing functionality
-   - Monitor API usage
+```javascript
+export const authors: Author[] = [
+  {
+    name: 'Chloe Autio',
+    title: 'Founder, Autio Strategies',
+    bio: 'Chloe Autio is a leading expert in AI policy...',
+    avatarUrl: '/profile-placeholder.jpg',
+  },
+  {
+    name: 'External Source',
+    title: 'External News Outlet',
+    bio: 'This article is featured as a resource...',
+    avatarUrl: '/profile-placeholder.jpg',
+  },
+];
+```
 
-### Social Media Links
+**To update author information:**
+1. Find the author in the authors array
+2. Update the name, title, bio, or avatar URL
+3. All resources using that author will automatically update
+4. Test that author information displays correctly
 
-**Current social media links:**
-- LinkedIn: `https://linkedin.com/in/chloeautio`
+### How to Update Site Constants
 
-**To update social media links:**
-1. Open `src/data/content.ts`
-2. Find the `site` section
-3. Update the appropriate social media URLs
-4. Test all links work correctly
+#### **Site Constants** (`src/lib/constants.ts`):
 
----
+Site-wide constants are stored in the lib directory:
 
-## 🔧 Regular Maintenance Tasks
+```javascript
+export const siteMeta: SiteMeta = {
+  title: "Autio Strategies",
+  description: "Professional tech policy consulting for the digital age.",
+  url: "https://autiostrategies.com",
+};
 
-### Weekly Maintenance Checklist
+export const contactInfo: ContactInfo = {
+  email: "info@autiostrategies.com",
+};
+```
 
-- [ ] **Check website functionality**
-  - Test all navigation links
-  - Verify contact forms work and submit successfully
-  - Test newsletter signup forms
-  - Check form success messages appear
-  - Check social media links
-  - Test on mobile devices
+**To update site constants:**
+1. Find the constant in `src/lib/constants.ts`
+2. Update the value
+3. Test that the change appears across the site
+4. Note: These are used for site-wide configuration
 
-- [ ] **Review content accuracy**
-  - Check for outdated information
-  - Verify contact details are current
-  - Update any time-sensitive content
-  - Review form labels and messages
+### How to Update Form Configuration
 
-- [ ] **Monitor performance**
-  - Check website loading speed
-  - Review Netlify deployment logs
-  - Test on different browsers
-  - Check form submission success rates
+#### **Form Settings** (`src/data/content.ts` - `forms` section):
 
-- [ ] **Form monitoring**
-  - Check Netlify dashboard for new form submissions
-  - Review spam filtering effectiveness
-  - Verify email notifications are working
-  - Test form success redirects
+Forms are configured with labels, placeholders, and messages:
 
-### Monthly Maintenance Checklist
+```javascript
+forms: {
+  contact: {
+    title: 'Contact Form',
+    netlifyName: 'contact',
+    fields: {
+      name: {
+        label: 'Full Name',
+        placeholder: 'Enter your full name',
+        error: 'Name is required',
+      },
+      email: {
+        label: 'Email Address',
+        placeholder: 'Enter your email address',
+        error: 'Please enter a valid email address',
+      },
+      // ... other fields
+    },
+    buttons: {
+      submit: {
+        text: 'Send Message',
+        loading: 'Sending...',
+      },
+    },
+    messages: {
+      success: 'Thank you for your message! We\'ll get back to you soon.',
+      error: 'There was an error sending your message. Please try again.',
+    },
+  },
+}
+```
 
-- [ ] **Content updates**
-  - Add new articles or case studies
-  - Update service descriptions
-  - Refresh images if needed
-  - Review and update resources
-  - Update form content if needed
+**To update form configuration:**
+1. Find the form in the `forms` section
+2. Update field labels, placeholders, or error messages
+3. Update button text or loading states
+4. Update success or error messages
+5. Test the form to ensure it works correctly
 
-- [ ] **Security checks**
-  - Update passwords if needed
-  - Review Netlify access permissions
-  - Check for suspicious form submissions
-  - Review spam filtering settings
+### How to Update Navigation and Menus
 
-- [ ] **Backup procedures**
-  - Download content files
-  - Backup images and media
-  - Export form submission data from Netlify
-  - Save configuration settings
+#### **Navigation Items** (`src/data/content.ts` - `navigation` section):
 
-- [ ] **Form analysis**
-  - Review form submission trends
-  - Analyze conversion rates
-  - Check for form errors or issues
-  - Update form content based on user feedback
+The main navigation menu is configured here:
 
-### Performance Monitoring Basics
+```javascript
+navigation: {
+  items: [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Services', href: '/services' },
+    { name: 'Resources', href: '/resources' },
+    { name: 'Contact', href: '/contact' },
+  ],
+}
+```
 
-#### **What to Monitor:**
-- **Page load times** (should be under 3 seconds)
-- **Mobile responsiveness** (test on different screen sizes)
-- **Broken links** (use tools like Google Search Console)
-- **Error rates** (check for 404 or 500 errors)
+**To add a new menu item:**
+1. Add a new object to the `items` array
+2. Use a descriptive name
+3. Use the correct href (page URL)
+4. Test the navigation works correctly
 
-#### **Free Monitoring Tools:**
-- **Google PageSpeed Insights** - Performance testing
-- **Google Search Console** - SEO and error monitoring
-- **GTmetrix** - Detailed performance analysis
-- **UptimeRobot** - Website availability monitoring
+**To change menu item text:**
+1. Update the `name` property
+2. Keep the `href` the same (unless changing the page URL)
+3. Test the navigation displays correctly
 
-### Content Backup Procedures
+**To reorder menu items:**
+1. Move the objects in the array to the desired order
+2. Test the navigation order is correct
 
-#### **What to Backup:**
-1. **Content files:**
-   - `src/data/content.ts` (main content file)
-   - `src/data/services.ts`
-   - `src/data/insights.ts`
-   - `src/data/metadata.ts`
+### How to Update Footer Information
 
-2. **Images and media:**
-   - `public/images/` folder
-   - Any uploaded files
+#### **Footer Content** (`src/data/content.ts` - `footer` section):
 
-3. **Configuration:**
-   - `netlify.toml` (Netlify configuration)
-   - `public/forms.html` (form detection file)
-   - Environment variables (safely stored)
+Footer links and information are configured here:
 
-4. **Form data:**
-   - Export form submissions from Netlify dashboard
-   - Backup form configuration settings
-   - Save email notification settings
+```javascript
+footer: {
+  builtBy: { text: 'Built by', href: 'https://github.com/chloeautio' },
+  sourceCode: { text: 'The source code is available on', href: 'https://github.com/chloeautio/chloe-autio-strategies' },
+  links: [
+    { text: 'Privacy', href: '/privacy' },
+    { text: 'Terms', href: '/terms' },
+  ],
+  contact: {
+    email: { text: 'Email', href: 'mailto:info@autiostrategies.com' },
+    linkedin: { text: 'LinkedIn', href: 'https://linkedin.com/in/chloeautio' },
+  },
+  logo: {
+    image: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
+    alt: 'Autio Strategies Logo',
+  },
+}
+```
 
-#### **Backup Schedule:**
-- **Weekly:** Content files and images
-- **Monthly:** Full website backup and form data export
-- **Before major changes:** Complete backup
+**To update footer information:**
+1. Find the footer section in `src/data/content.ts`
+2. Update links, contact information, or logo
+3. Test the footer displays correctly
+4. Verify all links work properly
 
-#### **Backup Storage:**
-- **Local:** Computer hard drive
-- **Cloud:** Google Drive, Dropbox, or OneDrive
-- **Version Control:** Git repository (for developers)
-- **Netlify:** Form data automatically backed up in dashboard
+### How to Update Header Information
 
----
+#### **Header Content** (`src/data/content.ts` - `header` section):
 
-## 🆘 Getting Help
+Header logo and mobile menu are configured here:
 
-### When to Contact a Developer
+```javascript
+header: {
+  logo: {
+    image: '/images/logo/AutioStrategies_Logo_FullColor_Horz (1).png',
+    alt: 'Autio Strategies Logo',
+  },
+  mobileMenu: {
+    openButton: 'Open menu',
+    closeButton: 'Close menu',
+  },
+}
+```
 
-**Contact a developer immediately if:**
-- Website is completely down or not loading
-- Forms are not working or submitting
-- Form success messages not appearing
-- Images are broken or missing
-- Navigation is not functioning
-- You see error messages you don't understand
-- Netlify deployment fails
+**To update header information:**
+1. Find the header section in `src/data/content.ts`
+2. Update logo image or alt text
+3. Update mobile menu button text
+4. Test the header displays correctly
 
-**Contact a developer for:**
-- Adding new features or functionality
-- Changing website design or layout
-- Setting up new integrations
-- Performance optimization
-- Security updates
-- Creating new pages or components
-- Form configuration changes
-- Netlify setup issues
+### How to Update Client Logos
 
-### Common Issues and Solutions
+#### **Client Logos** (`src/data/content.ts` - `clientLogos` section):
 
-#### **Form Issues:**
+Client and partner logos are configured here:
 
-**Forms not submitting:**
-- Check Netlify dashboard for form detection
-- Verify `data-netlify="true"` attributes on forms
-- Ensure `public/forms.html` exists and is correct
-- Check form names match in `src/data/content.ts`
+```javascript
+clientLogos: {
+  title: 'Trusted by Leading Organizations',
+  logos: [
+    { 
+      name: 'Cohere', 
+      image: '/images/partner_logos/Cohere-Logo.png',
+      alt: 'Cohere Logo'
+    },
+    { 
+      name: 'Department of Defense', 
+      image: '/images/partner_logos/DoD-Logo-Stacked.png',
+      alt: 'Department of Defense Logo'
+    },
+    // ... other logos
+  ],
+}
+```
 
-**Form success messages not showing:**
-- Check URL parameters for success states
-- Verify form redirects are working
-- Test form submission in Netlify dashboard
-- Check browser console for errors
+**To add a new client logo:**
+1. Add a new object to the `logos` array
+2. Use a descriptive name
+3. Reference the correct image path
+4. Provide meaningful alt text
+5. Test the logo displays correctly
 
-**Spam submissions:**
-- Review Netlify spam filtering settings
-- Check form submission quality in dashboard
-- Consider adding honeypot fields if needed
-- Monitor form submission patterns
+**To update existing logos:**
+1. Find the logo in the `logos` array
+2. Update the name, image path, or alt text
+3. Test the logo displays correctly
 
-#### **Netlify Issues:**
+**To reorder logos:**
+1. Move the objects in the array to the desired order
+2. Test the logo order is correct
 
-**Deployment failures:**
-- Check Netlify build logs
-- Verify `netlify.toml` configuration
-- Check for build errors in local development
-- Review environment variables
+### How to Update Testimonials
 
-**Domain issues:**
-- Check DNS settings in domain registrar
-- Verify SSL certificate status
-- Test domain connectivity
-- Check Netlify domain settings
+#### **Testimonials** (`src/data/content.ts` - `testimonials` section):
 
-#### **Content Issues:**
+Client testimonials are configured here:
+
+```javascript
+testimonials: {
+  title: 'What Our Clients Say',
+  items: [
+    {
+      quote: 'Autio Strategies helped us transform our business and achieve record growth. Their insights are invaluable.',
+      name: 'Alex Johnson',
+      role: 'CEO, Acme Corp',
+    },
+    {
+      quote: 'The leadership workshops were a game changer for our team. Highly recommended!',
+      name: 'Maria Lee',
+      role: 'Head of People, InnovateX',
+    },
+    // ... other testimonials
+  ],
+}
+```
+
+**To add a new testimonial:**
+1. Add a new object to the `items` array
+2. Include a compelling quote
+3. Add the person's name and role
+4. Test the testimonial displays correctly
+
+**To update existing testimonials:**
+1. Find the testimonial in the `items` array
+2. Update the quote, name, or role
+3. Test the testimonial displays correctly
+
+**To reorder testimonials:**
+1. Move the objects in the array to the desired order
+2. Test the testimonial order is correct
+
+### How to Update Value Proposition
+
+#### **Value Proposition** (`src/data/content.ts` - `valueProposition` section):
+
+The value proposition cards are configured here:
+
+```javascript
+valueProposition: {
+  title: 'Why Choose Autio Strategies?',
+  cards: [
+    {
+      title: 'AI Policy Expertise',
+      description: 'Decades of experience advising governments, Fortune 500s, and startups on responsible AI, data governance, and emerging tech policy.',
+    },
+    {
+      title: 'Global Perspective',
+      description: 'Experience working with international organizations (OECD, NIST, DOD, Meta, DeepMind, Google Cloud, Cohere) to shape global standards and best practices.',
+    },
+    {
+      title: 'Proven Results',
+      description: 'Trusted by leading organizations to deliver actionable insights, drive compliance, and enable responsible innovation in AI and technology.',
+    },
+  ],
+}
+```
+
+**To update value proposition:**
+1. Find the valueProposition section in `src/data/content.ts`
+2. Update the title or card content
+3. Test the value proposition displays correctly
+
+**To add a new value proposition card:**
+1. Add a new object to the `cards` array
+2. Include a compelling title and description
+3. Test the card displays correctly
+
+### How to Update Contact CTA
+
+#### **Contact CTA** (`src/data/content.ts` - `contactCTA` section):
+
+The contact call-to-action section is configured here:
+
+```javascript
+contactCTA: {
+  title: 'Ready to Transform Your Organization?',
+  description: "Let's discuss how our expertise in AI policy, technology governance, and regulatory compliance can help your organization navigate the complexities of the digital age.",
+  buttons: {
+    primary: { text: 'Contact Us', href: '/contact' },
+    secondary: { text: 'Learn More', href: '/services' },
+  },
+  background: {
+    image: '/images/stocks/cta-background.jpg',
+    alt: 'Professional consulting background',
+  },
+  logo: {
+    image: '/images/logo/AutioStrategies_Logo_AllWhite_Horz.png',
+    alt: 'Autio Strategies Logo',
+  },
+}
+```
+
+**To update contact CTA:**
+1. Find the contactCTA section in `src/data/content.ts`
+2. Update the title, description, or button text
+3. Update background image or logo if needed
+4. Test the CTA displays correctly
+
+### How to Update About Page Content
+
+#### **About Page** (`src/data/content.ts` - `about` section):
+
+Team information and about page content is configured here:
+
+```javascript
+about: {
+  hero: {
+    title: 'Our Team',
+    subtitle: 'Meet the experts behind Autio Strategies - dedicated professionals committed to advancing AI policy and technology governance.',
+  },
+  team: {
+    chloe: {
+      name: 'Chloe Autio',
+      title: 'Founder & CEO',
+      description: 'Chloe Autio is a recognized expert in AI policy, governance, and technology strategy...',
+      image: '/images/headshot/autio_headshot.jpg',
+      // ... other fields
+    },
+    samuel: {
+      name: 'Samuel Wells',
+      title: 'Policy Manager',
+      description: 'Samuel Wells brings extensive experience in policy analysis and stakeholder engagement...',
+      image: '/images/headshot/wells_headshot.jpeg',
+      // ... other fields
+    },
+  },
+  cta: {
+    title: 'Partner with Our Team',
+    description: 'Ready to work with our expert team?',
+    button: { text: 'Contact Us', href: '/contact' },
+  },
+}
+```
+
+**To update team member information:**
+1. Find the team member in the `team` section
+2. Update the name, title, description, or image
+3. Test the about page displays correctly
+
+**To update about page hero:**
+1. Find the hero section in the about configuration
+2. Update the title or subtitle
+3. Test the hero displays correctly
+
+**To update about page CTA:**
+1. Find the cta section in the about configuration
+2. Update the title, description, or button
+3. Test the CTA displays correctly
+
+### How to Update Newsletter Configuration
+
+#### **Newsletter** (`src/data/content.ts` - `newsletter` section):
+
+Newsletter signup configuration is here:
+
+```javascript
+newsletter: {
+  title: 'Stay Updated',
+  description: 'Get the latest insights on AI policy, technology governance, and regulatory compliance delivered to your inbox.',
+  placeholder: 'Enter your email address',
+  button: {
+    text: 'Subscribe',
+    loading: 'Subscribing...',
+  },
+  messages: {
+    success: 'Thank you for subscribing!',
+    error: 'There was an error. Please try again.',
+  },
+}
+```
+
+**To update newsletter configuration:**
+1. Find the newsletter section in `src/data/content.ts`
+2. Update the title, description, placeholder, or button text
+3. Update success or error messages
+4. Test the newsletter form works correctly
+
+### How to Update Common UI Elements
+
+#### **Common UI** (`src/data/content.ts` - `ui` section):
+
+Common UI elements like buttons and messages are configured here:
+
+```javascript
+ui: {
+  buttons: {
+    learnMore: 'Learn More',
+    contactUs: 'Contact Us',
+    getStarted: 'Get Started',
+    readMore: 'Read More',
+  },
+  loading: {
+    loading: 'Loading...',
+    sending: 'Sending...',
+    submitting: 'Submitting...',
+  },
+  errors: {
+    required: 'This field is required',
+    invalidEmail: 'Please enter a valid email address',
+    invalidPhone: 'Please enter a valid phone number',
+    minLength: 'This field must be at least {min} characters',
+  },
+  aria: {
+    closeMenu: 'Close menu',
+    openMenu: 'Open menu',
+    learnMore: 'Learn more about',
+  },
+}
+```
+
+**To update common UI elements:**
+1. Find the ui section in `src/data/content.ts`
+2. Update button text, loading states, error messages, or ARIA labels
+3. Test the UI elements display correctly across the site
+
+### How to Update Page-Specific Content
+
+#### **Page Content** (`src/data/content.ts` - `pages` section):
+
+Each page has its own content configuration:
+
+```javascript
+pages: {
+  home: {
+    hero: {
+      title: 'AI Policy Consulting',
+      subtitle: 'Professional technology governance and regulatory compliance advisory...',
+      buttons: {
+        primary: { text: 'Our Services', href: '/services' },
+        secondary: { text: 'Contact Us', href: '/contact' },
+      },
+      background: {
+        image: '/images/stocks/hero-background.jpg',
+        alt: 'Jefferson Memorial night reflection',
+      },
+    },
+  },
+  about: {
+    hero: {
+      title: 'Our Team',
+      subtitle: 'Meet the experts behind Autio Strategies...',
+      background: {
+        image: '/images/stocks/hero-background.jpg',
+        alt: 'Team background',
+      },
+    },
+  },
+  // ... other pages
+}
+```
+
+**To update page-specific content:**
+1. Find the page in the `pages` section
+2. Update the hero title, subtitle, buttons, or background
+3. Test the page displays correctly
+
+### How to Update Service-Specific Content
+
+#### **Service Content** (`src/data/services.ts`):
+
+Each service has detailed content configuration:
+
+```javascript
+{
+  slug: 'insight-analysis',
+  title: 'Insight & Analysis',
+  overview: 'Receive tailored insights and analysis to inform your organization\'s strategy...',
+  benefits: [
+    'Data-driven insights for decision-making',
+    'Early identification of policy and regulatory trends',
+    'Actionable recommendations for your organization',
+  ],
+  methodology: 'We combine proprietary data, expert analysis, and ongoing monitoring...',
+  caseStudies: [
+    {
+      title: 'AI Risk Monitoring for Federal Agency',
+      description: 'Developed a real-time dashboard for a federal agency...',
+    },
+  ],
+  related: ['research', 'policy-development'],
+  backgroundImage: '/images/stocks/insights-analysis.jpg',
+  detailedContent: [
+    '<strong>Overview of Policy Landscape:</strong> Receive tailored reviews...',
+    '<strong>Real-Time Policy Updates and Ecosystem Insights:</strong> Stay informed...',
+    // ... other detailed content
+  ],
+}
+```
+
+**To update service content:**
+1. Find the service in `src/data/services.ts`
+2. Update the title, overview, benefits, methodology, or case studies
+3. Update related services if needed
+4. Update background image or detailed content
+5. Test the service page displays correctly
+
+### How to Update Resource-Specific Content
+
+#### **Resource Content** (`src/data/resources.ts`):
+
+Resources include articles, policy briefs, case studies, and general resources:
+
+```javascript
+// Articles
+{
+  slug: 'article-slug',
+  title: 'Article Title',
+  summary: 'Brief summary of the article',
+  content: '<p>Article content in HTML format</p>',
+  date: '2024-01-15',
+  author: authors[0],
+  tags: ['AI Policy', 'Technology'],
+  featured: true,
+  related: [],
+  externalUrl: 'https://external-site.com/article',
+}
+
+// Policy Briefs
+{
+  slug: 'policy-brief-slug',
+  title: 'Policy Brief Title',
+  summary: 'Brief summary',
+  content: '<p>Policy brief content</p>',
+  date: '2024-01-15',
+  author: authors[0],
+  tags: ['Policy Brief', 'AI Regulation'],
+  externalUrl: 'https://external-site.com/brief',
+}
+
+// Case Studies
+{
+  slug: 'case-study-slug',
+  title: 'Case Study Title',
+  summary: 'Brief summary',
+  content: '<p>Case study content</p>',
+  date: '2024-01-15',
+  organization: 'Organization Name',
+  author: authors[0],
+  tags: ['Case Study', 'AI Governance'],
+  externalUrl: 'https://external-site.com/case-study',
+}
+
+// General Resources
+{
+  slug: 'resource-slug',
+  title: 'Resource Title',
+  url: 'https://external-site.com/resource',
+  description: 'Description of the resource',
+  type: 'report',
+}
+```
+
+**To update resource content:**
+1. Find the resource in the appropriate array in `src/data/resources.ts`
+2. Update the title, summary, content, date, or tags
+3. Update external URL if applicable
+4. Test the resource page displays correctly
+
+### How to Update Metadata
+
+#### **Page Metadata** (`src/data/metadata.ts`):
+
+Each page has comprehensive metadata configuration:
+
+```javascript
+pages: {
+  home: {
+    title: 'Autio Strategies | AI Policy Consulting & Technology Governance',
+    description: 'Professional technology governance and regulatory compliance advisory...',
+    keywords: [
+      'AI policy consulting',
+      'technology governance',
+      'regulatory compliance',
+      'government consulting',
+      'enterprise policy advisory',
+    ],
+    url: 'https://autiostrategies.com',
+  },
+  about: {
+    title: 'Our Team | AI Policy Consulting & Technology Governance',
+    description: "Meet the Autio Strategies team - Chloe Autio (Founder & CEO) and Samuel Wells (Policy Manager)...",
+    keywords: [
+      'AI policy consulting',
+      'technology governance',
+      'regulatory compliance',
+      'Chloe Autio',
+      'Samuel Wells',
+      'Autio Strategies team',
+    ],
+    url: 'https://autiostrategies.com/about',
+  },
+  // ... other pages
+}
+```
+
+**To update page metadata:**
+1. Find the page in the `pages` section of `src/data/metadata.ts`
+2. Update the title, description, keywords, or URL
+3. Keep titles under 60 characters for SEO
+4. Keep descriptions under 160 characters for SEO
+5. Use relevant keywords naturally
+6. Test the metadata appears correctly in search results
+
+#### **Service Metadata** (`src/data/metadata.ts`):
+
+Each service also has its own metadata:
+
+```javascript
+services: {
+  'insight-analysis': {
+    title: 'Insight & Analysis Services | AI Policy Consulting',
+    description: 'Receive tailored insights and analysis to inform your organization\'s strategy...',
+    keywords: [
+      'AI policy insights',
+      'technology trend analysis',
+      'policy monitoring',
+      'strategic intelligence',
+      'regulatory forecasting',
+    ],
+    url: 'https://autiostrategies.com/services/insight-analysis',
+  },
+  // ... other services
+}
+```
+
+**To update service metadata:**
+1. Find the service in the `services` section of `src/data/metadata.ts`
+2. Update the title, description, keywords, or URL
+3. Test the service page metadata appears correctly
+
+#### **Resource Metadata** (`src/data/metadata.ts`):
+
+Resources also have metadata for SEO:
+
+```javascript
+resources: {
+  'wsj-trump-ai-kratsios-thiel': {
+    title: 'Trump Taps Michael Kratsios for AI Policy Role | Autio Strategies',
+    description: 'Wall Street Journal coverage of Trump\'s appointment of Michael Kratsios to lead AI policy...',
+    keywords: ['AI Policy', 'Trump', 'Kratsios', 'WSJ'],
+    url: 'https://autiostrategies.com/resources/wsj-trump-ai-kratsios-thiel',
+  },
+  // ... other resources
+}
+```
+
+**To update resource metadata:**
+1. Find the resource in the `resources` section of `src/data/metadata.ts`
+2. Update the title, description, keywords, or URL
+3. Test the resource page metadata appears correctly
+
+### How to Update Default Metadata
+
+#### **Default Metadata** (`src/data/metadata.ts`):
+
+Default metadata is used as a fallback for pages without specific metadata:
+
+```javascript
+default: {
+  title: 'Autio Strategies | AI Policy Consulting & Technology Governance',
+  description: 'Professional technology governance and regulatory compliance advisory for government and enterprise organizations. Expert AI policy consulting services.',
+  keywords: [
+    'AI policy consulting',
+    'technology governance',
+    'regulatory compliance',
+    'government consulting',
+    'enterprise policy advisory',
+    'AI governance',
+    'tech policy',
+    'compliance consulting',
+    'public sector advisory',
+    'Autio Strategies',
+    'Chloe Autio',
+  ],
+  url: 'https://autiostrategies.com',
+  siteName: 'Autio Strategies',
+  locale: 'en_US',
+  type: 'website',
+  image: {
+    url: 'https://autiostrategies.com/og-image.png',
+    width: 1200,
+    height: 630,
+    alt: 'Autio Strategies - AI Policy Consulting & Technology Governance',
+  },
+}
+```
+
+**To update default metadata:**
+1. Find the `default` section in `src/data/metadata.ts`
+2. Update the title, description, keywords, or other fields
+3. Test that the default metadata appears correctly on pages without specific metadata
+
+### How to Update Open Graph Metadata
+
+#### **Open Graph Metadata** (`src/data/metadata.ts`):
+
+Open Graph metadata is used for social media sharing:
+
+```javascript
+openGraph: {
+  title: 'AI Policy Consulting & Technology Governance',
+  description: 'Expert guidance for government and enterprise leaders',
+  url: 'https://autiostrategies.com',
+  siteName: 'Autio Strategies',
+  images: [
+    {
+      url: 'https://autiostrategies.com/og-image.png',
+      width: 1200,
+      height: 630,
+      alt: 'Autio Strategies - AI Policy Consulting',
+    },
+  ],
+  locale: 'en_US',
+  type: 'website',
+}
+```
+
+**To update Open Graph metadata:**
+1. Find the `openGraph` section in `src/data/metadata.ts`
+2. Update the title, description, URL, or images
+3. Test that social media sharing displays correctly
+
+### How to Update Twitter Metadata
+
+#### **Twitter Metadata** (`src/data/metadata.ts`):
+
+Twitter-specific metadata is used for Twitter sharing:
+
+```javascript
+twitter: {
+  card: 'summary_large_image',
+  title: 'AI Policy Consulting & Technology Governance',
+  description: 'Expert guidance for government and enterprise leaders',
+  images: ['https://autiostrategies.com/og-image.png'],
+  creator: '@chloeautio',
+}
+```
+
+**To update Twitter metadata:**
+1. Find the `twitter` section in `src/data/metadata.ts`
+2. Update the card type, title, description, images, or creator
+3. Test that Twitter sharing displays correctly
+
+### How to Update JSON-LD Schema
+
+#### **JSON-LD Schema** (`src/data/metadata.ts`):
+
+Structured data for search engines:
+
+```javascript
+jsonLd: {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Autio Strategies',
+  url: 'https://autiostrategies.com',
+  logo: 'https://autiostrategies.com/images/logo/AutioStrategies_Logo_FullColor_Horz.png',
+  description: 'Professional technology governance and regulatory compliance advisory...',
+  email: 'info@autiostrategies.com',
+  sameAs: [
+    'https://linkedin.com/in/chloeautio',
+    'https://github.com/chloeautio/chloe-autio-strategies',
+  ],
+}
+```
+
+**To update JSON-LD schema:**
+1. Find the `jsonLd` section in `src/data/metadata.ts`
+2. Update the organization information, URLs, or social media links
+3. Test that structured data appears correctly in search results
+
+### How to Update Site Constants
+
+#### **Site Constants** (`src/lib/constants.ts`):
+
+Site-wide constants and configuration:
+
+```javascript
+export const siteMeta: SiteMeta = {
+  title: "Autio Strategies",
+  description: "Professional tech policy consulting for the digital age.",
+  url: "https://autiostrategies.com",
+};
+
+export const navMenu: NavItem[] = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Resources", href: "/resources" },
+  { label: "Contact", href: "/contact" },
+];
+
+export const socialLinks: SocialLink[] = [
+  { platform: "Email", url: "mailto:info@autiostrategies.com" },
+];
+
+export const contactInfo: ContactInfo = {
+  email: "info@autiostrategies.com",
+};
+```
+
+**To update site constants:**
+1. Find the constant in `src/lib/constants.ts`
+2. Update the value
+3. Test that the change appears across the site
+4. Note: These are used for site-wide configuration and may be referenced in multiple places
+
+### Content Backup and Version Control
+
+#### **Before Making Changes:**
+
+1. **Create a backup:**
+   ```bash
+   cp src/data/content.ts src/data/content.ts.backup
+   cp src/data/metadata.ts src/data/metadata.ts.backup
+   cp src/data/services.ts src/data/services.ts.backup
+   cp src/data/resources.ts src/data/resources.ts.backup
+   cp src/lib/constants.ts src/lib/constants.ts.backup
+   ```
+
+2. **Check current version:**
+   ```bash
+   git status
+   git log --oneline -5
+   ```
+
+3. **Create a new branch (if using Git):**
+   ```bash
+   git checkout -b content-update-YYYY-MM-DD
+   ```
+
+#### **After Making Changes:**
+
+1. **Test your changes:**
+   - Start the development server: `npm run dev`
+   - Check all pages where you made changes
+   - Verify forms still work
+   - Test navigation and links
+
+2. **Commit your changes:**
+   ```bash
+   git add src/data/ src/lib/
+   git commit -m "Update content: [describe your changes]"
+   ```
+
+3. **Push to remote (if using Git):**
+   ```bash
+   git push origin content-update-YYYY-MM-DD
+   ```
+
+### Content Validation Checklist
+
+#### **After Making Changes, Verify:**
+
+- [ ] **Text displays correctly** on all affected pages
+- [ ] **No broken links** in navigation or content
+- [ ] **Forms still work** and submit correctly
+- [ ] **Images display** with correct paths and alt text
+- [ ] **SEO metadata** is updated and accurate
+- [ ] **No console errors** in browser developer tools
+- [ ] **Mobile responsiveness** is maintained
+- [ ] **Accessibility** features still work
+- [ ] **Performance** is not degraded
+- [ ] **Cross-browser compatibility** is maintained
+
+### Common Content Update Workflows
+
+#### **Regular Content Updates:**
+
+1. **Small text changes:**
+   - Edit the appropriate data file
+   - Save and test locally
+   - Commit and push changes
+   - Deploy to production
+
+2. **Adding new content:**
+   - Add content to appropriate data file
+   - Update metadata if needed
+   - Test content displays correctly
+   - Commit and push changes
+   - Deploy to production
+
+3. **Updating images:**
+   - Upload new images to `/public/images/`
+   - Update image paths in data files
+   - Test images display correctly
+   - Commit and push changes
+   - Deploy to production
+
+#### **Major Content Updates:**
+
+1. **Content restructuring:**
+   - Plan the changes thoroughly
+   - Create backup of current content
+   - Make changes in stages
+   - Test each stage thoroughly
+   - Get approval before publishing
+   - Deploy with rollback plan
+
+2. **Adding new pages:**
+   - Add navigation items
+   - Add page metadata
+   - Create page components (contact developer)
+   - Test navigation and SEO
+   - Deploy to production
+
+3. **Updating site structure:**
+   - Plan the new structure
+   - Update all affected data files
+   - Test all pages and navigation
+   - Update documentation
+   - Deploy to production
+
+### Content Troubleshooting
+
+#### **Common Issues and Solutions:**
 
 **Content not updating:**
-- Verify changes saved in `src/data/content.ts`
-- Check for syntax errors in content file
+- Check if you saved the file
 - Clear browser cache
-- Check Netlify deployment status
+- Restart development server
+- Check for syntax errors in the file
 
-**Images not loading:**
-- Verify image files exist in `public/images/`
-- Check image paths in `src/data/content.ts`
-- Ensure image filenames match exactly
-- Check image file permissions
+**Images not displaying:**
+- Verify image file exists in correct location
+- Check image path is correct (case-sensitive)
+- Ensure image file format is supported
+- Check image file size is reasonable
 
-### How to Document Issues
+**Forms not working:**
+- Check form field names match configuration
+- Verify Netlify configuration is correct
+- Test form submission process
+- Check browser console for errors
 
-#### **Before Contacting a Developer:**
+**Navigation issues:**
+- Verify navigation items are in correct array
+- Check href values are correct
+- Test all navigation links work
+- Ensure no duplicate navigation items
 
-1. **Document the problem:**
-   - What were you trying to do?
-   - What happened instead?
-   - What error messages appeared?
-   - When did this start happening?
+**SEO issues:**
+- Check metadata is updated for all pages
+- Verify title and description lengths
+- Test meta tags appear in page source
+- Check structured data is valid
 
-2. **Gather information:**
-   - Screenshots of the issue
-   - Browser and device information
-   - Steps to reproduce the problem
-   - Any recent changes you made
+**Performance issues:**
+- Optimize image sizes
+- Check for unnecessary content loading
+- Verify efficient data structures
+- Monitor page load times
 
-3. **Check common solutions:**
-   - Clear browser cache
-   - Try different browser
-   - Check internet connection
-   - Restart your computer
+### Content Security Best Practices
 
-#### **Issue Report Template:**
-```
-Issue: [Brief description]
-Date: [When it started]
-Steps to reproduce:
-1. [Step 1]
-2. [Step 2]
-3. [Step 3]
+#### **Data Protection:**
 
-Expected result: [What should happen]
-Actual result: [What actually happened]
-Error messages: [Any error text]
-Browser/Device: [Chrome on Mac, etc.]
-Recent changes: [Any recent updates you made]
-```
+1. **Don't include sensitive information:**
+   - No passwords or API keys in content files
+   - No personal data in content
+   - No internal system information
 
-### Emergency Contact Procedures
+2. **Use environment variables:**
+   - Store sensitive configuration in `.env` files
+   - Reference environment variables in code
+   - Don't commit sensitive data to version control
 
-#### **Website Down Emergency:**
-1. **Don't panic** - most issues can be resolved quickly
-2. **Document the problem** using the template above
-3. **Contact developer** with urgent priority
-4. **Have backup contact information** ready
-5. **Prepare alternative communication** if needed
+3. **Validate user input:**
+   - Sanitize any user-generated content
+   - Validate form inputs
+   - Prevent XSS attacks
 
-#### **Contact Information:**
-- **Primary Developer:** [Add developer contact info]
-- **Backup Contact:** [Add backup contact info]
-- **Emergency Email:** [Add emergency email]
-- **Response Time:** [Expected response time]
+4. **Regular security audits:**
+   - Review content for sensitive information
+   - Check for outdated dependencies
+   - Monitor for security vulnerabilities
 
-### Resources for Learning More
+### Content Performance Optimization
 
-#### **Website Management:**
-- **Next.js Documentation:** https://nextjs.org/docs
-- **GitHub Guides:** https://guides.github.com/
-- **Web Development Basics:** MDN Web Docs
+#### **Optimization Strategies:**
 
-#### **Content Management:**
-- **Content Editing Guide:** See `docs/CONTENT_EDITING.md`
-- **Image Optimization:** https://squoosh.app/
-- **Color Tools:** https://coolors.co/
+1. **Image optimization:**
+   - Use appropriate image formats (WebP, AVIF)
+   - Compress images without quality loss
+   - Use responsive images
+   - Implement lazy loading
 
-#### **Social Media Management:**
-- **LinkedIn Developer Docs:** https://developer.linkedin.com/
-- **Email Service Guides:** Provider-specific documentation
+2. **Content structure:**
+   - Use efficient data structures
+   - Minimize redundant content
+   - Optimize for fast loading
+   - Use proper caching strategies
+
+3. **SEO optimization:**
+   - Optimize meta descriptions
+   - Use proper heading structure
+   - Include relevant keywords
+   - Ensure fast page load times
+
+### Content Analytics and Monitoring
+
+#### **Tracking Content Performance:**
+
+1. **Set up analytics:**
+   - Google Analytics for page views
+   - Form submission tracking
+   - User behavior analysis
+   - Conversion tracking
+
+2. **Monitor key metrics:**
+   - Page views and time on page
+   - Form submission rates
+   - Search engine rankings
+   - User engagement metrics
+
+3. **Regular reporting:**
+   - Weekly performance reviews
+   - Monthly content analytics
+   - Quarterly strategy assessments
+   - Annual comprehensive reports
+
+### Content Collaboration Guidelines
+
+#### **Team Workflow:**
+
+1. **Version control:**
+   - Use Git for all content changes
+   - Create feature branches for major changes
+   - Review content before merging
+   - Maintain clear commit messages
+
+2. **Content review process:**
+   - Self-review before submission
+   - Peer review for accuracy
+   - Stakeholder approval
+   - Technical validation
+
+3. **Communication:**
+   - Document all major changes
+   - Communicate updates to team
+   - Maintain style guides
+   - Regular team meetings
+
+### Emergency Content Procedures
+
+#### **If Content Breaks:**
+
+1. **Immediate response:**
+   - Don't panic
+   - Identify the issue quickly
+   - Assess the impact
+   - Communicate to stakeholders
+
+2. **Rollback process:**
+   - Revert to last working version
+   - Test the rollback thoroughly
+   - Document the issue
+   - Plan the fix
+
+3. **Recovery:**
+   - Implement the fix
+   - Test thoroughly
+   - Deploy with extra caution
+   - Monitor for issues
+
+### Content Training and Documentation
+
+#### **For New Team Members:**
+
+1. **Initial training:**
+   - Review this documentation
+   - Practice with test content
+   - Shadow experienced editors
+   - Start with simple changes
+
+2. **Ongoing education:**
+   - Stay updated on best practices
+   - Attend content strategy workshops
+   - Learn from analytics data
+   - Share knowledge with team
+
+3. **Documentation maintenance:**
+   - Keep documentation updated
+   - Add new procedures as needed
+   - Regular documentation reviews
+   - Version control for documentation
+
+### Content Strategy and Planning
+
+#### **Long-term Planning:**
+
+1. **Content calendar:**
+   - Plan content updates in advance
+   - Coordinate with business objectives
+   - Maintain editorial guidelines
+   - Regular content audits
+
+2. **Performance goals:**
+   - Set measurable content goals
+   - Track progress regularly
+   - Optimize based on data
+   - Adjust strategy as needed
+
+3. **Continuous improvement:**
+   - Regular content audits
+   - Performance optimization
+   - User experience enhancements
+   - Technology integration
 
 ---
 
-## 📋 Quick Reference
+## 🎯 Summary
 
-### File Locations Summary
+This maintenance guide provides comprehensive instructions for managing the Autio Strategies website content. By following these guidelines, you can safely update and maintain the website without technical knowledge while ensuring consistency, quality, and performance.
 
-| Content Type | File Location | How to Edit |
-|--------------|---------------|-------------|
-| **ALL Website Text** | `src/data/content.ts` | Text editor |
-| Services | `src/data/services.ts` | Text editor |
-| Articles | `src/data/insights.ts` | Text editor |
-| SEO Metadata | `src/data/metadata.ts` | Text editor |
-| Images | `public/images/` | File manager |
-| Form Configuration | `src/data/content.ts` | Text editor |
-| Netlify Config | `netlify.toml` | Text editor |
-| Form Detection | `public/forms.html` | Text editor |
+**Key Principles:**
+- Always backup before making changes
+- Test thoroughly after updates
+- Use version control for all changes
+- Follow established patterns and procedures
+- Contact developers for technical issues
 
-### Common Tasks Quick Guide
-
-| Task | File to Edit | What to Change |
-|------|--------------|----------------|
-| Update company name | `src/data/content.ts` | `site.name` |
-| Change hero title | `src/data/content.ts` | `hero.title` |
-| Update navigation | `src/data/content.ts` | `navigation.items` |
-| Change contact email | `src/data/content.ts` | `site.email` |
-| Update team bio | `src/data/content.ts` | `about.team.[name].description` |
-| Change form labels | `src/data/content.ts` | `forms.[form].fields` |
-| Update button text | `src/data/content.ts` | Various button text fields |
-| Change logo | `public/images/logo/` | Upload new file and update `content.ts` |
-| Update form success message | `src/data/content.ts` | `forms.[form].success` |
-| Change form names | `src/data/content.ts` | `forms.[form].netlifyName` |
-
-### Emergency Checklist
-
-- [ ] Website accessible?
-- [ ] All pages loading?
-- [ ] Forms working and submitting?
-- [ ] Form success messages appearing?
-- [ ] Images displaying?
-- [ ] Navigation functional?
-- [ ] Contact information current?
-- [ ] Social media links working?
-- [ ] No error messages visible?
-- [ ] Netlify deployment successful?
-- [ ] Form submissions being received?
-
----
-
-**Remember:** When in doubt, contact a developer. It's better to ask for help than to accidentally break something important! 
+**Remember:** The goal is to maintain a professional, accurate, and engaging website that effectively communicates Autio Strategies' expertise in AI policy consulting and technology governance. 

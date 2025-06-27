@@ -16,12 +16,12 @@ export const siteMetadata = {
       'Autio Strategies',
       'Chloe Autio',
     ],
-    url: 'https://chloeautio.com',
+    url: 'https://autiostrategies.com',
     siteName: 'Autio Strategies',
     locale: 'en_US',
     type: 'website',
     image: {
-      url: 'https://chloeautio.com/og-image.png',
+      url: 'https://autiostrategies.com/og-image.png',
       width: 1200,
       height: 630,
       alt: 'Autio Strategies - AI Policy Consulting & Technology Governance',
@@ -44,7 +44,7 @@ export const siteMetadata = {
         'compliance consulting',
         'public sector advisory',
       ],
-      url: 'https://chloeautio.com',
+      url: 'https://autiostrategies.com',
     },
     about: {
       title: 'Our Team | AI Policy Consulting & Technology Governance',
@@ -63,7 +63,7 @@ export const siteMetadata = {
         'public sector advisory',
         'Autio Strategies team',
       ],
-      url: 'https://chloeautio.com/about',
+      url: 'https://autiostrategies.com/about',
     },
     services: {
       title: 'Our Services | AI Policy Consulting & Technology Governance',
@@ -79,7 +79,7 @@ export const siteMetadata = {
         'AI governance services',
         'technology policy consulting',
       ],
-      url: 'https://chloeautio.com/services',
+      url: 'https://autiostrategies.com/services',
     },
     contact: {
       title: 'Contact Us | AI Policy Consulting & Technology Governance',
@@ -92,7 +92,7 @@ export const siteMetadata = {
         'government consulting contact',
         'enterprise policy support',
       ],
-      url: 'https://chloeautio.com/contact',
+      url: 'https://autiostrategies.com/contact',
     },
     resources: {
       title: 'Resources & Thought Leadership | AI Policy Consulting',
@@ -107,7 +107,7 @@ export const siteMetadata = {
         'thought leadership',
         'AI policy articles',
       ],
-      url: 'https://chloeautio.com/resources',
+      url: 'https://autiostrategies.com/resources',
     },
     authorityDemo: {
       title: 'Authority Demo | AI Policy Consulting',
@@ -118,7 +118,7 @@ export const siteMetadata = {
         'interactive consulting',
         'policy expertise showcase',
       ],
-      url: 'https://chloeautio.com/authority-demo',
+      url: 'https://autiostrategies.com/authority-demo',
     },
   },
 
@@ -134,7 +134,7 @@ export const siteMetadata = {
         'strategic intelligence',
         'regulatory forecasting',
       ],
-      url: 'https://chloeautio.com/services/insight-analysis',
+      url: 'https://autiostrategies.com/services/insight-analysis',
     },
     'research': {
       title: 'Research Services | AI Policy Consulting',
@@ -146,7 +146,7 @@ export const siteMetadata = {
         'strategic research',
         'policy benchmarking',
       ],
-      url: 'https://chloeautio.com/services/research',
+      url: 'https://autiostrategies.com/services/research',
     },
     'policy-development': {
       title: 'Policy Development Services | AI Policy Consulting',
@@ -158,7 +158,7 @@ export const siteMetadata = {
         'regulatory alignment',
         'stakeholder engagement',
       ],
-      url: 'https://chloeautio.com/services/policy-development',
+      url: 'https://autiostrategies.com/services/policy-development',
     },
     'events-facilitation': {
       title: 'Events & Facilitation Services | AI Policy Consulting',
@@ -170,7 +170,7 @@ export const siteMetadata = {
         'engagement strategies',
         'multi-stakeholder processes',
       ],
-      url: 'https://chloeautio.com/services/events-facilitation',
+      url: 'https://autiostrategies.com/services/events-facilitation',
     },
     'briefings-talks': {
       title: 'Briefings & Talks Services | AI Policy Consulting',
@@ -182,7 +182,7 @@ export const siteMetadata = {
         'responsible innovation',
         'policy training',
       ],
-      url: 'https://chloeautio.com/services/briefings-talks',
+      url: 'https://autiostrategies.com/services/briefings-talks',
     },
     'third-party-management': {
       title: 'Third Party Management Services | AI Policy Consulting',
@@ -194,7 +194,7 @@ export const siteMetadata = {
         'partnership facilitation',
         'innovation networks',
       ],
-      url: 'https://chloeautio.com/services/third-party-management',
+      url: 'https://autiostrategies.com/services/third-party-management',
     },
   },
 
@@ -210,7 +210,7 @@ export const siteMetadata = {
         'AI policy appointments',
         'WSJ coverage',
       ],
-      url: 'https://chloeautio.com/resources/wsj-trump-ai-kratsios-thiel',
+      url: 'https://autiostrategies.com/resources/wsj-trump-ai-kratsios-thiel',
     },
     'politico-paris-ai-summit': {
       title: 'Paris AI Summit: Vance, Musk, Macron, DeepSeek | Autio Strategies',
@@ -222,7 +222,7 @@ export const siteMetadata = {
         'AI policy summit',
         'POLITICO coverage',
       ],
-      url: 'https://chloeautio.com/resources/politico-paris-ai-summit',
+      url: 'https://autiostrategies.com/resources/politico-paris-ai-summit',
     },
     'fortune-trump-ai-crypto-czar-sacks': {
       title: 'Trump AI and Crypto "Czar" Role for David Sacks | Autio Strategies',
@@ -234,7 +234,7 @@ export const siteMetadata = {
         'tech industry response',
         'Fortune coverage',
       ],
-      url: 'https://chloeautio.com/resources/fortune-trump-ai-crypto-czar-sacks',
+      url: 'https://autiostrategies.com/resources/fortune-trump-ai-crypto-czar-sacks',
     },
     'wsj-election-wargames-tech-politics': {
       title: 'Election Wargames: Tech and Politics Detect Voting Threats | Autio Strategies',
@@ -246,7 +246,7 @@ export const siteMetadata = {
         'election wargames',
         'WSJ coverage',
       ],
-      url: 'https://chloeautio.com/resources/wsj-election-wargames-tech-politics',
+      url: 'https://autiostrategies.com/resources/wsj-election-wargames-tech-politics',
     },
     'us-ai-policy-brief': {
       title: 'U.S. Federal AI Policy: 2024 Brief | Autio Strategies',
@@ -258,7 +258,7 @@ export const siteMetadata = {
         'AI legislation',
         'policy brief',
       ],
-      url: 'https://chloeautio.com/resources/us-ai-policy-brief',
+      url: 'https://autiostrategies.com/resources/us-ai-policy-brief',
     },
     'eu-ai-act-analysis': {
       title: 'EU AI Act Implementation Guide | Autio Strategies',
@@ -270,7 +270,7 @@ export const siteMetadata = {
         'EU policy analysis',
         'AI compliance',
       ],
-      url: 'https://chloeautio.com/resources/eu-ai-act-analysis',
+      url: 'https://autiostrategies.com/resources/eu-ai-act-analysis',
     },
     'placeholder-case-study': {
       title: 'Placeholder Case Study | Autio Strategies',
@@ -281,7 +281,7 @@ export const siteMetadata = {
         'organizational AI',
         'governance example',
       ],
-      url: 'https://chloeautio.com/resources/placeholder-case-study',
+      url: 'https://autiostrategies.com/resources/placeholder-case-study',
     },
     'ai-governance-implementation': {
       title: 'AI Governance Implementation at Fortune 500 Company | Autio Strategies',
@@ -292,7 +292,7 @@ export const siteMetadata = {
         'enterprise AI governance',
         'governance frameworks',
       ],
-      url: 'https://chloeautio.com/resources/ai-governance-implementation',
+      url: 'https://autiostrategies.com/resources/ai-governance-implementation',
     },
     'placeholder-resource': {
       title: 'Placeholder Resource | Autio Strategies',
@@ -303,7 +303,7 @@ export const siteMetadata = {
         'policy guidelines',
         'resource library',
       ],
-      url: 'https://chloeautio.com/resources/placeholder-resource',
+      url: 'https://autiostrategies.com/resources/placeholder-resource',
     },
   },
 
@@ -312,11 +312,11 @@ export const siteMetadata = {
     default: {
       title: 'Autio Strategies | AI Policy Consulting & Technology Governance',
       description: 'Professional technology governance and regulatory compliance advisory for government and enterprise organizations.',
-      url: 'https://chloeautio.com',
+      url: 'https://autiostrategies.com',
       siteName: 'Autio Strategies',
       images: [
         {
-          url: 'https://chloeautio.com/og-image.png',
+          url: 'https://autiostrategies.com/og-image.png',
           width: 1200,
           height: 630,
           alt: 'Autio Strategies - AI Policy Consulting & Technology Governance',
@@ -334,7 +334,7 @@ export const siteMetadata = {
     creator: '@chloeautio',
     title: 'Autio Strategies | AI Policy Consulting & Technology Governance',
     description: 'Professional technology governance and regulatory compliance advisory for government and enterprise organizations.',
-    image: 'https://chloeautio.com/og-image.png',
+    image: 'https://autiostrategies.com/og-image.png',
   },
 
   // Organization schema
@@ -343,15 +343,15 @@ export const siteMetadata = {
     '@type': 'Organization',
     name: 'Autio Strategies',
     description: 'AI policy consulting and technology governance experts providing strategic guidance to government bodies, Fortune 50 companies, and leading organizations.',
-    url: 'https://chloeautio.com',
-    logo: 'https://chloeautio.com/images/logo/AutioStrategies_Logo_FullColor_Horz.png',
+    url: 'https://autiostrategies.com',
+    logo: 'https://autiostrategies.com/images/logo/AutioStrategies_Logo_FullColor_Horz.png',
     sameAs: [
       'https://github.com/chloeautio/chloe-autio-strategies',
     ],
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
-      email: 'info@chloeautio.com',
+      email: 'info@autiostrategies.com',
     },
   },
 }; 

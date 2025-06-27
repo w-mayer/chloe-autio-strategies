@@ -14,5 +14,5 @@ Allow: /public/
 # Crawl delay for respectful crawling
 Crawl-delay: 1
 
-# Sitemap location - UPDATE THIS TO YOUR ACTUAL DOMAIN
-Sitemap: https://yourdomain.com/sitemap.xml 
+# Sitemap location
+Sitemap: https://autiostrategies.com/sitemap.xml 

@@ -19,7 +19,9 @@ src/data/
 ├── content.ts          # UI text, button labels, form text
 ├── metadata.ts         # Page metadata, SEO information
 ├── resources.ts        # Articles, policy briefs, case studies
-├── services.ts         # Service offerings and descriptions
+└── services.ts         # Service offerings and descriptions
+
+src/lib/
 └── constants.ts        # Site-wide constants and configuration
 ```
 
@@ -178,20 +180,20 @@ export const siteContent = {
 ```typescript
 export const siteMetadata = {
   home: {
-    title: 'AI Policy Consulting & Technology Governance | Chloe Autio Strategies',
+    title: 'AI Policy Consulting & Technology Governance | Autio Strategies',
     description: 'Expert AI policy consulting and technology governance for government and enterprise leaders.',
     keywords: ['AI policy consulting', 'technology governance', 'regulatory compliance'],
     openGraph: {
       title: 'AI Policy Consulting & Technology Governance',
       description: 'Expert guidance for government and enterprise leaders',
-      url: 'https://chloeautio.com',
-      siteName: 'Chloe Autio Strategies',
+      url: 'https://autiostrategies.com',
+      siteName: 'Autio Strategies',
       images: [
         {
-          url: 'https://chloeautio.com/og-image.png',
+          url: 'https://autiostrategies.com/og-image.png',
           width: 1200,
           height: 630,
-          alt: 'Chloe Autio Strategies - AI Policy Consulting',
+          alt: 'Autio Strategies - AI Policy Consulting',
         },
       ],
       locale: 'en_US',
@@ -201,12 +203,12 @@ export const siteMetadata = {
       card: 'summary_large_image',
       title: 'AI Policy Consulting & Technology Governance',
       description: 'Expert guidance for government and enterprise leaders',
-      images: ['https://chloeautio.com/og-image.png'],
+      images: ['https://autiostrategies.com/og-image.png'],
       creator: '@chloeautio',
     },
   },
   about: {
-    title: 'About Us | Chloe Autio Strategies',
+    title: 'About Us | Autio Strategies',
     description: 'Learn about our expertise in AI policy consulting and technology governance.',
     keywords: ['about us', 'AI policy', 'consulting', 'governance'],
     // ... similar structure for other pages
