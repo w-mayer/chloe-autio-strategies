@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -50,12 +50,14 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
   const { forms } = siteContent;
   const contactForm = forms.contact;
   const searchParams = useSearchParams();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   
   const {
     register,
     handleSubmit,
     watch,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors },
     reset,
   } = useForm<ContactFormValues>({
     resolver: zodResolver(ContactSchema),
@@ -74,6 +76,9 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
   if (isLoading) return <ContactFormSkeleton />;
 
   async function onSubmit(data: ContactFormValues) {
+    setIsSubmitting(true);
+    setSubmitSuccess(false);
+    
     console.log('Contact form submitted:', data);
     
     // Create FormData for Netlify
@@ -93,25 +98,37 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
     }
 
     try {
-      // Submit to Netlify
-      const response = await fetch('/', {
+      // Submit to our API route which handles Netlify submission
+      const response = await fetch('/api/submit-form', {
         method: 'POST',
         body: formData,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
       });
 
       if (response.ok) {
-        console.log('Form submitted successfully');
+        console.log('Form submitted successfully to Netlify');
+        setSubmitSuccess(true);
         reset();
-        // Redirect to success page
-        window.location.href = '/contact?success=true';
+        // Redirect to success page after a short delay
+        setTimeout(() => {
+          window.location.href = '/contact?success=true';
+        }, 1000);
       } else {
-        console.error('Form submission failed');
+        console.error('Form submission failed:', response.status, response.statusText);
+        // Fallback: try traditional form submission
+        const form = document.querySelector(`form[name="${contactForm.netlifyName}"]`) as HTMLFormElement;
+        if (form) {
+          form.submit();
+        }
       }
     } catch (error) {
       console.error('Error submitting form:', error);
+      // Fallback: try traditional form submission
+      const form = document.querySelector(`form[name="${contactForm.netlifyName}"]`) as HTMLFormElement;
+      if (form) {
+        form.submit();
+      }
+    } finally {
+      setIsSubmitting(false);
     }
   }
 
@@ -184,7 +201,7 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
       <Button type="submit" disabled={isSubmitting} className="w-full">
         {isSubmitting ? contactForm.buttons.submit.loading : contactForm.buttons.submit.text}
       </Button>
-      {(isSubmitSuccessful || isSuccessFromNetlify) && (
+      {(submitSuccess || isSuccessFromNetlify) && (
         <div className="text-green-600 mt-2" role="status">{contactForm.success}</div>
       )}
     </form>

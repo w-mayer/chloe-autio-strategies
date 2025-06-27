@@ -45,28 +45,35 @@ export function NewsletterSignup() {
     formData.append('email', email);
 
     try {
-      // Submit to Netlify
-      const response = await fetch('/', {
+      // Submit to our API route which handles Netlify submission
+      const response = await fetch('/api/submit-form', {
         method: 'POST',
         body: formData,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
       });
 
       if (response.ok) {
-        console.log('Newsletter signup successful');
+        console.log('Newsletter signup successful to Netlify');
         setSubmitted(true);
         setEmail('');
-        // Redirect to success page
-        window.location.href = '/?newsletter=success';
+        // Redirect to success page after a short delay
+        setTimeout(() => {
+          window.location.href = '/?newsletter=success';
+        }, 1000);
       } else {
-        console.error('Newsletter signup failed');
-        setError('Failed to subscribe. Please try again.');
+        console.error('Newsletter signup failed:', response.status, response.statusText);
+        // Fallback: try traditional form submission
+        const form = document.querySelector(`form[name="${newsletterForm.netlifyName}"]`) as HTMLFormElement;
+        if (form) {
+          form.submit();
+        }
       }
     } catch (error) {
       console.error('Error submitting newsletter signup:', error);
-      setError('Failed to subscribe. Please try again.');
+      // Fallback: try traditional form submission
+      const form = document.querySelector(`form[name="${newsletterForm.netlifyName}"]`) as HTMLFormElement;
+      if (form) {
+        form.submit();
+      }
     } finally {
       setIsSubmitting(false);
     }
