@@ -1002,3 +1002,31 @@ section:not(.bg-white) .authority-heading {
     overflow: hidden !important;
   }
 }
+
+/* Privacy page heading - remove underline */
+.privacy-heading::after,
+.privacy-heading::before {
+  display: none;
+}
+
+/* Privacy page heading - remove highlight */
+.privacy-heading .authority-heading-highlight {
+  display: none;
+}
+
+/* Privacy page heading - remove progress indicator */
+.privacy-heading .authority-heading-progress {
+  display: none;
+}
+
+/* Privacy page heading - white underline */
+.privacy-heading::after {
+  display: block;
+  background: #ffffff !important;
+  background-size: 100% 100% !important;
+}
+
+.privacy-heading::before {
+  display: block;
+  background: #ffffff !important;
+}

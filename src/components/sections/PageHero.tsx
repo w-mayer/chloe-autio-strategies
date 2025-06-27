@@ -49,7 +49,7 @@ export function PageHero({
       <div className="container mx-auto px-4 text-center relative z-20">
         <AuthorityHeading
           size="h1"
-          className="text-4xl md:text-6xl font-bold mb-6 heading text-white"
+          className={`text-4xl md:text-6xl font-bold mb-6 heading text-white ${pageName === 'privacy' ? 'privacy-heading' : ''}`}
           enableHighlight={true}
         >
           {displayTitle}
