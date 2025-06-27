@@ -25,21 +25,38 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   const { about, pages } = siteContent;
+  const { hero } = pages.about;
   
   return (
     <div className="min-h-screen bg-eggshell">
-      {/* Hero Section */}
-      <section className="bg-primary py-16 md:py-24">
-        <div className="container mx-auto px-4 text-center">
+      {/* Hero Section with Background Image */}
+      <section className="relative bg-primary py-16 md:py-24 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={hero.background.image}
+            alt={hero.background.alt}
+            fill
+            className="object-cover"
+            priority={true}
+            quality={90}
+            sizes="100vw"
+          />
+          {/* Dark Overlay */}
+          <div className="absolute inset-0 bg-black/50 z-10"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="container mx-auto px-4 text-center relative z-20">
           <AuthorityHeading
             size="h1"
-            className="text-4xl md:text-6xl font-bold mb-6 heading"
+            className="text-4xl md:text-6xl font-bold mb-6 heading text-white"
             enableHighlight={true}
           >
-            {pages.about.hero.title}
+            {hero.title}
           </AuthorityHeading>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto body-text text-eggshell">
-            {pages.about.hero.subtitle}
+          <p className="text-xl md:text-2xl max-w-3xl mx-auto body-text text-white">
+            {hero.subtitle}
           </p>
         </div>
       </section>

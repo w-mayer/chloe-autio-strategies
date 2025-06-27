@@ -41,8 +41,8 @@ export const siteContent = {
         title: 'Our Team',
         subtitle: 'Meet the experts behind Autio Strategies - dedicated professionals committed to advancing AI policy and technology governance.',
         background: {
-          image: '/images/stocks/about-background.jpg',
-          alt: 'Team background',
+          image: '/images/stocks/about.jpg',
+          alt: 'About Autio Strategies background',
         },
       },
     },
