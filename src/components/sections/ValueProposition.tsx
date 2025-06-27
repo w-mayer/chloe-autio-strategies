@@ -73,7 +73,7 @@ function Card({ title, desc, index }: CardProps) {
       className="service-card"
       onClick={handleClick}
     >
-      <div className="relative h-full flex flex-col justify-between">
+      <div className="relative h-full flex flex-col justify-start">
         <h3 className="text-xl font-semibold text-primary mb-2 service-card-icon">{title}</h3>
         <p className="text-neutral-700 dark:text-neutral-200 text-base body-text service-card-number">{desc}</p>
       </div>

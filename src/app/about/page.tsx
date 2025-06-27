@@ -56,7 +56,10 @@ export default function AboutPage() {
                 fill
                 className="object-cover"
                 priority={true}
-                sizes="(max-width: 1024px) 100vw, 320px"
+                quality={90}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 320px"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
             </div>
           </div>
@@ -86,7 +89,10 @@ export default function AboutPage() {
                 fill
                 className="object-cover"
                 priority={true}
-                sizes="(max-width: 1024px) 100vw, 320px"
+                quality={90}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 320px"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
             </div>
           </div>
@@ -107,7 +113,7 @@ export default function AboutPage() {
       {/* Call to Action */}
       <section className="text-center">
         <h2 className="text-2xl font-bold text-primary mb-4 heading">{about.cta.title}</h2>
-        <p className="text-lg text-gray dark:text-paynesGray mb-6 max-w-xl mx-auto body-text">
+        <p className="text-lg text-gray dark:text-paynesGray mb-6 max-w-2xl mx-auto body-text">
           {about.cta.description}
         </p>
         <a
