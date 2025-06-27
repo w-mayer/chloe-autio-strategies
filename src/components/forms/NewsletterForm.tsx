@@ -45,7 +45,33 @@ export function NewsletterForm({ isLoading = false }: { isLoading?: boolean }) {
 
   async function onSubmit(data: NewsletterFormValues) {
     console.log('Newsletter signup:', data);
-    reset();
+    
+    // Create FormData for Netlify
+    const formData = new FormData();
+    formData.append('form-name', newsletterForm.netlifyName);
+    formData.append('email', data.email);
+
+    try {
+      // Submit to Netlify
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      if (response.ok) {
+        console.log('Newsletter signup successful');
+        reset();
+        // Redirect to success page
+        window.location.href = '/?newsletter=success';
+      } else {
+        console.error('Newsletter signup failed');
+      }
+    } catch (error) {
+      console.error('Error submitting newsletter signup:', error);
+    }
   }
 
   return (
@@ -56,6 +82,7 @@ export function NewsletterForm({ isLoading = false }: { isLoading?: boolean }) {
       data-netlify="true"
       name={newsletterForm.netlifyName}
       method="POST"
+      action="/"
     >
       {/* Netlify form detection */}
       <input type="hidden" name="form-name" value={newsletterForm.netlifyName} />

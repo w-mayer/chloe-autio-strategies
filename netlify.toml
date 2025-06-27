@@ -5,12 +5,17 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Form handling configuration
+[functions]
+  directory = ".netlify/functions"
+
+# Redirects for form handling
 [[redirects]]
   from = "/forms.html"
   to = "/"
   status = 301
 
-# Form handling
+# Handle form submissions with proper status codes
 [[redirects]]
   from = "/contact"
   to = "/contact?success=true"

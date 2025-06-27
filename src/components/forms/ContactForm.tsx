@@ -75,7 +75,44 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
 
   async function onSubmit(data: ContactFormValues) {
     console.log('Contact form submitted:', data);
-    reset();
+    
+    // Create FormData for Netlify
+    const formData = new FormData();
+    formData.append('form-name', contactForm.netlifyName);
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    formData.append('message', data.message);
+    
+    // Add selected services
+    data.services.forEach(service => {
+      formData.append('services', service);
+    });
+    
+    if (data.otherService) {
+      formData.append('otherService', data.otherService);
+    }
+
+    try {
+      // Submit to Netlify
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      if (response.ok) {
+        console.log('Form submitted successfully');
+        reset();
+        // Redirect to success page
+        window.location.href = '/contact?success=true';
+      } else {
+        console.error('Form submission failed');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   }
 
   return (
@@ -86,6 +123,7 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
       data-netlify="true"
       name={contactForm.netlifyName}
       method="POST"
+      action="/"
     >
       {/* Netlify form detection */}
       <input type="hidden" name="form-name" value={contactForm.netlifyName} />

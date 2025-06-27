@@ -18,6 +18,7 @@ export function NewsletterSignup() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Check for success parameter from Netlify redirect
   useEffect(() => {
@@ -28,15 +29,47 @@ export function NewsletterSignup() {
     }
   }, [searchParams]);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
       setError(newsletterForm.error);
       return;
     }
+    
+    setIsSubmitting(true);
     setError(null);
-    setSubmitted(true);
-    // Integrate with newsletter provider here
+
+    // Create FormData for Netlify
+    const formData = new FormData();
+    formData.append('form-name', newsletterForm.netlifyName);
+    formData.append('email', email);
+
+    try {
+      // Submit to Netlify
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+
+      if (response.ok) {
+        console.log('Newsletter signup successful');
+        setSubmitted(true);
+        setEmail('');
+        // Redirect to success page
+        window.location.href = '/?newsletter=success';
+      } else {
+        console.error('Newsletter signup failed');
+        setError('Failed to subscribe. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting newsletter signup:', error);
+      setError('Failed to subscribe. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -71,6 +104,7 @@ export function NewsletterSignup() {
           data-netlify="true"
           name={newsletterForm.netlifyName}
           method="POST"
+          action="/"
         >
           {/* Netlify form detection */}
           <input type="hidden" name="form-name" value={newsletterForm.netlifyName} />
@@ -86,8 +120,8 @@ export function NewsletterSignup() {
             aria-label="Email address"
             className="flex-1"
           />
-          <Button type="submit" variant="primary" aria-label={newsletterForm.button.text}>
-            {newsletterForm.button.text}
+          <Button type="submit" variant="primary" disabled={isSubmitting} aria-label={newsletterForm.button.text}>
+            {isSubmitting ? newsletterForm.button.loading : newsletterForm.button.text}
           </Button>
         </MotionForm>
         {submitted && !error && (

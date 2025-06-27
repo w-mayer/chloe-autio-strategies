@@ -28,7 +28,8 @@
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "analyze-images": "node scripts/image-optimization-analysis.js"
+    "analyze-images": "node scripts/image-optimization-analysis.js",
+    "test-forms": "node scripts/test-forms.js"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.3.1",
