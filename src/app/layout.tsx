@@ -11,8 +11,6 @@ export const metadata: Metadata = {
   keywords: siteMetadata.default.keywords,
   authors: [{ name: siteMetadata.default.siteName }],
   icons: {
-    icon: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
-    shortcut: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
     apple: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
   },
   openGraph: {
@@ -43,7 +41,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/images/logo/AutioStrategies_Logo_FullColor_JustMark.png" />
         <script
           type="application/ld+json"
           suppressHydrationWarning

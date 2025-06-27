@@ -117,8 +117,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         </div>
         <button
           type="button"
-          className="text-primary font-medium underline underline-offset-4 transition-colors rounded px-2 py-1 service-card-number"
-          onClick={e => e.stopPropagation()}
+          className="text-primary font-medium underline underline-offset-4 transition-colors rounded px-2 py-1 service-card-number self-start"
           aria-label={`${ui.aria.learnMoreAbout} ${service.title}`}
         >
           {ui.buttons.learnMore}
