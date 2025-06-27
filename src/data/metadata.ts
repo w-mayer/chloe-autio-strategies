@@ -346,7 +346,6 @@ export const siteMetadata = {
     url: 'https://chloeautio.com',
     logo: 'https://chloeautio.com/images/logo/AutioStrategies_Logo_FullColor_Horz.png',
     sameAs: [
-      'https://linkedin.com/in/chloeautio',
       'https://github.com/chloeautio/chloe-autio-strategies',
     ],
     contactPoint: {

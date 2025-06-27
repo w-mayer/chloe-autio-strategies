@@ -45,8 +45,8 @@ export function NewsletterSignup() {
     formData.append('email', email);
 
     try {
-      // Submit to our API route which handles Netlify submission
-      const response = await fetch('/api/submit-form', {
+      // Submit directly to Netlify
+      const response = await fetch('/', {
         method: 'POST',
         body: formData,
       });

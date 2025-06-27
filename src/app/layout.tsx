@@ -56,7 +56,7 @@ export default function RootLayout({
               logo: `${siteMetadata.default.url}/images/logo/AutioStrategies_Logo_FullColor_Horz.png`,
               description: 'Professional AI policy consulting, technology governance, and regulatory compliance advisory for government and enterprise organizations.',
               sameAs: [
-                'https://linkedin.com/in/chloeautio'
+                // LinkedIn removed
               ],
               contactPoint: [{
                 '@type': 'ContactPoint',

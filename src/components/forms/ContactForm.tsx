@@ -98,8 +98,8 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
     }
 
     try {
-      // Submit to our API route which handles Netlify submission
-      const response = await fetch('/api/submit-form', {
+      // Submit directly to Netlify
+      const response = await fetch('/', {
         method: 'POST',
         body: formData,
       });

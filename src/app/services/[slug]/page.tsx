@@ -13,6 +13,11 @@ interface ServicePageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Generate static params for static export
+export async function generateStaticParams() {
+  return services.map(service => ({ slug: service.slug }));
+}
+
 export async function generateMetadata({ params }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
   const service = services.find(s => s.slug === slug);

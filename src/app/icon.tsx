@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og'
+import Image from 'next/image'
 import icon from './icon.png'
 
 // Route segment config
@@ -27,9 +28,11 @@ export default function Icon() {
           justifyContent: 'center',
         }}
       >
-        <img
+        <Image
           src={icon.src}
           alt="Autio Strategies"
+          width={32}
+          height={32}
           style={{
             width: '100%',
             height: '100%',

@@ -32,7 +32,6 @@ type SocialLink = {
 };
 
 export const socialLinks: SocialLink[] = [
-  { platform: "LinkedIn", url: "https://linkedin.com/in/autiostrategies" },
   { platform: "Email", url: "mailto:info@autiostrategies.com" },
 ];
 

@@ -5,7 +5,6 @@ export const siteContent = {
     tagline: 'AI Policy Consulting & Technology Governance',
     description: 'Professional technology governance and regulatory compliance advisory for government and enterprise organizations',
     email: 'info@chloeautio.com',
-    linkedin: 'https://linkedin.com/in/chloeautio',
     github: 'https://github.com/chloeautio/chloe-autio-strategies',
     website: 'https://chloeautio.com',
   },
@@ -267,7 +266,6 @@ export const siteContent = {
     },
     contact: {
       email: { text: 'Email', href: 'mailto:info@chloeautio.com' },
-      linkedin: { text: 'LinkedIn', href: 'https://linkedin.com/in/chloeautio' },
     },
     logo: {
       src: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',

@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Enable static export for Netlify
+  output: 'export',
+  trailingSlash: true,
+  
   // Image optimization configuration
   images: {
-    // Enable WebP and AVIF formats for better compression
-    formats: ['image/webp', 'image/avif'],
+    // Disable image optimization for static export
+    unoptimized: true,
     
     // Configure image sizes for responsive images
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
