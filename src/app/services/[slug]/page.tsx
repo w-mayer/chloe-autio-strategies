@@ -77,8 +77,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <section className="relative flex items-center justify-center w-full h-[40vh] min-h-[240px] mb-0">
         <div className="absolute inset-0 w-full h-full">
           <Image
-            src={pages.services.hero.background.image}
-            alt={pages.services.hero.background.alt}
+            src={service.backgroundImage}
+            alt={`${service.title} background`}
             fill
             className="w-full h-full object-cover object-center"
             style={{ objectFit: 'cover', objectPosition: 'center' }}
