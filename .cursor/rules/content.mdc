@@ -189,14 +189,14 @@ export const siteMetadata = {
     openGraph: {
       title: 'AI Policy Consulting & Technology Governance',
       description: 'Expert guidance for government and enterprise leaders',
-      url: 'https://chloeautio.com',
-      siteName: 'Chloe Autio Strategies',
+      url: 'https://autiostrategies.com',
+      siteName: 'Autio Strategies',
       images: [
         {
-          url: 'https://chloeautio.com/og-image.png',
+          url: 'https://autiostrategies.com/og-image.png',
           width: 1200,
           height: 630,
-          alt: 'Chloe Autio Strategies - AI Policy Consulting',
+          alt: 'Autio Strategies - AI Policy Consulting',
         },
       ],
       locale: 'en_US',
@@ -206,7 +206,7 @@ export const siteMetadata = {
       card: 'summary_large_image',
       title: 'AI Policy Consulting & Technology Governance',
       description: 'Expert guidance for government and enterprise leaders',
-      images: ['https://chloeautio.com/og-image.png'],
+      images: ['https://autiostrategies.com/og-image.png'],
       creator: '@chloeautio',
     },
   },
