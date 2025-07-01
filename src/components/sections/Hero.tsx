@@ -49,7 +49,7 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 body-text text-eggshell/90 leading-relaxed px-2 sm:px-0"
+              className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 body-text text-white leading-relaxed px-2 sm:px-0"
             >
               {homeContent.hero.subtitle}
             </MotionP>
