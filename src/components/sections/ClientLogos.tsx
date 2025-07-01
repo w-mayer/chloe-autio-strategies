@@ -74,12 +74,12 @@ export function ClientLogos() {
   const { clientLogos } = siteContent;
   
   return (
-    <section className="w-full py-12 md:py-20 bg-white">
+    <section className="w-full py-10 md:py-14 bg-white">
       <div className="container mx-auto px-4">
-        <div className="mb-12 flex flex-col items-center text-center">
+        <div className="mb-8 flex flex-col items-center text-center">
           <AuthorityHeading
             size="h2"
-            className="text-3xl md:text-4xl font-bold text-center mb-8 heading max-w-full overflow-hidden"
+            className="text-3xl md:text-4xl font-bold text-center mb-6 heading max-w-full overflow-hidden"
           >
             {clientLogos.title}
           </AuthorityHeading>

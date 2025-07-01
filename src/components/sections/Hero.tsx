@@ -4,21 +4,20 @@ import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
-import { siteContent } from '@/data/content';
+import { homeContent } from '@/data/pages/home';
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 
 export function Hero() {
-  const { pages } = siteContent;
   
   return (
     <section className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden bg-paynesGray">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src={pages.home.hero.background.image}
-          alt={pages.home.hero.background.alt}
+          src={homeContent.hero.background.image}
+          alt={homeContent.hero.background.alt}
           fill
           className="object-cover object-center"
           priority
@@ -43,7 +42,7 @@ export function Hero() {
               className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 heading leading-tight"
               style={{ color: '#fff' }}
             >
-              {pages.home.hero.title}
+              {homeContent.hero.title}
             </AuthorityHeading>
             
             <MotionP
@@ -52,7 +51,7 @@ export function Hero() {
               transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
               className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 body-text text-eggshell/90 leading-relaxed px-2 sm:px-0"
             >
-              {pages.home.hero.subtitle}
+              {homeContent.hero.subtitle}
             </MotionP>
           </div>
           
@@ -63,17 +62,17 @@ export function Hero() {
             className="button-container flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 sm:px-0"
           >
             <Button 
-              href={pages.home.hero.buttons.primary.href} 
+              href={homeContent.hero.buttons.primary.href} 
               className="btn-primary w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-3 min-h-[44px] touch-target"
             >
-              {pages.home.hero.buttons.primary.text}
+              {homeContent.hero.buttons.primary.text}
             </Button>
             <Button 
-              href={pages.home.hero.buttons.secondary.href} 
+              href={homeContent.hero.buttons.secondary.href} 
               variant="outline" 
               className="btn-secondary w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-3 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray min-h-[44px] touch-target"
             >
-              {pages.home.hero.buttons.secondary.text}
+              {homeContent.hero.buttons.secondary.text}
             </Button>
           </MotionDiv>
         </MotionDiv>

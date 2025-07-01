@@ -7,7 +7,7 @@ export function Footer() {
   const { footer, site } = siteContent;
   
   return (
-    <footer className="border-t bg-background" style={{ fontFamily: 'DM Sans, Arial, Helvetica, sans-serif', color: '#434344' }}>
+    <footer className="border-t bg-white" style={{ fontFamily: 'DM Sans, Arial, Helvetica, sans-serif', color: '#434344' }}>
       <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
         <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
           <div className="flex items-center mb-2 md:mb-0 md:mr-4">
@@ -35,9 +35,6 @@ export function Footer() {
           </p>
         </div>
         <div className="flex flex-col items-center gap-2 md:flex-row md:gap-6">
-          <div className="flex items-center space-x-4 text-sm" style={{ color: '#434344', fontFamily: 'DM Sans, Arial, Helvetica, sans-serif' }}>
-            <a href={footer.links.privacy.href} className="hover:text-[#6F9C3B] transition-colors">{footer.links.privacy.text}</a>
-          </div>
           <div className="flex items-center space-x-4 mt-2 md:mt-0">
             <a
               href={footer.contact.email.href}

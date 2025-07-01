@@ -47,7 +47,7 @@ export const siteMetadata = {
       url: 'https://autiostrategies.com',
     },
     about: {
-      title: 'Our Team | AI Policy Consulting & Technology Governance',
+      title: 'About Us | AI Policy Consulting & Technology Governance',
       description: "Meet the Autio Strategies team - Chloe Autio (Founder & CEO) and Samuel Wells (Policy Manager) - experts in AI policy consulting, technology governance, and regulatory compliance.",
       keywords: [
         'AI policy consulting',
@@ -66,7 +66,7 @@ export const siteMetadata = {
       url: 'https://autiostrategies.com/about',
     },
     services: {
-      title: 'Our Services | AI Policy Consulting & Technology Governance',
+      title: 'Services | AI Policy Consulting & Technology Governance',
       description: 'Comprehensive AI policy consulting services including insight analysis, research, policy development, events facilitation, briefings, and third-party management.',
       keywords: [
         'AI policy services',
@@ -95,19 +95,19 @@ export const siteMetadata = {
       url: 'https://autiostrategies.com/contact',
     },
     resources: {
-      title: 'Resources & Thought Leadership | AI Policy Consulting',
-      description: 'Explore articles, policy briefs, case studies, and resources on AI policy consulting, technology governance, and regulatory compliance for government and enterprise leaders.',
+      title: 'Insights & Thought Leadership | AI Policy Consulting',
+      description: 'Explore our featured articles and curated resources on AI policy, governance, and regulatory topics.',
       keywords: [
-        'AI policy resources',
+        'AI policy insights',
         'technology governance insights',
         'policy briefs',
         'case studies',
-        'regulatory compliance resources',
+        'regulatory compliance insights',
         'AI governance tools',
         'thought leadership',
         'AI policy articles',
       ],
-      url: 'https://autiostrategies.com/resources',
+      url: 'https://autiostrategies.com/insights',
     },
     authorityDemo: {
       title: 'Authority Demo | AI Policy Consulting',
@@ -189,7 +189,7 @@ export const siteMetadata = {
     },
     'briefings-talks': {
       title: 'Briefings & Talks Services | AI Policy Consulting',
-      description: 'Custom briefings, talks, and educational resources to build internal capacity and foster a culture of responsible innovation.',
+      description: 'Custom briefings, talks, and educational insights to build internal capacity and foster a culture of responsible innovation.',
       keywords: [
         'AI policy briefings',
         'educational talks',
@@ -225,7 +225,7 @@ export const siteMetadata = {
         'AI policy appointments',
         'WSJ coverage',
       ],
-      url: 'https://autiostrategies.com/resources/wsj-trump-ai-kratsios-thiel',
+      url: 'https://autiostrategies.com/insights/wsj-trump-ai-kratsios-thiel',
     },
     'politico-paris-ai-summit': {
       title: 'Paris AI Summit: Vance, Musk, Macron, DeepSeek | Autio Strategies',
@@ -237,7 +237,7 @@ export const siteMetadata = {
         'AI policy summit',
         'POLITICO coverage',
       ],
-      url: 'https://autiostrategies.com/resources/politico-paris-ai-summit',
+      url: 'https://autiostrategies.com/insights/politico-paris-ai-summit',
     },
     'fortune-trump-ai-crypto-czar-sacks': {
       title: 'Trump AI and Crypto "Czar" Role for David Sacks | Autio Strategies',
@@ -249,7 +249,7 @@ export const siteMetadata = {
         'tech industry response',
         'Fortune coverage',
       ],
-      url: 'https://autiostrategies.com/resources/fortune-trump-ai-crypto-czar-sacks',
+      url: 'https://autiostrategies.com/insights/fortune-trump-ai-crypto-czar-sacks',
     },
     'wsj-election-wargames-tech-politics': {
       title: 'Election Wargames: Tech and Politics Detect Voting Threats | Autio Strategies',
@@ -261,7 +261,7 @@ export const siteMetadata = {
         'election wargames',
         'WSJ coverage',
       ],
-      url: 'https://autiostrategies.com/resources/wsj-election-wargames-tech-politics',
+      url: 'https://autiostrategies.com/insights/wsj-election-wargames-tech-politics',
     },
   },
 

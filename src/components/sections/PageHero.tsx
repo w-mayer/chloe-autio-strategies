@@ -4,7 +4,7 @@ import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { getPageHero } from '@/lib/utils';
 
 interface PageHeroProps {
-  pageName: 'home' | 'about' | 'services' | 'resources' | 'contact' | 'privacy';
+  pageName: 'home' | 'about' | 'services' | 'resources' | 'insights' | 'contact';
   title?: string;
   subtitle?: string;
   className?: string;
@@ -49,7 +49,7 @@ export function PageHero({
       <div className="container mx-auto px-4 text-center relative z-20">
         <AuthorityHeading
           size="h1"
-          className={`text-4xl md:text-6xl font-bold mb-6 heading text-white ${pageName === 'privacy' ? 'privacy-heading' : ''}`}
+          className={`text-4xl md:text-6xl font-bold mb-6 heading text-white`}
           enableHighlight={true}
         >
           {displayTitle}

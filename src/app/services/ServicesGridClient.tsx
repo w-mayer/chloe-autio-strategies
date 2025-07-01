@@ -4,12 +4,13 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { Button } from '@/components/ui/button';
+import { servicesContent } from '@/data/pages/services';
 import { siteContent } from '@/data/content';
 import type { Service } from '@/data/services';
 
 function ServiceCardSkeleton() {
   return (
-    <div className="rounded-lg border border-ashGray bg-eggshell p-8 shadow-soft flex flex-col justify-between animate-pulse">
+    <div className="rounded-lg border border-ashGray bg-white p-8 shadow-soft flex flex-col justify-between animate-pulse">
       <div>
         <div className="h-6 w-2/3 bg-neutral-200 dark:bg-neutral-800 rounded mb-2" />
         <div className="h-4 w-full bg-neutral-200 dark:bg-neutral-800 rounded mb-4" />
@@ -129,8 +130,8 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
 export default function ServicesGridClient({ services }: ServicesGridClientProps) {
   const [loading, setLoading] = useState(true);
-  const { ui, pages } = siteContent;
-  const { hero } = pages.services;
+  const { ui } = siteContent;
+  const { hero } = servicesContent;
   
   useEffect(() => {
     const t = setTimeout(() => setLoading(false), 1200);
@@ -138,7 +139,7 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
   }, []);
 
   return (
-    <div className="min-h-screen bg-eggshell">
+    <div className="min-h-screen bg-white">
       {/* Hero Section with Background Image */}
       <section className="relative bg-primary py-16 md:py-24 overflow-hidden">
         {/* Background Image */}
@@ -171,7 +172,7 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
         </div>
       </section>
 
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 pt-16 pb-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {loading
             ? Array.from({ length: 6 }).map((_, i) => <ServiceCardSkeleton key={i} />)

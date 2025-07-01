@@ -135,7 +135,7 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
   return (
     <form 
       onSubmit={handleSubmit(onSubmit)} 
-      className="space-y-4 w-full" 
+      className="space-y-6 w-full max-w-lg mx-auto" 
       aria-label={contactForm.title}
       data-netlify="true"
       name={contactForm.netlifyName}
@@ -145,15 +145,21 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
       {/* Netlify form detection */}
       <input type="hidden" name="form-name" value={contactForm.netlifyName} />
       
-      <div>
+      {/* Honeypot field for spam protection */}
+      <div className="hidden">
+        <label htmlFor="bot-field">Don&apos;t fill this out if you&apos;re human</label>
+        <input id="bot-field" name="bot-field" />
+      </div>
+      
+      <div className="space-y-2">
         <label htmlFor="name" className="form-label">{contactForm.fields.name.label}</label>
         <Input id="name" {...register('name')} error={errors.name?.message} required aria-invalid={!!errors.name} className="w-full" />
       </div>
-      <div>
+      <div className="space-y-2">
         <label htmlFor="email" className="form-label">{contactForm.fields.email.label}</label>
         <Input id="email" type="email" {...register('email')} error={errors.email?.message} required aria-invalid={!!errors.email} className="w-full" />
       </div>
-      <div>
+      <div className="space-y-2">
         <label className="form-label">{contactForm.fields.services.label}</label>
         <div className="space-y-2 max-h-48 overflow-y-auto border border-neutral-200 dark:border-neutral-700 rounded-lg p-3 w-full">
           {services.map((service) => (
@@ -182,7 +188,7 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
         )}
       </div>
       {showOtherService && (
-        <div>
+        <div className="space-y-2">
           <label htmlFor="otherService" className="form-label">{contactForm.fields.services.otherPlaceholder}</label>
           <Input 
             id="otherService" 
@@ -194,15 +200,44 @@ export function ContactForm({ isLoading = false }: { isLoading?: boolean }) {
           />
         </div>
       )}
-      <div>
+      <div className="space-y-2">
         <label htmlFor="message" className="form-label">{contactForm.fields.message.label}</label>
         <Textarea id="message" {...register('message')} error={errors.message?.message} required aria-invalid={!!errors.message} className="w-full" />
       </div>
-      <Button type="submit" disabled={isSubmitting} className="w-full">
+      <Button type="submit" disabled={isSubmitting} className="w-full py-3">
         {isSubmitting ? contactForm.buttons.submit.loading : contactForm.buttons.submit.text}
       </Button>
       {(submitSuccess || isSuccessFromNetlify) && (
-        <div className="text-green-600 mt-2" role="status">{contactForm.success}</div>
+        <div 
+          className="w-full bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-200 px-4 py-4 rounded-lg mt-6" 
+          role="status"
+          aria-live="polite"
+        >
+          <div className="flex items-start space-x-3">
+            <div className="flex-shrink-0 mt-0.5">
+              <svg 
+                className="h-5 w-5 text-emerald-500 dark:text-emerald-400" 
+                viewBox="0 0 20 20" 
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path 
+                  fillRule="evenodd" 
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" 
+                  clipRule="evenodd" 
+                />
+              </svg>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold leading-5 text-emerald-800 dark:text-emerald-200">
+                {contactForm.success}
+              </p>
+              <p className="text-sm leading-5 text-emerald-700 dark:text-emerald-300 mt-1">
+                We&apos;ll get back to you within 24-48 hours.
+              </p>
+            </div>
+          </div>
+        </div>
       )}
     </form>
   );

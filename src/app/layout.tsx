@@ -11,14 +11,9 @@ export const metadata: Metadata = {
   keywords: siteMetadata.default.keywords,
   authors: [{ name: siteMetadata.default.siteName }],
   icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/favicon/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-      { url: '/favicon/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/favicon/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
-    ],
-    apple: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
+    icon: '/favicon.ico',
     shortcut: '/favicon.ico',
+    apple: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
   },
   manifest: '/site.webmanifest',
   openGraph: {
@@ -49,13 +44,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Comprehensive favicon declarations for maximum compatibility */}
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        {/* Additional favicon declarations for maximum compatibility */}
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/AutioStrategies_Logo_FullColor_JustMark.png" />
-        <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#000000" />
         
         <script

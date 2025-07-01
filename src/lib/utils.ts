@@ -1,6 +1,10 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { siteContent } from "@/data/content"
+import { homeContent } from "@/data/pages/home"
+import { aboutContent } from "@/data/pages/about"
+import { servicesContent } from "@/data/pages/services"
+import { resourcesContent } from "@/data/pages/resources"
+import { contactContent } from "@/data/pages/contact"
 
 /**
  * Combines class names conditionally using clsx and tailwind-merge.
@@ -42,9 +46,16 @@ export function truncateText(text: string, maxLength: number): string {
 /**
  * Gets the hero configuration for a specific page.
  */
-export function getPageHero(pageName: keyof typeof siteContent.pages | 'privacy') {
-  if (pageName === 'privacy') {
-    return siteContent.privacy.hero;
-  }
-  return siteContent.pages[pageName].hero;
+export function getPageHero(pageName: 'home' | 'about' | 'services' | 'resources' | 'insights' | 'contact') {
+  // Map page names to their content
+  const pageContentMap = {
+    home: homeContent,
+    about: aboutContent,
+    services: servicesContent,
+    resources: resourcesContent,
+    insights: resourcesContent, // insights uses the same content as resources
+    contact: contactContent,
+  };
+  
+  return pageContentMap[pageName as keyof typeof pageContentMap].hero;
 } 

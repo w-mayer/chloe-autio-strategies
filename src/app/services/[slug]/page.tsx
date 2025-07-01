@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import type { Metadata } from 'next';
 import { siteMetadata } from '@/data/metadata';
 import { siteContent } from '@/data/content';
+import { ServiceSlug } from '@/types/metadata';
 
 interface ServicePageProps {
   params: Promise<{ slug: string }>;
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: ServicePageProps): Promise<Me
     };
   }
 
-  const serviceMetadata = siteMetadata.services[slug as keyof typeof siteMetadata.services];
+  const serviceMetadata = siteMetadata.services[slug as ServiceSlug];
   
   return {
     title: serviceMetadata?.title || `${service.title} Services | Autio Strategies`,
@@ -81,7 +82,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             alt={`${service.title} background`}
             fill
             className="object-cover"
-            style={{ objectPosition: "center 18%" }}
+            style={{ objectPosition: "center 43%" }}
             priority={true}
             quality={90}
             sizes="100vw"
@@ -106,13 +107,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
       </section>
 
       {/* Content Section */}
-      <section className="container mx-auto px-4 py-12 flex flex-col items-center">
+      <section className="container mx-auto px-4 py-8 flex flex-col items-center">
         <div className="body-text text-lg text-neutral-800 dark:text-neutral-200 max-w-2xl mx-auto bg-white/80 dark:bg-paynesGray/80 rounded-xl shadow-lg p-8 -mt-16 relative z-20 backdrop-blur">
           <p className="mb-8">{service.overview}</p>
           
           {/* Detailed Content Section (if exists) */}
           {service.detailedContent && (
-            <section className="mb-10">
+            <section className="mb-8">
               <h2 className="text-2xl subheading text-primary-800 mb-4">{ui.sections.serviceDetails}</h2>
               <ul className="list-disc list-inside text-left mx-auto inline-block space-y-4">
                 {service.detailedContent.map((content, i) => (
@@ -122,13 +123,13 @@ export default async function ServicePage({ params }: ServicePageProps) {
             </section>
           )}
           
-          <section className="mb-10">
+          <section className="mb-8">
             <h2 className="text-2xl subheading text-primary-800 mb-2">{ui.sections.keyBenefits}</h2>
             <ul className="list-disc list-inside body-text space-y-1">
               {service.benefits.map((b, i) => <li key={i}>{b}</li>)}
             </ul>
           </section>
-          <section className="mb-10">
+          <section className="mb-8">
             <h2 className="text-2xl subheading text-primary-800 mb-2">{ui.sections.ourMethodology}</h2>
             <p className="body-text">{service.methodology}</p>
           </section>
@@ -136,7 +137,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       </section>
 
       {/* CTA Section */}
-      <section className="container mx-auto px-4 py-16 text-center">
+      <section className="container mx-auto px-4 py-8 text-center">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl font-bold text-primary mb-4 heading">{ui.cta.readyToGetStarted}</h2>
           <p className="text-lg text-gray dark:text-paynesGray mb-8 body-text">

@@ -2,11 +2,9 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
 import { siteContent } from '@/data/content';
 
-const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 
 export function ContactCTA() {
@@ -46,29 +44,12 @@ export function ContactCTA() {
               className="mb-8 w-auto max-w-xs md:max-w-md"
               priority={false}
             />
-            <AuthorityHeading
-              size="h2"
-              className="text-3xl md:text-4xl font-bold mb-4 heading max-w-full overflow-hidden"
-              style={{ color: '#fff' }}
-            >
-              {contactCTA.title}
-            </AuthorityHeading>
           </div>
-          
-          <MotionP
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            viewport={{ once: true, margin: '-100px' }}
-            className="text-lg md:text-xl mb-8 body-text text-eggshell/90"
-          >
-            {contactCTA.description}
-          </MotionP>
           
           <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: 'easeOut' }}
+            transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
             viewport={{ once: true, margin: '-100px' }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >

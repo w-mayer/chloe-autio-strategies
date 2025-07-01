@@ -139,7 +139,7 @@ export const DEFAULT_AUTHORITY_FLOW_CONFIG: AuthorityFlowConfig = {
 };
 
 export const DEFAULT_AUTHORITY_FLOW_THEME: AuthorityFlowTheme = {
-  textColor: '#434344',
+  textColor: '#ffffff',
   underlineColor: '#14B8A6',
   dotColor: '#14B8A6',
   highlightColor: 'rgba(111, 156, 59, 0.1)',

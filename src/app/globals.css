@@ -385,7 +385,7 @@ body {
   background: linear-gradient(135deg, #E8E9D7 0%, #E1DBA7 100%);
   border: 1px solid #AAC1BF;
   padding: 2rem;
-  box-shadow: 0 2px 8px 0 rgba(16, 30, 54, 0.08), 0 1.5px 4px 0 rgba(16, 30, 54, 0.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   overflow: hidden;
   cursor: pointer;
   min-height: 200px;
@@ -615,7 +615,7 @@ body {
   display: inline-block;
   font-family: 'DM Sans', Arial, Helvetica, sans-serif;
   font-weight: 700;
-  color: #E8E9D7; /* Eggshell color - changed from #434344 */
+  color: #ffffff; /* White color */
   line-height: 1.2;
   overflow: visible;
   margin: 2rem 0 3rem 0;
@@ -720,7 +720,7 @@ body {
 
 /* Dark mode adjustments */
 .dark .authority-heading {
-  color: #E1DBA7;
+  color: #ffffff;
 }
 
 .dark .authority-heading::after {
@@ -738,7 +738,7 @@ body {
 /* Homepage specific Authority Flow styles */
 /* Hero section - dark background with light text */
 .bg-paynesGray .authority-heading {
-  color: #E8E9D7; /* Eggshell color */
+  color: #ffffff; /* White color */
   margin-bottom: 4rem; /* Extra space for hero heading */
 }
 
@@ -758,9 +758,9 @@ body {
   background: linear-gradient(90deg, #6F9C3B, #14B8A6);
 }
 
-/* Primary background - eggshell text */
+/* Primary background - white text */
 .bg-primary .authority-heading {
-  color: #E8E9D7; /* Eggshell color */
+  color: #ffffff; /* White color */
   margin-bottom: 4rem; /* Extra space for hero heading */
 }
 
@@ -792,7 +792,7 @@ body {
 
 /* Contact CTA section - gradient background */
 .bg-gradient-to-r .authority-heading {
-  color: #E8E9D7; /* Eggshell color */
+  color: #ffffff; /* White color */
 }
 
 /* CTA section with background image - white text */
@@ -973,9 +973,9 @@ section.bg-white .authority-heading {
   color: #434344 !important; /* Old gray color for "Our Services" and "Trusted by" sections */
 }
 
-/* Ensure services subpages maintain eggshell color */
+/* Ensure services subpages maintain white color */
 section:not(.bg-white) .authority-heading {
-  color: #E8E9D7 !important; /* Eggshell color for services subpages and other sections */
+  color: #ffffff !important; /* White color for services subpages and other sections */
 }
 
 /* Specific mobile fixes for ClientLogos and ValueProposition sections */

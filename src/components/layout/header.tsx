@@ -30,8 +30,9 @@ export function Header() {
           : 'bg-white/90 backdrop-blur-sm border-gray-200'
       }`}
     >
-      <div className="container flex h-16 items-center justify-between px-4">
-        <a className="flex items-center flex-shrink-0" href="/" aria-label="Home">
+      <div className="container flex h-16 items-center px-4 relative">
+        {/* Logo - positioned absolutely on the left */}
+        <a className="flex items-center flex-shrink-0 absolute left-4" href="/" aria-label="Home">
           <Image
             src={header.logo.src}
             alt={header.logo.alt}
@@ -42,26 +43,8 @@ export function Header() {
           />
         </a>
         
-        {/* Desktop Navigation */}
-        <nav className="hidden xl:flex flex-1 items-center justify-center">
-          <Navigation />
-        </nav>
-        
-        {/* Large Tablet Navigation - Horizontal Scrollable */}
-        <nav className="hidden lg:flex xl:hidden flex-1 items-center justify-center min-w-0">
-          <div className="flex items-center gap-4 px-4 overflow-x-auto scrollbar-hide scroll-smooth">
-            <Navigation />
-          </div>
-        </nav>
-        
-        {/* Medium Tablet Navigation - Horizontal Scrollable */}
-        <nav className="hidden md:flex lg:hidden flex-1 items-center justify-center min-w-0">
-          <div className="flex items-center gap-3 px-2 overflow-x-auto scrollbar-hide scroll-smooth">
-            <Navigation />
-          </div>
-        </nav>
-        
-        <div className="flex items-center gap-2 flex-shrink-0">
+        {/* Mobile menu button - positioned absolutely on the right */}
+        <div className="flex items-center gap-2 flex-shrink-0 absolute right-4">
           <button
             className="md:hidden p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 hover:bg-gray-100 transition-colors"
             aria-label={header.mobileMenu.openButton.ariaLabel}
@@ -70,6 +53,25 @@ export function Header() {
             <Menu className="w-6 h-6 text-gray-700" />
           </button>
         </div>
+        
+        {/* Desktop Navigation - centered */}
+        <nav className="hidden xl:flex items-center justify-center w-full">
+          <Navigation />
+        </nav>
+        
+        {/* Large Tablet Navigation - Horizontal Scrollable and centered */}
+        <nav className="hidden lg:flex xl:hidden items-center justify-center w-full min-w-0">
+          <div className="flex items-center gap-4 px-4 overflow-x-auto scrollbar-hide scroll-smooth">
+            <Navigation />
+          </div>
+        </nav>
+        
+        {/* Medium Tablet Navigation - Horizontal Scrollable and centered */}
+        <nav className="hidden md:flex lg:hidden items-center justify-center w-full min-w-0">
+          <div className="flex items-center gap-3 px-2 overflow-x-auto scrollbar-hide scroll-smooth">
+            <Navigation />
+          </div>
+        </nav>
         <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
       </div>
     </header>

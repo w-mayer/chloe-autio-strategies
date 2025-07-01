@@ -19,7 +19,7 @@ export default function ContactPageClient() {
         <p className="text-neutral-600 dark:text-neutral-300 mb-6">
           Have an inquiry or want to learn more about our services? Send us a message.
         </p>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center items-center">
           {loading ? <ContactFormSkeleton /> : <ContactForm />}
         </div>
       </section>

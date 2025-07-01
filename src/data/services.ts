@@ -86,13 +86,13 @@ export const services: Service[] = [
   {
     slug: 'briefings-talks',
     title: 'Briefings & Talks',
-    overview: 'Custom briefings, talks, and educational resources to build internal capacity and foster a culture of responsible innovation.',
+    overview: 'Custom briefings, talks, and educational insights to build internal capacity and foster a culture of responsible innovation.',
     benefits: [
       'Tailored curriculum for diverse audiences',
       'Expert-led workshops and seminars',
       'Ongoing support and resource development',
     ],
-    methodology: 'We assess organizational needs, design interactive learning experiences, and provide follow-up resources to ensure lasting impact.',
+    methodology: 'We assess organizational needs, design interactive learning experiences, and provide follow-up insights to ensure lasting impact.',
     related: ['events-facilitation', 'third-party-management'],
     backgroundImage: '/images/stocks/briefings-talks.jpg',
     detailedContent: [

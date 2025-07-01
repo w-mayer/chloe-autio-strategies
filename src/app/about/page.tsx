@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
-import { siteContent } from '@/data/content';
+import { aboutContent } from '@/data/pages/about';
 import { siteMetadata } from '@/data/metadata';
 
 export const metadata: Metadata = {
@@ -24,13 +24,12 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const { about, pages } = siteContent;
-  const { hero } = pages.about;
+  const { hero, body, teamSection, team, cta } = aboutContent;
   
   return (
-    <div className="min-h-screen bg-eggshell">
+    <div className="min-h-screen bg-white">
       {/* Hero Section with Background Image */}
-      <section className="relative bg-primary py-16 md:py-24 overflow-hidden">
+      <section className="relative bg-primary py-20 md:py-32 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -55,90 +54,114 @@ export default function AboutPage() {
           >
             {hero.title}
           </AuthorityHeading>
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto body-text text-white">
-            {hero.subtitle}
+        </div>
+      </section>
+
+      {/* Body Text Section */}
+      <section className="container mx-auto px-4 py-12">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-8 heading">
+            {body.title}
+          </h2>
+          <p className="text-lg md:text-xl text-gray dark:text-paynesGray leading-relaxed body-text">
+            {body.description}
           </p>
         </div>
       </section>
 
+      {/* Team Section Header */}
+      <section className="container mx-auto px-4">
+        <div className="text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-green-600 mb-4 heading">
+            {teamSection.title}
+          </h2>
+        </div>
+      </section>
+
       {/* Team Members */}
-      <section className="container mx-auto px-4 py-16">
-        {/* Chloe Autio */}
-        <section className="flex flex-col lg:flex-row items-start gap-10 mb-16" itemScope itemType="https://schema.org/Person">
-          <div className="flex-shrink-0 w-full lg:w-80">
-            <div className="relative w-full h-96 lg:h-96 rounded-lg overflow-hidden shadow-lg bg-eggshell">
+      <section className="container mx-auto px-4 py-8">
+        {/* Images Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          {/* Chloe Autio Image */}
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-md h-[500px] rounded-lg overflow-hidden shadow-lg bg-white">
               <Image
-                src={about.team.chloe.image.src}
-                alt={about.team.chloe.image.alt}
+                src={team.chloe.image.src}
+                alt={team.chloe.image.alt}
                 fill
                 className="object-cover"
                 priority={true}
                 quality={90}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 320px"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 448px"
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
               />
             </div>
           </div>
-          <div className="flex-1 max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 heading" itemProp="name">
-              {about.team.chloe.name}
+          
+          {/* Samuel Wells Image */}
+          <div className="flex justify-center">
+            <div className="relative w-full max-w-md h-[500px] rounded-lg overflow-hidden shadow-lg bg-white">
+              <Image
+                src={team.samuel.image.src}
+                alt={team.samuel.image.alt}
+                fill
+                className="object-cover"
+                priority={true}
+                quality={90}
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 448px"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Bios Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Chloe Autio Bio */}
+          <div itemScope itemType="https://schema.org/Person">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 heading text-center" itemProp="name">
+              {team.chloe.name}
             </h2>
-            <p className="text-xl text-primary-600 mb-4 body-text" itemProp="jobTitle">
-              {about.team.chloe.title}
+            <p className="text-xl text-primary-600 mb-4 body-text text-center" itemProp="jobTitle">
+              {team.chloe.title}
             </p>
             <p className="text-lg text-gray dark:text-paynesGray mb-4 body-text" itemProp="description">
-              {about.team.chloe.description}
+              {team.chloe.description}
             </p>
             <p className="text-lg text-gray dark:text-paynesGray mb-4 body-text">
-              {about.team.chloe.bio}
+              {team.chloe.bio}
             </p>
           </div>
-        </section>
 
-        {/* Samuel Wells */}
-        <section className="flex flex-col lg:flex-row items-start gap-10" itemScope itemType="https://schema.org/Person">
-          <div className="flex-shrink-0 w-full lg:w-80">
-            <div className="relative w-full h-96 lg:h-96 rounded-lg overflow-hidden shadow-lg bg-eggshell">
-              <Image
-                src={about.team.samuel.image.src}
-                alt={about.team.samuel.image.alt}
-                fill
-                className="object-cover"
-                priority={true}
-                quality={90}
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 320px"
-                placeholder="blur"
-                blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
-              />
-            </div>
-          </div>
-          <div className="flex-1 max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 heading" itemProp="name">
-              {about.team.samuel.name}
+          {/* Samuel Wells Bio */}
+          <div itemScope itemType="https://schema.org/Person">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-2 heading text-center" itemProp="name">
+              {team.samuel.name}
             </h2>
-            <p className="text-xl text-primary-600 mb-4 body-text" itemProp="jobTitle">
-              {about.team.samuel.title}
+            <p className="text-xl text-primary-600 mb-4 body-text text-center" itemProp="jobTitle">
+              {team.samuel.title}
             </p>
             <p className="text-lg text-gray dark:text-paynesGray mb-4 body-text" itemProp="description">
-              {about.team.samuel.description}
+              {team.samuel.description}
             </p>
           </div>
-        </section>
+        </div>
       </section>
 
       {/* Call to Action */}
-      <section className="text-center">
-        <h2 className="text-2xl font-bold text-primary mb-4 heading">{about.cta.title}</h2>
+      <section className="text-center py-8">
+        <h2 className="text-2xl font-bold text-primary mb-4 heading">{cta.title}</h2>
         <p className="text-lg text-gray dark:text-paynesGray mb-6 max-w-2xl mx-auto body-text">
-          {about.cta.description}
+          {cta.description}
         </p>
         <a
-          href={about.cta.button.href}
+          href={cta.button.href}
           className="btn-primary btn-primary-cta inline-block mb-8"
-          aria-label={`${about.cta.button.text} with Autio Strategies Team`}
+          aria-label={`${cta.button.text} with Autio Strategies Team`}
         >
-          {about.cta.button.text}
+          {cta.button.text}
         </a>
       </section>
 
