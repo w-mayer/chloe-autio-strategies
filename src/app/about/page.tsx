@@ -72,7 +72,7 @@ export default function AboutPage() {
       {/* Team Section Header */}
       <section className="container mx-auto px-4">
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-green-600 mb-4 heading">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4 heading">
             {teamSection.title}
           </h2>
         </div>

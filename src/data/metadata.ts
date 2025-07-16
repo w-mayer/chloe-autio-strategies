@@ -263,6 +263,19 @@ export const siteMetadata = {
       ],
       url: 'https://autiostrategies.com/insights/wsj-election-wargames-tech-politics',
     },
+    'us-ai-policy-brief': {
+      title: 'U.S. Federal AI Policy Brief | Autio Strategies',
+      description: 'Comprehensive analysis of U.S. federal AI policy developments, including executive orders, legislative landscape, and regulatory implications for organizations.',
+      keywords: [
+        'U.S. AI policy',
+        'federal AI regulation',
+        'executive orders',
+        'AI governance',
+        'policy brief',
+        'regulatory compliance',
+      ],
+      url: 'https://autiostrategies.com/resources/us-ai-policy-brief',
+    },
   },
 
   // Open Graph metadata

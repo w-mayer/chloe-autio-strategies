@@ -40,7 +40,7 @@ async function optimizeHeadshots() {
 
   const images = [
     {
-      input: path.join(headshotDir, 'autio_headshot.jpg'),
+      input: path.join(headshotDir, 'autio_headshot.jpeg'),
       output: path.join(outputDir, 'autio_headshot.webp'),
       options: { width: 800, height: 800, quality: 90 }
     },
@@ -62,7 +62,7 @@ async function optimizeHeadshots() {
   console.log('\n🎉 Headshot optimization complete!');
   console.log('📁 Optimized images saved to:', outputDir);
   console.log('\n💡 To use the optimized images, update the image paths in src/data/content.ts:');
-  console.log('   - autio_headshot.jpg -> optimized/autio_headshot.webp');
+  console.log('   - autio_headshot.jpeg -> optimized/autio_headshot.webp');
   console.log('   - wells_headshot.jpeg -> optimized/wells_headshot.webp');
 }
 

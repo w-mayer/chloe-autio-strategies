@@ -31,7 +31,6 @@ This audit identified and corrected several critical issues with the site's SEO 
   - `wsj-election-wargames-tech-politics`: 2024-11-04
   - `us-ai-policy-brief`: 2024-04-20
   - `eu-ai-act-analysis`: 2024-03-15
-  - `placeholder-case-study`: 2024-07-01
   - `ai-governance-implementation`: 2024-06-15
 
 ### 2. Robots.txt (`public/robots.txt`)
@@ -100,7 +99,6 @@ This audit identified and corrected several critical issues with the site's SEO 
 - ✅ WSJ Election Wargames Tech Politics (`/resources/wsj-election-wargames-tech-politics`)
 - ✅ US AI Policy Brief (`/resources/us-ai-policy-brief`)
 - ✅ EU AI Act Analysis (`/resources/eu-ai-act-analysis`)
-- ✅ Placeholder Case Study (`/resources/placeholder-case-study`)
 - ✅ AI Governance Implementation (`/resources/ai-governance-implementation`)
 - ✅ Placeholder Resource (`/resources/placeholder-resource`)
 

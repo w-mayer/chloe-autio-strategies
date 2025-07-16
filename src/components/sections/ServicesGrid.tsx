@@ -131,7 +131,7 @@ export function ServicesGrid() {
   const { services: servicesContent } = siteContent;
 
   return (
-    <section className="w-full py-12 md:py-16 bg-white">
+    <section className="w-full pt-8 md:pt-8 pb-12 md:pb-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="mb-8 flex flex-col items-center text-center">
           <AuthorityHeading

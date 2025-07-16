@@ -85,7 +85,7 @@ export function ValueProposition() {
   const { valueProposition } = siteContent;
   
   return (
-    <section className="w-full py-12 md:py-16 bg-white dark:bg-neutral-950">
+    <section className="w-full pt-8 md:pt-8 pb-12 md:pb-16 bg-white dark:bg-neutral-950">
       <div className="container mx-auto px-4 flex flex-col items-center text-center">
         <div className="mb-8">
           <AuthorityHeading

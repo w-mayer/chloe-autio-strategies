@@ -161,6 +161,14 @@ export const siteContent = {
     },
   },
 
+  // Resources
+  resources: {
+    'us-ai-policy-brief': {
+      title: 'U.S. Federal AI Policy Brief',
+      subtitle: 'Comprehensive analysis of U.S. federal AI policy developments and regulatory implications',
+    },
+  },
+
   // Forms
   forms: {
     contact: {
