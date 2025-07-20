@@ -7,6 +7,7 @@ export interface Service {
   related: string[]; // slugs of related services
   backgroundImage: string; // path to hero background image
   detailedContent?: string[]; // optional detailed content for services that need it
+  backgroundPosition?: string; // optional: CSS object-position for hero image
 }
 
 export const services: Service[] = [
@@ -77,6 +78,7 @@ export const services: Service[] = [
     methodology: 'We collaborate with leadership to identify key messaging priorities, develop comprehensive briefing materials and presentation content, and provide strategic guidance to ensure effective communication with target audiences including policymakers, executives, and other critical stakeholders.',
     related: ['facilitation', 'third-party-management'],
     backgroundImage: '/images/stocks/contact.jpg',
+    backgroundPosition: 'center 33%', 
     detailedContent: [
       '<strong>Tailored Presentations:</strong> Custom presentations on specialized topics, designed for a range of audiences.',
       '<strong>Background and Briefing Documents:</strong> Develop materials to prepare executives for visits with policymakers or key stakeholders.',
@@ -113,6 +115,7 @@ export const services: Service[] = [
     methodology: 'We identify potential partners, broker introductions, and support the design and management of joint projects from inception to completion.',
     related: ['briefings-talks', 'insight-analysis'],
     backgroundImage: '/images/stocks/third-party.jpg',
+    backgroundPosition: 'center 20%', 
     detailedContent: [
       '<strong>Partner Selection and Management:</strong> Assist in identifying and managing external partners such as think tanks, convening organizations, grant awardees and civil society initiatives to advance strategic goals.',
       '<strong>Government and Public Affairs Coordination:</strong> Support selection and collaboration with government affairs partners, including trade associations and lobbying firms.',

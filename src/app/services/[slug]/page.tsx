@@ -82,7 +82,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
             alt={`${service.title} background`}
             fill
             className="object-cover"
-            style={{ objectPosition: "center 33%" }}
+            style={{ objectPosition: service.backgroundPosition || "center 43%" }}
             priority={true}
             quality={90}
             sizes="100vw"
