@@ -13,7 +13,7 @@ export const services: Service[] = [
   {
     slug: 'insight-analysis',
     title: 'Insight & Analysis',
-    overview: 'Receive tailored insights and analysis to inform your organization\'s strategy, anticipate trends, and proactively address emerging challenges in AI and technology policy.',
+    overview: 'Tailored intelligence to drive your strategy forward.',
     benefits: [
       'Data-driven insights for decision-making',
       'Early identification of policy and regulatory trends',
@@ -23,10 +23,10 @@ export const services: Service[] = [
     related: ['research', 'policy-development'],
     backgroundImage: '/images/stocks/insights-analysis.jpg',
     detailedContent: [
-      '<strong>Overview of Policy Landscape:</strong> Receive tailored reviews of relevant international, domestic, and local policy frameworks that align with your organization\'s interests and priorities.',
+      '<strong>Legislative and Policy Analysis:</strong> Expert evaluation of specific policy proposals, initiatives, and emerging trends, helping you anticipate impacts and adjust your strategies proactively.',
       '<strong>Real-Time Policy Updates and Ecosystem Insights:</strong> Stay informed with timely updates on policy initiatives and gain comprehensive analysis of the regulatory landscape to navigate changes effectively.',
-      '<strong>Legislative and Policy Analysis:</strong> Benefit from expert evaluation of specific policy proposals, initiatives, and emerging trends, helping you anticipate impacts and adjust your strategies proactively.',
-      '<strong>Targeted Insights:</strong> Receive briefings on relevant sectoral agencies, and/or identify key AI policy players, incentives, and possible engagement channels to pursue in short to long-term timeframes.'
+      '<strong>Targeted Insights:</strong> Receive briefings on relevant sectoral agencies, and/or identify key AI policy players, incentives, and possible engagement channels to pursue in short to long-term timeframes.',
+      '<strong>In-Depth Research:</strong> Conduct research on technology policy and governance issues delivered in the form of white papers, memos, or just quick bullets.'
     ],
   },
   {

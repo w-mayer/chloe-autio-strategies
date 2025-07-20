@@ -109,7 +109,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
       {/* Content Section */}
       <section className="container mx-auto px-4 py-8 flex flex-col items-center">
         <div className="body-text text-lg text-neutral-800 dark:text-neutral-200 max-w-2xl mx-auto bg-white/80 dark:bg-paynesGray/80 rounded-xl shadow-lg p-8 -mt-16 relative z-20 backdrop-blur">
-          <p className="mb-8">{service.overview}</p>
           
           {/* Detailed Content Section (if exists) */}
           {service.detailedContent && (
