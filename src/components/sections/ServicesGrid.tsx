@@ -101,7 +101,7 @@ function ServiceCard({ service, index, layoutIndex }: ServiceCardProps) {
       initial={{ opacity: 0, y: 50 }}
       animate={hasMounted && inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ delay, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      className={`service-card ${service.slug === 'strategy' ? 'strategy-card' : ''}`}
+      className="service-card"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"

@@ -103,7 +103,7 @@ function ServiceCard({ service, index, layoutIndex }: { service: Service; index:
   return (
     <div
       ref={cardRef}
-      className={`service-card ${service.slug === 'strategy' ? 'strategy-card' : ''} ${inView ? 'service-card-entrance' : 'service-card-initial'}`}
+      className={`service-card ${inView ? 'service-card-entrance' : 'service-card-initial'}`}
       style={inView ? { animationDelay: `${(layoutIndex !== undefined ? layoutIndex : index) * 150}ms` } : {}}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
@@ -194,8 +194,28 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
 
       <main className="container mx-auto px-4 pt-16 pb-4">
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {Array.from({ length: 7 }).map((_, i) => <ServiceCardSkeleton key={i} />)}
+          /* Custom 2-3-2 Layout Skeleton */
+          <div className="space-y-8">
+            {/* Row 1: 2 services */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {Array.from({ length: 2 }).map((_, i) => (
+                <ServiceCardSkeleton key={`row1-${i}`} />
+              ))}
+            </div>
+            
+            {/* Row 2: 3 services */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {Array.from({ length: 3 }).map((_, i) => (
+                <ServiceCardSkeleton key={`row2-${i}`} />
+              ))}
+            </div>
+            
+            {/* Row 3: 2 services */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {Array.from({ length: 2 }).map((_, i) => (
+                <ServiceCardSkeleton key={`row3-${i}`} />
+              ))}
+            </div>
           </div>
         ) : (
           /* Custom 2-3-2 Layout */

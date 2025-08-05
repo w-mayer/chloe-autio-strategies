@@ -427,60 +427,6 @@ body {
   transition: transform 0.3s ease;
 }
 
-/* Strategy Service Card - Special Styling */
-.service-card.strategy-card {
-  background: linear-gradient(135deg, #AAC1BF 0%, #9BB3B1 100%);
-  border: 1px solid #8BA3A1;
-  box-shadow: 0 4px 12px rgba(170, 193, 191, 0.2);
-}
-
-.service-card.strategy-card .service-card-icon {
-  color: #434344 !important; /* Gray instead of green */
-}
-
-.service-card.strategy-card .service-card-number {
-  color: #434344 !important; /* Gray instead of green */
-}
-
-.service-card.strategy-card::before {
-  background: linear-gradient(90deg, transparent, #434344, transparent);
-}
-
-.service-card.strategy-card::after {
-  background: linear-gradient(90deg, transparent, #434344, transparent);
-}
-
-.service-card.strategy-card .service-card-ripple {
-  background: rgba(67, 67, 68, 0.3); /* Gray ripple effect */
-}
-
-/* Dark Mode Adjustments for Strategy Card */
-.dark .service-card.strategy-card {
-  background: linear-gradient(135deg, #434344 0%, #455D6A 100%);
-  border-color: #AAC1BF;
-  color: #E1DBA7;
-}
-
-.dark .service-card.strategy-card .service-card-icon {
-  color: #AAC1BF !important;
-}
-
-.dark .service-card.strategy-card .service-card-number {
-  color: #AAC1BF !important;
-}
-
-.dark .service-card.strategy-card::before {
-  background: linear-gradient(90deg, transparent, #AAC1BF, transparent);
-}
-
-.dark .service-card.strategy-card::after {
-  background: linear-gradient(90deg, transparent, #AAC1BF, transparent);
-}
-
-.dark .service-card.strategy-card .service-card-ripple {
-  background: rgba(170, 193, 191, 0.3);
-}
-
 /* Ripple Effect on Click */
 .service-card-ripple {
   position: absolute;

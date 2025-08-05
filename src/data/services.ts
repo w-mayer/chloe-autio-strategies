@@ -23,6 +23,7 @@ export const services: Service[] = [
     methodology: 'We combine proprietary data, expert analysis, and ongoing monitoring to deliver actionable intelligence tailored to your needs.',
     related: ['research', 'policy-development'],
     backgroundImage: '/images/stocks/insights-analysis.jpg',
+    backgroundPosition: 'center 50%', 
     detailedContent: [
       '<strong>Legislative and Policy Analysis:</strong> Expert evaluation of specific policy proposals, initiatives, and emerging trends, helping you anticipate impacts and adjust your strategies proactively.',
       '<strong>Real-Time Policy Updates and Ecosystem Insights:</strong> Stay informed with timely updates on policy initiatives and gain comprehensive analysis of the regulatory landscape to navigate changes effectively.',
@@ -42,6 +43,7 @@ export const services: Service[] = [
     methodology: 'We design and execute engagement strategies, including roundtables, public consultations, and digital feedback platforms, to capture diverse perspectives and foster collaboration.',
     related: ['policy-development', 'briefings-talks'],
     backgroundImage: '/images/stocks/events-facilitation.jpg',
+    backgroundPosition: 'center 30%', 
     detailedContent: [
       '<strong>Customized Workshops and Roundtables:</strong> Organize and lead targeted workshops or roundtables on policy and governance topics to drive informed discussions and decision-making.',
       '<strong>Stakeholder Feedback Sessions:</strong> Design and facilitate focus groups to gather feedback from diverse stakeholders on governance processes and/or policy positions.',
@@ -78,7 +80,7 @@ export const services: Service[] = [
     methodology: 'We conduct comprehensive landscape analysis to map key stakeholders and policy dynamics, develop prioritized engagement strategies aligned with organizational objectives, and provide ongoing strategic guidance to optimize resource deployment and maximize influence in critical policy debates.',
     related: ['insight-analysis', 'policy-development'],
     backgroundImage: '/images/stocks/strategy.jpg',
-    backgroundPosition: 'center 20%', 
+    backgroundPosition: 'center 10%', 
     detailedContent: [
       '<strong>Overall Strategy for Policy Positioning or Engagement:</strong> Comprehensive strategies to guide positioning or engagement efforts, including brand and messaging, timing considerations, and coalition building aligned to organizational objectives and the current policy/political landscape.',
       '<strong>Resource and Time Prioritization:</strong> Optimize time and resources to focus on highest impact initiatives or events.',
@@ -98,7 +100,7 @@ export const services: Service[] = [
     methodology: 'We collaborate with leadership to identify key messaging priorities, develop comprehensive briefing materials and presentation content, and provide strategic guidance to ensure effective communication with target audiences including policymakers, executives, and other critical stakeholders.',
     related: ['facilitation', 'third-party-management'],
     backgroundImage: '/images/stocks/contact.jpg',
-    backgroundPosition: 'center 33%', 
+    backgroundPosition: 'center 5%', 
     detailedContent: [
       '<strong>Tailored Presentations:</strong> Custom presentations on specialized topics, designed for a range of audiences.',
       '<strong>Background and Briefing Documents:</strong> Develop materials to prepare executives for visits with policymakers or key stakeholders.',
