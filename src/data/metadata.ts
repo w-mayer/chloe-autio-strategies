@@ -199,6 +199,19 @@ export const siteMetadata = {
       ],
       url: 'https://autiostrategies.com/services/briefings-talks',
     },
+    'strategy': {
+      title: 'Strategy & Prioritization Services | AI Policy Consulting',
+      description: 'Focused approaches to achieve results through comprehensive strategy development, stakeholder mapping, and resource prioritization for maximum organizational impact.',
+      keywords: [
+        'AI policy strategy',
+        'strategic prioritization',
+        'stakeholder mapping',
+        'resource optimization',
+        'policy engagement',
+        'coalition building',
+      ],
+      url: 'https://autiostrategies.com/services/strategy',
+    },
     'third-party-management': {
       title: 'Third Party Management Services | AI Policy Consulting',
       description: 'Facilitate alliances, collaborations, and third-party relationships that advance shared policy objectives and drive innovation across sectors.',

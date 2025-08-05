@@ -10,6 +10,7 @@ import { siteContent } from '@/data/content';
 interface ServiceCardProps {
   service: (typeof services)[number];
   index: number;
+  layoutIndex?: number; // For custom layout positioning
 }
 
 function useInViewAnimation() {
@@ -38,16 +39,17 @@ function useInViewAnimation() {
   return [ref, inView] as const;
 }
 
-function getStaggeredDelay(index: number) {
-  // 3 cards per row
-  const row = Math.floor(index / 3);
-  const col = index % 3;
+function getStaggeredDelay(index: number, layoutIndex?: number) {
+  // Use layoutIndex if provided, otherwise fall back to original logic
+  const effectiveIndex = layoutIndex !== undefined ? layoutIndex : index;
+  const row = Math.floor(effectiveIndex / 3);
+  const col = effectiveIndex % 3;
   return row * 600 + col * 200;
 }
 
-function ServiceCard({ service, index }: ServiceCardProps) {
+function ServiceCard({ service, index, layoutIndex }: ServiceCardProps) {
   const [ref, inView] = useInViewAnimation();
-  const delay = getStaggeredDelay(index) / 1000; // seconds for framer-motion
+  const delay = getStaggeredDelay(index, layoutIndex) / 1000; // seconds for framer-motion
   const router = useRouter();
   const { services: servicesContent, ui } = siteContent;
 
@@ -57,8 +59,8 @@ function ServiceCard({ service, index }: ServiceCardProps) {
   }, []);
 
   React.useEffect(() => {
-    console.log('ServiceCard', { index, inView, title: service.title });
-  }, [inView, index, service.title]);
+    console.log('ServiceCard', { index, layoutIndex, inView, title: service.title });
+  }, [inView, index, layoutIndex, service.title]);
 
   // Ripple effect and navigation on click
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -99,7 +101,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
       initial={{ opacity: 0, y: 50 }}
       animate={hasMounted && inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ delay, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      className="service-card"
+      className={`service-card ${service.slug === 'strategy' ? 'strategy-card' : ''}`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"
@@ -130,6 +132,26 @@ function ServiceCard({ service, index }: ServiceCardProps) {
 export function ServicesGrid() {
   const { services: servicesContent } = siteContent;
 
+  // Custom 2-3-2 layout configuration
+  const layoutConfig = [
+    // Row 1: First 2 services
+    [
+      { service: services[0], layoutIndex: 0 }, // insight-analysis
+      { service: services[1], layoutIndex: 1 }, // facilitation
+    ],
+    // Row 2: 3 services with strategy in the middle
+    [
+      { service: services[2], layoutIndex: 3 }, // events
+      { service: services[3], layoutIndex: 4 }, // strategy (middle)
+      { service: services[4], layoutIndex: 5 }, // presentations-briefings
+    ],
+    // Row 3: Last 2 services
+    [
+      { service: services[5], layoutIndex: 6 }, // policy-development
+      { service: services[6], layoutIndex: 7 }, // third-party-management
+    ],
+  ];
+
   return (
     <section className="w-full pt-8 md:pt-8 pb-12 md:pb-16 bg-white">
       <div className="container mx-auto px-4">
@@ -141,10 +163,44 @@ export function ServicesGrid() {
             {servicesContent.title}
           </AuthorityHeading>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, i) => (
-            <ServiceCard key={service.slug} service={service} index={i} />
-          ))}
+        
+        {/* Custom 2-3-2 Layout */}
+        <div className="space-y-8">
+          {/* Row 1: 2 services */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {layoutConfig[0].map(({ service, layoutIndex }) => (
+              <ServiceCard 
+                key={service.slug} 
+                service={service} 
+                index={layoutIndex} 
+                layoutIndex={layoutIndex}
+              />
+            ))}
+          </div>
+          
+          {/* Row 2: 3 services */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {layoutConfig[1].map(({ service, layoutIndex }) => (
+              <ServiceCard 
+                key={service.slug} 
+                service={service} 
+                index={layoutIndex} 
+                layoutIndex={layoutIndex}
+              />
+            ))}
+          </div>
+          
+          {/* Row 3: 2 services */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {layoutConfig[2].map(({ service, layoutIndex }) => (
+              <ServiceCard 
+                key={service.slug} 
+                service={service} 
+                index={layoutIndex} 
+                layoutIndex={layoutIndex}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
