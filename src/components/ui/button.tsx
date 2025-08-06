@@ -15,8 +15,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 const variantClasses: Record<ButtonVariant, string> = {
   primary: "btn-primary btn-primary-cta",
   secondary: "btn-secondary",
-  outline: "border border-primary-500 text-primary-700 bg-transparent hover:bg-primary-100",
-  ghost: "bg-transparent text-primary-700 hover:bg-primary-100",
+  outline: "border border-primary-500 text-primary-700 bg-transparent hover:bg-primary-100 rounded-md btn-outline",
+  ghost: "bg-transparent text-primary-700 hover:bg-primary-100 rounded-md btn-ghost",
 };
 
 const sizeClasses: Record<ButtonSize, string> = {
