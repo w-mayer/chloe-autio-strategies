@@ -138,26 +138,6 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
     return () => clearTimeout(t);
   }, []);
 
-  // Custom 2-3-2 layout configuration
-  const layoutConfig = [
-    // Row 1: First 2 services
-    [
-      { service: services[0], layoutIndex: 0 }, // insight-analysis
-      { service: services[1], layoutIndex: 1 }, // facilitation
-    ],
-    // Row 2: 3 services with strategy in the middle
-    [
-      { service: services[2], layoutIndex: 3 }, // events
-      { service: services[3], layoutIndex: 4 }, // strategy (middle)
-      { service: services[4], layoutIndex: 5 }, // presentations-briefings
-    ],
-    // Row 3: Last 2 services
-    [
-      { service: services[5], layoutIndex: 6 }, // policy-development
-      { service: services[6], layoutIndex: 7 }, // third-party-management
-    ],
-  ];
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Background Image */}
@@ -194,67 +174,23 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
 
       <main className="container mx-auto px-4 pt-16 pb-4">
         {loading ? (
-          /* Custom 2-3-2 Layout Skeleton */
-          <div className="space-y-8">
-            {/* Row 1: 2 services */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {Array.from({ length: 2 }).map((_, i) => (
-                <ServiceCardSkeleton key={`row1-${i}`} />
-              ))}
-            </div>
-            
-            {/* Row 2: 3 services */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <ServiceCardSkeleton key={`row2-${i}`} />
-              ))}
-            </div>
-            
-            {/* Row 3: 2 services */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {Array.from({ length: 2 }).map((_, i) => (
-                <ServiceCardSkeleton key={`row3-${i}`} />
-              ))}
-            </div>
+          /* Responsive Grid Skeleton */
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            {Array.from({ length: services.length }).map((_, i) => (
+              <ServiceCardSkeleton key={`skeleton-${i}`} />
+            ))}
           </div>
         ) : (
-          /* Custom 2-3-2 Layout */
-          <div className="space-y-8">
-            {/* Row 1: 2 services */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {layoutConfig[0].map(({ service, layoutIndex }) => (
-                <ServiceCard 
-                  key={service.slug} 
-                  service={service} 
-                  index={layoutIndex} 
-                  layoutIndex={layoutIndex}
-                />
-              ))}
-            </div>
-            
-            {/* Row 2: 3 services */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {layoutConfig[1].map(({ service, layoutIndex }) => (
-                <ServiceCard 
-                  key={service.slug} 
-                  service={service} 
-                  index={layoutIndex} 
-                  layoutIndex={layoutIndex}
-                />
-              ))}
-            </div>
-            
-            {/* Row 3: 2 services */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              {layoutConfig[2].map(({ service, layoutIndex }) => (
-                <ServiceCard 
-                  key={service.slug} 
-                  service={service} 
-                  index={layoutIndex} 
-                  layoutIndex={layoutIndex}
-                />
-              ))}
-            </div>
+          /* Responsive Grid Layout */
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+            {services.map((service, index) => (
+              <ServiceCard 
+                key={service.slug} 
+                service={service} 
+                index={index} 
+                layoutIndex={index}
+              />
+            ))}
           </div>
         )}
       </main>
@@ -270,7 +206,11 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
             <Button href="/contact" className="text-lg px-8 py-3">
               {ui.buttons.contactUs}
             </Button>
-            <Button href="/about" variant="outline" className="text-lg px-8 py-3">
+            <Button 
+              href="/about" 
+              variant="outline" 
+              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-3 border-eggshell text-paynesGray bg-eggshell hover:bg-eggshell hover:text-paynesGray min-h-[44px] touch-target transition-all duration-150 hover:scale-105 rounded-md"
+            >
               {ui.buttons.learnAboutTeam}
             </Button>
           </div>
