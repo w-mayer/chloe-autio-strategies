@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { services } from '@/data/services';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
+import { ContentErrorBoundary } from '@/components/ui/ContentErrorBoundary';
 import { motion } from 'framer-motion';
 import { siteContent } from '@/data/content';
 
@@ -129,7 +130,7 @@ function ServiceCard({ service, index, layoutIndex }: ServiceCardProps) {
   );
 }
 
-export function ServicesGrid() {
+function ServicesGridContent() {
   const { services: servicesContent } = siteContent;
 
   // Custom 2-3-2 layout configuration
@@ -204,5 +205,13 @@ export function ServicesGrid() {
         </div>
       </div>
     </section>
+  );
+}
+
+export function ServicesGrid() {
+  return (
+    <ContentErrorBoundary>
+      <ServicesGridContent />
+    </ContentErrorBoundary>
   );
 }

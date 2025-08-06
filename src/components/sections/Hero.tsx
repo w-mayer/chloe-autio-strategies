@@ -3,14 +3,14 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
+import { ContentErrorBoundary } from '@/components/ui/ContentErrorBoundary';
 import { OptimizedImage } from '@/components/ui/OptimizedImage';
 import { homeContent } from '@/data/pages/home';
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 
-export function Hero() {
-  
+function HeroContent() {
   return (
     <section className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden bg-paynesGray">
       {/* Background image */}
@@ -79,5 +79,13 @@ export function Hero() {
         </MotionDiv>
       </div>
     </section>
+  );
+}
+
+export function Hero() {
+  return (
+    <ContentErrorBoundary>
+      <HeroContent />
+    </ContentErrorBoundary>
   );
 } 
