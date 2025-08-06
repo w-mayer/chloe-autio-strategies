@@ -54,25 +54,25 @@ export const authors: Author[] = [
     name: 'Chloe Autio',
     title: 'Founder, Autio Strategies',
     bio: 'Chloe Autio is a leading expert in AI policy, governance, and technology strategy, advising government and enterprise clients on responsible innovation.',
-    avatarUrl: '/images/headshot/autio_headshot.jpg',
+    avatarUrl: '/images/headshot/optimized/autio_headshot.webp',
   },
   {
     name: 'Wall Street Journal',
     title: 'Leading Financial News Publication',
     bio: 'The Wall Street Journal is a leading financial news publication covering business, politics, and technology.',
-    avatarUrl: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
+    avatarUrl: '/images/logo/optimized/AutioStrategies_Logo_FullColor_JustMark.webp',
   },
   {
     name: 'POLITICO',
     title: 'Political News and Analysis',
     bio: 'POLITICO is a leading political news organization covering policy, politics, and technology.',
-    avatarUrl: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
+    avatarUrl: '/images/logo/optimized/AutioStrategies_Logo_FullColor_JustMark.webp',
   },
   {
     name: 'Fortune',
     title: 'Business and Technology Magazine',
     bio: 'Fortune is a leading business magazine covering technology, innovation, and corporate leadership.',
-    avatarUrl: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
+    avatarUrl: '/images/logo/optimized/AutioStrategies_Logo_FullColor_JustMark.webp',
   },
 ];
 

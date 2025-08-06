@@ -34,42 +34,42 @@ export const siteContent = {
     logos: [
       { 
         name: 'Cohere', 
-        image: '/images/partner_logos/Cohere-Logo.png',
+        image: '/images/partner_logos/optimized/Cohere-Logo.webp',
         alt: 'Cohere Logo'
       },
       { 
         name: 'Department of Defense', 
-        image: '/images/partner_logos/DoD-Logo-Stacked.png',
+        image: '/images/partner_logos/optimized/DoD-Logo-Stacked.webp',
         alt: 'Department of Defense Logo'
       },
       { 
         name: 'NIST', 
-        image: '/images/partner_logos/f_nist-logo-brand-black.png',
+        image: '/images/partner_logos/optimized/f_nist-logo-brand-black.webp',
         alt: 'NIST Logo'
       },
       { 
         name: 'Google Cloud Platform', 
-        image: '/images/partner_logos/Google_Cloud_Platform-Logo.png',
+        image: '/images/partner_logos/optimized/Google_Cloud_Platform-Logo.webp',
         alt: 'Google Cloud Platform Logo'
       },
       { 
         name: 'Google DeepMind', 
-        image: '/images/partner_logos/Google_DeepMind_logo.png',
+        image: '/images/partner_logos/optimized/Google_DeepMind_logo.webp',
         alt: 'Google DeepMind Logo'
       },
       { 
         name: 'Meta', 
-        image: '/images/partner_logos/Meta-Logo.png',
+        image: '/images/partner_logos/optimized/Meta-Logo.webp',
         alt: 'Meta Logo'
       },
       { 
         name: 'OECD', 
-        image: '/images/partner_logos/OCED.jpeg',
+        image: '/images/partner_logos/optimized/OCED.webp',
         alt: 'OECD Logo'
       },
       { 
         name: 'Uber', 
-        image: '/images/partner_logos/Uber_logo_2018.png',
+        image: '/images/partner_logos/optimized/Uber_logo_2018.webp',
         alt: 'Uber Logo'
       },
     ],
@@ -125,11 +125,11 @@ export const siteContent = {
       secondary: { text: 'Learn More', href: '/services' },
     },
     background: {
-      image: '/images/stocks/cta-background.jpg',
+      image: '/images/stocks/optimized/cta-background.webp',
       alt: 'Professional consulting background',
     },
     logo: {
-      image: '/images/logo/AutioStrategies_Logo_AllWhite_Horz.png',
+      image: '/images/logo/optimized/AutioStrategies_Logo_AllWhite_Horz.webp',
       alt: 'Autio Strategies Logo',
     },
   },
@@ -145,7 +145,7 @@ export const siteContent = {
       linkedin: { text: 'LinkedIn', href: 'https://www.linkedin.com/company/autio-strategies' },
     },
     logo: {
-      src: '/images/logo/AutioStrategies_Logo_FullColor_JustMark.png',
+      src: '/images/logo/optimized/AutioStrategies_Logo_FullColor_JustMark.webp',
       alt: 'Autio Strategies Mark',
     },
   },
@@ -153,7 +153,7 @@ export const siteContent = {
   // Header
   header: {
     logo: {
-      src: '/images/logo/AutioStrategies_Logo_FullColor_Horz (1).png',
+      src: '/images/logo/optimized/AutioStrategies_Logo_FullColor_Horz (1).webp',
       alt: 'Autio Strategies Logo',
     },
     mobileMenu: {

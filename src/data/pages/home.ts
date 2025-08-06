@@ -7,7 +7,7 @@ export const homeContent = {
       secondary: { text: 'Contact Us', href: '/contact' },
     },
     background: {
-      image: '/images/stocks/resources.jpg',
+      image: '/images/stocks/optimized/resources.webp',
       alt: 'Jefferson Memorial night reflection',
     },
   },

@@ -3,7 +3,7 @@ export const resourcesContent = {
     title: 'Insights',
     subtitle: 'Explore our featured articles and curated resources on AI policy, governance, and regulatory topics.',
     background: {
-      image: '/images/stocks/hero-background.jpg',
+      image: '/images/stocks/optimized/hero-background.webp',
       alt: 'Insights background',
     },
   },

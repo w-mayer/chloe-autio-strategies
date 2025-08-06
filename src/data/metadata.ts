@@ -328,7 +328,7 @@ export const siteMetadata = {
     name: 'Autio Strategies',
     description: 'AI policy consulting and technology governance experts providing strategic guidance to government bodies, Fortune 50 companies, and leading organizations.',
     url: 'https://autiostrategies.com',
-    logo: 'https://autiostrategies.com/images/logo/AutioStrategies_Logo_FullColor_Horz.png',
+    logo: 'https://autiostrategies.com/images/logo/optimized/AutioStrategies_Logo_FullColor_Horz (1).webp',
     sameAs: [
       'https://github.com/w-mayer/chloe-autio-strategies',
     ],
