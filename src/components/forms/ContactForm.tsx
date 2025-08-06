@@ -98,41 +98,37 @@ const sanitizeServiceArray = (services: string[]): string[] => {
     .filter((service, index, self) => self.indexOf(service) === index);
 };
 
-// Rate limiting utility
-const RATE_LIMIT_KEY = 'contact_form_submissions';
-const RATE_LIMIT_WINDOW = 60 * 60 * 1000; // 1 hour
-const MAX_SUBMISSIONS_PER_WINDOW = 3;
-
-// Development helper to clear rate limit (only available in dev mode)
-const clearRateLimit = () => {
-  if (process.env.NODE_ENV === 'development' && typeof window !== 'undefined') {
-    localStorage.removeItem(RATE_LIMIT_KEY);
-    console.log('Rate limit cleared for development');
-  }
-};
+// Rate limiting utilities
+const RATE_LIMIT_KEY = 'contact-form-rate-limit';
+const RATE_LIMIT_DURATION = 5 * 60 * 1000; // 5 minutes
+const MAX_ATTEMPTS = 3;
 
 const checkRateLimit = (): boolean => {
-  if (typeof window === 'undefined') return true; // Server-side, allow
+  if (typeof window === 'undefined') return true;
   
-  // Bypass rate limiting in development mode
-  if (process.env.NODE_ENV === 'development') {
+  const now = Date.now();
+  const rateLimitData = localStorage.getItem(RATE_LIMIT_KEY);
+  
+  if (!rateLimitData) {
+    localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify({ attempts: 1, firstAttempt: now }));
     return true;
   }
   
-  const now = Date.now();
-  const submissions = JSON.parse(localStorage.getItem(RATE_LIMIT_KEY) || '[]');
+  const { attempts, firstAttempt } = JSON.parse(rateLimitData);
   
-  // Remove old submissions outside the window
-  const recentSubmissions = submissions.filter((timestamp: number) => now - timestamp < RATE_LIMIT_WINDOW);
+  // Reset if more than 5 minutes have passed
+  if (now - firstAttempt > RATE_LIMIT_DURATION) {
+    localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify({ attempts: 1, firstAttempt: now }));
+    return true;
+  }
   
-  if (recentSubmissions.length >= MAX_SUBMISSIONS_PER_WINDOW) {
+  // Check if max attempts reached
+  if (attempts >= MAX_ATTEMPTS) {
     return false;
   }
   
-  // Add current submission
-  recentSubmissions.push(now);
-  localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify(recentSubmissions));
-  
+  // Increment attempts
+  localStorage.setItem(RATE_LIMIT_KEY, JSON.stringify({ attempts: attempts + 1, firstAttempt }));
   return true;
 };
 
@@ -330,7 +326,7 @@ const ContactFormSuccess = () => {
           {contactForm.success}
         </p>
         <p className="text-sm text-neutral-600 dark:text-neutral-400 max-w-md mx-auto">
-          We've received your message and will get back to you within 24-48 hours.
+          We&apos;ve received your message and will get back to you within 24-48 hours.
         </p>
       </div>
       
