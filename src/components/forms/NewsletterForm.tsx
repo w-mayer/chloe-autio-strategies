@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/button';
+import { Input, Button } from '@/components/ui';
 import { siteContent } from '@/data/content';
 import { useSearchParams } from 'next/navigation';
 

@@ -1,8 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { Input } from '@/components/ui/Input';
-import { Button } from '@/components/ui/button';
+import { Input, Button } from '@/components/ui';
 import { siteContent } from '@/data/content';
 import { useSearchParams } from 'next/navigation';
 

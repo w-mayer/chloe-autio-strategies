@@ -1,9 +1,8 @@
 'use client';
-import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
+import React from 'react';
 import { useRouter } from 'next/navigation';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import { Button } from '@/components/ui/button';
+import { AuthorityHeading, Button } from '@/components/ui';
+import Image from 'next/image';
 import { servicesContent } from '@/data/pages/services';
 import { siteContent } from '@/data/content';
 import type { Service } from '@/data/services';
@@ -138,11 +137,11 @@ function ServiceCard({ service, index, layoutIndex }: { service: Service; index:
 }
 
 export default function ServicesGridClient({ services }: ServicesGridClientProps) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = React.useState(true);
   const { ui } = siteContent;
   const { hero } = servicesContent;
   
-  useEffect(() => {
+  React.useEffect(() => {
     const t = setTimeout(() => setLoading(false), 1200);
     return () => clearTimeout(t);
   }, []);

@@ -1,10 +1,7 @@
 'use client';
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { Button } from '@/components/ui/button';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import { ContentErrorBoundary } from '@/components/ui/ContentErrorBoundary';
-import { OptimizedImage } from '@/components/ui/OptimizedImage';
+import { Button, AuthorityHeading, ContentErrorBoundary, OptimizedImage } from '@/components/ui';
 import { homeContent } from '@/data/pages/home';
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });

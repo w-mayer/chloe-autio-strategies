@@ -1,6 +1,6 @@
 import React from 'react';
 import { Metadata } from 'next';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
+import { AuthorityHeading } from '@/components/ui';
 import Image from 'next/image';
 import { aboutContent } from '@/data/pages/about';
 import { siteMetadata } from '@/data/metadata';

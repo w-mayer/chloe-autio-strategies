@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
+import { AuthorityHeading } from '@/components/ui';
 import { siteContent } from '@/data/content';
 import Image from 'next/image';
 

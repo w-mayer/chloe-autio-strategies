@@ -1,10 +1,9 @@
 import React from 'react';
+import { Metadata } from 'next';
+import { AuthorityHeading, Button } from '@/components/ui';
 import { services } from '@/data/services';
 import { notFound } from 'next/navigation';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
-import type { Metadata } from 'next';
 import { siteMetadata } from '@/data/metadata';
 import { siteContent } from '@/data/content';
 import { ServiceSlug } from '@/types/metadata';

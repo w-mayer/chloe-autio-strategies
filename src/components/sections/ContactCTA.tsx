@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui';
 import Image from 'next/image';
 import { siteContent } from '@/data/content';
 

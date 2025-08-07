@@ -1,11 +1,12 @@
-import { articles, policyBriefs, caseStudies, resources } from '@/data/resources';
-import { ArticleCard } from '@/components/content/ArticleCard';
-import { ResourceCard } from '@/components/content/ResourceCard';
-import type { Metadata } from 'next';
-import { Button } from '@/components/ui/button';
+import React from 'react';
+import { Metadata } from 'next';
+import { Button } from '@/components/ui';
 import { siteMetadata } from '@/data/metadata';
 import { siteContent } from '@/data/content';
 import { PageHero } from '@/components/sections/PageHero';
+import { articles, policyBriefs, caseStudies, resources } from '@/data/resources';
+import { ArticleCard } from '@/components/content/ArticleCard';
+import { ResourceCard } from '@/components/content/ResourceCard';
 
 export const metadata: Metadata = {
   title: siteMetadata.pages.resources.title,

@@ -1,6 +1,6 @@
-import React from 'react';
+'use client';
+import { AuthorityHeading } from '@/components/ui';
 import Image from 'next/image';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
 import { getPageHero } from '@/lib/utils';
 
 interface PageHeroProps {

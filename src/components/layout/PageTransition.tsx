@@ -2,7 +2,7 @@
 import React, { useTransition } from 'react';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
+import { ErrorBoundary } from '@/components/ui';
 
 function PageTransitionContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

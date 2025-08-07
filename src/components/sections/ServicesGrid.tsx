@@ -3,8 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { services } from '@/data/services';
-import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import { ContentErrorBoundary } from '@/components/ui/ContentErrorBoundary';
+import { AuthorityHeading, ContentErrorBoundary } from '@/components/ui';
 import { motion } from 'framer-motion';
 import { siteContent } from '@/data/content';
 
