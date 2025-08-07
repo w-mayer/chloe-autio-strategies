@@ -199,6 +199,19 @@ export const siteMetadata = {
       ],
       url: 'https://autiostrategies.com/services/briefings-talks',
     },
+    'strategy': {
+      title: 'Strategy & Prioritization Services | AI Policy Consulting',
+      description: 'Focused approaches to achieve results through comprehensive strategy development, stakeholder mapping, and resource prioritization for maximum organizational impact.',
+      keywords: [
+        'AI policy strategy',
+        'strategic prioritization',
+        'stakeholder mapping',
+        'resource optimization',
+        'policy engagement',
+        'coalition building',
+      ],
+      url: 'https://autiostrategies.com/services/strategy',
+    },
     'third-party-management': {
       title: 'Third Party Management Services | AI Policy Consulting',
       description: 'Facilitate alliances, collaborations, and third-party relationships that advance shared policy objectives and drive innovation across sectors.',
@@ -315,7 +328,7 @@ export const siteMetadata = {
     name: 'Autio Strategies',
     description: 'AI policy consulting and technology governance experts providing strategic guidance to government bodies, Fortune 50 companies, and leading organizations.',
     url: 'https://autiostrategies.com',
-    logo: 'https://autiostrategies.com/images/logo/AutioStrategies_Logo_FullColor_Horz.png',
+    logo: 'https://autiostrategies.com/images/logo/optimized/AutioStrategies_Logo_FullColor_Horz (1).webp',
     sameAs: [
       'https://github.com/w-mayer/chloe-autio-strategies',
     ],

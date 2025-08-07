@@ -4,7 +4,8 @@ export type ServiceSlug =
   | 'policy-development'
   | 'events-facilitation'
   | 'briefings-talks'
-  | 'third-party-management';
+  | 'third-party-management'
+  | 'strategy';
 
 export type ResourceSlug =
   | 'wsj-trump-ai-kratsios-thiel'

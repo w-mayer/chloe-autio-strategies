@@ -2,8 +2,9 @@
 import React, { useTransition } from 'react';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
+import { ErrorBoundary } from '@/components/ui/ErrorBoundary';
 
-export function PageTransition({ children }: { children: React.ReactNode }) {
+function PageTransitionContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const [isPending] = useTransition();
 
@@ -38,5 +39,15 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         </motion.main>
       </AnimatePresence>
     </>
+  );
+}
+
+export function PageTransition({ children }: { children: React.ReactNode }) {
+  return (
+    <ErrorBoundary>
+      <PageTransitionContent>
+        {children}
+      </PageTransitionContent>
+    </ErrorBoundary>
   );
 } 

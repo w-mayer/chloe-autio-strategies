@@ -12,7 +12,7 @@ export interface ImageConfig {
 
 export const serviceBackgroundImages: Record<string, ImageConfig> = {
   'policy-development': {
-    src: '/images/stocks/policy-development.jpg',
+    src: '/images/stocks/optimized/policy-development.webp',
     width: 2200,
     height: 1466,
     aspectRatio: '2200/1466', // ~1.5:1
@@ -20,7 +20,7 @@ export const serviceBackgroundImages: Record<string, ImageConfig> = {
     objectPosition: 'center'
   },
   'events-facilitation': {
-    src: '/images/stocks/events-facilitation.jpg',
+    src: '/images/stocks/optimized/events-facilitation.webp',
     width: 2069,
     height: 2200,
     aspectRatio: '2069/2200', // ~0.94:1 (nearly square)
@@ -28,7 +28,7 @@ export const serviceBackgroundImages: Record<string, ImageConfig> = {
     objectPosition: 'center'
   },
   'briefings-talks': {
-    src: '/images/stocks/briefings-talks.jpg',
+    src: '/images/stocks/optimized/briefings-talks.webp',
     width: 7008,
     height: 4672,
     aspectRatio: '7008/4672', // ~1.5:1
@@ -36,7 +36,7 @@ export const serviceBackgroundImages: Record<string, ImageConfig> = {
     objectPosition: 'center'
   },
   'third-party': {
-    src: '/images/stocks/third-party.jpg',
+    src: '/images/stocks/optimized/third-party.webp',
     width: 4616,
     height: 4000,
     aspectRatio: '4616/4000', // ~1.15:1 (nearly square)
@@ -44,7 +44,7 @@ export const serviceBackgroundImages: Record<string, ImageConfig> = {
     objectPosition: 'center'
   },
   'insights-analysis': {
-    src: '/images/stocks/insights-analysis.jpg',
+    src: '/images/stocks/optimized/insights-analysis.webp',
     width: 3778,
     height: 5667,
     aspectRatio: '3778/5667', // ~1:1.5 (portrait)
@@ -52,7 +52,7 @@ export const serviceBackgroundImages: Record<string, ImageConfig> = {
     objectPosition: 'center'
   },
   'research': {
-    src: '/images/stocks/research.jpg',
+    src: '/images/stocks/optimized/research.webp',
     width: 2400,
     height: 3000,
     aspectRatio: '2400/3000', // 4:5 (portrait)
@@ -60,7 +60,7 @@ export const serviceBackgroundImages: Record<string, ImageConfig> = {
     objectPosition: 'center'
   },
   'services': {
-    src: '/images/stocks/services.jpg',
+    src: '/images/stocks/optimized/services.webp',
     width: 5312,
     height: 2988,
     aspectRatio: '5312/2988', // ~1.78:1
@@ -68,7 +68,7 @@ export const serviceBackgroundImages: Record<string, ImageConfig> = {
     objectPosition: 'center'
   },
   'hero-background': {
-    src: '/images/stocks/hero-background.jpg',
+    src: '/images/stocks/optimized/hero-background.webp',
     width: 2201,
     height: 1184,
     aspectRatio: '2201/1184', // ~1.86:1
@@ -76,7 +76,7 @@ export const serviceBackgroundImages: Record<string, ImageConfig> = {
     objectPosition: 'center'
   },
   'contact': {
-    src: '/images/stocks/contact.jpg',
+    src: '/images/stocks/optimized/contact.webp',
     width: 4000,
     height: 6000,
     aspectRatio: '4000/6000', // 2:3 (portrait)
@@ -84,7 +84,7 @@ export const serviceBackgroundImages: Record<string, ImageConfig> = {
     objectPosition: 'center'
   },
   'cta-background': {
-    src: '/images/stocks/cta-background.jpg',
+    src: '/images/stocks/optimized/cta-background.webp',
     width: 5184,
     height: 3456,
     aspectRatio: '5184/3456', // ~1.5:1

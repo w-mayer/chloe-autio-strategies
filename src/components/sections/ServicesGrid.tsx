@@ -4,12 +4,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { services } from '@/data/services';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
+import { ContentErrorBoundary } from '@/components/ui/ContentErrorBoundary';
 import { motion } from 'framer-motion';
 import { siteContent } from '@/data/content';
 
 interface ServiceCardProps {
   service: (typeof services)[number];
   index: number;
+  layoutIndex?: number; // For custom layout positioning
 }
 
 function useInViewAnimation() {
@@ -38,16 +40,17 @@ function useInViewAnimation() {
   return [ref, inView] as const;
 }
 
-function getStaggeredDelay(index: number) {
-  // 3 cards per row
-  const row = Math.floor(index / 3);
-  const col = index % 3;
+function getStaggeredDelay(index: number, layoutIndex?: number) {
+  // Use layoutIndex if provided, otherwise fall back to original logic
+  const effectiveIndex = layoutIndex !== undefined ? layoutIndex : index;
+  const row = Math.floor(effectiveIndex / 3);
+  const col = effectiveIndex % 3;
   return row * 600 + col * 200;
 }
 
-function ServiceCard({ service, index }: ServiceCardProps) {
+function ServiceCard({ service, index, layoutIndex }: ServiceCardProps) {
   const [ref, inView] = useInViewAnimation();
-  const delay = getStaggeredDelay(index) / 1000; // seconds for framer-motion
+  const delay = getStaggeredDelay(index, layoutIndex) / 1000; // seconds for framer-motion
   const router = useRouter();
   const { services: servicesContent, ui } = siteContent;
 
@@ -57,8 +60,8 @@ function ServiceCard({ service, index }: ServiceCardProps) {
   }, []);
 
   React.useEffect(() => {
-    console.log('ServiceCard', { index, inView, title: service.title });
-  }, [inView, index, service.title]);
+    console.log('ServiceCard', { index, layoutIndex, inView, title: service.title });
+  }, [inView, index, layoutIndex, service.title]);
 
   // Ripple effect and navigation on click
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -127,7 +130,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
   );
 }
 
-export function ServicesGrid() {
+function ServicesGridContent() {
   const { services: servicesContent } = siteContent;
 
   return (
@@ -141,12 +144,27 @@ export function ServicesGrid() {
             {servicesContent.title}
           </AuthorityHeading>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, i) => (
-            <ServiceCard key={service.slug} service={service} index={i} />
+        
+        {/* Custom 2-3-2 Grid Layout */}
+        <div className="services-grid max-w-6xl mx-auto">
+          {services.map((service, index) => (
+            <ServiceCard 
+              key={service.slug} 
+              service={service} 
+              index={index} 
+              layoutIndex={index}
+            />
           ))}
         </div>
       </div>
     </section>
+  );
+}
+
+export function ServicesGrid() {
+  return (
+    <ContentErrorBoundary>
+      <ServicesGridContent />
+    </ContentErrorBoundary>
   );
 }

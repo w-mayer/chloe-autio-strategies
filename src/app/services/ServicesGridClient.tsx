@@ -1,5 +1,5 @@
 'use client';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { servicesContent } from '@/data/pages/services';
 import { siteContent } from '@/data/content';
 import type { Service } from '@/data/services';
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 function ServiceCardSkeleton() {
   return (
@@ -24,41 +26,66 @@ interface ServicesGridClientProps {
   services: Service[];
 }
 
-function ServiceCard({ service, index }: { service: Service; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-  const router = useRouter();
-  const { ui } = siteContent;
+function useInViewAnimation() {
+  const ref = React.useRef<HTMLDivElement | null>(null);
+  const [inView, setInView] = React.useState(false);
 
-  useEffect(() => {
-    if (!cardRef.current) return;
-    
-    // For debugging, let's make cards visible after a short delay
-    const timer = setTimeout(() => {
+  React.useEffect(() => {
+    if (!ref.current) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       setInView(true);
-    }, 100 + (index * 150));
-    
-    return () => clearTimeout(timer);
-  }, [index]);
+      return;
+    }
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, inView] as const;
+}
+
+function getStaggeredDelay(index: number, layoutIndex?: number) {
+  // Use layoutIndex if provided, otherwise fall back to original logic
+  const effectiveIndex = layoutIndex !== undefined ? layoutIndex : index;
+  const row = Math.floor(effectiveIndex / 3);
+  const col = effectiveIndex % 3;
+  return row * 600 + col * 200;
+}
+
+function ServiceCard({ service, index, layoutIndex }: { service: Service; index: number; layoutIndex?: number }) {
+  const [ref, inView] = useInViewAnimation();
+  const delay = getStaggeredDelay(index, layoutIndex) / 1000; // seconds for framer-motion
+  const router = useRouter();
+  const { services: servicesContent, ui } = siteContent;
+
+  const [hasMounted, setHasMounted] = React.useState(false);
+  React.useEffect(() => {
+    setHasMounted(true);
+  }, []);
 
   // Ripple effect and navigation on click
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!ref.current) return;
     
     // Create ripple effect
-    const rect = cardRef.current.getBoundingClientRect();
+    const rect = ref.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
     const ripple = document.createElement('div');
     ripple.className = 'service-card-ripple';
     ripple.style.left = x + 'px';
     ripple.style.top = y + 'px';
     ripple.style.width = '20px';
     ripple.style.height = '20px';
-    
-    cardRef.current.appendChild(ripple);
-    
+    ref.current.appendChild(ripple);
     setTimeout(() => {
       if (ripple.parentNode) {
         ripple.parentNode.removeChild(ripple);
@@ -69,42 +96,21 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
     router.push(`/services/${service.slug}`);
   };
 
-  // Handle keyboard events
+  // Keyboard handler for accessibility
   const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      // Trigger the same effect as click
-      if (cardRef.current) {
-        const rect = cardRef.current.getBoundingClientRect();
-        const x = rect.width / 2;
-        const y = rect.height / 2;
-        
-        const ripple = document.createElement('div');
-        ripple.className = 'service-card-ripple';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.style.width = '20px';
-        ripple.style.height = '20px';
-        
-        cardRef.current.appendChild(ripple);
-        
-        setTimeout(() => {
-          if (ripple.parentNode) {
-            ripple.parentNode.removeChild(ripple);
-          }
-        }, 600);
-      }
-      
-      // Navigate to service page
       router.push(`/services/${service.slug}`);
     }
   };
 
   return (
-    <div
-      ref={cardRef}
-      className={`service-card ${inView ? 'service-card-entrance' : 'service-card-initial'}`}
-      style={inView ? { animationDelay: `${index * 150}ms` } : {}}
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={hasMounted && inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ delay, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+      className="service-card"
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"
@@ -113,18 +119,21 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
     >
       <div className="relative h-full flex flex-col justify-between">
         <div>
-          <h3 className="text-2xl font-semibold text-primary mb-2 service-card-icon">{service.title}</h3>
-          <p className="text-gray mb-4 body-text">{service.overview}</p>
+          <h3 className="text-xl font-semibold text-primary mb-2 service-card-icon">{service.title}</h3>
+          <p className="text-gray text-base mb-4 body-text">{service.overview}</p>
         </div>
-        <button
-          type="button"
-          className="text-primary font-medium underline underline-offset-4 transition-colors rounded px-2 py-1 service-card-number self-start"
+        <Link
+          href={`/services/${service.slug}`}
+          className="mt-auto text-primary font-medium underline underline-offset-4 transition-colors rounded px-2 py-1 service-card-number hover:text-primary-700 hover:bg-primary-50 dark:hover:bg-primary-900/20 relative z-10 cursor-pointer"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
           aria-label={`${ui.aria.learnMoreAbout} ${service.title}`}
         >
-          {ui.buttons.learnMore}
-        </button>
+          {servicesContent.learnMore} →
+        </Link>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -173,13 +182,26 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
       </section>
 
       <main className="container mx-auto px-4 pt-16 pb-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {loading
-            ? Array.from({ length: 6 }).map((_, i) => <ServiceCardSkeleton key={i} />)
-            : services.map((service, i) => (
-                <ServiceCard key={service.slug} service={service} index={i} />
-              ))}
-        </div>
+        {loading ? (
+          /* Responsive Grid Skeleton */
+          <div className="services-grid max-w-6xl mx-auto">
+            {Array.from({ length: services.length }).map((_, i) => (
+              <ServiceCardSkeleton key={`skeleton-${i}`} />
+            ))}
+          </div>
+        ) : (
+          /* Custom 2-3-2 Grid Layout */
+          <div className="services-grid max-w-6xl mx-auto">
+            {services.map((service, index) => (
+              <ServiceCard 
+                key={service.slug} 
+                service={service} 
+                index={index} 
+                layoutIndex={index}
+              />
+            ))}
+          </div>
+        )}
       </main>
 
       {/* CTA Section */}
@@ -193,7 +215,11 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
             <Button href="/contact" className="text-lg px-8 py-3">
               {ui.buttons.contactUs}
             </Button>
-            <Button href="/about" variant="outline" className="text-lg px-8 py-3">
+            <Button 
+              href="/about" 
+              variant="outline" 
+              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-3 border-eggshell text-paynesGray bg-eggshell hover:bg-eggshell hover:text-paynesGray min-h-[44px] touch-target transition-all duration-150 hover:scale-105 rounded-md"
+            >
               {ui.buttons.learnAboutTeam}
             </Button>
           </div>

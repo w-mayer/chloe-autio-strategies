@@ -173,7 +173,7 @@ export default function AboutPage() {
           name: 'Autio Strategies',
           description: 'AI policy consulting and technology governance experts providing strategic guidance to government bodies, Fortune 50 companies, and leading organizations.',
           url: siteMetadata.default.url,
-          logo: `${siteMetadata.default.url}/images/logo/AutioStrategies_Logo_FullColor_Horz.png`,
+          logo: `${siteMetadata.default.url}/images/logo/optimized/AutioStrategies_Logo_FullColor_Horz (1).webp`,
           employee: [
             {
               '@type': 'Person',

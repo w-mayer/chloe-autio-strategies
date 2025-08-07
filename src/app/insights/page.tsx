@@ -99,7 +99,11 @@ export default function InsightsPage() {
             <Button href="/contact" className="text-lg px-8 py-3">
               {ui.buttons.contactUs}
             </Button>
-            <Button href="/services" variant="outline" className="text-lg px-8 py-3">
+            <Button 
+              href="/services" 
+              variant="outline" 
+              className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-3 border-eggshell text-paynesGray bg-eggshell hover:bg-eggshell hover:text-paynesGray min-h-[44px] touch-target transition-all duration-150 hover:scale-105 rounded-md"
+            >
               {ui.buttons.exploreServices}
             </Button>
           </div>

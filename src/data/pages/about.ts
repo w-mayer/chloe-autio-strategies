@@ -2,7 +2,7 @@ export const aboutContent = {
   hero: {
     title: 'About Us',
     background: {
-      image: '/images/stocks/about.jpg',
+      image: '/images/stocks/optimized/about.webp',
       alt: 'About Autio Strategies background',
     },
   },

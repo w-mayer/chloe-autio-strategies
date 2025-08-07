@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { siteMetadata } from '@/data/metadata';
 import ContactPageClient from './ContactPageClient';
@@ -30,7 +30,9 @@ export default function ContactPage() {
         overlayOpacity={50}
         objectPosition="center top"
       />
-      <ContactPageClient />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ContactPageClient />
+      </Suspense>
     </>
   );
 } 

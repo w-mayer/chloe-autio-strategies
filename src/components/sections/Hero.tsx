@@ -3,25 +3,26 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@/components/ui/button';
 import AuthorityHeading from '@/components/ui/AuthorityHeading';
-import Image from 'next/image';
+import { ContentErrorBoundary } from '@/components/ui/ContentErrorBoundary';
+import { OptimizedImage } from '@/components/ui/OptimizedImage';
 import { homeContent } from '@/data/pages/home';
 
 const MotionP = dynamic(() => import('framer-motion').then(mod => mod.motion.p), { ssr: false });
 const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false });
 
-export function Hero() {
-  
+function HeroContent() {
   return (
     <section className="hero-section relative min-h-screen flex items-center justify-center overflow-hidden bg-paynesGray">
       {/* Background image */}
       <div className="absolute inset-0">
-        <Image
+        <OptimizedImage
           src={homeContent.hero.background.image}
           alt={homeContent.hero.background.alt}
           fill
           className="object-cover object-center"
           priority
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+          quality={85}
         />
         {/* Dark overlay for text legibility */}
         <div className="absolute inset-0 bg-black/50" />
@@ -78,5 +79,13 @@ export function Hero() {
         </MotionDiv>
       </div>
     </section>
+  );
+}
+
+export function Hero() {
+  return (
+    <ContentErrorBoundary>
+      <HeroContent />
+    </ContentErrorBoundary>
   );
 } 
