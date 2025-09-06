@@ -149,7 +149,7 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section with Background Image */}
-      <section className="relative bg-primary py-16 md:py-24 overflow-hidden">
+      <section className="relative bg-primary h-[30vh] min-h-[250px] flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -169,12 +169,25 @@ export default function ServicesGridClient({ services }: ServicesGridClientProps
         <div className="container mx-auto px-4 text-center relative z-20">
           <AuthorityHeading
             size="h1"
-            className="text-4xl md:text-6xl font-bold mb-6 heading text-white"
+            className="font-bold mb-6 heading text-white"
             enableHighlight={true}
+            style={{
+              fontSize: 'clamp(1.75rem, 4.5vw, 2.75rem)',
+              lineHeight: '1.2',
+              margin: '0 0 1.5rem 0',
+              padding: '0.5rem 0 0.5rem 0'
+            }}
           >
             {hero.title}
           </AuthorityHeading>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto body-text text-white">
+          <p 
+            className="max-w-3xl mx-auto body-text text-white"
+            style={{
+              fontSize: 'clamp(0.9rem, 2vw, 1.25rem)',
+              lineHeight: '1.5',
+              marginBottom: '1rem'
+            }}
+          >
             {hero.subtitle}
           </p>
         </div>

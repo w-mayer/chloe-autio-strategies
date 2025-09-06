@@ -16,7 +16,7 @@ export function PageHero({
   pageName, 
   title, 
   subtitle, 
-  className = "relative bg-primary py-16 md:py-24 overflow-hidden",
+  className = "relative bg-primary h-[30vh] min-h-[250px] flex items-center justify-center overflow-hidden",
   overlayOpacity = 55,
   objectPosition = "center"
 }: PageHeroProps) {
@@ -49,13 +49,26 @@ export function PageHero({
       <div className="container mx-auto px-4 text-center relative z-20">
         <AuthorityHeading
           size="h1"
-          className={`text-4xl md:text-6xl font-bold mb-6 heading text-white`}
+          className={`font-bold mb-6 heading text-white`}
           enableHighlight={true}
+          style={{
+            fontSize: 'clamp(1.75rem, 4.5vw, 2.75rem)',
+            lineHeight: '1.2',
+            margin: '0 0 1.5rem 0',
+            padding: '0.5rem 0 0.5rem 0'
+          }}
         >
           {displayTitle}
         </AuthorityHeading>
         {displaySubtitle && (
-          <p className="text-xl md:text-2xl max-w-3xl mx-auto body-text text-white">
+          <p 
+            className="max-w-3xl mx-auto body-text text-white"
+            style={{
+              fontSize: 'clamp(0.9rem, 2vw, 1.25rem)',
+              lineHeight: '1.5',
+              marginBottom: '1rem'
+            }}
+          >
             {displaySubtitle}
           </p>
         )}

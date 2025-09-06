@@ -156,15 +156,16 @@ body {
     
     /* Hero section mobile fixes */
     .hero-section {
-      min-height: 100vh;
+      height: clamp(300px, 35vh, 450px);
+      min-height: 300px;
       padding: 1rem 0;
     }
     
     /* Authority heading mobile sizing */
     .authority-heading {
-      font-size: 2rem !important;
+      font-size: clamp(1.25rem, 3vw, 2rem) !important;
       line-height: 1.2 !important;
-      margin-bottom: 1.5rem !important;
+      margin-bottom: 1rem !important;
       padding: 0.5rem 0 !important;
     }
     
@@ -181,9 +182,9 @@ body {
     
     /* Body text mobile sizing */
     .body-text {
-      font-size: 1rem !important;
-      line-height: 1.6 !important;
-      margin-bottom: 1.5rem !important;
+      font-size: clamp(0.875rem, 2vw, 1rem) !important;
+      line-height: 1.5 !important;
+      margin-bottom: 1rem !important;
       padding: 0 0.5rem !important;
     }
     
@@ -192,8 +193,8 @@ body {
     .btn-secondary {
       width: 100% !important;
       min-height: 44px !important;
-      font-size: 1rem !important;
-      padding: 0.75rem 1.5rem !important;
+      font-size: clamp(0.875rem, 2vw, 1rem) !important;
+      padding: clamp(0.5rem 1rem, 2vh 3vw, 0.75rem 1.5rem) !important;
       margin-bottom: 0.75rem !important;
     }
     
@@ -222,9 +223,9 @@ body {
   @media (max-width: 480px) {
     /* Even smaller text for very small screens */
     .authority-heading {
-      font-size: 1.75rem !important;
+      font-size: clamp(1.125rem, 2.5vw, 1.75rem) !important;
       line-height: 1.1 !important;
-      margin-bottom: 1rem !important;
+      margin-bottom: 0.75rem !important;
       white-space: normal !important;
       text-align: center !important;
       padding: 0 0.5rem !important;
@@ -237,16 +238,16 @@ body {
     }
     
     .body-text {
-      font-size: 0.9rem !important;
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem) !important;
       line-height: 1.5 !important;
-      margin-bottom: 1rem !important;
+      margin-bottom: 0.75rem !important;
     }
     
     /* Smaller buttons for very small screens */
     .btn-primary,
     .btn-secondary {
-      font-size: 0.9rem !important;
-      padding: 0.625rem 1.25rem !important;
+      font-size: clamp(0.8rem, 1.5vw, 0.9rem) !important;
+      padding: clamp(0.5rem 1rem, 2vh 2vw, 0.625rem 1.25rem) !important;
       min-height: 40px !important;
     }
     
@@ -268,13 +269,14 @@ body {
   /* Landscape mobile devices */
   @media (max-width: 768px) and (orientation: landscape) {
     .hero-section {
-      min-height: 100vh;
+      height: clamp(250px, 35vh, 350px);
+      min-height: 250px;
       padding: 0.5rem 0;
     }
     
     .authority-heading {
-      font-size: 1.5rem !important;
-      margin-bottom: 0.75rem !important;
+      font-size: clamp(1rem, 2.5vw, 1.5rem) !important;
+      margin-bottom: 0.5rem !important;
       white-space: normal !important;
       text-align: center !important;
     }
@@ -286,8 +288,8 @@ body {
     }
     
     .body-text {
-      font-size: 0.875rem !important;
-      margin-bottom: 0.75rem !important;
+      font-size: clamp(0.8rem, 1.5vw, 0.875rem) !important;
+      margin-bottom: 0.5rem !important;
     }
     
     .button-container {
@@ -300,8 +302,8 @@ body {
     .btn-secondary {
       width: auto !important;
       min-width: 120px !important;
-      font-size: 0.875rem !important;
-      padding: 0.5rem 1rem !important;
+      font-size: clamp(0.8rem, 1.5vw, 0.875rem) !important;
+      padding: clamp(0.4rem 0.8rem, 1.5vh 2vw, 0.5rem 1rem) !important;
       margin-bottom: 0 !important;
     }
   }
@@ -902,7 +904,8 @@ body {
 /* Hero section - dark background with light text */
 .bg-paynesGray .authority-heading {
   color: #ffffff; /* White color */
-  margin-bottom: 4rem; /* Extra space for hero heading */
+  margin: 0 0 1.5rem 0; /* Elegant spacing for hero heading */
+  padding: 0.5rem 0 0.5rem 0; /* Reduced padding */
 }
 
 .bg-paynesGray .authority-heading::after {
@@ -924,7 +927,8 @@ body {
 /* Primary background - white text */
 .bg-primary .authority-heading {
   color: #ffffff; /* White color */
-  margin-bottom: 4rem; /* Extra space for hero heading */
+  margin: 0 0 1.5rem 0; /* Consistent spacing for page heroes */
+  padding: 0.5rem 0 0.5rem 0; /* Reduced padding */
 }
 
 .bg-primary .authority-heading::after {
@@ -1052,9 +1056,9 @@ body {
   }
   
   .authority-heading {
-    font-size: 2rem !important;
+    font-size: clamp(1.25rem, 3vw, 2rem) !important;
     line-height: 1.2 !important;
-    margin-bottom: 1.5rem !important;
+    margin-bottom: 1rem !important;
     padding: 0.5rem 0 !important;
     animation: none !important;
     word-wrap: break-word !important;
