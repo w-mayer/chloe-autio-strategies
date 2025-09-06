@@ -99,7 +99,7 @@ export const siteContent = {
 
   // Value proposition section
   valueProposition: {
-    title: 'Why Choose Autio Strategies?',
+    title: 'Our Value Add',
     cards: [
       {
         title: 'AI Policy Expertise',
