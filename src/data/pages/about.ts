@@ -7,8 +7,8 @@ export const aboutContent = {
     },
   },
   body: {
-    title: 'Who We Are',
-    description: 'We work with organizations to align governance and policy activities with emerging tech roadmaps. I advise them on how to navigate and engage with the technology policy ecosystem — with a focus on artificial intelligence. Our clients range from startups and nonprofits looking to boost their DC-presence, to well-established AI firms needing extra capacity to meet internal governance or policy or needs.',
+    title: 'What we do',
+    description: 'We work with organizations to align governance and policy activities with emerging tech roadmaps. We advise them on how to navigate and engage with the technology policy ecosystem — with a focus on artificial intelligence. Our clients range from startups and nonprofits looking to boost their DC-presence, to well-established AI firms needing extra capacity to meet internal governance or policy or needs.',
   },
   teamSection: {
     title: 'Team',

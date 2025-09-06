@@ -1,10 +1,24 @@
+'use client';
+
 import React from 'react';
-import { Mail, Linkedin } from 'lucide-react';
+import { Mail, Linkedin, Phone } from 'lucide-react';
 import Image from "next/image";
 import { siteContent } from '@/data/content';
 
 export function Footer() {
   const { footer, site } = siteContent;
+  
+  const handlePhoneClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Check if it's a mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (!isMobile) {
+      e.preventDefault();
+      // Show a message for desktop users
+      alert(`To call ${footer.contact.phone.number}, please use your phone or copy this number: ${footer.contact.phone.number}`);
+    }
+    // On mobile devices, let the default tel: behavior work
+  };
   
   return (
     <footer className="border-t bg-white" style={{ fontFamily: 'DM Sans, Arial, Helvetica, sans-serif', color: '#434344' }}>
@@ -51,6 +65,16 @@ export function Footer() {
               aria-label={footer.contact.linkedin.text}
             >
               <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href={footer.contact.phone.href}
+              onClick={handlePhoneClick}
+              className="flex items-center space-x-1 text-[#434344] hover:text-[#6F9C3B] transition-colors cursor-pointer"
+              aria-label={`${footer.contact.phone.text}: ${footer.contact.phone.number}`}
+              title={`Call ${footer.contact.phone.number}`}
+            >
+              <Phone className="w-5 h-5" />
+              <span className="text-sm font-medium">{footer.contact.phone.number}</span>
             </a>
           </div>
         </div>

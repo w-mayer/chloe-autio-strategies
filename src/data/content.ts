@@ -143,6 +143,7 @@ export const siteContent = {
     contact: {
       email: { text: 'Email', href: 'mailto:chloe@autiostrategies.com' },
       linkedin: { text: 'LinkedIn', href: 'https://www.linkedin.com/company/autio-strategies' },
+      phone: { text: 'Phone', href: 'tel:+12024556599', number: '+1 (202) 455-6599' },
     },
     logo: {
       src: '/images/logo/optimized/AutioStrategies_Logo_FullColor_JustMark.webp',
@@ -177,23 +178,23 @@ export const siteContent = {
       fields: {
         name: { 
           label: 'Full Name', 
-          placeholder: 'Enter your full name',
+          placeholder: 'Enter your full name.',
           error: 'Name must be at least 2 characters and contain only letters, spaces, hyphens, apostrophes, and periods',
-          help: 'Enter your first and last name',
+          help: 'Enter your first and last name.',
           maxLength: 100,
         },
         email: { 
           label: 'Email Address', 
-          placeholder: 'Enter your email address',
+          placeholder: 'Enter your email address.',
           error: 'Please enter a valid email address (no + addresses)',
-          help: 'We\'ll use this to respond to your inquiry',
+          help: 'We\'ll use this to respond to your inquiry.',
           maxLength: 254,
         },
         services: { 
           label: 'Services of Interest', 
-          placeholder: 'Select services you\'re interested in',
+          placeholder: 'Select services you\'re interested in.',
           error: 'Please select at least one service (up to 10 services allowed)',
-          help: 'You can select multiple services',
+          help: 'You can select multiple services.',
           other: 'Other',
           otherPlaceholder: "Describe the service you're interested in (max 200 characters)",
           maxSelections: 10,
@@ -201,8 +202,7 @@ export const siteContent = {
         message: { 
           label: 'Message', 
           placeholder: 'Tell us about your project or inquiry...',
-          error: 'Message must be at least 10 characters and less than 2000 characters (no links allowed)',
-          help: 'Be as specific as possible about your needs',
+          error: 'Message must be at least 10 characters and less than 2000 characters (no links allowed).',
           minLength: 10,
           maxLength: 2000,
         },
@@ -217,7 +217,7 @@ export const siteContent = {
       title: 'Newsletter Signup',
       netlifyName: 'newsletter',
       description: 'Stay updated with the latest insights in AI policy and technology governance.',
-      placeholder: 'Enter your email address',
+      placeholder: 'Enter your email address.',
       button: { text: 'Subscribe', loading: 'Subscribing...' },
       success: 'Thank you for subscribing!',
       error: 'Please enter a valid email address.',
