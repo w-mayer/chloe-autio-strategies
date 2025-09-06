@@ -203,6 +203,7 @@ export const siteContent = {
           label: 'Message', 
           placeholder: 'Tell us about your project or inquiry...',
           error: 'Message must be at least 10 characters and less than 2000 characters (no links allowed).',
+          help: '',
           minLength: 10,
           maxLength: 2000,
         },
