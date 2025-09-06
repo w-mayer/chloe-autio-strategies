@@ -11,7 +11,7 @@ export function ContactCTA() {
   const { contactCTA } = siteContent;
   
   return (
-    <section className="relative py-16 md:py-24 text-eggshell overflow-hidden">
+    <section className="relative py-10 md:py-16 text-eggshell overflow-hidden">
       {/* Background image with overlay */}
       <div className="absolute inset-0">
         <Image
@@ -39,9 +39,9 @@ export function ContactCTA() {
             <Image
               src={contactCTA.logo.image}
               alt={contactCTA.logo.alt}
-              width={320}
-              height={80}
-              className="mb-8 w-auto max-w-xs md:max-w-md"
+              width={240}
+              height={60}
+              className="mb-6 w-auto max-w-xs md:max-w-sm"
               priority={false}
             />
           </div>
@@ -53,10 +53,10 @@ export function ContactCTA() {
             viewport={{ once: true, margin: '-100px' }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button href={contactCTA.buttons.primary.href} className="text-lg px-8 py-3">
+            <Button href={contactCTA.buttons.primary.href} className="text-base px-6 py-2">
               {contactCTA.buttons.primary.text}
             </Button>
-            <Button href={contactCTA.buttons.secondary.href} variant="outline" className="text-lg px-8 py-3 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray">
+            <Button href={contactCTA.buttons.secondary.href} variant="outline" className="text-base px-6 py-2 border-eggshell text-eggshell hover:bg-eggshell hover:text-paynesGray">
               {contactCTA.buttons.secondary.text}
             </Button>
           </MotionDiv>
