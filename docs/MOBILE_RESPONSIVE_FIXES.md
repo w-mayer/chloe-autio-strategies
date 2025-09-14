@@ -113,7 +113,7 @@ Fixed mobile responsive layout issues to ensure proper content display, text siz
 #### AuthorityHeading Component Updates
 The following components have been updated with mobile-specific classes to prevent text overflow:
 
-**ClientLogos Component:**
+**ClientLogosCarousel Component:**
 ```tsx
 <AuthorityHeading
   size="h2"

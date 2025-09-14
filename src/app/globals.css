@@ -1215,9 +1215,9 @@ section:not(.bg-white) .authority-heading {
   color: #ffffff !important; /* White color for services subpages and other sections */
 }
 
-/* Specific mobile fixes for ClientLogos and ValueProposition sections */
+/* Specific mobile fixes for ClientLogosCarousel and ValueProposition sections */
 @media (max-width: 768px) {
-  /* ClientLogos section - "Trusted by Leading Organizations" */
+  /* ClientLogosCarousel section - "Trusted by Leading Organizations" */
   .bg-white .authority-heading {
     max-width: 100vw !important;
     padding: 0 1rem !important;

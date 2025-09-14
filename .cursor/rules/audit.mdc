@@ -1,0 +1,248 @@
+---
+description: audit rules
+globs:
+alwaysApply: false
+---
+# Next.js Company Website Pre-Deployment Audit Prompt
+
+You are an expert web developer conducting a comprehensive pre-deployment audit for a Next.js company website. This website must meet professional standards, be highly optimized, lightweight, and feel modern. 
+
+## CRITICAL INSTRUCTIONS
+- **AUDIT ONLY - NO CHANGES**: Do not make any modifications during this audit phase
+- **STEP-BY-STEP APPROACH**: Work through each section methodically 
+- **DOCUMENT EVERYTHING**: Record all findings, issues, and recommendations
+- **BE THOROUGH**: This is the final check before deployment
+
+## AUDIT CHECKLIST
+
+### 1. CODE QUALITY & STRUCTURE
+**Step 1.1: Project Architecture**
+- [ ] Review folder structure follows Next.js best practices
+- [ ] Check component organization and separation of concerns
+- [ ] Verify proper use of `/pages`, `/components`, `/public`, `/styles` directories
+- [ ] Ensure consistent naming conventions across files
+- [ ] Review import/export patterns for clarity
+
+**Step 1.2: Code Standards**
+- [ ] Check for consistent code formatting and linting
+- [ ] Verify TypeScript usage (if applicable) and type safety
+- [ ] Review component composition and reusability
+- [ ] Check for proper error boundaries and error handling
+- [ ] Verify consistent commenting and documentation
+
+**Step 1.3: Dependencies**
+- [ ] Audit package.json for unnecessary dependencies
+- [ ] Check for security vulnerabilities in dependencies
+- [ ] Verify all dependencies are up-to-date and compatible
+- [ ] Review bundle size impact of each dependency
+
+### 2. PERFORMANCE OPTIMIZATION
+**Step 2.1: Core Web Vitals**
+- [ ] Test Largest Contentful Paint (LCP) - target <2.5s
+- [ ] Test First Input Delay (FID) - target <100ms
+- [ ] Test Cumulative Layout Shift (CLS) - target <0.1
+- [ ] Test First Contentful Paint (FCP)
+- [ ] Test Time to Interactive (TTI)
+
+**Step 2.2: Asset Optimization**
+- [ ] Verify all images are optimized (WebP/AVIF when possible)
+- [ ] Check proper usage of Next.js Image component
+- [ ] Ensure responsive images with appropriate sizes
+- [ ] Review font loading strategy (font-display, preloading)
+- [ ] Verify CSS is minified and critical CSS is inlined
+- [ ] Check JavaScript bundle size and code splitting
+
+**Step 2.3: Caching & Loading**
+- [ ] Verify static generation vs server-side rendering decisions
+- [ ] Check proper use of `getStaticProps` and `getServerSideProps`
+- [ ] Review caching headers and strategies
+- [ ] Test lazy loading implementation
+- [ ] Verify service worker configuration (if used)
+
+### 3. SEO & ACCESSIBILITY
+**Step 3.1: SEO Fundamentals**
+- [ ] Check all pages have unique, descriptive titles
+- [ ] Verify meta descriptions are compelling and under 160 characters
+- [ ] Review heading hierarchy (H1-H6) structure
+- [ ] Ensure proper internal linking structure
+- [ ] Verify canonical URLs are set correctly
+- [ ] Check robots.txt and sitemap.xml
+- [ ] Review Open Graph and Twitter Card meta tags
+
+**Step 3.2: Accessibility (WCAG 2.1 AA)**
+- [ ] Test keyboard navigation throughout the site
+- [ ] Verify proper alt text for all images
+- [ ] Check color contrast ratios (minimum 4.5:1)
+- [ ] Ensure proper ARIA labels and roles
+- [ ] Test screen reader compatibility
+- [ ] Verify focus indicators are visible
+- [ ] Check semantic HTML structure
+
+### 4. MOBILE RESPONSIVENESS & STYLE CONSISTENCY
+**Step 4.1: Mobile Responsiveness Standards**
+- [ ] Test on mobile devices (320px-768px)
+- [ ] Test on tablet devices (768px-1024px)
+- [ ] Test on desktop screens (1024px+)
+- [ ] Test on small mobile devices (320px-480px)
+- [ ] Test landscape orientation handling
+- [ ] Verify touch targets are at least 44px
+- [ ] Check horizontal scrolling issues
+- [ ] Test orientation changes (portrait/landscape)
+- [ ] Verify text overflow prevention (max-w-full overflow-hidden classes)
+- [ ] Check button layout compliance (full-width on mobile)
+- [ ] Test viewport scaling and overflow management
+- [ ] Verify mobile performance optimization
+
+**Step 4.2: Style Consistency Validation**
+- [ ] Verify Tailwind CSS utility class usage (no inline styles)
+- [ ] Check design system compliance (colors, typography, spacing)
+- [ ] Validate AuthorityHeading component usage with proper classes
+- [ ] Check Button component standards and variants
+- [ ] Verify consistent spacing scale usage (0-128)
+- [ ] Check responsive class implementation
+- [ ] Validate component styling patterns
+- [ ] Verify no custom CSS overrides (except animations)
+
+**Step 4.3: Cross-Browser Testing**
+- [ ] Test in Chrome (latest)
+- [ ] Test in Firefox (latest)
+- [ ] Test in Safari (latest)
+- [ ] Test in Edge (latest)
+- [ ] Check for polyfills needed for older browsers
+- [ ] Verify graceful degradation for unsupported features
+
+### 5. SECURITY AUDIT
+**Step 5.1: Security Headers**
+- [ ] Verify Content Security Policy (CSP) implementation
+- [ ] Check X-Frame-Options header
+- [ ] Ensure X-Content-Type-Options is set
+- [ ] Verify Referrer-Policy configuration
+- [ ] Check Strict-Transport-Security (HTTPS)
+
+**Step 5.2: Data Protection**
+- [ ] Review form validation and sanitization
+- [ ] Check for exposed API keys or sensitive data
+- [ ] Verify proper authentication implementation
+- [ ] Review cookie settings (secure, httpOnly, sameSite)
+- [ ] Check for XSS vulnerabilities
+
+### 6. PROFESSIONAL APPEARANCE
+**Step 6.1: Visual Design**
+- [ ] Verify consistent branding throughout
+- [ ] Check typography hierarchy and readability
+- [ ] Ensure consistent spacing and alignment
+- [ ] Review color palette consistency
+- [ ] Verify high-quality imagery and graphics
+- [ ] Check for visual bugs or glitches
+
+**Step 6.2: User Experience**
+- [ ] Test all interactive elements (buttons, forms, modals)
+- [ ] Verify smooth animations and transitions
+- [ ] Check loading states and feedback
+- [ ] Ensure consistent navigation patterns
+- [ ] Test error states and 404 pages
+- [ ] Verify contact forms and CTAs work properly
+
+### 7. CONTENT MANAGEMENT COMPLIANCE
+**Step 7.1: Data File Structure Validation**
+- [ ] Verify all content sourced from `src/data/` files
+- [ ] Check no hardcoded text in components
+- [ ] Validate content import patterns (siteContent, siteMetadata)
+- [ ] Verify proper TypeScript interfaces for content
+- [ ] Check consistent data structure across files
+- [ ] Validate content organization follows established patterns
+
+**Step 7.2: Content Quality Review**
+- [ ] Review all copy for grammar and spelling
+- [ ] Ensure professional tone and voice
+- [ ] Verify all links work correctly
+- [ ] Check contact information is accurate
+- [ ] Review legal pages (Privacy Policy, Terms of Service)
+- [ ] Ensure consistent messaging across pages
+
+**Step 7.3: Content Structure**
+- [ ] Verify logical information architecture
+- [ ] Check page hierarchy makes sense
+- [ ] Ensure clear value propositions
+- [ ] Review call-to-action placement and clarity
+
+### 8. TECHNICAL INFRASTRUCTURE
+**Step 8.1: Build & Deployment**
+- [ ] Test production build locally
+- [ ] Verify environment variables are properly set
+- [ ] Check build process completes without errors
+- [ ] Review deployment configuration
+- [ ] Test static asset serving
+- [ ] Verify SSL certificate is valid
+
+**Step 8.2: Monitoring & Analytics**
+- [ ] Ensure analytics tracking is implemented
+- [ ] Verify error monitoring is configured
+- [ ] Check performance monitoring setup
+- [ ] Test form submissions and tracking
+- [ ] Verify backup and recovery procedures
+
+### 9. FINAL CHECKS
+**Step 9.1: Comprehensive Testing**
+- [ ] Complete user journey testing
+- [ ] Verify all features work end-to-end
+- [ ] Test with realistic data volumes
+- [ ] Check performance under load
+- [ ] Verify graceful error handling
+
+**Step 9.2: Documentation**
+- [ ] Document all findings and issues
+- [ ] Prioritize issues by severity (Critical, High, Medium, Low)
+- [ ] Create action items for any required fixes
+- [ ] Document recommendations for future improvements
+
+## AUDIT REPORT TEMPLATE
+
+### Executive Summary
+- Overall assessment of deployment readiness
+- Critical issues that must be resolved before deployment
+- Performance summary
+- Key recommendations
+
+### Detailed Findings
+
+#### Critical Issues (Must Fix Before Deployment)
+- List all blocking issues
+- Provide specific remediation steps
+
+#### High Priority Issues (Should Fix Soon)
+- Performance improvements
+- Security enhancements
+- Accessibility improvements
+
+#### Medium Priority Issues (Nice to Have)
+- User experience enhancements
+- Code quality improvements
+
+#### Low Priority Issues (Future Considerations)
+- Long-term optimizations
+- Feature enhancements
+
+### Performance Metrics
+- Page load times for key pages
+- Bundle size analysis
+- Core Web Vitals scores
+- Lighthouse audit scores
+
+### Recommendations
+- Immediate action items
+- Short-term improvements
+- Long-term strategic recommendations
+
+---
+
+## REFERENCE DOCUMENTATION
+
+For comprehensive audit procedures including detailed mobile responsiveness standards, style consistency validation, and content management compliance, refer to:
+- `docs/AUDIT_RULES.md` - Complete audit framework with detailed procedures
+- `docs/MOBILE_RESPONSIVE_FIXES.md` - Mobile-specific implementation details
+- `docs/DOCUMENTATION_AUDIT_SUMMARY.md` - Previous audit findings and recommendations
+
+---
+
+**REMEMBER**: This is an audit only. Document everything thoroughly but make NO changes during this process. Present findings in a clear, actionable report that guides the development team toward deployment readiness.
