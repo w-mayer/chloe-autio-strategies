@@ -35,42 +35,50 @@ export const siteContent = {
       { 
         name: 'Cohere', 
         image: '/images/partner_logos/optimized/Cohere-Logo.webp',
-        alt: 'Cohere Logo'
+        alt: 'Cohere Logo',
+        size: 'extra-large'
       },
       { 
         name: 'Department of Defense', 
         image: '/images/partner_logos/optimized/DoD-Logo-Stacked.webp',
-        alt: 'Department of Defense Logo'
+        alt: 'Department of Defense Logo',
+        size: 'large'
       },
       { 
         name: 'NIST', 
         image: '/images/partner_logos/optimized/f_nist-logo-brand-black.webp',
-        alt: 'NIST Logo'
+        alt: 'NIST Logo',
+        size: 'extra-large'
       },
       { 
         name: 'Google Cloud Platform', 
         image: '/images/partner_logos/optimized/Google_Cloud_Platform-Logo.webp',
-        alt: 'Google Cloud Platform Logo'
+        alt: 'Google Cloud Platform Logo',
+        size: 'extra-large'
       },
       { 
         name: 'Google DeepMind', 
         image: '/images/partner_logos/optimized/Google_DeepMind_logo.webp',
-        alt: 'Google DeepMind Logo'
+        alt: 'Google DeepMind Logo',
+        size: 'large'
       },
       { 
         name: 'Meta', 
         image: '/images/partner_logos/optimized/Meta-Logo.webp',
-        alt: 'Meta Logo'
+        alt: 'Meta Logo',
+        size: 'standard'
       },
       { 
         name: 'OECD', 
         image: '/images/partner_logos/optimized/OCED.webp',
-        alt: 'OECD Logo'
+        alt: 'OECD Logo',
+        size: 'standard'
       },
       { 
         name: 'Uber', 
         image: '/images/partner_logos/optimized/Uber_logo_2018.webp',
-        alt: 'Uber Logo'
+        alt: 'Uber Logo',
+        size: 'standard'
       },
     ],
   },

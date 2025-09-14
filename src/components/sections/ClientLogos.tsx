@@ -32,7 +32,7 @@ function useInViewAnimation() {
 }
 
 interface LogoCardProps {
-  logo: { name: string; image: string; alt: string };
+  logo: { name: string; image: string; alt: string; size: 'standard' | 'large' };
   delay: number;
 }
 
@@ -43,8 +43,8 @@ function LogoCard({ logo, delay }: LogoCardProps) {
     setHasMounted(true);
   }, []);
   
-  // Determine if this logo needs extra large sizing
-  const isExtraLarge = logo.name === 'Google Cloud Platform' || logo.name === 'Cohere' || logo.name === 'NIST';
+  // Use data-driven sizing instead of hardcoded names
+  const isLarge = logo.size === 'large';
   
   return (
     <motion.div
@@ -53,7 +53,7 @@ function LogoCard({ logo, delay }: LogoCardProps) {
       animate={hasMounted && inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ delay, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
       className={`flex items-center justify-center p-4 ${
-        isExtraLarge 
+        isLarge 
           ? 'h-36 sm:h-40 md:h-44' 
           : 'h-28 sm:h-32 md:h-36'
       }`}
@@ -62,8 +62,8 @@ function LogoCard({ logo, delay }: LogoCardProps) {
       <Image
         src={logo.image}
         alt={logo.alt}
-        width={isExtraLarge ? 280 : 220}
-        height={isExtraLarge ? 140 : 110}
+        width={isLarge ? 280 : 220}
+        height={isLarge ? 140 : 110}
         className="max-w-full max-h-full object-contain hover:opacity-80 transition-all duration-300"
       />
     </motion.div>
@@ -86,7 +86,7 @@ export function ClientLogos() {
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-4 gap-6 items-center justify-center">
           {clientLogos.logos.map((logo, i) => (
-            <LogoCard key={logo.name} logo={logo} delay={i * 0.1} />
+            <LogoCard key={logo.name} logo={logo as { name: string; image: string; alt: string; size: 'standard' | 'large' }} delay={i * 0.1} />
           ))}
         </div>
       </div>
