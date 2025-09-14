@@ -109,7 +109,7 @@ function ServiceCard({ service, index, layoutIndex }: { service: Service; index:
       initial={{ opacity: 0, y: 50 }}
       animate={hasMounted && inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
       transition={{ delay, duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-      className="service-card"
+      className={`service-card ${service.slug === 'strategy' ? 'center-aligned' : ''}`}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       role="button"
