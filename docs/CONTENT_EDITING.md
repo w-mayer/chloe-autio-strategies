@@ -110,7 +110,7 @@ This guide helps you edit website content without needing technical knowledge. A
 - [x] ServicesGrid (`src/components/sections/ServicesGrid.tsx`)
 - [x] ValueProposition (`src/components/sections/ValueProposition.tsx`)
 - [x] ContactCTA (`src/components/sections/ContactCTA.tsx`)
-- [x] ClientLogos (`src/components/sections/ClientLogos.tsx`)
+- [x] ClientLogosCarousel (`src/components/sections/ClientLogosCarousel.tsx`)
 - [x] Testimonials (`src/components/sections/Testimonials.tsx`)
 - [x] NewsletterSignup (`src/components/sections/NewsletterSignup.tsx`)
 
