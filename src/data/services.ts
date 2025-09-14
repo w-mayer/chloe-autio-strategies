@@ -69,26 +69,6 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: 'strategy',
-    title: 'Strategy & Prioritization',
-    overview: 'Focused approaches to achieve results.',
-    benefits: [
-      'Data-driven prioritization of high-impact policy initiatives',
-      'Strategic stakeholder engagement and coalition building',
-      'Optimized resource allocation for maximum organizational impact',
-    ],
-    methodology: 'We conduct comprehensive landscape analysis to map key stakeholders and policy dynamics, develop prioritized engagement strategies aligned with organizational objectives, and provide ongoing strategic guidance to optimize resource deployment and maximize influence in critical policy debates.',
-    related: ['insight-analysis', 'policy-development'],
-    backgroundImage: '/images/stocks/optimized/strategy.webp',
-    backgroundPosition: 'center 10%', 
-    detailedContent: [
-      '<strong>Overall Strategy for Policy Positioning or Engagement:</strong> Comprehensive strategies to guide positioning or engagement efforts, including brand and messaging, timing considerations, and coalition building aligned to organizational objectives and the current policy/political landscape.',
-      '<strong>Resource and Time Prioritization:</strong> Optimize time and resources to focus on highest impact initiatives or events.',
-      '<strong>Stakeholder Mapping and Relationship Development:</strong> Map the people and organizations influencing the AI policy debate. Design and execute targeted engagement strategies to build relationships.',
-      '<strong>Event Selection and Prioritization:</strong> Provide expert advice on key events and engagement opportunities to maximize your organization\'s impact and visibility.',
-    ],
-  },
-  {
     slug: 'presentations-briefings',
     title: 'Presentations & Briefings',
     overview: 'Expert preparatory and educational insights on topics of your choosing.',
@@ -143,6 +123,26 @@ export const services: Service[] = [
       '<strong>Government and Public Affairs Coordination:</strong> Support selection and collaboration with government affairs partners, including trade associations and lobbying firms.',
       '<strong>Media Relations:</strong> Outreach and connection to relevant journalists and outlets to advance thought leadership goals.',
       '<strong>Vendor Analysis:</strong> Overview and recommendations of available AI solutions for a specific problem space. Recommendations for third-party technology governance solutions, such as algorithmic auditors and red-teaming platforms, to advance oversight and compliance efforts.'
+    ],
+  },
+  {
+    slug: 'strategy',
+    title: 'Strategy & Prioritization',
+    overview: 'Focused approaches to achieve results.',
+    benefits: [
+      'Data-driven prioritization of high-impact policy initiatives',
+      'Strategic stakeholder engagement and coalition building',
+      'Optimized resource allocation for maximum organizational impact',
+    ],
+    methodology: 'We conduct comprehensive landscape analysis to map key stakeholders and policy dynamics, develop prioritized engagement strategies aligned with organizational objectives, and provide ongoing strategic guidance to optimize resource deployment and maximize influence in critical policy debates.',
+    related: ['insight-analysis', 'policy-development'],
+    backgroundImage: '/images/stocks/optimized/strategy.webp',
+    backgroundPosition: 'center 10%', 
+    detailedContent: [
+      '<strong>Overall Strategy for Policy Positioning or Engagement:</strong> Comprehensive strategies to guide positioning or engagement efforts, including brand and messaging, timing considerations, and coalition building aligned to organizational objectives and the current policy/political landscape.',
+      '<strong>Resource and Time Prioritization:</strong> Optimize time and resources to focus on highest impact initiatives or events.',
+      '<strong>Stakeholder Mapping and Relationship Development:</strong> Map the people and organizations influencing the AI policy debate. Design and execute targeted engagement strategies to build relationships.',
+      '<strong>Event Selection and Prioritization:</strong> Provide expert advice on key events and engagement opportunities to maximize your organization\'s impact and visibility.',
     ],
   },
 ]; 
